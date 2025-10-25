@@ -8,6 +8,8 @@ extends CharacterBody2D
 @export_category(&"References")
 @export var hitbox: CollisionShape2D
 
+@export var state_manager: StateManager
+
 @export var anime: AnimationPlayer
 @export var doll: AnimatedSprite2D
 

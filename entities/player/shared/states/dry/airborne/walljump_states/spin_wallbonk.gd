@@ -14,6 +14,8 @@ var finished_init: bool
 func _on_enter(_param):
 	movement.return_res_prog = movement.return_res
 	movement.air_spun = true
+	
+	actor.spin_hurtbox.monitoring = true
 
 	movement.activate_freefall_timer()
 	movement.consume_coyote_timer()
@@ -31,9 +33,11 @@ func _physics_tick():
 
 	if not actor.doll.is_playing():
 		finished_init = true
+		actor.spin_hurtbox.monitoring = false
 
 
 func _on_exit():
+	actor.spin_hurtbox.monitoring = false
 	finished_init = false
 
 
@@ -57,3 +61,13 @@ func _trans_rules():
 		return &"Wallslide"
 
 	return &""
+
+
+func _on_spin_hurt_box_body_entered(body: Node2D) -> void:
+	if not _is_live():
+		return
+
+	if body is Enemy:
+		body.health_module.damage(actor, HealthModule.DamageType.STRIKE, 1)
+	elif body is Breakable:
+		body.shatter()

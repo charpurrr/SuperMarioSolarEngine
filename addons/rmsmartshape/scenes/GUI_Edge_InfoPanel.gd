@@ -1,14 +1,14 @@
 @tool
 extends PanelContainer
+class_name SS2D_EdgeInfoPanel
 
+signal material_override_toggled(enabled: bool)
+signal render_toggled(enabled: bool)
+signal weld_toggled(enabled: bool)
+signal z_index_changed(value: int)
+signal edge_material_changed(value: SS2D_Material_Edge)
 
-signal material_override_toggled(enabled)
-signal render_toggled(enabled)
-signal weld_toggled(enabled)
-signal z_index_changed(value)
-signal edge_material_changed(value)
-
-var indicies: Array[int] = [-1, -1] : set = set_indicies
+var indicies := Vector2i(-1, -1) : set = set_indicies
 var edge_material: SS2D_Material_Edge = null
 var edge_material_selector := FileDialog.new()
 
@@ -55,16 +55,16 @@ func _on_set_edge_material_pressed() -> void:
 
 
 func _on_set_edge_material_file_selected(f: String) -> void:
-	var rsc = load(f)
+	var rsc := load(f)
 	if not rsc is SS2D_Material_Edge:
 		push_error("Selected resource is not an Edge Material! (SS2D_Material_Edge)")
 		return
 	set_edge_material(rsc)
 
 
-func set_indicies(a: Array[int]) -> void:
-	indicies = a
-	idx_label.text = "IDX: [%s, %s]" % [indicies[0], indicies[1]]
+func set_indicies(t: Vector2i) -> void:
+	indicies = t
+	idx_label.text = "IDX: %s" % indicies
 
 
 func set_material_override(enabled: bool) -> void:

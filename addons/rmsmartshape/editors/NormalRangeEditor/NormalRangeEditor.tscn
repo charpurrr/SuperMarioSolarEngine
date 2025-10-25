@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cg1vy768oxwxr"]
 
 [ext_resource type="Texture2D" uid="uid://dajqljvjm2d2q" path="res://addons/rmsmartshape/editors/NormalRangeEditor/progress_texture.png" id="1"]
-[ext_resource type="Script" uid="uid://echi2h4xb4ko" path="res://addons/rmsmartshape/editors/NormalRangeEditor/NormalRangeEditor.gd" id="2"]
+[ext_resource type="Script" uid="uid://r4rt5qimdlyf" path="res://addons/rmsmartshape/editors/NormalRangeEditor/NormalRangeEditor.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://dgd4sbhsw1no3" path="res://addons/rmsmartshape/editors/NormalRangeEditor/over_texture.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://cax163h05b60j" path="res://addons/rmsmartshape/editors/NormalRangeEditor/under_texture.png" id="4"]
 
@@ -25,8 +25,8 @@ max_value = 1.0
 step = 0.0
 value = 1.0
 fill_mode = 4
+radial_initial_angle = 79.3
+radial_fill_degrees = 93.8
 texture_under = ExtResource("4")
 texture_over = ExtResource("3")
 texture_progress = ExtResource("1")
-radial_initial_angle = 79.3
-radial_fill_degrees = 93.8

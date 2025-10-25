@@ -1,0 +1,33 @@
+[gd_scene load_steps=8 format=3 uid="uid://ddtpa42oyu7fe"]
+
+[ext_resource type="Texture2D" uid="uid://b77euxkqpro1q" path="res://entities/breakables/crate/crate.png" id="1_bjqni"]
+[ext_resource type="Script" uid="uid://c4m18iuc2ek6l" path="res://entities/breakables/breakable.gd" id="1_qecqc"]
+[ext_resource type="AudioStream" uid="uid://dx75622pudrjr" path="res://entities/breakables/breakable_box/shatter.wav" id="2_1y4qc"]
+[ext_resource type="PackedScene" uid="uid://bcmtpr7mp1onv" path="res://entities/breakables/breakable_box/particles.tscn" id="3_uif4k"]
+[ext_resource type="Script" uid="uid://dd8oyhd4nllix" path="res://util/resources/particle_effect.gd" id="4_foqs1"]
+
+[sub_resource type="Resource" id="Resource_txow0"]
+script = ExtResource("4_foqs1")
+particle_scene = ExtResource("3_uif4k")
+particle_offset = Vector2(0, -16)
+metadata/_custom_type_script = "uid://dd8oyhd4nllix"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjqni"]
+size = Vector2(32, 32)
+
+[node name="Crate" type="RigidBody2D" node_paths=PackedStringArray("sprite", "collision")]
+collision_layer = 137
+collision_mask = 7
+script = ExtResource("1_qecqc")
+break_sound = ExtResource("2_1y4qc")
+break_particles = SubResource("Resource_txow0")
+sprite = NodePath("Sprite2D")
+collision = NodePath("CollisionShape2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bjqni")
+offset = Vector2(0, -16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_bjqni")

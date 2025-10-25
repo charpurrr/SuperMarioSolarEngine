@@ -4,5 +4,3 @@
 
 [resource]
 script = ExtResource("1_6de61")
-type = 0
-vanish_passable = false

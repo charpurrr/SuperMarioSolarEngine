@@ -91,7 +91,19 @@ func reset_state(handover: Variant = null):
 	trigger_enter(handover)
 
 
-## Activate the given state, ditching the current state.
+## Artificially set this actor's state through its name as seen in its [StateManager].
+func set_to_state(state: StringName, handover: Variant = null):
+	call_deferred(&"_switch_leaf", _get_link(state), handover)
+
+
+## Get the active leaf of the machine.
+func get_leaf() -> State:
+	if live_substate == null:
+		return self
+	return live_substate.get_leaf()
+
+
+## Activate a sibling state.
 func switch_substate(new_state: State, handover: Variant = null):
 	if new_state == live_substate:
 		return
@@ -115,30 +127,19 @@ func probe_switch(defer: bool = false) -> void:
 	var link_name
 	var handover = null
 
-	if defer:
-		link_name = _defer_rules()
-	else:
-		var data
-		data = _trans_rules()
+	var data = _defer_rules() if defer else _trans_rules()
 
-		if data is Array:
-			link_name = data[0]
-			handover = data[1]
-		else:
-			link_name = data
+	if data is Array:
+		link_name = data[0]
+		handover = data[1]
+	else:
+		link_name = data
 
 	# Only switch if we need to.
 	if not link_name.is_empty():
 		var link = _get_link(link_name)
 
 		_switch_leaf(link, handover)
-
-
-## Get the active leaf of the machine.
-func get_leaf() -> State:
-	if live_substate == null:
-		return self
-	return live_substate.get_leaf()
 
 
 ## Get a link to the given state.
@@ -160,6 +161,47 @@ func _cache_link(key: StringName) -> StateLink:
 	var link = StateLink.new(self, target)
 	_link_cache[key] = link
 	return link
+
+
+## Reroute the active path to select a given state as the active leaf.
+func _switch_leaf(link: StateLink, handover = null) -> void:
+	var path: Array[State] = link.get_path()
+	var states_in_path: int = link.get_length()
+	var diversion_idx: int = link.get_peak_index()
+	var last_idx: int = states_in_path - 1
+
+	var current_state: State = self
+
+	for i in states_in_path:
+		var next_state: State = path[i]
+
+		if i <= diversion_idx:
+			ditch_state()
+		else:
+			current_state.switch_substate(next_state, handover if i == last_idx else null)
+
+		assert(current_state != next_state)
+		current_state = next_state
+
+	current_state.probe_switch(true)
+
+
+## Call a function on the live substate, but only if there is one.
+func _call_live(function_name: StringName, arguments := []):
+	if live_substate != null:
+		live_substate.call_func(function_name, arguments)
+
+
+## Check if this state is live.
+func _is_live() -> bool:
+	var parent = get_parent()
+
+	if parent is not State:
+		return true
+	if parent.live_substate == self:
+		return true
+
+	return false
 
 
 ## Called on every cycle of the physics process loop.
@@ -197,47 +239,6 @@ func _trans_rules() -> Variant:
 ## Return the name of a passthrough state.
 ## When this state is switched to, immediately switch to that state.
 ## This means that other states don't have to guess the behavior of this state
-## when switching to a child of it..
-func _defer_rules() -> StringName:
+## when switching to a child of it.
+func _defer_rules() -> Variant:
 	return &""
-
-
-## Reroute the active path to select a given state as the active leaf.
-func _switch_leaf(link: StateLink, handover = null) -> void:
-	var path = link.get_path()
-	var peak = link.get_peak_index()
-	var length = link.get_length()
-	var last = length - 1
-	var argument = null
-
-	var current_state: State = self
-	for i in length:
-		var next_state: State = path[i]
-
-		if i <= peak:
-			ditch_state()
-		else:
-			if i == last:
-				argument = handover
-			current_state.switch_substate(next_state, argument)
-
-		assert(current_state != next_state)
-		current_state = next_state
-
-	current_state.probe_switch(true)
-
-
-## Call a function on the live substate, but only if there is one.
-func _call_live(function_name: StringName, arguments := []):
-	if live_substate != null:
-		live_substate.call_func(function_name, arguments)
-
-
-## Check if this state is live.
-func _is_live() -> bool:
-	var parent = get_parent()
-	if !parent is State:
-		return true
-	if parent.live_substate == self:
-		return true
-	return false

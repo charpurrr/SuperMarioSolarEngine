@@ -327,7 +327,6 @@ stretch_mode = 5
 script = ExtResource("3_2oskj")
 sprites = SubResource("SpriteFrames_gtldd")
 animation = &"walk"
-frame = 3
 autoplay = true
 playing = true
 

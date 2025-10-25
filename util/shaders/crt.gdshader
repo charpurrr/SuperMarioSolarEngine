@@ -24,7 +24,7 @@ shader_type canvas_item;
 
 uniform sampler2D SCREEN_TEXTURE: hint_screen_texture;
 
-uniform vec2 resolution = vec2(320.0, 180.0);
+global uniform vec2 VIEWPORT_SIZE;
 
 uniform float scan_line_amount :hint_range(0.0, 1.0) = 1.0;
 uniform float warp_amount :hint_range(0.0, 5.0) = 0.1;
@@ -45,7 +45,7 @@ float random(vec2 uv){
 }
 
 vec3 fetch_pixel(vec2 uv, vec2 off){
-	vec2 pos = floor(uv * resolution + off) / resolution + vec2(0.5) / resolution;
+	vec2 pos = floor(uv * VIEWPORT_SIZE + off) / VIEWPORT_SIZE + vec2(0.5) / VIEWPORT_SIZE;
 
 	float noise = 0.0;
 	if(noise_amount > 0.0){
@@ -62,7 +62,7 @@ vec3 fetch_pixel(vec2 uv, vec2 off){
 
 // Distance in emulated pixels to nearest texel.
 vec2 Dist(vec2 pos){
-	pos = pos * resolution;
+	pos = pos * VIEWPORT_SIZE;
 	return - ((pos - floor(pos)) - vec2(0.5));
 }
 
@@ -157,17 +157,19 @@ void fragment(){
 		line = roll_line(pos);
 	}
 
-	vec2 sq_pix = floor(pos * resolution) / resolution + vec2(0.5) / resolution;
+	vec2 sq_pix = floor(pos * VIEWPORT_SIZE) / VIEWPORT_SIZE + vec2(0.5) / VIEWPORT_SIZE;
 	if(interference_amount + roll_line_amount > 0.0){
 		float interference = random(sq_pix.yy + fract(TIME));
-		pos.x += (interference * (interference_amount + line * 6.0)) / resolution.x;
+		pos.x += (interference * (interference_amount + line * 6.0)) / VIEWPORT_SIZE.x;
 	}
+	
+	pos = clamp(pos, vec2(0), vec2(1));
 
 	vec3 clr = Tri(pos);
 	if(aberation_amount > 0.0){
 		float chromatic = aberation_amount + line * 2.0;
-		vec2 chromatic_x = vec2(chromatic,0.0) / resolution.x;
-		vec2 chromatic_y = vec2(0.0, chromatic/2.0) / resolution.y;
+		vec2 chromatic_x = vec2(chromatic,0.0) / VIEWPORT_SIZE.x;
+		vec2 chromatic_y = vec2(0.0, chromatic/2.0) / VIEWPORT_SIZE.y;
 		float r = Tri(pos - chromatic_x).r;
 		float g = Tri(pos + chromatic_y).g;
 		float b = Tri(pos + chromatic_x).b;

@@ -6,10 +6,18 @@ extends PlayerState
 @export var gp_fall_vel: float = 9.0
 
 
+func _on_enter(_param: Variant) -> void:
+	actor.gp_hurtbox.monitoring = true
+
+
 func _physics_tick():
 	movement.move_x_analog(0.04, false)
 
 	actor.vel.y = gp_fall_vel
+
+
+func _on_exit() -> void:
+	actor.gp_hurtbox.monitoring = false
 
 
 func _trans_rules():
@@ -26,3 +34,10 @@ func _trans_rules():
 		return &"GroundPoundCancel"
 
 	return &""
+
+
+func _on_groundpound_hurt_box_body_entered(body: Node2D) -> void:
+	if body is Enemy:
+		body.health_module.damage(actor, HealthModule.DamageType.SQUISH, 2);
+	elif body is Breakable:
+		body.shatter()

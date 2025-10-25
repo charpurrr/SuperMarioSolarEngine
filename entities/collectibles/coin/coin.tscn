@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://drp8qcjuqkuof" path="res://entities/collectibles/coin/sfx/blue.wav" id="4_5q0l6"]
 [ext_resource type="AudioStream" uid="uid://dugdyhl1kd4f3" path="res://entities/collectibles/coin/sfx/red.wav" id="5_scjr3"]
 [ext_resource type="AudioStream" uid="uid://81d37p45rte5" path="res://entities/collectibles/coin/sfx/red_last.wav" id="6_oxqq6"]
-[ext_resource type="Script" uid="uid://dd8oyhd4nllix" path="res://util/particle_effect.gd" id="6_scjr3"]
+[ext_resource type="Script" uid="uid://dd8oyhd4nllix" path="res://util/resources/particle_effect.gd" id="6_scjr3"]
 [ext_resource type="PackedScene" uid="uid://d1wf1b4d4xfvf" path="res://props/particles/sparkle.tscn" id="7_pdd5q"]
 [ext_resource type="PackedScene" uid="uid://b6kr06nvygtb5" path="res://props/particles/sparkle_blue.tscn" id="8_81aly"]
 [ext_resource type="PackedScene" uid="uid://dqlsrudwj22ra" path="res://props/particles/sparkle_red.tscn" id="9_oxqq6"]
@@ -134,7 +134,7 @@ size = Vector2(16, 16)
 [node name="Coin" type="AnimatedSprite2D" node_paths=PackedStringArray("area")]
 sprite_frames = SubResource("SpriteFrames_b3an0")
 animation = &"0"
-frame_progress = 0.3743397
+frame_progress = 0.013547622
 script = ExtResource("2_fs6bx")
 respective_sounds = Dictionary[int, AudioStream]({
 0: ExtResource("3_we2q1"),

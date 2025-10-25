@@ -39,6 +39,7 @@ func trigger_enter(handover) -> void:
 
 	_set_hitbox()
 
+	set_modules(true)
 	emit_particles()
 	play_sounds()
 
@@ -47,6 +48,8 @@ func trigger_enter(handover) -> void:
 
 func trigger_exit() -> void:
 	super()
+
+	set_modules(false)
 
 	if actor.doll.frame_changed.is_connected(_set_frame_specs):
 		actor.doll.frame_changed.disconnect(_set_frame_specs)
@@ -71,6 +74,13 @@ func overwrite_animation(new_data: PStateAnimData) -> void:
 		overwrite_setup_finished = true
 
 	actor.doll.play(new_data.animation)
+
+
+func set_modules(enable: bool) -> void:
+	for child in get_children():
+		## ADD NEW MODULES UNDERNEATH HERE
+		if child is AfterimageModule:
+			child.enabled = enable
 
 
 func play_sounds() -> void:

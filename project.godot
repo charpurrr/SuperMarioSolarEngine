@@ -8,6 +8,10 @@
 
 config_version=5
 
+[addons]
+
+ss2d/version="3.3.0"
+
 [application]
 
 config/name="Solar Engine"
@@ -26,6 +30,7 @@ config/icon="res://icon.png"
 LocalSettings="*res://util/globals/local_settings.gd"
 GameState="*res://util/globals/game_state.gd"
 MusicManager="*res://util/globals/music_manager.tscn"
+TransitionManager="*res://util/globals/transition_manager.tscn"
 
 [display]
 
@@ -35,6 +40,11 @@ window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=0
 mouse_cursor/custom_image="uid://b6gpj074qmkmk"
+
+[editor]
+
+movie_writer/video_quality=1.0
+movie_writer/movie_file="C:/Users/SenneVanAelst/Documents/SuperMarioSolarEngine/moviemaker.avi"
 
 [editor_plugins]
 
@@ -213,6 +223,8 @@ gui_accept={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194309,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194310,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":87,"key_label":0,"unicode":122,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
 ]
 }
 fullscreen={
@@ -305,13 +317,15 @@ e_curve_toggle={
 2d_render/layer_20="UI"
 2d_physics/layer_1="Solid"
 2d_physics/layer_2="Player"
-2d_physics/layer_3="Layer 3"
-2d_physics/layer_4="Layer 4"
+2d_physics/layer_3="Enemy"
+2d_physics/layer_4="Pushable"
 2d_physics/layer_5="Water"
 2d_physics/layer_6="Collectible"
 2d_physics/layer_7="Interactable"
+2d_physics/layer_8="Breakable"
 2d_physics/layer_9="Preview (Editor)"
 2d_physics/layer_10="Level Preview Field (Editor)"
+2d_physics/layer_17="Destructive"
 
 [physics]
 
@@ -323,4 +337,10 @@ common/physics_interpolation=true
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-viewport/hdr_2d=true
+
+[shader_globals]
+
+VIEWPORT_SIZE={
+"type": "vec2",
+"value": Vector2(640, 360)
+}

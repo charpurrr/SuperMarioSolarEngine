@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://7516t88qfy5" path="res://entities/collectibles/shine/shine.gd" id="1_hamnh"]
 [ext_resource type="Texture2D" uid="uid://cjotx4r01vraa" path="res://entities/collectibles/shine/shine.png" id="1_vsls0"]
 [ext_resource type="PackedScene" uid="uid://d1wf1b4d4xfvf" path="res://props/particles/sparkle.tscn" id="4_r3wgn"]
-[ext_resource type="Script" uid="uid://dd8oyhd4nllix" path="res://util/particle_effect.gd" id="5_smdji"]
+[ext_resource type="Script" uid="uid://dd8oyhd4nllix" path="res://util/resources/particle_effect.gd" id="5_smdji"]
 [ext_resource type="Material" uid="uid://c07ohb32c5vfa" path="res://entities/collectibles/shine/shine_rays.tres" id="6_byb03"]
 [ext_resource type="AudioStream" uid="uid://cy6vff4p73bo1" path="res://entities/collectibles/shine/ambient.wav" id="6_smdji"]
 
@@ -132,6 +132,7 @@ animations = [{
 [sub_resource type="Resource" id="Resource_byb03"]
 script = ExtResource("5_smdji")
 particle_scene = ExtResource("4_r3wgn")
+loop_delay = 15
 metadata/_custom_type_script = "uid://dd8oyhd4nllix"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ywnjo"]
@@ -151,8 +152,8 @@ animation = &"normal"
 autoplay = "normal"
 offset = Vector2(0, -2)
 script = ExtResource("1_hamnh")
-shine_name = null
-description = null
+shine_name = &"Untitled Shine"
+description = "Collect the Shine Sprite!"
 particle = SubResource("Resource_byb03")
 area = NodePath("Area2D")
 

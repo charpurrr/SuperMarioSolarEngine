@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://qhus8wvhnkc6"]
+
+[ext_resource type="Script" uid="uid://cb8pysr5i020x" path="res://util/custom_nodes/afterimage_module.gd" id="1_af7hd"]
+[ext_resource type="PackedScene" uid="uid://bxbf6omm5cnb8" path="res://props/particles/afterimage_particle.tscn" id="2_af7hd"]
+[ext_resource type="Script" uid="uid://dd8oyhd4nllix" path="res://util/resources/particle_effect.gd" id="3_7ns4c"]
+
+[sub_resource type="Resource" id="Resource_kx6sd"]
+script = ExtResource("3_7ns4c")
+particle_scene = ExtResource("2_af7hd")
+metadata/_custom_type_script = "uid://dd8oyhd4nllix"
+
+[node name="AfterimageModule" type="Node"]
+script = ExtResource("1_af7hd")
+afterimage_particle = SubResource("Resource_kx6sd")

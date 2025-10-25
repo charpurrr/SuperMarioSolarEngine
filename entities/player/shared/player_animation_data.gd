@@ -6,9 +6,14 @@ extends Resource
 ## Which animation this state will use from the doll's animations.
 var animation: String:
 	set(val):
-		if is_instance_valid(doll) and doll.sprite_frames.has_animation(val):
-			animation = val
+		animation = val
+		
+		var actor: Node = get_local_scene()
+		var doll: AnimatedSprite2D
+		if is_instance_valid(actor) and actor is Player:
+			doll = actor.get_node_or_null(doll_path)
 
+		if is_instance_valid(doll) and doll.sprite_frames.has_animation(val):
 			if preview:
 				doll.animation = val
 ## Which frame of the animation is being edited.
@@ -18,6 +23,18 @@ var frame: int = 0:
 		# before the properties are loaded in the scene tree.
 		if not setup_finished:
 			return
+
+		var actor: Node = get_local_scene()
+		var doll: AnimatedSprite2D
+		var fludd_f: AnimatedSprite2D
+		var fludd_b: AnimatedSprite2D
+		if is_instance_valid(actor) and actor is Player:
+			doll = actor.get_node(doll_path)
+			fludd_f = actor.get_node(fludd_f_path)
+			fludd_b = actor.get_node(fludd_b_path)
+		else:
+			return
+
 		if animation.is_empty():
 			printerr("No animation selected.")
 			return
@@ -60,6 +77,13 @@ var frame_offset := Vector2i.ZERO:
 		frame_offset = val
 		frame_offsets.set(frame, val)
 
+		var actor: Node = get_local_scene()
+		var doll: AnimatedSprite2D
+		if is_instance_valid(actor) and actor is Player:
+			doll = actor.get_node_or_null(doll_path)
+		else:
+			return
+
 		if preview and is_instance_valid(doll):
 			doll.offset = val
 	get():
@@ -71,6 +95,16 @@ var fludd_animation: String:
 		# before the properties are loaded in the scene tree.
 		if not setup_finished:
 			return
+
+		var actor: Node = get_local_scene()
+		var fludd_f: AnimatedSprite2D
+		var fludd_b: AnimatedSprite2D
+		if is_instance_valid(actor) and actor is Player:
+			fludd_f = actor.get_node(fludd_f_path)
+			fludd_b = actor.get_node(fludd_b_path)
+		else:
+			return
+
 		if not is_instance_valid(fludd_b) or not is_instance_valid(fludd_f):
 			printerr("Missing FLUDD sprite! Make sure you have 2 seperate sprites for a front and back layer of FLUDD.")
 			return
@@ -94,6 +128,15 @@ var fludd_offset := Vector2i.ZERO:
 		fludd_offset = val
 		frame_fludd_offsets.set(frame, val)
 
+		var actor: Node = get_local_scene()
+		var fludd_f: AnimatedSprite2D
+		var fludd_b: AnimatedSprite2D
+		if is_instance_valid(actor) and actor is Player:
+			fludd_f = actor.get_node_or_null(fludd_f_path)
+			fludd_b = actor.get_node_or_null(fludd_b_path)
+		else:
+			return
+
 		if preview_fludd and is_instance_valid(fludd_b) and is_instance_valid(fludd_f):
 			fludd_b.offset = val
 			fludd_f.offset = val
@@ -105,6 +148,13 @@ var preview: bool = false:
 		# This prevents errors during initialisation where the setters run
 		# before the properties are loaded in the scene tree.
 		if not setup_finished:
+			return
+
+		var actor: Node = get_local_scene()
+		var doll: AnimatedSprite2D
+		if is_instance_valid(actor) and actor is Player:
+			doll = actor.get_node(doll_path)
+		else:
 			return
 
 		if animation.is_empty():
@@ -147,11 +197,20 @@ var preview_private: bool = false
 var preview_fludd: bool = false:
 	set(val):
 		preview_fludd = val
-
 		# This prevents errors during initialisation where the setters run
 		# before the properties are loaded in the scene tree.
 		if not setup_finished:
 			return
+
+		var actor: Node = get_local_scene()
+		var fludd_f: AnimatedSprite2D
+		var fludd_b: AnimatedSprite2D
+		if is_instance_valid(actor) and actor is Player:
+			fludd_f = actor.get_node(fludd_f_path)
+			fludd_b = actor.get_node(fludd_b_path)
+		else:
+			return
+
 		if not is_instance_valid(fludd_b) or not is_instance_valid(fludd_f):
 			printerr("Missing FLUDD sprite! Make sure you have 2 seperate sprites for a front and back layer of FLUDD.")
 			return
@@ -177,12 +236,13 @@ var preview_fludd: bool = false:
 
 		notify_property_list_changed()
 
-@export_storage var doll: AnimatedSprite2D
+@export_storage var doll_path: NodePath
+
 ## Populated in the setup only for editor purposes. Not used in-game.
 var animation_list: PackedStringArray
 
-@export_storage var fludd_f: AnimatedSprite2D
-@export_storage var fludd_b: AnimatedSprite2D
+@export_storage var fludd_f_path: NodePath
+@export_storage var fludd_b_path: NodePath
 ## Populated in the setup only for editor purposes. Not used in-game.
 var fludd_animation_list: PackedStringArray
 
@@ -211,14 +271,13 @@ func _setup() -> void:
 	if not Engine.is_editor_hint():
 		return
 
+	_update_sprite_paths()
+
 	var actor: Node = get_local_scene()
 
-	if not actor is Player:
-		return
-
-	doll = actor.doll
-	fludd_f = actor.fludd_f
-	fludd_b = actor.fludd_b
+	var doll = actor.get_node(doll_path)
+	var fludd_f = actor.get_node(fludd_f_path)
+	var fludd_b = actor.get_node(fludd_b_path)
 
 	animation_list = doll.sprite_frames.get_animation_names()
 
@@ -232,6 +291,17 @@ func _setup() -> void:
 	notify_property_list_changed()
 
 	setup_finished = true
+
+
+func _update_sprite_paths() -> void:
+	var actor: Node = get_local_scene()
+
+	if not actor is Player:
+		return
+
+	doll_path = actor.get_path_to(actor.doll)
+	fludd_f_path = actor.get_path_to(actor.fludd_f)
+	fludd_b_path = actor.get_path_to(actor.fludd_b)
 
 
 func _get_property_list() -> Array[Dictionary]:

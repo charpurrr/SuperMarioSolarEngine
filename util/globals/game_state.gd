@@ -31,6 +31,10 @@ var buses: Dictionary[StringName, AudioBus] = {
 func _ready():
 	paused.connect(pause_toggle)
 
+	get_viewport().size_changed.connect(
+		func(): WindowSizer.set_global_shader_size(get_viewport().get_visible_rect().size)
+	)
+
 	# Run the logic of every setting on ready
 	setting_initialised.connect(_setting_changed.bind())
 	# Run the logic of every setting when it is changed
@@ -57,7 +61,7 @@ func _unhandled_input(event):
 			scale = WindowSizer.MAX_SCALE
 
 		LocalSettings.change_setting("General", "scale", scale)
-		WindowSizer.set_win_size(scale)
+		WindowSizer.set_win_scale(scale)
 
 	if event.is_action_pressed(&"debug_toggle"):
 		debug_toggle = !debug_toggle
@@ -76,7 +80,7 @@ func _setting_changed(key: String, value: Variant):
 		"fps_cap":
 			Engine.max_fps = [0, 30, 60, 120][value] # 0:INF, 1:30, 2:60, 3: 120
 		"scale":
-			WindowSizer.set_win_size(value)
+			WindowSizer.set_win_scale(value)
 		"quality":
 			match value:
 				0: # HIGH
@@ -100,18 +104,3 @@ func pause_toggle():
 
 func is_paused() -> bool:
 	return get_tree().paused
-
-
-#func sync_animation(sprite: AnimatedSprite2D):
-	#if not sprite: return
-#
-	#var frame_count: int = sprite.sprite_frames.get_frame_count(sprite.animation)
-	#sprite.frame = wrapi(get_tree().get_frame(), 0, frame_count - 1)
-#
-	#var t = 0
-	#while sprite and t < 1/sprite.sprite_frames.get_animation_speed(sprite.animation):
-		#t += get_process_delta_time()
-		#await Engine.get_main_loop().process_frame
-#
-	#if not sprite: return
-	#sync_animation(sprite)

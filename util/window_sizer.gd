@@ -13,17 +13,17 @@ static var default_size = Vector2(
 static var last_none_fs: int = 1
 
 
-static func set_win_size(window_scale):
+static func set_win_scale(new_scale):
 	var screen: int = DisplayServer.window_get_current_screen()
 	var screen_size: Vector2i = DisplayServer.screen_get_size(screen)
-	var window_size: Vector2i = default_size * (window_scale + 1)
+	var window_size: Vector2i = default_size * (new_scale + 1)
 
 	# Set fullscreen if a window scale exceeds the bounds of the screen.
 	if window_size > screen_size:
-		window_scale = MAX_SCALE
+		new_scale = MAX_SCALE
 
-	if window_scale != MAX_SCALE:
-		last_none_fs = window_scale
+	if new_scale != MAX_SCALE:
+		last_none_fs = new_scale
 
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		DisplayServer.window_set_size(window_size)
@@ -45,3 +45,9 @@ static func set_win_size(window_scale):
 		DisplayServer.window_set_position(window_pos)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+
+
+## Sets the [code]VIEWPORT_SIZE[/code] global shader parameter.
+## This should be connected to the [signal Viewport.size_changed] signal.
+static func set_global_shader_size(new_resolution: Vector2):
+	RenderingServer.global_shader_parameter_set("VIEWPORT_SIZE", new_resolution)

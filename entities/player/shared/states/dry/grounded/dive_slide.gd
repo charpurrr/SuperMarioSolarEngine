@@ -31,7 +31,7 @@ func _trans_rules():
 		and (input.buffered_input(&"jump") or Input.is_action_pressed(&"jump"))
 	)
 
-	if not actor.crouchlock.enabled:
+	if not actor.auto_crouch_check.enabled:
 		if movement.can_spin() and input.buffered_input(&"spin"):
 			return &"Spin"
 
@@ -49,7 +49,7 @@ func _trans_rules():
 		return [&"Crouch", [true, false]]
 
 	if is_zero_approx(actor.vel.x) or InputManager.get_x_dir() == -movement.facing_direction:
-		if actor.crouchlock.enabled:
+		if actor.auto_crouch_check.enabled:
 			return [&"Crouch", [true, false]]
 
 		return &"Idle"

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Song" load_steps=3 format=3 uid="uid://cgelxoqn8jfww"]
 
-[ext_resource type="Script" uid="uid://c56bjnj2qtrvg" path="res://util/song.gd" id="1_en25r"]
+[ext_resource type="Script" uid="uid://c56bjnj2qtrvg" path="res://util/resources/song.gd" id="1_en25r"]
 [ext_resource type="AudioStream" uid="uid://cm63c6jtxqrey" path="res://props/music/streams/attacking_vertical.ogg" id="2_okk7q"]
 
 [resource]

@@ -51,13 +51,13 @@ func _trans_rules():
 	if not InputManager.is_moving_x() or actor.is_on_wall():
 		return [&"Crouch", [true, false]]
 
-	if not actor.crouchlock.enabled and input.buffered_input(&"jump"):
+	if not actor.auto_crouch_check.enabled and input.buffered_input(&"jump"):
 		if is_equal_approx(actor.vel.x, 0.0) or sign(actor.vel.x) != movement.facing_direction:
 			return &"Backflip"
 		elif sign(actor.vel.x) == movement.facing_direction:
 			return &"Longjump"
 
-	if not Input.is_action_pressed(&"down") and not actor.crouchlock.enabled:
+	if not Input.is_action_pressed(&"down") and not actor.auto_crouch_check.enabled:
 		return &"Idle"
 
 	return &""

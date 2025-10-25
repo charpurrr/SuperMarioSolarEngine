@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://cnd277snrwca5"]
+
+[ext_resource type="Script" uid="uid://b8xq8roo5asyr" path="res://entities/player/shared/camera/player_camera.gd" id="1_8exb6"]
+[ext_resource type="Script" uid="uid://dvlt5sb8enmu8" path="res://util/resources/sfx_layer.gd" id="2_hvhmj"]
+[ext_resource type="AudioStream" uid="uid://dakcghvbe6vva" path="res://entities/player/shared/camera/camera_in.wav" id="3_tywbp"]
+[ext_resource type="AudioStream" uid="uid://c66je7k6yx3c7" path="res://entities/player/shared/camera/camera_out.wav" id="4_bl75n"]
+[ext_resource type="Script" uid="uid://b53d42qg4e27d" path="res://util/custom_nodes/damped_oscillator.gd" id="5_qicgx"]
+
+[sub_resource type="Resource" id="Resource_dq0cd"]
+script = ExtResource("2_hvhmj")
+sfx_list = [ExtResource("3_tywbp")]
+bus = &"UI"
+
+[sub_resource type="Resource" id="Resource_rtieh"]
+script = ExtResource("2_hvhmj")
+sfx_list = [ExtResource("4_bl75n")]
+bus = &"UI"
+
+[node name="PlayerCamera" type="Camera2D" node_paths=PackedStringArray("shake_x_spring", "shake_y_spring")]
+offset = Vector2(0, -50)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 25.0
+drag_vertical_enabled = true
+drag_top_margin = 0.3
+editor_draw_drag_margin = true
+script = ExtResource("1_8exb6")
+zoom_in_sfx = SubResource("Resource_dq0cd")
+zoom_out_sfx = SubResource("Resource_rtieh")
+shake_x_spring = NodePath("ShakeXSpring")
+shake_y_spring = NodePath("ShakeYSpring")
+
+[node name="ShakeXSpring" type="Node2D" parent="."]
+script = ExtResource("5_qicgx")
+process_in_physics = true
+
+[node name="ShakeYSpring" type="Node2D" parent="."]
+script = ExtResource("5_qicgx")
+process_in_physics = true

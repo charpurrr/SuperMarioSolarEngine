@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxbf6omm5cnb8"]
+
+[ext_resource type="Shader" uid="uid://c4qkfopwj1vlg" path="res://props/particles/afterimage_particle.gdshader" id="1_hk1gh"]
+[ext_resource type="Script" uid="uid://csm3vigvfghqc" path="res://props/particles/afterimage_particle.gd" id="2_gpgda"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wy4su"]
+shader = ExtResource("1_hk1gh")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/flip_h = false
+shader_parameter/flip_v = false
+
+[sub_resource type="Gradient" id="Gradient_lv4rm"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Afterimage" type="CPUParticles2D"]
+z_index = -1
+material = SubResource("ShaderMaterial_wy4su")
+emitting = false
+amount = 1
+lifetime = 0.5
+one_shot = true
+gravity = Vector2(0, 0)
+color_ramp = SubResource("Gradient_lv4rm")
+script = ExtResource("2_gpgda")

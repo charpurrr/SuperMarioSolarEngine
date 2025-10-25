@@ -9,10 +9,9 @@ extends Collectible
 
 
 func _process(_delta: float) -> void:
-	pass
-	#particle.emit_at(self)
+	particle.emit_at(self)
 
 
 func _on_collect() -> void:
 	super()
-	#player.state_manager.switch_substate(&"Fall")
+	player.state_manager.set_to_state(&"Fall")

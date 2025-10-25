@@ -1,42 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://cuw0j18qec0mv"]
+[gd_scene load_steps=5 format=3 uid="uid://cuw0j18qec0mv"]
 
 [ext_resource type="Script" uid="uid://ce73oybox6fuf" path="res://ui/scene_transition.gd" id="1_1un8b"]
-[ext_resource type="Shader" uid="uid://c464iebp6mh7u" path="res://util/shaders/circular_scene_transition.gdshader" id="2_c6jwc"]
+[ext_resource type="PackedScene" uid="uid://dy3n52xoj3cu8" path="res://ui/transitions/circle_overlay.tscn" id="2_26j7i"]
+[ext_resource type="PackedScene" uid="uid://1s44kbytdqux" path="res://ui/transitions/plain_overlay.tscn" id="3_qi6ri"]
+[ext_resource type="PackedScene" uid="uid://ta0eilpcncdp" path="res://ui/transitions/inverted_circle_overlay.tscn" id="4_x0mw7"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gqs0l"]
-shader = ExtResource("2_c6jwc")
-shader_parameter/circle_size = 1.05
-shader_parameter/screen_width = 640.0
-shader_parameter/screen_height = 360.0
-
-[node name="SceneTransition" type="Control" node_paths=PackedStringArray("plain_overlay", "circ_overlay")]
+[node name="SceneTransition" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
 script = ExtResource("1_1un8b")
-preview_overlay = 1
-plain_overlay = NodePath("PlainOverlay")
-circ_overlay = NodePath("CircularOverlay")
+type_associated_nodes = Dictionary[int, NodePath]({
+0: NodePath("PlainOverlay"),
+1: NodePath("CircleOverlay"),
+2: NodePath("InvertedCircleOverlay")
+})
 
-[node name="PlainOverlay" type="ColorRect" parent="."]
+[node name="PlainOverlay" parent="." instance=ExtResource("3_qi6ri")]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0)
+color = Color(1, 1, 1, 1)
 
-[node name="CircularOverlay" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_gqs0l")
+[node name="CircleOverlay" parent="." instance=ExtResource("2_26j7i")]
+visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
+
+[node name="InvertedCircleOverlay" parent="." instance=ExtResource("4_x0mw7")]
+visible = false
+layout_mode = 1

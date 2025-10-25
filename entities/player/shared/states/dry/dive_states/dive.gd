@@ -26,6 +26,7 @@ func _on_enter(dive_direction):
 	movement.dived = true
 
 	actor.set_floor_snap_length(movement.snap_length)
+	actor.dive_hurtbox.monitoring = true
 
 	if actor.is_on_floor():
 		actor.vel.y = -bellyflop_power
@@ -63,6 +64,8 @@ func _on_exit():
 	movement.body_rotation = 0
 	actor.doll.rotation = 0
 
+	actor.dive_hurtbox.monitoring = false
+
 
 func _trans_rules():
 	if actor.is_on_floor():
@@ -75,3 +78,10 @@ func _trans_rules():
 		return &"GroundPound"
 
 	return &""
+
+
+func _on_dive_hurt_box_body_entered(body: Node2D) -> void:
+	if body is Enemy:
+		body.health_module.damage(actor, HealthModule.DamageType.STRIKE, 1)
+	elif body is Breakable:
+		body.shatter()

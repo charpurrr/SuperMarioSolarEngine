@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://csf56lkxqqb12"]
+[gd_scene load_steps=96 format=3 uid="uid://csf56lkxqqb12"]
 
 [ext_resource type="Script" uid="uid://brof7wb075ont" path="res://ui/ui.gd" id="1_75fsn"]
 [ext_resource type="AudioStream" uid="uid://b58aveo75onan" path="res://ui/sfx/pause.wav" id="2_1xskv"]
@@ -12,8 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bgl7f8thu2y4" path="res://ui/player_hud/life_meter.tscn" id="7_m3cpd"]
 [ext_resource type="Script" uid="uid://dgat047njqsvp" path="res://ui/debug/debug_label.gd" id="8_2m7jo"]
 [ext_resource type="PackedScene" uid="uid://cjavjeke51epr" path="res://ui/player_hud/fludd_tank.tscn" id="8_n7xk5"]
-[ext_resource type="Script" uid="uid://dg4a6r83hm158" path="res://ui/debug/commit_label.gd" id="9_bh67b"]
-[ext_resource type="Script" path="res://ui/player_hud/music_label.gd" id="9_gbf2f"]
+[ext_resource type="Script" uid="uid://c40eo5tkjri5l" path="res://ui/player_hud/music_label.gd" id="9_gbf2f"]
 [ext_resource type="Script" uid="uid://trfav0yjiqxm" path="res://ui/screen_manager/pause_screen/pause_screen.gd" id="17_q1vx3"]
 [ext_resource type="Script" uid="uid://cnhr5du0ap6ki" path="res://ui/screen_manager/screen_manager.gd" id="18_ro5vq"]
 [ext_resource type="Shader" uid="uid://c8kax0imw2g1t" path="res://util/shaders/map_gradient.gdshader" id="19_uav4i"]
@@ -196,11 +195,6 @@ _data = {
 &"RESET": SubResource("Animation_vqsyl"),
 &"fade_past": SubResource("Animation_gbf2f")
 }
-
-[sub_resource type="LabelSettings" id="LabelSettings_j1nag"]
-font_size = 10
-outline_size = 7
-outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_pm0uo"]
 font_size = 10
@@ -477,10 +471,11 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r0xoq"]
 
-[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("screen_manager", "color_blur", "zoom_blur_player", "notif_list", "debug", "debug_label", "commit_label", "input_display")]
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("life_meter", "screen_manager", "color_blur", "zoom_blur_player", "notif_list", "debug", "debug_label", "commit_label", "input_display")]
 process_mode = 3
 layer = 0
 script = ExtResource("1_75fsn")
+life_meter = NodePath("LifeMeter")
 screen_manager = NodePath("ScreenManager")
 color_blur = NodePath("ScreenManager/ColorBlurEffect")
 game_pause_sfx = ExtResource("2_1xskv")
@@ -490,7 +485,7 @@ notif_scene = ExtResource("4_oqxfb")
 notif_list = NodePath("Notifications")
 debug = NodePath("Debug")
 debug_label = NodePath("Debug/DebugLabel")
-commit_label = NodePath("Debug/CommitLabel")
+commit_label = NodePath("")
 input_display = NodePath("Debug/InputDisplay")
 
 [node name="BackBufferFront" type="BackBufferCopy" parent="."]
@@ -520,17 +515,14 @@ anchors_preset = -1
 offset_top = 45.0
 offset_bottom = 50.0
 script = ExtResource("7_aeygf")
-max_count = 24
+max_count = 0
 bounce_color = Color(1, 0, 0, 1)
-
-[node name="CoinIcon" parent="RedCoinCounter" index="0"]
-layout_mode = 0
 
 [node name="TextureRect" parent="RedCoinCounter/CoinIcon/Gradient" index="0"]
 texture = SubResource("GradientTexture2D_m3cpd")
 
 [node name="Count" parent="RedCoinCounter" index="1"]
-text = "0/24"
+text = "0/0"
 
 [node name="MusicLabel" type="Label" parent="." node_paths=PackedStringArray("anime")]
 modulate = Color(1, 1, 1, 0)
@@ -559,28 +551,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="CommitLabel" type="Label" parent="Debug"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -171.0
-offset_top = -57.0
-offset_right = -8.0
-offset_bottom = -8.0
-grow_horizontal = 0
-grow_vertical = 0
-size_flags_horizontal = 8
-size_flags_vertical = 8
-text = "Fetching..."
-label_settings = SubResource("LabelSettings_j1nag")
-horizontal_alignment = 2
-vertical_alignment = 1
-tab_stops = PackedFloat32Array(20)
-script = ExtResource("9_bh67b")
 
 [node name="DebugLabel" type="Label" parent="Debug"]
 layout_mode = 0
@@ -986,6 +956,7 @@ stretch_mode = 1
 flip_h = true
 script = ExtResource("40_cynfm")
 warning_text = NodePath("Spacing/Main/WarningText")
+title_screen = "uid://cthxoel5sus6v"
 open_sfx = ExtResource("41_r4q0q")
 close_sfx = ExtResource("3_cb22p")
 open_anim = &"warning_peek"
@@ -1181,8 +1152,7 @@ layout_mode = 2
 [node name="ToggleButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/VSync" instance=ExtResource("25_dlkvg")]
 layout_mode = 2
 text = "OFF"
-script = ExtResource("45_23m8v")
-options = Array[StringName]([&"OFF", &"ON"])
+script = ExtResource("47_t7euy")
 default_value = false
 setting_section = "General"
 setting_key = "v_sync"

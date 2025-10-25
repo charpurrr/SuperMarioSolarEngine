@@ -1,0 +1,270 @@
+[gd_resource type="SpriteFrames" load_steps=24 format=3 uid="uid://c6kfet3nsnuwr"]
+
+[ext_resource type="Texture2D" uid="uid://cargcb2py1wcg" path="res://entities/player/shared/fludd/fludd.png" id="1_117em"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1i10v"]
+atlas = ExtResource("1_117em")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wyc1"]
+atlas = ExtResource("1_117em")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hx7ue"]
+atlas = ExtResource("1_117em")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpqj3"]
+atlas = ExtResource("1_117em")
+region = Rect2(48, 288, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5iloq"]
+atlas = ExtResource("1_117em")
+region = Rect2(96, 288, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spsxp"]
+atlas = ExtResource("1_117em")
+region = Rect2(144, 288, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cootw"]
+atlas = ExtResource("1_117em")
+region = Rect2(192, 288, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ae2dx"]
+atlas = ExtResource("1_117em")
+region = Rect2(240, 288, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qko5d"]
+atlas = ExtResource("1_117em")
+region = Rect2(288, 288, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifrah"]
+atlas = ExtResource("1_117em")
+region = Rect2(336, 288, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1ut2"]
+atlas = ExtResource("1_117em")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vsdu"]
+atlas = ExtResource("1_117em")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4t2h7"]
+atlas = ExtResource("1_117em")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3pyw"]
+atlas = ExtResource("1_117em")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijnwc"]
+atlas = ExtResource("1_117em")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m576x"]
+atlas = ExtResource("1_117em")
+region = Rect2(48, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2h0ab"]
+atlas = ExtResource("1_117em")
+region = Rect2(96, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o485y"]
+atlas = ExtResource("1_117em")
+region = Rect2(144, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86kn8"]
+atlas = ExtResource("1_117em")
+region = Rect2(192, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mk8bu"]
+atlas = ExtResource("1_117em")
+region = Rect2(240, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wc0bq"]
+atlas = ExtResource("1_117em")
+region = Rect2(288, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngcav"]
+atlas = ExtResource("1_117em")
+region = Rect2(336, 144, 48, 48)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1i10v")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wyc1")
+}],
+"loop": true,
+"name": &"rot_y045",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hx7ue")
+}],
+"loop": true,
+"name": &"rot_y090",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpqj3")
+}],
+"loop": true,
+"name": &"rot_y090z045",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5iloq")
+}],
+"loop": true,
+"name": &"rot_y090z090",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spsxp")
+}],
+"loop": true,
+"name": &"rot_y090z135",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cootw")
+}],
+"loop": true,
+"name": &"rot_y090z180",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ae2dx")
+}],
+"loop": true,
+"name": &"rot_y090z225",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qko5d")
+}],
+"loop": true,
+"name": &"rot_y090z270",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifrah")
+}],
+"loop": true,
+"name": &"rot_y090z315",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1ut2")
+}],
+"loop": true,
+"name": &"rot_y135",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vsdu")
+}],
+"loop": true,
+"name": &"rot_y180",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4t2h7")
+}],
+"loop": true,
+"name": &"rot_y225",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3pyw")
+}],
+"loop": true,
+"name": &"rot_y270",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijnwc")
+}],
+"loop": true,
+"name": &"rot_y315",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m576x")
+}],
+"loop": true,
+"name": &"rot_z045",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2h0ab")
+}],
+"loop": true,
+"name": &"rot_z090",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o485y")
+}],
+"loop": true,
+"name": &"rot_z135",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86kn8")
+}],
+"loop": true,
+"name": &"rot_z180",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mk8bu")
+}],
+"loop": true,
+"name": &"rot_z225",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wc0bq")
+}],
+"loop": true,
+"name": &"rot_z270",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngcav")
+}],
+"loop": true,
+"name": &"rot_z315",
+"speed": 5.0
+}]

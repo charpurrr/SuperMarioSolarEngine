@@ -10,13 +10,11 @@ var is_airspin: bool
 ## Whether the initial spin action has finished or not.
 var finished_init: bool
 
-var nearby_entities: Array = []
-
 
 func _on_enter(_param):
 	is_airspin = movement.can_air_action()
 
-	actor.spin_hitbox.monitoring = true
+	actor.spin_hurtbox.monitoring = true
 
 	if is_airspin:
 		movement.air_spun = true
@@ -27,8 +25,6 @@ func _on_enter(_param):
 
 	movement.activate_freefall_timer()
 	movement.consume_coyote_timer()
-
-	particles[0].emit_at(self, Vector2.ZERO, Vector2(movement.facing_direction, 0))
 
 
 func _first_tick():
@@ -47,6 +43,9 @@ func _physics_tick():
 
 	if is_airspin:
 		movement.move_x_analog(movement.air_accel_step, false)
+
+		if finished_init:
+			actor.spin_hurtbox.monitoring = false
 	else:
 		movement.move_x_analog(movement.ground_accel_step, false)
 
@@ -55,16 +54,15 @@ func _physics_tick():
 
 
 func _on_exit():
-	actor.spin_hitbox.monitoring = false
+	actor.spin_hurtbox.monitoring = false
+
+	finished_init = false
 
 	if not is_airspin:
 		movement.activate_grounded_spin_timer()
 
 	if actor.is_on_floor():
 		movement.update_direction(sign(movement.get_input_x()))
-
-	nearby_entities.clear()
-	finished_init = false
 
 
 func _trans_rules():
@@ -101,7 +99,6 @@ func _air_rules() -> Variant:
 
 
 func _ground_rules() -> Variant:
-	#if actor.is_on_floor():
 	if not actor.doll.is_playing():
 		return &"Idle"
 
@@ -111,8 +108,11 @@ func _ground_rules() -> Variant:
 	return &""
 
 
-func _on_spin_hitbox_body_entered(body):
-	if body not in nearby_entities:
-		nearby_entities.append(body)
+func _on_spin_hurt_box_body_entered(body: Node2D) -> void:
+	if not _is_live():
+		return
 
+	if body is Enemy:
 		body.health_module.damage(actor, HealthModule.DamageType.STRIKE, 1)
+	elif body is Breakable:
+		body.shatter()

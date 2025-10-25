@@ -2,6 +2,8 @@ class_name UserInterface
 extends CanvasLayer
 ## UI and utility.
 
+@export var life_meter: LifeMeter
+
 @export_category(&"Pause Variables")
 @export var screen_manager: ScreenManager
 @export var color_blur: ColorRect
@@ -173,6 +175,9 @@ func _toggle_debug_hitboxes():
 
 func _set_player():
 	player = world_machine.level_node.player
+
+	if not player.health_module.damaged.is_connected(life_meter.take_hit):
+		player.health_module.damaged.connect(life_meter.take_hit)
 
 
 func _set_camera():
