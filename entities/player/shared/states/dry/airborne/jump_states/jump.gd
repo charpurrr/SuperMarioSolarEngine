@@ -10,7 +10,7 @@ var min_jump_power: float
 
 @export var jump_number: int
 
-@export var fall_state := &"Fall"
+@export var fall_state: PlayerState
 
 ## Check if you've applied variable jump height.
 var applied_variation: bool = false
@@ -54,6 +54,6 @@ func _trans_rules():
 		return &"Wallslide"
 
 	if actor.vel.y > 0:
-		return fall_state
+		return fall_state.name
 
 	return &""

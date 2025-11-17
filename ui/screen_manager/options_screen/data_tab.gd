@@ -5,9 +5,14 @@ extends Control
 
 func _ready() -> void:
 	LocalSettings.setting_changed.connect(_setting_changed)
+	_update_content()
 
 
 func _setting_changed(_key: String, _value: Variant) -> void:
+	_update_content()
+
+
+func _update_content():
 	data_label.text = LocalSettings.config.encode_to_text()
 
 

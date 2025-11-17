@@ -26,8 +26,6 @@ func _on_enter(_param):
 	movement.activate_freefall_timer()
 	movement.consume_coyote_timer()
 
-	particles[0].emit_at(self, Vector2.ZERO, Vector2(movement.facing_direction, 0))
-
 
 func _first_tick():
 	# Gravity needs to be applied when a grounded spin is buffered.
@@ -45,6 +43,9 @@ func _physics_tick():
 
 	if is_airspin:
 		movement.move_x_analog(movement.air_accel_step, false)
+
+		if finished_init:
+			actor.spin_hurtbox.monitoring = false
 	else:
 		movement.move_x_analog(movement.ground_accel_step, false)
 

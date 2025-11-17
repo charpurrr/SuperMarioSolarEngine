@@ -37,5 +37,7 @@ func _trans_rules():
 
 
 func _on_groundpound_hurt_box_body_entered(body: Node2D) -> void:
-	if body is Breakable:
+	if body is Enemy:
+		body.health_module.damage(actor, HealthModule.DamageType.SQUISH, 2);
+	elif body is Breakable:
 		body.shatter()

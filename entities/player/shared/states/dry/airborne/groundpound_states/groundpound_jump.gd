@@ -20,6 +20,6 @@ func _trans_rules():
 		return &"Wallslide"
 
 	if actor.vel.y > 0:
-		return fall_state
+		return fall_state.name
 
 	return &""

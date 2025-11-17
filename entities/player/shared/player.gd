@@ -21,6 +21,7 @@ extends CharacterBody2D
 
 @export var dive_hurtbox: Area2D
 @export var spin_hurtbox: Area2D
+@export var crouch_spin_hurtbox: Area2D
 @export var stomp_hurtbox: Area2D
 @export var gp_hurtbox: Area2D
 
