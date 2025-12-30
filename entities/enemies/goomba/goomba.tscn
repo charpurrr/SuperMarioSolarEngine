@@ -1,29 +1,215 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvbbpn56rtjwd"]
+[gd_scene load_steps=45 format=3 uid="uid://cvbbpn56rtjwd"]
 
 [ext_resource type="Script" uid="uid://c8rvart030ldu" path="res://entities/enemies/goomba/goomba.gd" id="1_hhlu2"]
 [ext_resource type="Texture2D" uid="uid://x2edebevq3c7" path="res://entities/enemies/goomba/anime/idle.png" id="1_hp473"]
+[ext_resource type="Texture2D" uid="uid://b5eno3kq3b43" path="res://entities/enemies/goomba/anime/chase.png" id="2_2rnn8"]
+[ext_resource type="Texture2D" uid="uid://cv67vhsfir242" path="res://entities/enemies/goomba/anime/jump.png" id="2_qtetb"]
+[ext_resource type="Texture2D" uid="uid://cu6rg1coyo1db" path="res://entities/enemies/goomba/anime/squish.png" id="4_04ccq"]
+[ext_resource type="Texture2D" uid="uid://c2j0dluh2g7xb" path="res://entities/enemies/goomba/anime/walk.png" id="5_g0x7x"]
+[ext_resource type="Script" path="res://entities/enemies/enemy_state_manager.gd" id="6_04ccq"]
+[ext_resource type="Script" path="res://entities/enemies/enemy_state.gd" id="7_g0x7x"]
+[ext_resource type="Script" uid="uid://bt60g7c7t2yr4" path="res://entities/enemies/goomba/states/dry/roam/roam.gd" id="8_2mgq4"]
+[ext_resource type="Script" uid="uid://tgkyiw0ihqda" path="res://entities/enemies/goomba/states/dry/aggroed/aggroed.gd" id="9_fvrek"]
+[ext_resource type="Script" uid="uid://conp87snrevw3" path="res://entities/enemies/goomba/states/dry/dry.gd" id="9_jor08"]
+[ext_resource type="Script" uid="uid://c6oicwume2p0p" path="res://entities/enemies/goomba/states/dry/roam/walk.gd" id="9_x02my"]
+[ext_resource type="Script" uid="uid://bmx2b0vs1a8vm" path="res://entities/enemies/goomba/states/die.gd" id="10_b0ahg"]
+[ext_resource type="Script" uid="uid://clg5e4gmr1ii2" path="res://entities/enemies/goomba/states/dry/roam/idle.gd" id="10_twr7t"]
+[ext_resource type="Script" uid="uid://cje50kiar8st1" path="res://entities/enemies/goomba/states/dry/aggroed/chase.gd" id="12_grbl7"]
+[ext_resource type="Script" uid="uid://cjeme0ny363gg" path="res://entities/enemies/goomba/states/dry/aggroed/jump.gd" id="13_2rnn8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aecnx"]
+atlas = ExtResource("2_2rnn8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt7rn"]
+atlas = ExtResource("2_2rnn8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5h1e"]
+atlas = ExtResource("2_2rnn8")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dppb"]
+atlas = ExtResource("2_2rnn8")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmvqd"]
+atlas = ExtResource("2_2rnn8")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnwc8"]
+atlas = ExtResource("2_2rnn8")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mgq4"]
+atlas = ExtResource("2_qtetb")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwbio"]
+atlas = ExtResource("1_hp473")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spovy"]
+atlas = ExtResource("1_hp473")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vuybc"]
+atlas = ExtResource("1_hp473")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtetb"]
+atlas = ExtResource("1_hp473")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvrek"]
+atlas = ExtResource("2_qtetb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0ahg"]
+atlas = ExtResource("4_04ccq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ngrs"]
+atlas = ExtResource("4_04ccq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbmpu"]
+atlas = ExtResource("5_g0x7x")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x02my"]
+atlas = ExtResource("5_g0x7x")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twr7t"]
+atlas = ExtResource("5_g0x7x")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grbl7"]
+atlas = ExtResource("5_g0x7x")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rnn8"]
+atlas = ExtResource("5_g0x7x")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jor08"]
+atlas = ExtResource("5_g0x7x")
+region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_doiik"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_hp473")
+"texture": SubResource("AtlasTexture_aecnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt7rn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5h1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dppb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmvqd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnwc8")
+}],
+"loop": true,
+"name": &"chase",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mgq4")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 8.0,
+"texture": SubResource("AtlasTexture_wwbio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spovy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vuybc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtetb")
 }],
 "loop": true,
 "name": &"idle",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvrek")
+}],
+"loop": true,
+"name": &"jump",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0ahg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ngrs")
+}],
+"loop": false,
+"name": &"squish",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbmpu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x02my")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twr7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_grbl7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rnn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jor08")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 15.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4v7vj"]
-size = Vector2(13, 13)
+size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qtetb"]
+size = Vector2(25, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jor08"]
+radius = 256.0
+
+[sub_resource type="Animation" id="Animation_b0ahg"]
+length = 0.001
 
 [sub_resource type="Animation" id="Animation_yvt7r"]
 resource_name = "die_squish"
 length = 0.1
+step = 0.005
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Doll:scale")
+tracks/0/path = NodePath("AnimationTransformer:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -41,7 +227,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Doll:scale")
+tracks/0/path = NodePath("AnimationTransformer:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -50,49 +236,136 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(0.7, 1.3), Vector2(1, 1), Vector2(1.3, 0.7)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 6.28319]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ju3gn"]
 _data = {
+&"RESET": SubResource("Animation_b0ahg"),
 &"die_squish": SubResource("Animation_yvt7r"),
 &"die_strike": SubResource("Animation_kc47k")
 }
 
-[node name="Goomba" type="CharacterBody2D" node_paths=PackedStringArray("hitbox", "anime", "doll")]
-collision_layer = 12
+[node name="Goomba" type="CharacterBody2D" node_paths=PackedStringArray("hurtbox", "ledge_ray_l", "ledge_ray_r", "wall_ray_l", "wall_ray_r", "hitbox", "state_manager", "anime", "doll")]
+collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_hhlu2")
-gravity = 0.22
+gravity = 0.215
+hurtbox = NodePath("Areas/Hurtbox")
+ledge_ray_l = NodePath("Rays/LedgeRayL")
+ledge_ray_r = NodePath("Rays/LedgeRayR")
+wall_ray_l = NodePath("Rays/WallRayL")
+wall_ray_r = NodePath("Rays/WallRayR")
 hp = 1
 hitbox = NodePath("Hitbox")
+state_manager = NodePath("StateManager")
 anime = NodePath("AnimationPlayer")
-doll = NodePath("Node2D/Doll")
+doll = NodePath("AnimationTransformer/Doll")
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(0, -7.5)
+[node name="AnimationTransformer" type="Node2D" parent="."]
 
-[node name="Doll" type="AnimatedSprite2D" parent="Node2D"]
-position = Vector2(0, 7.5)
+[node name="Doll" type="AnimatedSprite2D" parent="AnimationTransformer"]
+position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_doiik")
 animation = &"idle"
-offset = Vector2(0, -24)
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -6.5)
+position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_4v7vj")
+
+[node name="Areas" type="Node2D" parent="."]
+
+[node name="Hurtbox" type="Area2D" parent="Areas"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Hurtbox"]
+position = Vector2(0.5, -4)
+shape = SubResource("RectangleShape2D_qtetb")
+debug_color = Color(1, 0, 0.14509805, 0.14117648)
+
+[node name="DetectionArea" type="Area2D" parent="Areas"]
+position = Vector2(0, -7)
+collision_layer = 0
+collision_mask = 2
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/DetectionArea"]
+shape = SubResource("CircleShape2D_jor08")
+debug_color = Color(1, 1, 1, 0.039215688)
+metadata/_edit_lock_ = true
+
+[node name="Rays" type="Node2D" parent="."]
+
+[node name="LedgeRayL" type="RayCast2D" parent="Rays"]
+modulate = Color(1, 1, 0.16470589, 1)
+position = Vector2(-6, 0)
+target_position = Vector2(0, 4)
+
+[node name="LedgeRayR" type="RayCast2D" parent="Rays"]
+modulate = Color(1, 1, 0.16470589, 1)
+position = Vector2(7, 0)
+target_position = Vector2(0, 4)
+
+[node name="WallRayL" type="RayCast2D" parent="Rays"]
+modulate = Color(1, 1, 0.16470589, 1)
+position = Vector2(-7, -7)
+target_position = Vector2(-16, 0)
+
+[node name="WallRayR" type="RayCast2D" parent="Rays"]
+modulate = Color(1, 1, 0.16470589, 1)
+position = Vector2(7, -7)
+target_position = Vector2(16, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_ju3gn")
 }
+
+[node name="StateManager" type="Node" parent="." node_paths=PackedStringArray("target_actor", "initial_state")]
+script = ExtResource("6_04ccq")
+target_actor = NodePath("..")
+initial_state = NodePath("Dry/Roam")
+
+[node name="Submerged" type="Node" parent="StateManager"]
+script = ExtResource("7_g0x7x")
+
+[node name="Dry" type="Node" parent="StateManager"]
+script = ExtResource("9_jor08")
+
+[node name="Roam" type="Node" parent="StateManager/Dry"]
+script = ExtResource("8_2mgq4")
+
+[node name="Walk" type="Node" parent="StateManager/Dry/Roam"]
+script = ExtResource("9_x02my")
+min_walk_time = 50
+max_walk_time = 100
+walk_speed = 0.4
+animation = &"walk"
+
+[node name="Idle" type="Node" parent="StateManager/Dry/Roam"]
+script = ExtResource("10_twr7t")
+decel = 0.2
+animation = &"idle"
+
+[node name="Aggroed" type="Node" parent="StateManager/Dry"]
+script = ExtResource("9_fvrek")
+notice_jump_power = 2
+
+[node name="Chase" type="Node" parent="StateManager/Dry/Aggroed"]
+script = ExtResource("12_grbl7")
+chase_max_speed = 2.0
+chase_accel = 0.1
+range_jump = Vector2(2, 10)
+animation = &"chase"
+
+[node name="Jump" type="Node" parent="StateManager/Dry/Aggroed"]
+script = ExtResource("13_2rnn8")
+jump_decel = 0.2
+jump_animation = &"jump"
+fall_animation = &"fall"
+
+[node name="Die" type="Node" parent="StateManager"]
+script = ExtResource("10_b0ahg")
+
+[connection signal="body_entered" from="Areas/Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="body_entered" from="Areas/DetectionArea" to="StateManager/Dry/Roam" method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="Areas/DetectionArea" to="StateManager/Dry/Aggroed" method="_on_detection_area_body_exited"]

@@ -4,19 +4,20 @@
 
 If you feel like your workflow with SmartShape2D is a little bit slow, try reading [Controls and Hotkeys](./Controls.md). The hotkeys may help you work with the tool more effectively.
 
+## Basic understanding
+SmartShapes work similarly to [tilesets](https://docs.godotengine.org/en/latest/tutorials/2d/using_tilesets.html) but are not bound to a grid. They can be used to create polygons and even organic shapes. This allows for level design akin to [Rayman Legends](https://youtu.be/WFu1utKAZ18?si=_33TaErpHSh-r732&t=916) (based on the UbiArt Framework).
+
+Each SmartShape is made up of multiple textures that are responsible for rendering different aspects like corners or edges:
+
+![Texture Breakdown](./imgs/smartshape_textures_breakdown.png)
+
 ## Creating a Shape
 
 <!-- TODO: Outdated, including screenshots. -->
 
-- First, instance a node of either:
-  - SS2D_Shape_Open
-  - **SS2D_Shape_Closed**
-    - **We'll use a closed shape for this Quickstart demo**
-- SS2D_Shape_Base cannot be instanced directly
+- First, instance a `SS2D_Shape` node
+  - `SS2D_Shape_Closed` and `SS2D_Shape_Open` are exactly the same and only exist for backwards compatibility
 - SS2D_Shape_Anchor is a node that attaches to a shape
-- The following Nodes are legacy nodes and are deprecated:
-  - RMSmartShape2D
-  - RMSmartShape2DAnchor
 
 ![Nodes](./imgs/NewNode-SS2D_Nodes.png)
 
@@ -115,7 +116,7 @@ If you feel like your workflow with SmartShape2D is a little bit slow, try readi
 
 ![Edge NoRender](./imgs/EdgeEdit-NoRender.png)
 
-- You can use material overrrides to also specify a specific material for a single edge
+- You can use material overrides to also specify a specific material for a single edge
 - For example, Checking Render and choosing the "Rock" Edge Material will cause the edge to render as rocks, even though the NormalRange configuration would otherwise have it render as grass
 
 ### Multiple Textures
@@ -125,5 +126,5 @@ If you feel like your workflow with SmartShape2D is a little bit slow, try readi
 
 ## Anchoring Nodes to the Shape
 
-- To anchor nodes directly to the SmartShape2D node, use SmartSahpeAnchor2D
+- To anchor nodes directly to the SmartShape2D node, use `SS2D_Shape_Anchor`
 - You can then make nodes children to the anchor

@@ -13,6 +13,10 @@ static var default_size = Vector2(
 static var last_none_fs: int = 1
 
 
+func _init() -> void:
+	print(get_class())
+
+
 static func set_win_size(window_scale):
 	var screen: int = DisplayServer.window_get_current_screen()
 	var screen_size: Vector2i = DisplayServer.screen_get_size(screen)

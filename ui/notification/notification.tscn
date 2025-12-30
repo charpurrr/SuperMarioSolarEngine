@@ -106,7 +106,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Panel"]
 libraries = {
-"": SubResource("AnimationLibrary_87b4v")
+&"": SubResource("AnimationLibrary_87b4v")
 }
 autoplay = "pop"
 

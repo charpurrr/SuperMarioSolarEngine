@@ -1,4 +1,4 @@
-[gd_scene load_steps=302 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=306 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" uid="uid://bg4t154sge7br" path="res://entities/player/shared/player.gd" id="1_87j6i"]
 [ext_resource type="Texture2D" uid="uid://cargcb2py1wcg" path="res://entities/player/shared/fludd/fludd.png" id="2_e1ut2"]
@@ -7,14 +7,14 @@
 [ext_resource type="AudioStream" uid="uid://cyrd56neurj15" path="res://entities/player/shared/fludd/fludd_toggle.wav" id="9_1vsdu"]
 [ext_resource type="AudioStream" uid="uid://bujew7hsjfyar" path="res://entities/player/shared/fludd/nozzle_switch.wav" id="10_4t2h7"]
 [ext_resource type="AudioStream" uid="uid://3bnbwk83tb8g" path="res://entities/player/shared/fludd/hover_spray.wav" id="10_8wyc1"]
-[ext_resource type="Script" uid="uid://clh7ssy21bpqv" path="res://util/input_manager.gd" id="21_onm15"]
+[ext_resource type="Script" uid="uid://clh7ssy21bpqv" path="res://entities/player/shared/input_manager.gd" id="21_onm15"]
 [ext_resource type="Script" uid="uid://cb4g1yl24gj7m" path="res://entities/player/shared/player_animation_data.gd" id="23_bbld7"]
 [ext_resource type="AudioStream" uid="uid://xo4pwcv0jo6k" path="res://entities/player/shared/fludd/fludd_step1.wav" id="31_u3pyw"]
 [ext_resource type="AudioStream" uid="uid://clyf3gdiwfqta" path="res://entities/player/shared/fludd/fludd_step2.wav" id="32_ijnwc"]
 [ext_resource type="Script" uid="uid://d0q4h02e1xlo6" path="res://entities/player/shared/push_rays.gd" id="35_g7d1t"]
 [ext_resource type="Script" uid="uid://ddr3ta4g2q457" path="res://entities/player/shared/player_movement.gd" id="37_quca3"]
 [ext_resource type="AudioStream" uid="uid://b0wlrkn5oy6gr" path="res://entities/player/shared/motion/SE_PM_SQUAT_WALK.wav" id="38_pxspy"]
-[ext_resource type="Script" uid="uid://bgbnjn5g8yd7s" path="res://entities/player/shared/player_state_manager.gd" id="38_vxs65"]
+[ext_resource type="Script" path="res://entities/player/shared/states/player_state_manager.gd" id="38_vxs65"]
 [ext_resource type="Script" uid="uid://cnhq3f60vcaka" path="res://entities/player/shared/areas/crouchlock.gd" id="39_n5dp2"]
 [ext_resource type="Script" uid="uid://rc6vjkye3g3v" path="res://entities/player/shared/states/submerged/swim_idle.gd" id="40_aeui7"]
 [ext_resource type="Script" uid="uid://nfqh6xlw3stl" path="res://entities/player/shared/states/dry/dry.gd" id="40_q8vpo"]
@@ -32,14 +32,14 @@
 [ext_resource type="Script" uid="uid://b6q462mq5sg46" path="res://entities/player/shared/states/submerged/swim_flutter.gd" id="46_ukpqj"]
 [ext_resource type="Script" uid="uid://ca3p2fxqao3lv" path="res://entities/player/shared/states/dry/grounded/turn_skid.gd" id="48_w11sb"]
 [ext_resource type="Script" uid="uid://xoyb4235rbh0" path="res://entities/player/shared/states/dry/grounded/push.gd" id="49_6rakc"]
-[ext_resource type="Script" uid="uid://dvlt5sb8enmu8" path="res://util/sfx_layer.gd" id="49_apkmk"]
+[ext_resource type="Script" uid="uid://dvlt5sb8enmu8" path="res://util/resources/sfx_layer.gd" id="49_apkmk"]
 [ext_resource type="Script" uid="uid://tbcr0lmfc75d" path="res://entities/player/shared/states/dry/grounded/dry_push.gd" id="50_xkq61"]
 [ext_resource type="Script" uid="uid://dyiluhjf5ph6" path="res://entities/player/shared/states/dry/grounded/crouch.gd" id="51_38is8"]
 [ext_resource type="AudioStream" uid="uid://cjspfb0k3f8qd" path="res://entities/player/shared/motion_nsmbw/crouch.wav" id="51_ge5km"]
 [ext_resource type="Script" uid="uid://j6sqirhwcgdl" path="res://entities/player/shared/states/dry/grounded/crouch_walk.gd" id="53_blm5r"]
 [ext_resource type="AudioStream" uid="uid://cwwws3ymysh84" path="res://entities/player/mario/voice_64/hoo.wav" id="54_nx8es"]
 [ext_resource type="Script" uid="uid://b4bjesuoi4kk1" path="res://entities/player/shared/states/dry/grounded/crouch_spin.gd" id="54_rxsl3"]
-[ext_resource type="Script" uid="uid://dd8oyhd4nllix" path="res://util/particle_effect.gd" id="55_bxnxc"]
+[ext_resource type="Script" uid="uid://dd8oyhd4nllix" path="res://util/resources/particle_effect.gd" id="55_bxnxc"]
 [ext_resource type="PackedScene" uid="uid://hjhbi0f6lfow" path="res://props/particles/dust_explosion.tscn" id="55_seugk"]
 [ext_resource type="AudioStream" uid="uid://dv5jygdhaf8dy" path="res://entities/player/mario/voice_64/haha.wav" id="56_o7gy0"]
 [ext_resource type="Script" uid="uid://rium06tube8h" path="res://entities/player/shared/states/dry/grounded/stylish.gd" id="57_p7lxf"]
@@ -112,7 +112,7 @@
 [ext_resource type="AudioStream" uid="uid://1fibybjdw7pc" path="res://entities/player/shared/motion_nsmbw/groundpound.wav" id="116_078t4"]
 [ext_resource type="Script" uid="uid://c6xirxw78xyxn" path="res://entities/player/shared/states/dry/airborne/lazy_jump.gd" id="116_wolak"]
 [ext_resource type="PackedScene" uid="uid://bxbf6omm5cnb8" path="res://props/particles/afterimage_particle.tscn" id="119_hx7ue"]
-[ext_resource type="PackedScene" uid="uid://qhus8wvhnkc6" path="res://util/afterimage_module.tscn" id="120_f3xbj"]
+[ext_resource type="PackedScene" uid="uid://qhus8wvhnkc6" path="res://util/custom_nodes/afterimage_module.tscn" id="120_f3xbj"]
 [ext_resource type="AudioStream" uid="uid://23at2s4l6qjv" path="res://entities/player/mario/voice_sunshine/watch_it.wav" id="120_qvxml"]
 [ext_resource type="PackedScene" uid="uid://bnl4gwa5x2dwh" path="res://props/particles/dust.tscn" id="121_qidyp"]
 [ext_resource type="AudioStream" uid="uid://lktt3ecwf5nm" path="res://entities/player/mario/voice_sunshine/oh_surprised.wav" id="121_se657"]
@@ -136,6 +136,7 @@
 [ext_resource type="AudioStream" uid="uid://bbw3474fd3uxc" path="res://entities/player/shared/motion/spinattack_shine.wav" id="136_a6kal"]
 [ext_resource type="AudioStream" uid="uid://bowyc14wpkcra" path="res://entities/player/shared/motion/dive.wav" id="138_88upi"]
 [ext_resource type="Script" uid="uid://cbg4mbnpu1bvj" path="res://entities/player/shared/states/dry/butt_slide.gd" id="140_lfmwr"]
+[ext_resource type="Script" uid="uid://cghkwmax26iwr" path="res://entities/player/shared/states/dry/hit.gd" id="144_xenv0"]
 [ext_resource type="PackedScene" uid="uid://yxcrkjecabc2" path="res://props/particles/spin_ring.tscn" id="149_qbnhj"]
 [ext_resource type="Script" uid="uid://c6f05nyrdtcd6" path="res://entities/player/shared/states/dry/dive_states/super_rollout.gd" id="150_4duxu"]
 [ext_resource type="Script" uid="uid://ftwidhx88kkq" path="res://entities/player/shared/fludd/fludd_manager.gd" id="151_4womg"]
@@ -143,6 +144,26 @@
 [ext_resource type="AudioStream" uid="uid://ddjllqvgrxfqj" path="res://entities/player/mario/voice_sunshine/woah2_ledge.wav" id="152_7j1yj"]
 [ext_resource type="AudioStream" uid="uid://cutedbxm5o46d" path="res://entities/player/mario/voice_sunshine/woah3_ledge.wav" id="153_5c2b3"]
 [ext_resource type="PackedScene" uid="uid://d1wf1b4d4xfvf" path="res://props/particles/sparkle.tscn" id="158_1s3ss"]
+
+[sub_resource type="Shader" id="Shader_xenv0"]
+code = "shader_type canvas_item;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wdv80"]
+shader = SubResource("Shader_xenv0")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1i10v"]
 atlas = ExtResource("2_e1ut2")
@@ -2240,12 +2261,37 @@ bus = &"Motion"
 overwrite_other = false
 metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
 
+[sub_resource type="Resource" id="Resource_spsxp"]
+resource_local_to_scene = true
+script = ExtResource("23_bbld7")
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
+frame_fludd = Dictionary[int, String]({
+0: "default"
+})
+frame_fludd_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 5)
+})
+animation = "bonk"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 5)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
 [node name="Mario" type="CharacterBody2D" node_paths=PackedStringArray("doll", "fludd_f", "fludd_b", "state_manager", "movement", "input", "push_rays", "hitbox", "dive_hitbox", "small_hitbox", "water_check", "auto_crouch_check", "dive_hurtbox", "spin_hurtbox", "crouch_spin_hurtbox", "stomp_hurtbox", "gp_hurtbox")]
+material = SubResource("ShaderMaterial_wdv80")
 collision_layer = 2
 floor_constant_speed = true
 floor_max_angle = 1.48353
 floor_snap_length = 16.0
 script = ExtResource("1_87j6i")
+hp = 4
 doll = NodePath("Doll")
 fludd_f = NodePath("FluddInfront")
 fludd_b = NodePath("FluddBehind")
@@ -2301,6 +2347,7 @@ position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_c86nk")
 
 [node name="Areas" type="Node2D" parent="."]
+visible = false
 
 [node name="WaterCheck" type="Area2D" parent="Areas"]
 position = Vector2(0, -24)
@@ -2784,6 +2831,12 @@ hitbox_type = "Small"
 animation_data = SubResource("Resource_ifrah")
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_d3rr6")])
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_mc84f")])
+
+[node name="Hit" type="Node" parent="StateManager/Dry"]
+process_mode = 3
+script = ExtResource("144_xenv0")
+freeze_time = 20
+animation_data = SubResource("Resource_spsxp")
 
 [connection signal="body_entered" from="Areas/DiveHurtBox" to="StateManager/Dry/DiveStates/Dive" method="_on_dive_hurt_box_body_entered"]
 [connection signal="body_entered" from="Areas/SpinHurtBox" to="StateManager/Dry/Airborne/WalljumpStates/SpinWallbonk" method="_on_spin_hurt_box_body_entered"]

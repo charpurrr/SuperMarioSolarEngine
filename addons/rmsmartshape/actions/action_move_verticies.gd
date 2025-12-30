@@ -1,24 +1,21 @@
 extends SS2D_Action
+class_name SS2D_ActionMoveVerticies
 
-## ActionMoveVerticies
-
-const ActionInvertOrientation := preload("res://addons/rmsmartshape/actions/action_invert_orientation.gd")
-var _invert_orientation: ActionInvertOrientation
-
+var _invert_orientation: SS2D_ActionInvertOrientation
 var _shape: SS2D_Shape
-var _keys: PackedInt64Array
+var _keys: PackedInt32Array
 var _old_positions: PackedVector2Array
 var _new_positions: PackedVector2Array
 
 
-func _init(s: SS2D_Shape, keys: PackedInt64Array, old_positions: PackedVector2Array) -> void:
+func _init(s: SS2D_Shape, keys: PackedInt32Array, old_positions: PackedVector2Array) -> void:
 	_shape = s
 	_keys = keys.duplicate()
 	_old_positions = old_positions.duplicate()
 	_new_positions = PackedVector2Array()
 	for k in _keys:
-		_new_positions.append(_shape.get_point_position(k))
-	_invert_orientation = ActionInvertOrientation.new(_shape)
+		_new_positions.append(_shape.get_point_array().get_point_position(k))
+	_invert_orientation = SS2D_ActionInvertOrientation.new(_shape)
 
 
 func get_name() -> String:
@@ -29,16 +26,18 @@ func get_name() -> String:
 
 
 func do() -> void:
-	_shape.begin_update()
+	var pa := _shape.get_point_array()
+	pa.begin_update()
 	for i in _keys.size():
-		_shape.set_point_position(_keys[i], _new_positions[i])
+		pa.set_point_position(_keys[i], _new_positions[i])
 	_invert_orientation.do()
-	_shape.end_update()
+	pa.end_update()
 
 
 func undo() -> void:
-	_shape.begin_update()
+	var pa := _shape.get_point_array()
+	pa.begin_update()
 	_invert_orientation.undo()
 	for i in range(_keys.size() - 1, -1, -1):
-		_shape.set_point_position(_keys[i], _old_positions[i])
-	_shape.end_update()
+		pa.set_point_position(_keys[i], _old_positions[i])
+	pa.end_update()

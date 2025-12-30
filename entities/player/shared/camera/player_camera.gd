@@ -15,11 +15,12 @@ extends Camera2D
 
 @export var pan_follow_speed: float = 2.0
 
-@export_category(&"")
-## Current camera properties
+@export_category(&"References")
+@export var shake_x_spring: DampedOscillator
+@export var shake_y_spring: DampedOscillator
 
-## This variable is set in [code]world_machine.tscn[/code].
-var player: Player
+## This is set in [WorldMachine].
+@onready var player: Player
 
 ## The current camera zoom in percentage.
 ## (Note: higher zoom percentage means you can see more level.)
@@ -30,6 +31,12 @@ var target_zoom: float = 100
 
 ## Current position (relative to the player) of the camera set by the velocity.
 var velocity_offset: Vector2 = Vector2.ZERO
+
+var base_offset: Vector2 = Vector2.ZERO
+
+
+func _ready() -> void:
+	base_offset = offset
 
 
 func _physics_process(delta: float) -> void:
@@ -48,6 +55,7 @@ func _physics_process(delta: float) -> void:
 	)
 
 	position = velocity_offset
+	offset = base_offset + Vector2(shake_x_spring.displacement, shake_y_spring.displacement)
 
 
 func _input(event: InputEvent) -> void:
@@ -70,3 +78,8 @@ func _input(event: InputEvent) -> void:
 			target_zoom += 50
 
 	target_zoom = clamp(target_zoom, zoom_min, zoom_max)
+
+
+func shake(power: Vector2) -> void:
+	shake_x_spring.start(power.x)
+	shake_y_spring.start(power.y)

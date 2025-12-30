@@ -44,6 +44,10 @@ func _draw() -> void:
 		_draw_seperators(center, radius, step)
 
 
+func take_hit(amt: int, _type: HealthModule.DamageType):
+	hp -= amt
+
+
 func _draw_seperators(center: Vector2, radius: float, step: float) -> void:
 	for i in range(max_hp):
 		var angle: float = step * i - ROTATION
@@ -57,10 +61,10 @@ func _draw_seperators(center: Vector2, radius: float, step: float) -> void:
 
 
 func _draw_sectors(center: Vector2, radius: float, step: float) -> void:
-	draw_circle_arc_poly(center, radius, 0, step * hp, _choose_slice_color(hp))
+	_draw_circle_arc_poly(center, radius, 0, step * hp, _choose_slice_color(hp))
 
 
-func draw_circle_arc_poly(
+func _draw_circle_arc_poly(
 		center: Vector2,
 		radius: float,
 		angle_from: float,

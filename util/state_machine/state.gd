@@ -127,17 +127,13 @@ func probe_switch(defer: bool = false) -> void:
 	var link_name
 	var handover = null
 
-	if defer:
-		link_name = _defer_rules()
-	else:
-		var data
-		data = _trans_rules()
+	var data = _defer_rules() if defer else _trans_rules()
 
-		if data is Array:
-			link_name = data[0]
-			handover = data[1]
-		else:
-			link_name = data
+	if data is Array:
+		link_name = data[0]
+		handover = data[1]
+	else:
+		link_name = data
 
 	# Only switch if we need to.
 	if not link_name.is_empty():
@@ -244,5 +240,5 @@ func _trans_rules() -> Variant:
 ## When this state is switched to, immediately switch to that state.
 ## This means that other states don't have to guess the behavior of this state
 ## when switching to a child of it.
-func _defer_rules() -> StringName:
+func _defer_rules() -> Variant:
 	return &""

@@ -66,8 +66,9 @@ func load_level(level: Level, store: bool = false) -> void:
 	if level_node.level_environment and user_interface:
 		ui_node.level_environment = env_node
 
-	# Assign player to camera if applicable.
+	# Assign player to camera and vice-versa if applicable.
 	if level_node.camera is PlayerCamera:
+		level_node.player.camera = level_node.camera
 		level_node.camera.player = level_node.player
 
 	# Set the appropriate background music.

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Song" load_steps=3 format=3 uid="uid://cgo34xd74j0bw"]
 
-[ext_resource type="Script" uid="uid://c56bjnj2qtrvg" path="res://util/song.gd" id="1_ekokf"]
+[ext_resource type="Script" uid="uid://c56bjnj2qtrvg" path="res://util/resources/song.gd" id="1_ekokf"]
 [ext_resource type="AudioStream" uid="uid://d10ujix4lp1sy" path="res://props/music/streams/options.ogg" id="2_8e6ko"]
 
 [resource]

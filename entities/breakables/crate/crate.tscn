@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c4m18iuc2ek6l" path="res://entities/breakables/breakable.gd" id="1_qecqc"]
 [ext_resource type="AudioStream" uid="uid://dx75622pudrjr" path="res://entities/breakables/breakable_box/shatter.wav" id="2_1y4qc"]
 [ext_resource type="PackedScene" uid="uid://bcmtpr7mp1onv" path="res://entities/breakables/breakable_box/particles.tscn" id="3_uif4k"]
-[ext_resource type="Script" uid="uid://dd8oyhd4nllix" path="res://util/particle_effect.gd" id="4_foqs1"]
+[ext_resource type="Script" uid="uid://dd8oyhd4nllix" path="res://util/resources/particle_effect.gd" id="4_foqs1"]
 
 [sub_resource type="Resource" id="Resource_txow0"]
 script = ExtResource("4_foqs1")

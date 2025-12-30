@@ -5,9 +5,13 @@ extends PlayerState
 ## If the player can simply cancel out of the groundpound landing.
 @export var can_ignore: bool = true
 
+@export var camera_shake_power: int = 6
+
 
 func _on_enter(_param):
 	actor.vel.x = 0
+
+	actor.camera.shake(Math.random_coord(camera_shake_power))
 
 
 func _trans_rules():

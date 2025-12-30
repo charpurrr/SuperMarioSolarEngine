@@ -7,4 +7,3 @@ script = ExtResource("1_rph4c")
 name = &"tint"
 show_in_properties = true
 data_type = 20
-default = []

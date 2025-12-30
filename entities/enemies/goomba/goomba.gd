@@ -2,30 +2,30 @@ class_name Goomba
 extends Enemy
 ## Goomba behaviour.
 
+## Whether or not the Goomba will move around,
+## searching for the player.
+@export var stationary: bool = false
 @export var gravity: float = 1
 
-@export var strike_x_power: float = 2
-@export var strike_y_power: float = 4
+@export_category(&"References")
+@export var hurtbox: Area2D
 
-## Whether or not the Goomba should die when ready.
-var ready_to_perish: bool = false:
-	set(val):
-		ready_to_perish = val
+@export var ledge_ray_l: RayCast2D
+@export var ledge_ray_r: RayCast2D
+@export var wall_ray_l: RayCast2D
+@export var wall_ray_r: RayCast2D
 
-		if val == true:
-			queue_free()
-
-var death_type: HealthModule.DamageType
+## The player that's being chased, if any.
+var spotted_player: Player
+## The difference in distance between the player, and the Goomba.
+var diff: Vector2
 
 
 func _physics_process(delta):
-	vel.y += gravity
-
-	# Special death requirements
-	if death_type == HealthModule.DamageType.STRIKE:
-		ready_to_perish = is_on_floor() and vel.y >= 0
-
 	super(delta)
+
+	if is_instance_valid(spotted_player):
+		diff = spotted_player.global_position - global_position
 
 
 func take_hit(_source: Node, _damage_type: HealthModule.DamageType):
@@ -33,14 +33,13 @@ func take_hit(_source: Node, _damage_type: HealthModule.DamageType):
 
 
 func die(source: Node, damage_type: HealthModule.DamageType):
-	death_type = damage_type
+	hurtbox.monitoring = false
+	state_manager.set_to_state(&"Die", [source, damage_type])
 
-	match damage_type:
-		HealthModule.DamageType.STRIKE:
-			vel.x = source.vel.x - sign(source.position.x - position.x) * strike_x_power
-			vel.y = -strike_y_power
-			anime.play(&"die_strike")
 
-		HealthModule.DamageType.SQUISH:
-			anime.play(&"die_squish")
-			anime.animation_finished.connect(func(_anim_name: StringName): ready_to_perish = true)
+func _on_hurtbox_body_entered(_body: Node2D) -> void:
+	if spotted_player == null:
+		return
+
+	if (spotted_player.vel.y >= 0.0 or diff.y > 0.0):
+		spotted_player.health_module.damage(self, HealthModule.DamageType.GENERIC, 1)

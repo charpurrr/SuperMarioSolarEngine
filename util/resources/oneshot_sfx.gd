@@ -1,5 +1,5 @@
 class_name SFX
-extends Resource
+extends RefCounted
 ## Utility class for creating and destroying a singular sound effect
 ## using a temporary [AudioStreamPlayer]. [br]
 ##

@@ -95,7 +95,6 @@ label = NodePath("Count")
 
 [node name="CoinIcon" type="Control" parent="."]
 custom_minimum_size = Vector2(18, 0)
-layout_mode = 2
 anchors_preset = 0
 offset_right = 18.0
 offset_bottom = 29.0

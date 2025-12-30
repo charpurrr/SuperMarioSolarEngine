@@ -16,6 +16,7 @@ default_color = Color(0.180392, 0.152941, 0.184314, 1)
 
 [node name="WidgetButtonL" parent="." index="4" instance=ExtResource("1_w6l4p")]
 z_index = 1
+layout_mode = 0
 offset_left = -48.0
 offset_right = -48.0
 scale = Vector2(0.8, 0.8)
@@ -23,6 +24,7 @@ costume = "Blue"
 
 [node name="WidgetButtonR" parent="." index="5" instance=ExtResource("1_w6l4p")]
 z_index = 1
+layout_mode = 0
 offset_left = 48.0
 offset_right = 48.0
 scale = Vector2(0.8, 0.8)
