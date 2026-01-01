@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://knkg28xlj4h8" path="res://ui/screen_manager/pause_screen/textures/spike.png" id="2_xb1fp"]
 [ext_resource type="Texture2D" uid="uid://qslbjwvvnw28" path="res://ui/pattern_solar.png" id="3_6joap"]
 [ext_resource type="PackedScene" uid="uid://bb6wf0meej6ox" path="res://ui/buttons/ui_button.tscn" id="7_rdlol"]
-[ext_resource type="Texture2D" uid="uid://dfbwpeg0x4vwn" path="res://ui/key_scenes/title_screen/title.png" id="8_w16se"]
-[ext_resource type="Texture2D" uid="uid://c82mjoeosc2ka" path="res://ui/key_scenes/title_screen/play_icon.png" id="10_108is"]
-[ext_resource type="Texture2D" uid="uid://b140m0l1g3u2v" path="res://ui/key_scenes/title_screen/edit_icon.png" id="11_k4tpe"]
-[ext_resource type="Texture2D" uid="uid://d342wayf41exh" path="res://ui/key_scenes/title_screen/rec_icon.png" id="12_5a5jg"]
+[ext_resource type="Texture2D" uid="uid://c4gj6thqblgog" path="res://ui/key_scenes/title_screen/title.png" id="8_w16se"]
+[ext_resource type="Texture2D" uid="uid://tbn433hx7em2" path="res://ui/key_scenes/title_screen/play_icon.png" id="10_108is"]
+[ext_resource type="Texture2D" uid="uid://dga26k832tjwx" path="res://ui/key_scenes/title_screen/edit_icon.png" id="11_k4tpe"]
+[ext_resource type="Texture2D" uid="uid://dlpdgav06f5ps" path="res://ui/key_scenes/title_screen/rec_icon.png" id="12_5a5jg"]
 
 [sub_resource type="Animation" id="Animation_685si"]
 length = 0.001
