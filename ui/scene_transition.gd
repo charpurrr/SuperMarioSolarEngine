@@ -1,77 +1,71 @@
 @tool
 class_name SceneTransition
 extends Control
-# Class used to instance nice-looking scene transitions.
+## Class used to instance nice-looking scene transitions.
 
-## Emitted when the first transition overlay has finished animating.
-signal transition_to_finished
+## Emitted when the "to" transition overlay has finished animating.
+signal to_trans_finished
 
-## Emitted when a transition overlay has finished animating.
-signal prep_finished
+## Emitted by the global TransitionManager.
+## Starts the second half of the transitioning process.
+signal ready_for_second_half
 
-## Emitted when the second transition overlay has finished animating.
-signal transition_from_finished
+## Emitted when the "from" transition overlay has finished animating.
+signal from_trans_finished
 
-@export_tool_button("Preview") var preview_action = _preview
+@export_tool_button("Preview", "Play") var preview_action = _preview
 @export var preview_to: TransitionOverlay
+
+@export var wait_time: float = 1.0:
+	set(val):
+		wait_time = max(0, val)
+
 @export var preview_from: TransitionOverlay
-@export_range(0.1, 999) var wait_time: float #Range prevents an editor crash by setting the timer to 0
 
-var in_transition: bool = false
 
-### to: What scene to transition into.
-### from_overlay: Which visual overlay gets used for the transition from the previous scene.
-### to_overlay: Which visual overlay gets used for the transition to the new scene.
-### overlay_speed: How fast the overlay animates. (in seconds)
-### fake_delay: How many seconds are inbetween the scene transitions.
-### Can be used to create a fake loading effect. 
-#func _init(
-	#to_scene: PackedScene,
-	#between_logic: Callable,
-	#from_overlay: Overlay = Overlay.PLAIN,
-	#to_overlay: Overlay = Overlay.PLAIN,
-	#overlay_speed: float = 0.2,
-#) -> void:
-#
-var current_from: TransitionOverlay
-var current_to: TransitionOverlay
+func _ready() -> void:
+	for child in get_children():
+		child.hide()
 
-func _ready():
-	pass
 
-func finish_transition():
-	call_deferred("emit_signal", "prep_finished") #Calling deferred to allow a frame to sync all of the `await` calls happening during the middle of the transition 
-
-func start_transition(to: TransitionOverlay, from: TransitionOverlay, color: Color) -> void:
-	current_to = to
-	current_from = from
-	in_transition = true
+func start_transition(
+		to: TransitionOverlay,
+		from: TransitionOverlay,
+		color: Color = Color.BLACK,
+		speed_scale: float = 1.0,
+	) -> void:
+	# TRANSITIONING OUT:
 	to.show()
-	if to != from:
-		from.hide()
+	to.play_transition(color, speed_scale)
+
+	# Blocks mouse input during transitions.
 	mouse_filter = Control.MOUSE_FILTER_STOP
-	to.play_transition(color, 1.0, false)
+
 	await to.animation.animation_finished
-	transition_to_finished.emit()
-	await prep_finished
+	to_trans_finished.emit()
+
+	# Wait for the greenlight from the TransitionManager.
+	await ready_for_second_half
+
+	# TRANSITIONING IN:
 	to.hide()
 	from.show()
-	from.play_transition(color, 1.0, true)
+	from.play_transition(color, speed_scale, true)
+
 	await from.animation.animation_finished
+	from_trans_finished.emit()
+	from.hide()
+
+	# Unblocks mouse input.
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	in_transition = false
-	transition_from_finished.emit()
 
 
 func _preview() -> void:
-	for child in get_children():
-		child.visible = false
-	var children = get_children()
-	if preview_to == null:
-		preview_to = children[randi() % children.size()]
-	if preview_from == null:
-		preview_from = children[randi() % children.size()]
+	_ready()
+
 	start_transition(preview_to, preview_from, Color.WHITE)
-	await preview_to.animation.animation_finished
+
+	await to_trans_finished
 	await get_tree().create_timer(wait_time).timeout
-	finish_transition()
+	# Manually greenlight the second half of the transition animation.
+	ready_for_second_half.emit()

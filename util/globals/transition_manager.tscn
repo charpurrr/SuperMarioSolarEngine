@@ -3,9 +3,10 @@
 [ext_resource type="Script" uid="uid://v0hjytrph83k" path="res://util/globals/transition_manager.gd" id="1_uyoy3"]
 [ext_resource type="PackedScene" uid="uid://cuw0j18qec0mv" path="res://ui/scene_transition.tscn" id="2_v0gsh"]
 
-[node name="TransitionManager" type="CanvasLayer"]
+[node name="TransitionManager" type="CanvasLayer" node_paths=PackedStringArray("scene_transition")]
 process_mode = 3
 script = ExtResource("1_uyoy3")
+scene_transition = NodePath("SceneTransition")
 
 [node name="SceneTransition" parent="." node_paths=PackedStringArray("preview_from") instance=ExtResource("2_v0gsh")]
 unique_name_in_owner = true
@@ -18,6 +19,7 @@ mouse_filter = 2
 mouse_filter = 2
 
 [node name="InvertedCircleOverlay" parent="SceneTransition" index="2"]
+visible = false
 mouse_filter = 2
 
 [editable path="SceneTransition"]

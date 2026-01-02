@@ -1,5 +1,5 @@
 class_name LevelEditor
-extends Node
+extends KeyScene
 ## Base class for the level editor.
 
 @export var user_interface: LevelEditorUI
@@ -10,10 +10,6 @@ extends Node
 @export var camera: Camera2D
 @export var world_machine: WorldMachine
 @export var player_scene: PackedScene
-
-
-func _ready():
-	get_tree().set_auto_accept_quit(false)
 
 
 func _on_play_button_pressed() -> void:
@@ -55,3 +51,12 @@ func _on_play_button_pressed() -> void:
 
 func cursor_in_preview_field() -> bool:
 	return user_interface.preview_detector.cursor_in_preview_field
+
+
+func _on_transition_to(_handover: Variant) -> void:
+	get_tree().set_auto_accept_quit(false)
+	TransitionManager.greenlight_load_in()
+
+
+func _on_transition_from() -> void:
+	get_tree().set_auto_accept_quit(true)

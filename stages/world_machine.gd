@@ -18,14 +18,6 @@ var env_node: LevelEnvironment
 var ui_node: UserInterface
 
 
-func _ready():
-	super()
-	if autoload and level_scene != null:
-		var level = level_scene.instantiate()
-		load_level(level)
-		TransitionManager.emit_signal("ready_to_progress")
-
-
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed(&"quick_restart"):
 		reload_level()
@@ -80,7 +72,7 @@ func load_level(level: Level, store: bool = false) -> void:
 	level_node.camera.make_current()
 
 
-func deload_level():
+func deload_level() -> void:
 	# Unpauses the game if it was paused during the deload.
 	if get_tree().paused == true:
 		GameState.emit_signal(&"paused")
@@ -94,11 +86,28 @@ func deload_level():
 
 
 ## Reloads the current level.
-func reload_level():
-	TransitionManager.start_transition("", TransitionManager.TransitionType.WARP_IN_LEVEL, {})
-	await TransitionManager.scene_transition.transition_to_finished
+func reload_level() -> void:
+	TransitionManager.transition_local()
+	await TransitionManager.scene_transition.to_trans_finished
+
 	var new_level: Node2D = level_scene.instantiate()
 	deload_level()
 	load_level(new_level)
 	level_reloaded.emit()
-	TransitionManager.emit_signal("ready_to_progress")
+
+	TransitionManager.greenlight_load_in()
+
+
+func _on_transition_to(_handover: Variant) -> void:
+	if not autoload: return
+
+	assert(is_instance_valid(level_scene), "Trying to load invalid level.")
+
+	var level = level_scene.instantiate()
+	load_level(level)
+
+	TransitionManager.greenlight_load_in()
+
+
+func _on_transition_from() -> void:
+	pass

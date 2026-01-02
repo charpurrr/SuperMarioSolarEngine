@@ -20,6 +20,7 @@ preview_to = NodePath("PlainOverlay")
 preview_from = NodePath("InvertedCircleOverlay")
 
 [node name="CircleOverlay" parent="." instance=ExtResource("2_26j7i")]
+visible = false
 layout_mode = 1
 
 [node name="PlainOverlay" parent="." instance=ExtResource("3_qi6ri")]
@@ -29,5 +30,4 @@ layout_mode = 1
 color = Color(1, 1, 1, 1)
 
 [node name="InvertedCircleOverlay" parent="." instance=ExtResource("4_x0mw7")]
-visible = false
 layout_mode = 1

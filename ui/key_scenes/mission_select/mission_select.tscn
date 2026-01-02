@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://cbwg2ki8ycmo5" path="res://ui/key_scenes/mission_select/mission_select.gd" id="1_htlb4"]
 [ext_resource type="Script" uid="uid://dub1x8346eu31" path="res://ui/key_scenes/mission_select/shine_container.gd" id="1_vmnes"]
 [ext_resource type="FontFile" uid="uid://rhrmsvahgm3h" path="res://ui/fonts/mario_wonder.ttf" id="2_p2cwd"]
-[ext_resource type="AudioStream" uid="uid://456vjkqd2i3a" path="res://ui/key_scenes/mission_select/mission_select_jingle.wav" id="2_ulxry"]
-[ext_resource type="AudioStream" uid="uid://x6vdrqs6rudh" path="res://ui/key_scenes/mission_select/scroll.wav" id="4_8tod2"]
+[ext_resource type="AudioStream" uid="uid://bcv36ym57kvq7" path="res://ui/key_scenes/mission_select/mission_select_jingle.wav" id="2_ulxry"]
+[ext_resource type="AudioStream" uid="uid://cq3qqkghhgj7u" path="res://ui/key_scenes/mission_select/scroll.wav" id="4_8tod2"]
 [ext_resource type="Texture2D" uid="uid://cjotx4r01vraa" path="res://entities/collectibles/shine/shine.png" id="4_vmnes"]
 [ext_resource type="Script" uid="uid://bya6u8daue8n2" path="res://util/custom_nodes/animated_texturerect.gd" id="5_htlb4"]
 
@@ -16,9 +16,9 @@ colors = PackedColorArray(0, 0, 0.439216, 1, 0, 1, 0.596078, 1)
 gradient = SubResource("Gradient_vmnes")
 fill_to = Vector2(1, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ef0oo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbfrh"]
 atlas = ExtResource("4_vmnes")
-region = Rect2(224, 0, 32, 32)
+region = Rect2(416, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8tod2"]
 atlas = ExtResource("4_vmnes")
@@ -48,6 +48,10 @@ region = Rect2(160, 0, 32, 32)
 atlas = ExtResource("4_vmnes")
 region = Rect2(192, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ef0oo"]
+atlas = ExtResource("4_vmnes")
+region = Rect2(224, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_kylom"]
 atlas = ExtResource("4_vmnes")
 region = Rect2(256, 0, 32, 32)
@@ -67,10 +71,6 @@ region = Rect2(352, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_qse4l"]
 atlas = ExtResource("4_vmnes")
 region = Rect2(384, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lbfrh"]
-atlas = ExtResource("4_vmnes")
-region = Rect2(416, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6r82o"]
 atlas = ExtResource("4_vmnes")
@@ -218,13 +218,13 @@ follow_button_focus = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 focus_mode = 2
-texture = SubResource("AtlasTexture_ef0oo")
+texture = SubResource("AtlasTexture_lbfrh")
 expand_mode = 3
 stretch_mode = 5
 script = ExtResource("5_htlb4")
 sprites = SubResource("SpriteFrames_rs1nv")
 animation = &"normal"
-frame = 7
+frame = 13
 playing = true
 metadata/_custom_type_script = "uid://bya6u8daue8n2"
 

@@ -1,36 +1,63 @@
-#[Insert trans joke here]
-
 extends CanvasLayer
+## Handles visual screen transitions.
+## Has the ability to transition between scenes too.
 
-#Handles transitions between the UI and levels, going between levels, and area warps!r
+## Emit this when your scene is ready to be loaded in
+## after the first half of a scene transition.
+signal ready_for_load_in
 
-signal ready_to_progress
+@export var scene_transition: SceneTransition
 
-enum TransitionType {TO_SCREEN, TO_LEVEL, WARP_IN_LEVEL}
-
+## The [KeyScreen] we are transitioning from.
 var current_key_screen
 
-@onready var scene_transition = %SceneTransition #Used for accessing outside of this object
+
+## Plays a transition effect and loads in a new scene.
+func transition_scene(
+		new_scene_uid: String,
+		handover: Variant = null,
+		color = Color.BLACK,
+		speed_scale = 1.0
+	) -> void:
+	assert(ResourceLoader.exists(new_scene_uid), "Given scene doesn't exist!")
+
+	scene_transition.start_transition(
+		%SceneTransition/CircleOverlay,
+		%SceneTransition/CircleOverlay,
+		color,
+		speed_scale
+	)
+
+	# Load OUT
+	current_key_screen._on_transition_from()
+	await scene_transition.to_trans_finished
+
+	# Load IN
+	var tree: SceneTree = get_tree()
+	tree.change_scene_to_file(new_scene_uid)
+
+	# Greenlights the [SceneTransition] to start the load-in animation.
+	await tree.scene_changed
+	current_key_screen._on_transition_to(handover)
+
+	await ready_for_load_in
+	scene_transition.ready_for_second_half.emit()
 
 
-func start_transition(uid: String, type: TransitionType, data: Dictionary):
-	print(uid)
-	if is_instance_valid(current_key_screen):
-		current_key_screen._try_transition()
+## Plays a transition effect without changing scenes.
+func transition_local(color = Color.BLACK, speed_scale = 1.0) -> void:
+	scene_transition.start_transition(
+		%SceneTransition/CircleOverlay,
+		%SceneTransition/CircleOverlay,
+		color,
+		speed_scale
+	)
 
-	match type:
+	await scene_transition.to_trans_finished
+	await ready_for_load_in
+	scene_transition.ready_for_second_half.emit()
 
-		TransitionType.TO_SCREEN, TransitionType.TO_LEVEL:
-			if ResourceLoader.exists(uid):
-				await current_key_screen._on_transition_from()
-				%SceneTransition.start_transition(%SceneTransition/CircleOverlay, %SceneTransition/CircleOverlay, Color.BLACK)
-				await %SceneTransition.transition_to_finished
-				var _result = get_tree().change_scene_to_file(uid)
-				await ready_to_progress
-				await current_key_screen._on_transition_to()
-				%SceneTransition.finish_transition()
-		
-		TransitionType.WARP_IN_LEVEL: #Does a "fake" transition that doesn't load in any scenes
-			%SceneTransition.start_transition(%SceneTransition/CircleOverlay, %SceneTransition/CircleOverlay, Color.BLACK)
-			await ready_to_progress
-			%SceneTransition.finish_transition()
+
+func greenlight_load_in() -> void:
+	# Deferred to sync up all the possible awaits first.
+	call_deferred("emit_signal", "ready_for_load_in")
