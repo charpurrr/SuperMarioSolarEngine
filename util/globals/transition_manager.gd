@@ -15,6 +15,8 @@ var current_key_screen
 ## Plays a transition effect and loads in a new scene.
 func transition_scene(
 		new_scene_uid: String,
+		start_overlay: SceneTransition.Type,
+		end_overlay: SceneTransition.Type,
 		handover: Variant = null,
 		color = Color.BLACK,
 		speed_scale = 1.0
@@ -22,8 +24,8 @@ func transition_scene(
 	assert(ResourceLoader.exists(new_scene_uid), "Given scene doesn't exist!")
 
 	scene_transition.start_transition(
-		%SceneTransition/CircleOverlay,
-		%SceneTransition/CircleOverlay,
+		start_overlay,
+		end_overlay,
 		color,
 		speed_scale
 	)
@@ -45,10 +47,15 @@ func transition_scene(
 
 
 ## Plays a transition effect without changing scenes.
-func transition_local(color = Color.BLACK, speed_scale = 1.0) -> void:
+func transition_local(
+		start_overlay: SceneTransition.Type,
+		end_overlay: SceneTransition.Type,
+		color = Color.BLACK,
+		speed_scale = 1.0
+	) -> void:
 	scene_transition.start_transition(
-		%SceneTransition/CircleOverlay,
-		%SceneTransition/CircleOverlay,
+		start_overlay,
+		end_overlay,
 		color,
 		speed_scale
 	)

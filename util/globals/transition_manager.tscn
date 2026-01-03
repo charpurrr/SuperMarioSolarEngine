@@ -8,14 +8,14 @@ process_mode = 3
 script = ExtResource("1_uyoy3")
 scene_transition = NodePath("SceneTransition")
 
-[node name="SceneTransition" parent="." node_paths=PackedStringArray("preview_from") instance=ExtResource("2_v0gsh")]
-unique_name_in_owner = true
-preview_from = NodePath("CircleOverlay")
+[node name="SceneTransition" parent="." instance=ExtResource("2_v0gsh")]
+preview_to = 0
+preview_from = 0
 
-[node name="CircleOverlay" parent="SceneTransition" index="0"]
+[node name="PlainOverlay" parent="SceneTransition" index="0"]
 mouse_filter = 2
 
-[node name="PlainOverlay" parent="SceneTransition" index="1"]
+[node name="CircleOverlay" parent="SceneTransition" index="1"]
 mouse_filter = 2
 
 [node name="InvertedCircleOverlay" parent="SceneTransition" index="2"]

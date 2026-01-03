@@ -87,7 +87,7 @@ func deload_level() -> void:
 
 ## Reloads the current level.
 func reload_level() -> void:
-	TransitionManager.transition_local()
+	TransitionManager.transition_local(SceneTransition.Type.CIRCLE, SceneTransition.Type.CIRCLE)
 	await TransitionManager.scene_transition.to_trans_finished
 
 	var new_level: Node2D = level_scene.instantiate()

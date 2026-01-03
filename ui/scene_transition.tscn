@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://1s44kbytdqux" path="res://ui/transitions/plain_overlay.tscn" id="3_qi6ri"]
 [ext_resource type="PackedScene" uid="uid://ta0eilpcncdp" path="res://ui/transitions/inverted_circle_overlay.tscn" id="4_x0mw7"]
 
-[node name="SceneTransition" type="Control" node_paths=PackedStringArray("preview_to", "preview_from")]
+[node name="SceneTransition" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,18 +16,21 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("1_1un8b")
-preview_to = NodePath("PlainOverlay")
-preview_from = NodePath("InvertedCircleOverlay")
+type_associated_nodes = Dictionary[int, NodePath]({
+0: NodePath("PlainOverlay"),
+1: NodePath("CircleOverlay"),
+2: NodePath("InvertedCircleOverlay")
+})
+
+[node name="PlainOverlay" parent="." instance=ExtResource("3_qi6ri")]
+visible = false
+layout_mode = 1
+color = Color(1, 1, 1, 1)
 
 [node name="CircleOverlay" parent="." instance=ExtResource("2_26j7i")]
 visible = false
 layout_mode = 1
 
-[node name="PlainOverlay" parent="." instance=ExtResource("3_qi6ri")]
-visible = false
-self_modulate = Color(1, 1, 1, 1)
-layout_mode = 1
-color = Color(1, 1, 1, 1)
-
 [node name="InvertedCircleOverlay" parent="." instance=ExtResource("4_x0mw7")]
+visible = false
 layout_mode = 1

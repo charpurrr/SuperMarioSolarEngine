@@ -17,11 +17,19 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 
 func _on_play_pressed() -> void:
-	TransitionManager.transition_scene(ResourceUID.id_to_text(ResourceLoader.get_resource_uid(wm_scene)))
+	TransitionManager.transition_scene(
+		ResourceUID.id_to_text(ResourceLoader.get_resource_uid(wm_scene)),
+		SceneTransition.Type.CIRCLE,
+		SceneTransition.Type.CIRCLE
+	)
 
 
 func _on_edit_pressed() -> void:
-	TransitionManager.transition_scene(ResourceUID.id_to_text(ResourceLoader.get_resource_uid(editor_scene)))
+	TransitionManager.transition_scene(
+		ResourceUID.id_to_text(ResourceLoader.get_resource_uid(editor_scene)),
+		SceneTransition.Type.CIRCLE,
+		SceneTransition.Type.CIRCLE
+	)
 
 
 func _on_record_pressed() -> void:
