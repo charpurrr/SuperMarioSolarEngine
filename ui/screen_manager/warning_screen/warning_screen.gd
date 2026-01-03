@@ -3,6 +3,7 @@ extends Screen
 ## A confirmation dialogue screen with editable text.
 
 @export var warning_text: RichTextLabel
+@export_file("*.tscn") var title_screen: String
 
 ## The text that replaces the placeholder text.
 var text: String
@@ -24,9 +25,12 @@ func restart() -> void:
 
 func quit() -> void:
 	MusicManager.stop()
-	GameState.emit_signal(&"paused")
-	ui.world_machine.deload_level()
-	get_tree().change_scene_to_file("res://ui/title_screen/title_screen.tscn")
+
+	TransitionManager.transition_scene(
+		title_screen,
+		SceneTransition.Type.INV_CIRCLE,
+		SceneTransition.Type.PLAIN
+	)
 
 
 func reset_settings() -> void:

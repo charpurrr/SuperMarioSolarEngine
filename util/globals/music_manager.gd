@@ -6,7 +6,7 @@ signal music_changed()
 	set(val):
 		music = val
 
-		if not Engine.is_editor_hint():
+		if not Engine.is_editor_hint() and is_instance_valid(music):
 			_play()
 
 

@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://dy3n52xoj3cu8"]
+
+[ext_resource type="Shader" uid="uid://c464iebp6mh7u" path="res://util/shaders/circular_scene_transition.gdshader" id="1_wsp6l"]
+[ext_resource type="Script" uid="uid://dr18ye8epeqdh" path="res://ui/transitions/transition_overlay.gd" id="1_x6hoo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_su87f"]
+shader = ExtResource("1_wsp6l")
+shader_parameter/circle_size = 1.05
+shader_parameter/screen_width = 640.0
+shader_parameter/screen_height = 360.0
+
+[sub_resource type="Animation" id="Animation_x6hoo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/circle_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.05]
+}
+
+[sub_resource type="Animation" id="Animation_uj4vy"]
+resource_name = "transition"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/circle_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.05, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_odo4l"]
+_data = {
+&"RESET": SubResource("Animation_x6hoo"),
+&"transition": SubResource("Animation_uj4vy")
+}
+
+[node name="CircleOverlay" type="ColorRect"]
+material = SubResource("ShaderMaterial_su87f")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_x6hoo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_odo4l")
+}

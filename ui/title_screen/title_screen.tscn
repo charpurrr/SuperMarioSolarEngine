@@ -1,17 +1,14 @@
-[gd_scene load_steps=18 format=3 uid="uid://cthxoel5sus6v"]
+[gd_scene load_steps=15 format=3 uid="uid://cthxoel5sus6v"]
 
 [ext_resource type="Shader" uid="uid://byfa3t51pf655" path="res://ui/screen_manager/pause_screen/pause_panel.tres" id="1_gxk54"]
-[ext_resource type="Script" uid="uid://diilonnsbj7qw" path="res://ui/title_screen/title_screen.gd" id="1_kmorl"]
-[ext_resource type="PackedScene" uid="uid://bite6o37o0mpt" path="res://stages/world_machine.tscn" id="2_piryc"]
+[ext_resource type="Script" uid="uid://diilonnsbj7qw" path="res://ui/title_screen/title_screen.gd" id="1_n6pnn"]
 [ext_resource type="Texture2D" uid="uid://knkg28xlj4h8" path="res://ui/screen_manager/pause_screen/textures/spike.png" id="2_xb1fp"]
 [ext_resource type="Texture2D" uid="uid://qslbjwvvnw28" path="res://ui/pattern_solar.png" id="3_6joap"]
-[ext_resource type="PackedScene" uid="uid://bfrw3lh0b17ri" path="res://level_designer/editor.tscn" id="3_glrnx"]
-[ext_resource type="PackedScene" uid="uid://dhwd6b68nr2lu" path="res://stages/rec_room/rec_room.tscn" id="4_dk1uc"]
-[ext_resource type="Texture2D" uid="uid://dfbwpeg0x4vwn" path="res://ui/title_screen/title.png" id="4_wkbm3"]
 [ext_resource type="PackedScene" uid="uid://bb6wf0meej6ox" path="res://ui/buttons/ui_button.tscn" id="7_rdlol"]
-[ext_resource type="Texture2D" uid="uid://c82mjoeosc2ka" path="res://ui/title_screen/play_icon.png" id="8_tdj5p"]
-[ext_resource type="Texture2D" uid="uid://b140m0l1g3u2v" path="res://ui/title_screen/edit_icon.png" id="9_csve6"]
-[ext_resource type="Texture2D" uid="uid://d342wayf41exh" path="res://ui/title_screen/rec_icon.png" id="12_c8lgs"]
+[ext_resource type="Texture2D" uid="uid://c4gj6thqblgog" path="res://ui/title_screen/title.png" id="8_w16se"]
+[ext_resource type="Texture2D" uid="uid://tbn433hx7em2" path="res://ui/title_screen/play_icon.png" id="10_108is"]
+[ext_resource type="Texture2D" uid="uid://dga26k832tjwx" path="res://ui/title_screen/edit_icon.png" id="11_k4tpe"]
+[ext_resource type="Texture2D" uid="uid://dlpdgav06f5ps" path="res://ui/title_screen/rec_icon.png" id="12_5a5jg"]
 
 [sub_resource type="Animation" id="Animation_685si"]
 length = 0.001
@@ -109,12 +106,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_kmorl")
+script = ExtResource("1_n6pnn")
 anime = NodePath("AnimationPlayer")
 focus_grabber = NodePath("Contents/Choices/Play")
-play_scene = ExtResource("2_piryc")
-edit_scene = ExtResource("3_glrnx")
-rec_scene = ExtResource("4_dk1uc")
+wm_scene = "uid://bite6o37o0mpt"
+editor_scene = "uid://bfrw3lh0b17ri"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -144,7 +140,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
-texture = ExtResource("4_wkbm3")
+texture = ExtResource("8_w16se")
 stretch_mode = 3
 
 [node name="Contents" type="VBoxContainer" parent="."]
@@ -175,7 +171,7 @@ size_flags_stretch_ratio = 0.2
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "PLAY"
-icon = ExtResource("8_tdj5p")
+icon = ExtResource("10_108is")
 
 [node name="SpaceMiddle" type="Control" parent="Contents/Choices"]
 layout_mode = 2
@@ -186,7 +182,7 @@ size_flags_stretch_ratio = 0.1
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "EDIT"
-icon = ExtResource("9_csve6")
+icon = ExtResource("11_k4tpe")
 
 [node name="SpaceMiddle2" type="Control" parent="Contents/Choices"]
 layout_mode = 2
@@ -197,7 +193,7 @@ size_flags_stretch_ratio = 0.1
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "REC"
-icon = ExtResource("12_c8lgs")
+icon = ExtResource("12_5a5jg")
 
 [node name="SpaceRight" type="Control" parent="Contents/Choices"]
 layout_mode = 2

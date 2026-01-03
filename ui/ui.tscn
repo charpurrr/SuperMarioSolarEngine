@@ -521,17 +521,14 @@ anchors_preset = -1
 offset_top = 45.0
 offset_bottom = 50.0
 script = ExtResource("7_aeygf")
-max_count = 8
+max_count = 0
 bounce_color = Color(1, 0, 0, 1)
-
-[node name="CoinIcon" parent="RedCoinCounter" index="0"]
-layout_mode = 0
 
 [node name="TextureRect" parent="RedCoinCounter/CoinIcon/Gradient" index="0"]
 texture = SubResource("GradientTexture2D_m3cpd")
 
 [node name="Count" parent="RedCoinCounter" index="1"]
-text = "0/8"
+text = "0/0"
 
 [node name="MusicLabel" type="Label" parent="." node_paths=PackedStringArray("anime")]
 modulate = Color(1, 1, 1, 0)
@@ -987,6 +984,7 @@ stretch_mode = 1
 flip_h = true
 script = ExtResource("40_cynfm")
 warning_text = NodePath("Spacing/Main/WarningText")
+title_screen = "uid://cthxoel5sus6v"
 open_sfx = ExtResource("41_r4q0q")
 close_sfx = ExtResource("3_cb22p")
 open_anim = &"warning_peek"
@@ -1182,8 +1180,7 @@ layout_mode = 2
 [node name="ToggleButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/VSync" instance=ExtResource("25_dlkvg")]
 layout_mode = 2
 text = "OFF"
-script = ExtResource("45_23m8v")
-options = Array[StringName]([&"OFF", &"ON"])
+script = ExtResource("47_t7euy")
 default_value = false
 setting_section = "General"
 setting_key = "v_sync"
