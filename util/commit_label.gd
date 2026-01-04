@@ -7,8 +7,8 @@ const REPO_NAME: String = "SuperMarioSolarEngine"
 
 var http_request: HTTPRequest = HTTPRequest.new()
 
-var remote_sha: String = "fetching..."
-var local_sha: String = "fetching..."
+var remote_sha: String = "~ Fetching ~"
+var local_sha: String = "~ Fetching ~"
 
 
 func _ready() -> void:
@@ -16,17 +16,10 @@ func _ready() -> void:
 	await http_request.request_completed
 	_set_local_sha()
 
-	text = (
-	"""
-	RE: 	%s
-	LO: 	%s
-	%s"""
-	% [remote_sha, local_sha, _get_check()]
-	)
+	text = "~ %s%s ~" % [local_sha, " ⚠️" if local_sha != remote_sha else ""]
 
 
 func _set_remote_sha() -> void:
-
 	http_request.connect("request_completed", Callable(self, "_on_request_completed"))
 	add_child(http_request)
 
@@ -67,10 +60,3 @@ func _set_local_sha() -> void:
 		push_warning("Failed to read commit SHA from ref.")
 
 	return
-
-
-func _get_check() -> String:
-	if local_sha == remote_sha:
-		return "Up-to-date! :3"
-	else:
-		return "Update your repo!"

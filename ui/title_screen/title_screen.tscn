@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cthxoel5sus6v"]
+[gd_scene load_steps=17 format=3 uid="uid://cthxoel5sus6v"]
 
 [ext_resource type="Shader" uid="uid://byfa3t51pf655" path="res://ui/screen_manager/pause_screen/pause_panel.tres" id="1_gxk54"]
 [ext_resource type="Script" uid="uid://diilonnsbj7qw" path="res://ui/title_screen/title_screen.gd" id="1_n6pnn"]
@@ -6,9 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://qslbjwvvnw28" path="res://ui/pattern_solar.png" id="3_6joap"]
 [ext_resource type="PackedScene" uid="uid://bb6wf0meej6ox" path="res://ui/buttons/ui_button.tscn" id="7_rdlol"]
 [ext_resource type="Texture2D" uid="uid://c4gj6thqblgog" path="res://ui/title_screen/title.png" id="8_w16se"]
+[ext_resource type="Script" uid="uid://dg4a6r83hm158" path="res://util/commit_label.gd" id="9_1djn3"]
+[ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="9_gwpbi"]
 [ext_resource type="Texture2D" uid="uid://tbn433hx7em2" path="res://ui/title_screen/play_icon.png" id="10_108is"]
 [ext_resource type="Texture2D" uid="uid://dga26k832tjwx" path="res://ui/title_screen/edit_icon.png" id="11_k4tpe"]
-[ext_resource type="Texture2D" uid="uid://dlpdgav06f5ps" path="res://ui/title_screen/rec_icon.png" id="12_5a5jg"]
 
 [sub_resource type="Animation" id="Animation_685si"]
 length = 0.001
@@ -36,6 +37,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Contents:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_bgjk2"]
 resource_name = "logo_float"
@@ -52,7 +65,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, -60), Vector2(0, -63), Vector2(0, -60)]
+"values": [Vector2(0, -70), Vector2(0, -73), Vector2(0, -70)]
 }
 
 [sub_resource type="Animation" id="Animation_x8tv6"]
@@ -69,7 +82,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 0.8),
 "transitions": PackedFloat32Array(1, 0.5, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, -60)]
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, -70)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -82,6 +95,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Contents:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nb7wo"]
@@ -98,6 +123,10 @@ shader_parameter/modulate_alpha = 1.0
 shader_parameter/spike_scroll_speed = 0.05
 shader_parameter/spike_dimensions = Vector2(0, 0)
 shader_parameter/spike_texture = ExtResource("2_xb1fp")
+
+[sub_resource type="LabelSettings" id="LabelSettings_1djn3"]
+font = ExtResource("9_gwpbi")
+font_size = 13
 
 [node name="TitleScreen" type="Control" node_paths=PackedStringArray("anime", "focus_grabber")]
 layout_mode = 3
@@ -155,7 +184,7 @@ grow_vertical = 2
 [node name="SpaceTop" type="Control" parent="Contents"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 1.4
+size_flags_stretch_ratio = 1.2
 
 [node name="Choices" type="HBoxContainer" parent="Contents"]
 layout_mode = 2
@@ -165,7 +194,7 @@ size_flags_stretch_ratio = 0.3
 [node name="SpaceLeft" type="Control" parent="Contents/Choices"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.2
+size_flags_stretch_ratio = 0.3
 
 [node name="Play" parent="Contents/Choices" instance=ExtResource("7_rdlol")]
 layout_mode = 2
@@ -184,28 +213,25 @@ theme_override_font_sizes/font_size = 28
 text = "EDIT"
 icon = ExtResource("11_k4tpe")
 
-[node name="SpaceMiddle2" type="Control" parent="Contents/Choices"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.1
-
-[node name="Record" parent="Contents/Choices" instance=ExtResource("7_rdlol")]
-layout_mode = 2
-theme_override_font_sizes/font_size = 28
-text = "REC"
-icon = ExtResource("12_5a5jg")
-
 [node name="SpaceRight" type="Control" parent="Contents/Choices"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.2
+size_flags_stretch_ratio = 0.3
 
 [node name="SpaceBottom" type="Control" parent="Contents"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.4
+size_flags_stretch_ratio = 0.3
+
+[node name="Label" type="Label" parent="Contents"]
+custom_minimum_size = Vector2(0, 23)
+layout_mode = 2
+text = "~ Fetching ~"
+label_settings = SubResource("LabelSettings_1djn3")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("9_1djn3")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="Contents/Choices/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Contents/Choices/Edit" to="." method="_on_edit_pressed"]
-[connection signal="pressed" from="Contents/Choices/Record" to="." method="_on_record_pressed"]

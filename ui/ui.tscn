@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://csf56lkxqqb12"]
+[gd_scene load_steps=96 format=3 uid="uid://csf56lkxqqb12"]
 
 [ext_resource type="Script" uid="uid://brof7wb075ont" path="res://ui/ui.gd" id="1_75fsn"]
 [ext_resource type="AudioStream" uid="uid://b58aveo75onan" path="res://ui/sfx/pause.wav" id="2_1xskv"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://bgl7f8thu2y4" path="res://ui/player_hud/life_meter.tscn" id="7_m3cpd"]
 [ext_resource type="Script" uid="uid://dgat047njqsvp" path="res://ui/debug/debug_label.gd" id="8_2m7jo"]
 [ext_resource type="PackedScene" uid="uid://cjavjeke51epr" path="res://ui/player_hud/fludd_tank.tscn" id="8_n7xk5"]
-[ext_resource type="Script" uid="uid://dg4a6r83hm158" path="res://ui/debug/commit_label.gd" id="9_bh67b"]
 [ext_resource type="Script" uid="uid://c40eo5tkjri5l" path="res://ui/player_hud/music_label.gd" id="9_gbf2f"]
 [ext_resource type="Script" uid="uid://trfav0yjiqxm" path="res://ui/screen_manager/pause_screen/pause_screen.gd" id="17_q1vx3"]
 [ext_resource type="Script" uid="uid://cnhr5du0ap6ki" path="res://ui/screen_manager/screen_manager.gd" id="18_ro5vq"]
@@ -196,11 +195,6 @@ _data = {
 &"RESET": SubResource("Animation_vqsyl"),
 &"fade_past": SubResource("Animation_gbf2f")
 }
-
-[sub_resource type="LabelSettings" id="LabelSettings_j1nag"]
-font_size = 10
-outline_size = 7
-outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_pm0uo"]
 font_size = 10
@@ -491,7 +485,7 @@ notif_scene = ExtResource("4_oqxfb")
 notif_list = NodePath("Notifications")
 debug = NodePath("Debug")
 debug_label = NodePath("Debug/DebugLabel")
-commit_label = NodePath("Debug/CommitLabel")
+commit_label = NodePath("")
 input_display = NodePath("Debug/InputDisplay")
 
 [node name="BackBufferFront" type="BackBufferCopy" parent="."]
@@ -557,28 +551,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="CommitLabel" type="Label" parent="Debug"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -171.0
-offset_top = -57.0
-offset_right = -8.0
-offset_bottom = -8.0
-grow_horizontal = 0
-grow_vertical = 0
-size_flags_horizontal = 8
-size_flags_vertical = 8
-text = "Fetching..."
-label_settings = SubResource("LabelSettings_j1nag")
-horizontal_alignment = 2
-vertical_alignment = 1
-tab_stops = PackedFloat32Array(20)
-script = ExtResource("9_bh67b")
 
 [node name="DebugLabel" type="Label" parent="Debug"]
 layout_mode = 0

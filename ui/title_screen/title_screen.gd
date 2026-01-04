@@ -32,12 +32,12 @@ func _on_edit_pressed() -> void:
 	)
 
 
-func _on_record_pressed() -> void:
-	pass
-
-
 func _on_transition_to(_handover: Variant = null) -> void:
 	TransitionManager.greenlight_load_in()
+
+	await TransitionManager.scene_transition.from_trans_finished
+
+	anime.play(&"start")
 
 
 func _on_transition_from() -> void:

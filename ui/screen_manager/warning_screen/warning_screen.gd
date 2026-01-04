@@ -25,11 +25,15 @@ func restart() -> void:
 
 func quit() -> void:
 	MusicManager.stop()
+	GameState.emit_signal(&"paused")
 
 	TransitionManager.transition_scene(
 		title_screen,
 		SceneTransition.Type.INV_CIRCLE,
-		SceneTransition.Type.PLAIN
+		SceneTransition.Type.PLAIN,
+		null,
+		Color.BLACK,
+		0.5
 	)
 
 
