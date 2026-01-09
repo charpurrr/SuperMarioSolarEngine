@@ -29,7 +29,7 @@ extends Container
 ## Which element is currently selected.
 @export var selected_index: int = 0
 ## Whether or not the carousel follows the focused element.
-@export var follow_button_focus: bool = false
+@export var follow_focus: bool = false
 
 
 func _process(delta: float) -> void:
@@ -80,7 +80,7 @@ func _process(delta: float) -> void:
 		child.modulate.a = Math.lerp_fr(child.modulate.a, target_opacity, lerp_speed * delta, 0.01)
 
 		# FOLLOW FOCUS
-		if follow_button_focus and child.has_focus():
+		if follow_focus and child.has_focus():
 			selected_index = i
 
 
