@@ -51,4 +51,3 @@ static func set_win_scale(new_scale):
 ## This should be connected to the [signal Viewport.size_changed] signal.
 static func set_global_shader_size(new_resolution: Vector2):
 	RenderingServer.global_shader_parameter_set("VIEWPORT_SIZE", new_resolution)
-	print(new_resolution)
