@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://cbwg2ki8ycmo5" path="res://ui/mission_select/mission_select.gd" id="1_htlb4"]
 [ext_resource type="Script" uid="uid://dub1x8346eu31" path="res://ui/mission_select/shine_container.gd" id="1_vmnes"]
 [ext_resource type="FontFile" uid="uid://rhrmsvahgm3h" path="res://ui/fonts/mario_wonder.ttf" id="2_p2cwd"]
-[ext_resource type="AudioStream" uid="uid://456vjkqd2i3a" path="res://ui/mission_select/mission_select_jingle.wav" id="2_ulxry"]
-[ext_resource type="AudioStream" uid="uid://x6vdrqs6rudh" path="res://ui/mission_select/scroll.wav" id="4_8tod2"]
+[ext_resource type="AudioStream" uid="uid://bcv36ym57kvq7" path="res://ui/mission_select/mission_select_jingle.wav" id="2_ulxry"]
+[ext_resource type="AudioStream" uid="uid://cq3qqkghhgj7u" path="res://ui/mission_select/scroll.wav" id="4_8tod2"]
 [ext_resource type="Texture2D" uid="uid://cjotx4r01vraa" path="res://entities/collectibles/shine/shine.png" id="4_vmnes"]
 [ext_resource type="Script" uid="uid://bya6u8daue8n2" path="res://util/custom_nodes/animated_texturerect.gd" id="5_htlb4"]
 
@@ -171,9 +171,12 @@ font = ExtResource("1_akfdm")
 font_size = 50
 outline_size = 13
 outline_color = Color(0, 0, 0, 1)
-shadow_size = 13
+shadow_size = 20
 shadow_color = Color(0, 0, 0, 0.25098)
 shadow_offset = Vector2(3, 3)
+stacked_outline_count = 1
+stacked_outline_0/size = 7
+stacked_outline_0/color = Color(0, 0, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_qalu5"]
 font = ExtResource("1_akfdm")
@@ -193,6 +196,7 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_htlb4")
 script = ExtResource("1_htlb4")
 startup_sound = ExtResource("2_ulxry")
+wm_scene = "uid://bite6o37o0mpt"
 
 [node name="ShineContainer" type="Container" parent="."]
 layout_mode = 1
@@ -212,7 +216,6 @@ wraparound = true
 wraparound_radius = 200.0
 wraparound_height = -20.0
 opacity_strength = 0.5
-follow_button_focus = true
 
 [node name="AnimatedTextureRect" type="TextureRect" parent="ShineContainer"]
 custom_minimum_size = Vector2(100, 100)

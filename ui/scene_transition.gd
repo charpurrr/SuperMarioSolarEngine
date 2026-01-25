@@ -3,74 +3,89 @@ class_name SceneTransition
 extends Control
 ## Class used to instance nice-looking scene transitions.
 
-## Emitted when a transition overlay has finished animating.
-signal transition_finished
+## Emitted when the "to" transition overlay has finished animating.
+signal to_trans_finished
 
-enum Overlay {PLAIN, CIRCULAR}
+## Emitted by the global TransitionManager.
+## Starts the second half of the transitioning process.
+signal ready_for_second_half
 
-@export var preview_overlay: Overlay
+## Emitted when the "from" transition overlay has finished animating.
+signal from_trans_finished
+
 @export_tool_button("Preview", "Play") var preview_action = _preview
+@export var preview_start: Type
 
-@export_category("References")
-@export var plain_overlay: ColorRect
-@export var circ_overlay: ColorRect
+@export var wait_time: float = 1.0:
+	set(val):
+		wait_time = max(0, val)
 
-var from: Overlay
-var to: Overlay
+@export var preview_end: Type
 
+@export_category(&"Overlays")
+## The list of possible overlays.
+## [b]Add to this when creating your own overlays.[/b]
+enum Type {
+	PLAIN,
+	CIRCLE,
+	INV_CIRCLE,
+}
 
-### to: What scene to transition into.
-### from_overlay: Which visual overlay gets used for the transition from the previous scene.
-### to_overlay: Which visual overlay gets used for the transition to the new scene.
-### overlay_speed: How fast the overlay animates. (in seconds)
-### fake_delay: How many seconds are inbetween the scene transitions.
-### Can be used to create a fake loading effect. 
-#func _init(
-	#to_scene: PackedScene,
-	#between_logic: Callable,
-	#from_overlay: Overlay = Overlay.PLAIN,
-	#to_overlay: Overlay = Overlay.PLAIN,
-	#overlay_speed: float = 0.2,
-#) -> void:
-#
-	#from = from_overlay
-	#to = to_overlay
+## The associated overlay node of every [enum Type].
+## [b]Add to this when creating your own overlays.[/b]
+@export var type_associated_nodes: Dictionary[Type, NodePath]
 
 
-func _plain_transition(speed: float) -> void:
-	plain_overlay.visible = true
-
-	var tween := create_tween()
-	
-	if plain_overlay.color.a == 1:
-		tween.tween_property(plain_overlay, "color:a", 0, speed)
-	else:
-		tween.tween_property(plain_overlay, "color:a", 1, speed)
-
-	await tween.finished
-	transition_finished.emit()
+func _ready() -> void:
+	_hide_children()
 
 
-func _circ_transition(speed: float) -> void:
-	circ_overlay.visible = true
+func start_transition(
+		start_overlay: Type,
+		end_overlay: Type,
+		color: Color = Color.BLACK,
+		speed_scale: float = 1.0,
+	) -> void:
+	var start_node: TransitionOverlay = get_node(type_associated_nodes.get(start_overlay))
+	var end_node: TransitionOverlay = get_node(type_associated_nodes.get(end_overlay))
 
-	var tween := create_tween()
-	
-	if circ_overlay.material.get_shader_parameter("circle_size") == 0.0:
-		tween.tween_property(circ_overlay.material, "shader_parameter/circle_size", 1.05, speed)
-	else:
-		tween.tween_property(circ_overlay.material, "shader_parameter/circle_size", 0.0, speed)
+	# TRANSITIONING OUT:
+	start_node.show()
+	start_node.play_transition(color, speed_scale)
 
-	await tween.finished
-	transition_finished.emit()
+	# Blocks mouse input during transitions.
+	mouse_filter = Control.MOUSE_FILTER_STOP
+
+	await start_node.animation.animation_finished
+	to_trans_finished.emit()
+
+	# Wait for the greenlight from the TransitionManager.
+	await ready_for_second_half
+
+	# TRANSITIONING IN:
+	start_node.hide()
+	end_node.show()
+	end_node.play_transition(color, speed_scale, true)
+
+	await end_node.animation.animation_finished
+	from_trans_finished.emit()
+	end_node.hide()
+
+	# Unblocks mouse input.
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 
 func _preview() -> void:
-	for child in get_children():
-		child.visible = false
+	_hide_children()
 
-	match preview_overlay:
-		Overlay.PLAIN:
-			_plain_transition(0.3)
-		Overlay.CIRCULAR:
-			_circ_transition(0.3)
+	start_transition(preview_start, preview_end, Color.WHITE)
+
+	await to_trans_finished
+	await get_tree().create_timer(wait_time).timeout
+	# Manually greenlight the second half of the transition animation.
+	ready_for_second_half.emit()
+
+
+func _hide_children() -> void:
+	for child in get_children():
+		child.hide()

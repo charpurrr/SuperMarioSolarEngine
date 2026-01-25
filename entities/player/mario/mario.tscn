@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bg4t154sge7br" path="res://entities/player/shared/player.gd" id="1_87j6i"]
 [ext_resource type="Texture2D" uid="uid://cargcb2py1wcg" path="res://entities/player/shared/fludd/fludd.png" id="2_e1ut2"]
 [ext_resource type="PackedScene" uid="uid://vukdixescka4" path="res://entities/player/shared/fludd/stamina_bar.tscn" id="2_ijnwc"]
-[ext_resource type="SpriteFrames" uid="uid://bqn6b0xmrvxjc" path="res://entities/player/mario/anime/mario_anime.res" id="2_ttikd"]
+[ext_resource type="SpriteFrames" uid="uid://dlk4vrsh0bt4u" path="res://entities/player/mario/anime/temp_127/mario_127_anime.res" id="4_xenv0"]
 [ext_resource type="AudioStream" uid="uid://cyrd56neurj15" path="res://entities/player/shared/fludd/fludd_toggle.wav" id="9_1vsdu"]
 [ext_resource type="AudioStream" uid="uid://bujew7hsjfyar" path="res://entities/player/shared/fludd/nozzle_switch.wav" id="10_4t2h7"]
 [ext_resource type="AudioStream" uid="uid://3bnbwk83tb8g" path="res://entities/player/shared/fludd/hover_spray.wav" id="10_8wyc1"]
@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://d0q4h02e1xlo6" path="res://entities/player/shared/push_rays.gd" id="35_g7d1t"]
 [ext_resource type="Script" uid="uid://ddr3ta4g2q457" path="res://entities/player/shared/player_movement.gd" id="37_quca3"]
 [ext_resource type="AudioStream" uid="uid://b0wlrkn5oy6gr" path="res://entities/player/shared/motion/SE_PM_SQUAT_WALK.wav" id="38_pxspy"]
-[ext_resource type="Script" path="res://entities/player/shared/states/player_state_manager.gd" id="38_vxs65"]
+[ext_resource type="Script" uid="uid://bgbnjn5g8yd7s" path="res://entities/player/shared/states/player_state_manager.gd" id="38_vxs65"]
 [ext_resource type="Script" uid="uid://cnhq3f60vcaka" path="res://entities/player/shared/areas/crouchlock.gd" id="39_n5dp2"]
 [ext_resource type="Script" uid="uid://rc6vjkye3g3v" path="res://entities/player/shared/states/submerged/swim_idle.gd" id="40_aeui7"]
 [ext_resource type="Script" uid="uid://nfqh6xlw3stl" path="res://entities/player/shared/states/dry/dry.gd" id="40_q8vpo"]
@@ -2325,8 +2325,8 @@ sprite_frames = SubResource("SpriteFrames_e1ut2")
 
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
-sprite_frames = ExtResource("2_ttikd")
-animation = &"idle"
+sprite_frames = ExtResource("4_xenv0")
+animation = &"wallslide"
 metadata/last_previewed = SubResource("Resource_cpqj3")
 
 [node name="FluddInfront" type="AnimatedSprite2D" parent="."]

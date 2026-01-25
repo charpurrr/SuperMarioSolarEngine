@@ -4,7 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://co7kk1h1rwbn6" path="res://stages/synth_stratum/synth_stratum.tscn" id="2_l4eid"]
 [ext_resource type="PackedScene" uid="uid://csf56lkxqqb12" path="res://ui/ui.tscn" id="3_pcjjq"]
 
-[node name="WorldMachine" type="Node2D"]
+[node name="WorldMachine" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_gcjeb")
 level_scene = ExtResource("2_l4eid")
 user_interface = ExtResource("3_pcjjq")

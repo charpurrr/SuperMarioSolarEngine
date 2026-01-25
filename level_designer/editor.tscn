@@ -370,6 +370,7 @@ shape = SubResource("RectangleShape2D_1gkqx")
 script = ExtResource("11_rylk5")
 
 [node name="WorldMachine" parent="." instance=ExtResource("13_hxrm3")]
+layout_mode = 0
 autoload = false
 
 [connection signal="selection_changed" from="UI" to="UI/Panels/OtherBars/OtherSides/RightSide/InspectorPanel" method="_on_ui_selection_changed"]

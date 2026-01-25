@@ -18,14 +18,14 @@ func _ready() -> void:
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_pressed(&"right"):
-		_d(1)
+		_scroll(1)
 	elif Input.is_action_pressed(&"left"):
-		_d(-1)
+		_scroll(-1)
 	else:
 		scroll_timer = 0
 
 
-func _d(difference: int):
+func _scroll(difference: int):
 	if scroll_timer == 0:
 		scroll_timer = scroll_hold_cooldown
 
