@@ -162,6 +162,8 @@ void fragment(){
 		float interference = random(sq_pix.yy + fract(TIME));
 		pos.x += (interference * (interference_amount + line * 6.0)) / VIEWPORT_SIZE.x;
 	}
+	
+	pos = clamp(pos, vec2(0), vec2(1));
 
 	vec3 clr = Tri(pos);
 	if(aberation_amount > 0.0){
