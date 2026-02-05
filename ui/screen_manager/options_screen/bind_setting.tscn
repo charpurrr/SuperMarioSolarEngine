@@ -1,6 +1,6 @@
-[gd_scene load_steps=51 format=3 uid="uid://q67oo8p20ee4"]
+[gd_scene format=3 uid="uid://q67oo8p20ee4"]
 
-[ext_resource type="Script" path="res://ui/screen_manager/options_screen/bind_setting.gd" id="1_uljy6"]
+[ext_resource type="Script" uid="uid://4w1vix0dxdyw" path="res://ui/screen_manager/options_screen/bind_setting.gd" id="1_uljy6"]
 [ext_resource type="Texture2D" uid="uid://b43ncxxo157ey" path="res://ui/screen_manager/options_screen/bind_textures/walk.png" id="2_kcias"]
 [ext_resource type="Texture2D" uid="uid://clkaky7laea8t" path="res://ui/screen_manager/options_screen/bind_textures/spin.png" id="2_yrwju"]
 [ext_resource type="Script" uid="uid://bya6u8daue8n2" path="res://util/custom_nodes/animated_texturerect.gd" id="3_2oskj"]
@@ -15,9 +15,13 @@
 
 [sub_resource type="InputEventMouseButton" id="InputEventMouseButton_kcias"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gfk4v"]
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_yrwju"]
+
+[sub_resource type="InputEventJoypadMotion" id="InputEventJoypadMotion_jr8fm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpnhd"]
 atlas = ExtResource("2_kcias")
-region = Rect2(144, 0, 48, 48)
+region = Rect2(336, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xxirp"]
 atlas = ExtResource("4_jr8fm")
@@ -143,6 +147,10 @@ region = Rect2(48, 0, 48, 48)
 atlas = ExtResource("2_kcias")
 region = Rect2(96, 0, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfk4v"]
+atlas = ExtResource("2_kcias")
+region = Rect2(144, 0, 48, 48)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_pvnyr"]
 atlas = ExtResource("2_kcias")
 region = Rect2(192, 0, 48, 48)
@@ -154,10 +162,6 @@ region = Rect2(240, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_x06mv"]
 atlas = ExtResource("2_kcias")
 region = Rect2(288, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jpnhd"]
-atlas = ExtResource("2_kcias")
-region = Rect2(336, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gtldd"]
 animations = [{
@@ -306,31 +310,32 @@ animations = [{
 [sub_resource type="LabelSettings" id="LabelSettings_xphw0"]
 font = ExtResource("4_frq67")
 
-[node name="BindSetting" type="HBoxContainer" node_paths=PackedStringArray("texture", "label", "bind_button")]
+[node name="BindSetting" type="HBoxContainer" unique_id=1622134022 node_paths=PackedStringArray("texture", "label", "bind_button")]
 custom_minimum_size = Vector2(0, 27)
 offset_right = 339.0
 offset_bottom = 27.0
 script = ExtResource("1_uljy6")
 p_action_name = &"right"
-p_parsable_events = Array[InputEvent]([SubResource("InputEventKey_kcias"), SubResource("InputEventMouseButton_kcias")])
+p_parsable_events = Array[InputEvent]([SubResource("InputEventKey_kcias"), SubResource("InputEventMouseButton_kcias"), SubResource("InputEventJoypadButton_yrwju"), SubResource("InputEventJoypadMotion_jr8fm")])
 vis_title = &"Move Right"
 vis_animation = &"walk"
 texture = NodePath("Icon")
 label = NodePath("Title")
 bind_button = NodePath("BindButton")
 
-[node name="Icon" type="TextureRect" parent="."]
+[node name="Icon" type="TextureRect" parent="." unique_id=1870414046]
 layout_mode = 2
-texture = SubResource("AtlasTexture_gfk4v")
+texture = SubResource("AtlasTexture_jpnhd")
 expand_mode = 3
 stretch_mode = 5
 script = ExtResource("3_2oskj")
 sprites = SubResource("SpriteFrames_gtldd")
 animation = &"walk"
+frame = 7
 autoplay = true
 playing = true
 
-[node name="Title" type="Label" parent="."]
+[node name="Title" type="Label" parent="." unique_id=287174001]
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -339,8 +344,8 @@ text = "Move Right"
 label_settings = SubResource("LabelSettings_xphw0")
 vertical_alignment = 1
 
-[node name="BindButton" parent="." instance=ExtResource("5_riwgi")]
+[node name="BindButton" parent="." unique_id=1015967796 instance=ExtResource("5_riwgi")]
 layout_mode = 2
 action_name = &"right"
-parsable_events = Array[InputEvent]([SubResource("InputEventKey_kcias"), SubResource("InputEventMouseButton_kcias")])
+parsable_events = Array[InputEvent]([SubResource("InputEventKey_kcias"), SubResource("InputEventMouseButton_kcias"), SubResource("InputEventJoypadButton_yrwju"), SubResource("InputEventJoypadMotion_jr8fm")])
 max_binds = 7

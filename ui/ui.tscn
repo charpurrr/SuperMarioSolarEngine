@@ -1457,29 +1457,6 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 
-[node name="Input" type="HBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" unique_id=167976418]
-layout_mode = 2
-
-[node name="Header" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/Input" unique_id=58040520]
-layout_mode = 2
-text = "Input Mode: "
-label_settings = SubResource("LabelSettings_xphw0")
-vertical_alignment = 1
-
-[node name="PresetSelector2" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/Input" unique_id=1085095838 instance=ExtResource("52_sk6td")]
-custom_minimum_size = Vector2(0, 27)
-layout_mode = 2
-selected = 0
-item_count = 1
-popup/item_0/text = "KEYBOARD + MOUSE"
-popup/item_0/id = 0
-
-[node name="Space3" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" unique_id=403984716]
-custom_minimum_size = Vector2(0, 2)
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.1
-
 [node name="BindSetting" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" unique_id=754586437 instance=ExtResource("49_svocp")]
 layout_mode = 2
 

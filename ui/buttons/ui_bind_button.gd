@@ -28,6 +28,9 @@ var timeout_timer: SceneTreeTimer
 ## (I.e. [InputEventKey], [InputEventJoypadButton], ...)
 var filtered_events: Array[InputEvent]
 
+## 
+var _suppress_setting_change: bool = false
+
 
 func _ready() -> void:
 	super()
@@ -48,7 +51,7 @@ func _ready() -> void:
 		var event: InputEvent = IconMap.get_associated_event(event_name)
 
 		if _is_valid_event(event):
-			_add_input(event, event_name, false)
+			_add_input(event, event_name)
 			_add_icon(event)
 
 
@@ -84,35 +87,41 @@ func _focus_changed() -> void:
 
 
 func _setting_changed(key: String, value: Variant) -> void:
-	if key == action_name:
-		_clear(false)
+	if _suppress_setting_change or key != action_name:
+		return
 
-		for event_name: String in value:
-			var event: InputEvent = IconMap.get_associated_event(event_name)
+	_clear(false)
 
-			if _is_valid_event(event):
-				_add_input(event, event_name, false)
-				_add_icon(event)
+	for event_name: String in value:
+		var event: InputEvent = IconMap.get_associated_event(event_name)
+
+		if _is_valid_event(event):
+			_add_input(event, event_name)
+			_add_icon(event)
 
 
 ## Adds the actual event to the project's [InputMap].
-func _add_input(event: InputEvent, event_name: String, change_setting: bool = true) -> void:
+func _add_input(event: InputEvent, event_name: String) -> void:
+	if bound_inputs.has(event_name):
+		return
+
 	bound_inputs.append(event_name)
 	filtered_events.append(event)
 
 	if not InputMap.action_has_event(action_name, event):
 		InputMap.action_add_event(action_name, event)
 
+	_commit_bindings()
+
+
+func _commit_bindings():
 	var event_to_string: PackedStringArray
 	for filtered_event in filtered_events:
 		event_to_string.append(IconMap.get_filtered_name(filtered_event))
 
-	if change_setting:
-		LocalSettings.change_setting(
-			"Bindings",
-			action_name,
-			event_to_string
-		)
+	_suppress_setting_change = true
+	LocalSettings.change_setting("Bindings", action_name, event_to_string)
+	_suppress_setting_change = false
 
 
 ## Adds the icon of the binding to the button.

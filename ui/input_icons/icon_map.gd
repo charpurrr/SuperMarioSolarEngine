@@ -11,9 +11,9 @@ static var event_map: Dictionary[int, InputEvent] = {}
 
 static func _static_init() -> void:
 	if event_map.is_empty():
-		for _event: InputEvent in icon_map.dictionary:
-			if _event != null:
-				event_map.set(_event.as_text().hash(), _event)
+		for event: InputEvent in icon_map.dictionary:
+			if event != null:
+				event_map.set(get_filtered_name(event).hash(), event)
 
 
 ## Returns the human-readable name of an InputEvent without any modifiers.
