@@ -25,6 +25,8 @@ static func get_filtered_name(event: InputEvent) -> String:
 		event_name = OS.get_keycode_string(event.keycode)
 	elif event is InputEventMouseButton:
 		event_name = event.as_text().rsplit("+", true, 1)[-1].replace(" (Double Click)", "")
+	elif event is InputEventMouseMotion:
+		event_name = "Mouse Motion"
 	elif event is InputEventJoypadButton:
 		event_name = _joypad_button_name(event.button_index)
 	elif event is InputEventJoypadMotion:

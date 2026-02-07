@@ -59,8 +59,10 @@ func _input(event: InputEvent) -> void:
 	if has_focus():
 		if Input.is_action_just_pressed(&"setting_reset"):
 			_reset_to_default()
+			avfx()
 		elif Input.is_action_just_pressed(&"setting_clear"):
 			_clear()
+			avfx()
 
 	if event is InputEventMouseMotion or not awaiting_input:
 		return

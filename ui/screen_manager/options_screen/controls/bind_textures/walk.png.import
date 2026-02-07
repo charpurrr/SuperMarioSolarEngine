@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn1fxfhftvvbu"
-path="res://.godot/imported/luigi.png-d340201a9c7d5954fbc4364ef6915046.ctex"
+uid="uid://b43ncxxo157ey"
+path="res://.godot/imported/walk.png-60be570d22db9114343d2cd25577fa7f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/screen_manager/options_screen/textures/luigi.png"
-dest_files=["res://.godot/imported/luigi.png-d340201a9c7d5954fbc4364ef6915046.ctex"]
+source_file="res://ui/screen_manager/options_screen/controls/bind_textures/walk.png"
+dest_files=["res://.godot/imported/walk.png-60be570d22db9114343d2cd25577fa7f.ctex"]
 
 [params]
 

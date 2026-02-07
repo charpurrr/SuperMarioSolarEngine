@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://q67oo8p20ee4"]
 
-[ext_resource type="Script" uid="uid://4w1vix0dxdyw" path="res://ui/screen_manager/options_screen/bind_setting.gd" id="1_uljy6"]
-[ext_resource type="Texture2D" uid="uid://b43ncxxo157ey" path="res://ui/screen_manager/options_screen/bind_textures/walk.png" id="2_kcias"]
-[ext_resource type="Texture2D" uid="uid://clkaky7laea8t" path="res://ui/screen_manager/options_screen/bind_textures/spin.png" id="2_yrwju"]
+[ext_resource type="Script" uid="uid://4w1vix0dxdyw" path="res://ui/screen_manager/options_screen/controls/bind_setting.gd" id="1_uljy6"]
+[ext_resource type="Texture2D" uid="uid://b43ncxxo157ey" path="res://ui/screen_manager/options_screen/controls/bind_textures/walk.png" id="2_kcias"]
+[ext_resource type="Texture2D" uid="uid://clkaky7laea8t" path="res://ui/screen_manager/options_screen/controls/bind_textures/spin.png" id="2_yrwju"]
 [ext_resource type="Script" uid="uid://bya6u8daue8n2" path="res://util/custom_nodes/animated_texturerect.gd" id="3_2oskj"]
 [ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="4_frq67"]
-[ext_resource type="Texture2D" uid="uid://xxmu5yfk52i3" path="res://ui/screen_manager/options_screen/bind_textures/dive.png" id="4_jr8fm"]
-[ext_resource type="Texture2D" uid="uid://sf0yh5h3cau1" path="res://ui/screen_manager/options_screen/bind_textures/swim.png" id="4_kcias"]
-[ext_resource type="Texture2D" uid="uid://c5q27f03xn1l" path="res://ui/screen_manager/options_screen/bind_textures/gp.png" id="5_msyx8"]
+[ext_resource type="Texture2D" uid="uid://xxmu5yfk52i3" path="res://ui/screen_manager/options_screen/controls/bind_textures/dive.png" id="4_jr8fm"]
+[ext_resource type="Texture2D" uid="uid://sf0yh5h3cau1" path="res://ui/screen_manager/options_screen/controls/bind_textures/swim.png" id="4_kcias"]
+[ext_resource type="Texture2D" uid="uid://c5q27f03xn1l" path="res://ui/screen_manager/options_screen/controls/bind_textures/gp.png" id="5_msyx8"]
 [ext_resource type="PackedScene" uid="uid://dd4exd7vseqoc" path="res://ui/buttons/ui_bind_button.tscn" id="5_riwgi"]
-[ext_resource type="Texture2D" uid="uid://6a0c5migwbfn" path="res://ui/screen_manager/options_screen/bind_textures/jump.png" id="6_5cywf"]
+[ext_resource type="Texture2D" uid="uid://6a0c5migwbfn" path="res://ui/screen_manager/options_screen/controls/bind_textures/jump.png" id="6_5cywf"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_kcias"]
 
@@ -19,9 +19,9 @@
 
 [sub_resource type="InputEventJoypadMotion" id="InputEventJoypadMotion_jr8fm"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jpnhd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfk4v"]
 atlas = ExtResource("2_kcias")
-region = Rect2(336, 0, 48, 48)
+region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xxirp"]
 atlas = ExtResource("4_jr8fm")
@@ -147,10 +147,6 @@ region = Rect2(48, 0, 48, 48)
 atlas = ExtResource("2_kcias")
 region = Rect2(96, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gfk4v"]
-atlas = ExtResource("2_kcias")
-region = Rect2(144, 0, 48, 48)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_pvnyr"]
 atlas = ExtResource("2_kcias")
 region = Rect2(192, 0, 48, 48)
@@ -162,6 +158,10 @@ region = Rect2(240, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_x06mv"]
 atlas = ExtResource("2_kcias")
 region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpnhd"]
+atlas = ExtResource("2_kcias")
+region = Rect2(336, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gtldd"]
 animations = [{
@@ -325,13 +325,13 @@ bind_button = NodePath("BindButton")
 
 [node name="Icon" type="TextureRect" parent="." unique_id=1870414046]
 layout_mode = 2
-texture = SubResource("AtlasTexture_jpnhd")
+texture = SubResource("AtlasTexture_gfk4v")
 expand_mode = 3
 stretch_mode = 5
 script = ExtResource("3_2oskj")
 sprites = SubResource("SpriteFrames_gtldd")
 animation = &"walk"
-frame = 7
+frame = 3
 autoplay = true
 playing = true
 

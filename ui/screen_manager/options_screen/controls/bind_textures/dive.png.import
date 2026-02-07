@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://xxmu5yfk52i3"
-path="res://.godot/imported/dive.png-1a967c8e246c01645b374c269b5ecbe7.ctex"
+path="res://.godot/imported/dive.png-fd50f2128e7f03370f3f1b2fe77da8a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/screen_manager/options_screen/bind_textures/dive.png"
-dest_files=["res://.godot/imported/dive.png-1a967c8e246c01645b374c269b5ecbe7.ctex"]
+source_file="res://ui/screen_manager/options_screen/controls/bind_textures/dive.png"
+dest_files=["res://.godot/imported/dive.png-fd50f2128e7f03370f3f1b2fe77da8a9.ctex"]
 
 [params]
 

@@ -1,11 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://puhluie3m3cp"]
+[gd_scene format=3 uid="uid://puhluie3m3cp"]
 
-[ext_resource type="Script" uid="uid://dhqvnyonyvm3" path="res://ui/screen_manager/options_screen/volume_setting.gd" id="1_8m8no"]
+[ext_resource type="Script" uid="uid://dhqvnyonyvm3" path="res://ui/screen_manager/options_screen/sound/volume_setting.gd" id="1_8m8no"]
 [ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="1_udgn8"]
 [ext_resource type="PackedScene" uid="uid://bb6wf0meej6ox" path="res://ui/buttons/ui_button.tscn" id="2_8m8no"]
 [ext_resource type="Texture2D" uid="uid://c8kahcqao7t20" path="res://ui/screen_manager/pause_screen/textures/reset.png" id="3_ht11o"]
 [ext_resource type="PackedScene" uid="uid://nufgv8gspxs3" path="res://ui/buttons/ui_slider.tscn" id="4_ys8q8"]
-[ext_resource type="Script" uid="uid://mx34yawkolyp" path="res://ui/screen_manager/options_screen/volume_slider.gd" id="6_ht11o"]
+[ext_resource type="Script" uid="uid://mx34yawkolyp" path="res://ui/screen_manager/options_screen/sound/volume_slider.gd" id="6_ht11o"]
 [ext_resource type="FontFile" uid="uid://e821cxxeybxh" path="res://ui/fonts/mario_sunshine.ttf" id="7_ys8q8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xphw0"]

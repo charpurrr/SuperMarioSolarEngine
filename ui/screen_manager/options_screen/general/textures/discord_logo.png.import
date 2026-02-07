@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clkaky7laea8t"
-path="res://.godot/imported/spin.png-2bebd4d35b4c60afb76f5496c77cddd0.ctex"
+uid="uid://deall6ilfyenc"
+path="res://.godot/imported/discord_logo.png-9643f876dc31365cc96a9d614f82eca5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/screen_manager/options_screen/bind_textures/spin.png"
-dest_files=["res://.godot/imported/spin.png-2bebd4d35b4c60afb76f5496c77cddd0.ctex"]
+source_file="res://ui/screen_manager/options_screen/general/textures/discord_logo.png"
+dest_files=["res://.godot/imported/discord_logo.png-9643f876dc31365cc96a9d614f82eca5.ctex"]
 
 [params]
 
