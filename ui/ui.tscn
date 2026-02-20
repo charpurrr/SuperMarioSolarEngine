@@ -47,6 +47,8 @@
 [ext_resource type="Texture2D" uid="uid://bhvukbqm4v5f3" path="res://ui/input_icons/nintendo_switch/controller_switch_rumble.svg" id="49_lol4u"]
 [ext_resource type="PackedScene" uid="uid://q67oo8p20ee4" path="res://ui/screen_manager/options_screen/controls/bind_setting.tscn" id="49_svocp"]
 [ext_resource type="Theme" uid="uid://blj83dty2taxs" path="res://ui/buttons/scrollbar.tres" id="50_5i7o0"]
+[ext_resource type="SyntaxHighlighter" uid="uid://caviijwsp8wjw" path="res://ui/screen_manager/options_screen/data/settings_highlighter.tres" id="51_q1vx3"]
+[ext_resource type="Script" uid="uid://omsf7uvmpj3q" path="res://ui/screen_manager/options_screen/data/data_peek.gd" id="52_q1vx3"]
 [ext_resource type="PackedScene" uid="uid://b08q042unmcxf" path="res://ui/buttons/ui_selector.tscn" id="52_sk6td"]
 [ext_resource type="PackedScene" uid="uid://puhluie3m3cp" path="res://ui/screen_manager/options_screen/sound/volume_setting.tscn" id="53_i1icy"]
 [ext_resource type="Texture2D" uid="uid://356g6gk2u4lq" path="res://ui/input_icons/nintendo_switch/switch_button_r.svg" id="54_lxqsa"]
@@ -1674,7 +1676,44 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 
+[node name="DataPeek" type="CodeEdit" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data" unique_id=1588917684]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("34_jyo83")
+text = "[Section]
+
+setting_3=1.0
+setting_4=\"string\"
+setting_5=true
+setting_2=PackedStringArray(\"A\", \"B\", \"C\")
+
+[Section 2]
+d
+d
+d
+d
+d
+d
+d
+d
+d
+d"
+scroll_smooth = true
+minimap_draw = true
+syntax_highlighter = ExtResource("51_q1vx3")
+highlight_all_occurrences = true
+highlight_current_line = true
+draw_tabs = true
+draw_spaces = true
+gutters_draw_line_numbers = true
+gutters_zero_pad_line_numbers = true
+gutters_line_numbers_min_digits = 1
+auto_brace_completion_enabled = true
+auto_brace_completion_highlight_matching = true
+script = ExtResource("52_q1vx3")
+
 [node name="Panel" type="Panel" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data" unique_id=1269393658]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_n7xk5")

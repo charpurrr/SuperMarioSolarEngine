@@ -60,6 +60,12 @@ func _process(_delta):
 
 
 func _input(event: InputEvent):
+	if event.is_action_pressed(&"pause"):
+		_pause_logic()
+
+	if GameState.is_paused():
+		return
+
 	if (
 		(event.is_action_pressed(&"camera_zoom_in") and camera.target_zoom != camera.zoom_min) or
 		(event.is_action_pressed(&"camera_zoom_out") and camera.target_zoom != camera.zoom_max)
@@ -70,9 +76,6 @@ func _input(event: InputEvent):
 	if event.is_action_pressed(&"toggle_hud"):
 		get_tree().call_group(&"HUD", &"hide" if hud_enabled else &"show")
 		hud_enabled = !hud_enabled
-
-	if event.is_action_pressed(&"pause"):
-		_pause_logic()
 
 	_display_input(event)
 
