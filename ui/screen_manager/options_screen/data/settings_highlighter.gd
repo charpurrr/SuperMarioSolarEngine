@@ -30,26 +30,25 @@ func _get_line_syntax_highlighting(line: int) -> Dictionary:
 		result.set(0, {"color": setting_color})
 		result.set(equals_idx, {"color": symbol_color})
 
-		if value_str.contains('(') or value_str.contains('[') or value_str.contains('{'):
-			result.merge(_get_colors_of_function(equals_idx + 1, value_str))
-		else:
-			result.set(equals_idx + 1, {"color": _get_color_of_type(value_str)})
+		result.merge(_get_color_of_type(equals_idx + 1, value_str))
 
 	return result
 
 
-func _get_color_of_type(value: String) -> Color:
-	if value.is_valid_float() or value.is_valid_hex_number(true):
-		return number_color
+func _get_color_of_type(start_idx: int, value: String) -> Dictionary[int, Dictionary]:
+	if value.contains('(') or value.contains('[') or value.contains('{'):
+		return _get_colors_of_function(start_idx, value)
+	elif value.is_valid_float() or value.is_valid_hex_number(true):
+		return {start_idx: {"color": number_color}}
 	elif value == "true" or value == "false":
-		return boolean_color
+		return {start_idx: {"color": boolean_color}}
 	elif value.begins_with("\"") and value.ends_with("\""):
-		return string_color
+		return {start_idx: {"color": string_color}}
 	elif value.begins_with("&\"") and value.ends_with("\""):
-		return string_name_color
+		return {start_idx: {"color": string_name_color}}
  
-	# Default
-	return Color.WHITE
+	# Default (error)
+	return {start_idx: {"color": Color.RED}}
 
 
 func _get_colors_of_function(start_idx: int, raw_value: String) -> Dictionary[int, Dictionary]:
@@ -81,7 +80,7 @@ func _get_colors_of_function(start_idx: int, raw_value: String) -> Dictionary[in
 		var comma_idx: int = entry_idx + entry_str.length()
 
 		# func(<<<param_1>>>, <<<param_2>>>)
-		result.set(entry_idx, {"color": _get_color_of_type(entry_str)})
+		result.merge(_get_color_of_type(entry_idx, entry_str))
 
 		# func(param_1 <<<,>>> param_2)
 		if raw_value[comma_idx - start_idx] == ',':
