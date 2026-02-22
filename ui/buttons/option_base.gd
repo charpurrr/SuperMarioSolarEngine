@@ -5,8 +5,11 @@ extends UIButton
 
 var setting: String:
 	set(val):
-		var key := val.get_slice("/", 1)
+		section = val.get_slice("/", 0)
+		var key: String = val.get_slice("/", 1)
 		setting = key
+
+var section: String
 
 ## Variant typed so extended classes can set their own type.
 var value: Variant = false
@@ -27,6 +30,12 @@ func _ready():
 	update_value(setting, saved_val)
 
 
+func _unhandled_input(_event: InputEvent) -> void:
+	if has_focus() and Input.is_action_just_pressed("setting_reset"):
+		LocalSettings.change_setting(section, setting, LocalSettings.defaults.get(setting))
+		avfx()
+
+
 func update_value(key: String, new_value: Variant = null):
 	# If the entered key doesn't relate to the button running this code
 	if key != setting:
@@ -42,7 +51,7 @@ func change_setting(new_value):
 		return
 
 	LocalSettings.change_setting(
-		LocalSettings.get_section(setting),
+		section,
 		setting,
 		new_value
 	)
@@ -54,9 +63,9 @@ func _get_property_list() -> Array[Dictionary]:
 
 	var all_keys: PackedStringArray = []
 
-	for section in LocalSettings.settings:
-		for key in LocalSettings.settings[section]:
-			all_keys.append("%s/%s" % [section, key])
+	for sec in LocalSettings.settings:
+		for key in LocalSettings.settings[sec]:
+			all_keys.append("%s/%s" % [sec, key])
 
 	return [
 		{

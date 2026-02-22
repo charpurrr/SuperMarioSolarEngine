@@ -51,11 +51,16 @@
 [ext_resource type="Script" uid="uid://omsf7uvmpj3q" path="res://ui/screen_manager/options_screen/data/data_peek.gd" id="52_q1vx3"]
 [ext_resource type="PackedScene" uid="uid://b08q042unmcxf" path="res://ui/buttons/ui_selector.tscn" id="52_sk6td"]
 [ext_resource type="PackedScene" uid="uid://puhluie3m3cp" path="res://ui/screen_manager/options_screen/sound/volume_setting.tscn" id="53_i1icy"]
+[ext_resource type="Texture2D" uid="uid://c125fwk30fu0" path="res://ui/input_icons/keyboard_mouse/keyboard_escape.svg" id="54_6apma"]
 [ext_resource type="Texture2D" uid="uid://356g6gk2u4lq" path="res://ui/input_icons/nintendo_switch/switch_button_r.svg" id="54_lxqsa"]
 [ext_resource type="Texture2D" uid="uid://y343nq5v4ud5" path="res://ui/input_icons/nintendo_switch/switch_button_b.svg" id="55_qillv"]
-[ext_resource type="Texture2D" uid="uid://c5dbwjmvnh6p1" path="res://ui/input_icons/nintendo_switch/switch_stick_l.svg" id="56_7h42w"]
+[ext_resource type="Texture2D" uid="uid://bqjtwa8tc2b0h" path="res://ui/input_icons/keyboard_mouse/keyboard_enter.svg" id="56_mvot7"]
+[ext_resource type="Texture2D" uid="uid://dq5pu8koelu4u" path="res://ui/input_icons/nintendo_switch/switch_button_a.svg" id="57_aeygf"]
 [ext_resource type="Texture2D" uid="uid://c8t2udtmy6oac" path="res://ui/input_icons/nintendo_switch/switch_button_x.svg" id="57_h5v5y"]
 [ext_resource type="Script" uid="uid://bwn84qudsrcg4" path="res://ui/screen_manager/options_screen/data/data_tab.gd" id="57_y28h8"]
+[ext_resource type="Texture2D" uid="uid://duwkwt771mmf3" path="res://ui/input_icons/keyboard_mouse/keyboard_backspace_icon.svg" id="58_m3cpd"]
+[ext_resource type="Texture2D" uid="uid://40c63r8ke4mj" path="res://ui/input_icons/keyboard_mouse/keyboard_delete.svg" id="58_mvot7"]
+[ext_resource type="Texture2D" uid="uid://c0y7k7pos5e3e" path="res://ui/input_icons/nintendo_switch/switch_button_y.svg" id="59_y28h8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j6vdi"]
 shader = ExtResource("5_yrl65")
@@ -504,6 +509,12 @@ func _process(_delta: float) -> void:
 		audio_output_list_changed.emit()
 
 
+func _unhandled_input(_event: InputEvent) -> void:
+	if has_focus() and Input.is_action_just_pressed(\"setting_reset\"):
+		LocalSettings.change_setting(\"Audio\", \"device\", LocalSettings.defaults.get(\"device\"))
+		avfx()
+
+
 func _update_speaker_label():
 	var speaker_mode_text: String
 	var speaker_mode = AudioServer.get_speaker_mode()
@@ -563,7 +574,8 @@ anti_aliasing = false
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gdkor"]
 bg_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r0xoq"]
+[sub_resource type="LabelSettings" id="LabelSettings_n7xk5"]
+font = ExtResource("34_jyo83")
 
 [node name="UI" type="CanvasLayer" unique_id=393817163 node_paths=PackedStringArray("life_meter", "screen_manager", "color_blur", "zoom_blur_player", "notif_list", "debug", "debug_label", "input_display")]
 process_mode = 3
@@ -1106,7 +1118,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.2
 
-[node name="OptionsScreen" type="VBoxContainer" parent="ScreenManager" unique_id=1039564080 node_paths=PackedStringArray("focus_grabber")]
+[node name="OptionsScreen" type="VBoxContainer" parent="ScreenManager" unique_id=1039564080 node_paths=PackedStringArray("clear_controls", "focus_grabber")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -1118,6 +1130,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 script = ExtResource("42_emp4r")
+clear_controls = NodePath("Footer/Content/ClearControls")
 open_sfx = ExtResource("43_votwh")
 close_sfx = ExtResource("3_cb22p")
 open_anim = &"options_peek"
@@ -1189,7 +1202,7 @@ theme_override_font_sizes/font_size = 16
 theme_override_styles/panel = SubResource("StyleBoxEmpty_q1vx3")
 theme_override_styles/tab_selected = SubResource("StyleBoxFlat_m3cpd")
 tab_alignment = 1
-current_tab = 4
+current_tab = 2
 tab_focus_mode = 0
 
 [node name="General" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs" unique_id=1400883172 node_paths=PackedStringArray("fps_cap_button")]
@@ -1524,7 +1537,6 @@ layout_mode = 2
 size_flags_stretch_ratio = 0.1
 
 [node name="Sound" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs" unique_id=2093018172]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -1642,6 +1654,7 @@ layout_mode = 2
 metadata/_tab_index = 3
 
 [node name="Data" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs" unique_id=844587460]
+visible = false
 layout_mode = 2
 script = ExtResource("57_y28h8")
 metadata/_tab_index = 4
@@ -1776,46 +1789,103 @@ offset_right = -4.0
 offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 16
 
-[node name="Return" type="Button" parent="ScreenManager/OptionsScreen/Footer/Content" unique_id=586727316]
-custom_minimum_size = Vector2(80, 0)
+[node name="ReturnControls" type="HBoxContainer" parent="ScreenManager/OptionsScreen/Footer/Content" unique_id=1810299968]
 layout_mode = 2
-focus_mode = 0
-theme_override_colors/icon_normal_color = Color(0.486275, 0, 0.4, 1)
-theme_override_fonts/font = ExtResource("34_jyo83")
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxEmpty_r0xoq")
+
+[node name="TextureRect2" type="TextureRect" parent="ScreenManager/OptionsScreen/Footer/Content/ReturnControls" unique_id=101750792]
+layout_mode = 2
+texture = ExtResource("54_6apma")
+expand_mode = 3
+
+[node name="Label2" type="Label" parent="ScreenManager/OptionsScreen/Footer/Content/ReturnControls" unique_id=186374945]
+layout_mode = 2
+text = "/"
+label_settings = SubResource("LabelSettings_n7xk5")
+
+[node name="TextureRect" type="TextureRect" parent="ScreenManager/OptionsScreen/Footer/Content/ReturnControls" unique_id=1283061223]
+layout_mode = 2
+texture = ExtResource("55_qillv")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="ScreenManager/OptionsScreen/Footer/Content/ReturnControls" unique_id=26674880]
+layout_mode = 2
 text = "Return"
-icon = ExtResource("55_qillv")
-expand_icon = true
+label_settings = SubResource("LabelSettings_n7xk5")
 
-[node name="Select" type="Button" parent="ScreenManager/OptionsScreen/Footer/Content" unique_id=1681622438]
-custom_minimum_size = Vector2(80, 0)
+[node name="SelectControls" type="HBoxContainer" parent="ScreenManager/OptionsScreen/Footer/Content" unique_id=1913252415]
 layout_mode = 2
-focus_mode = 0
-theme_override_colors/icon_normal_color = Color(0.486275, 0, 0.4, 1)
-theme_override_fonts/font = ExtResource("34_jyo83")
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxEmpty_r0xoq")
+
+[node name="TextureRect2" type="TextureRect" parent="ScreenManager/OptionsScreen/Footer/Content/SelectControls" unique_id=134152638]
+layout_mode = 2
+texture = ExtResource("56_mvot7")
+expand_mode = 3
+
+[node name="Label2" type="Label" parent="ScreenManager/OptionsScreen/Footer/Content/SelectControls" unique_id=1752400120]
+layout_mode = 2
+text = "/"
+label_settings = SubResource("LabelSettings_n7xk5")
+
+[node name="TextureRect" type="TextureRect" parent="ScreenManager/OptionsScreen/Footer/Content/SelectControls" unique_id=189225266]
+layout_mode = 2
+texture = ExtResource("57_aeygf")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="ScreenManager/OptionsScreen/Footer/Content/SelectControls" unique_id=69632103]
+layout_mode = 2
 text = "Select"
-icon = ExtResource("56_7h42w")
-expand_icon = true
+label_settings = SubResource("LabelSettings_n7xk5")
 
 [node name="Control" type="Control" parent="ScreenManager/OptionsScreen/Footer/Content" unique_id=238163801]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Reset" type="Button" parent="ScreenManager/OptionsScreen/Footer/Content" unique_id=2023880530]
-custom_minimum_size = Vector2(160, 0)
+[node name="ClearControls" type="HBoxContainer" parent="ScreenManager/OptionsScreen/Footer/Content" unique_id=1632523163]
 layout_mode = 2
-focus_mode = 0
-theme_override_colors/icon_normal_color = Color(0.486275, 0, 0.4, 1)
-theme_override_fonts/font = ExtResource("34_jyo83")
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxEmpty_r0xoq")
-text = "Reset to Default"
-icon = ExtResource("57_h5v5y")
-expand_icon = true
+
+[node name="TextureRect2" type="TextureRect" parent="ScreenManager/OptionsScreen/Footer/Content/ClearControls" unique_id=1448375687]
+layout_mode = 2
+texture = ExtResource("58_mvot7")
+expand_mode = 3
+
+[node name="Label2" type="Label" parent="ScreenManager/OptionsScreen/Footer/Content/ClearControls" unique_id=617365953]
+layout_mode = 2
+text = "/"
+label_settings = SubResource("LabelSettings_n7xk5")
+
+[node name="TextureRect" type="TextureRect" parent="ScreenManager/OptionsScreen/Footer/Content/ClearControls" unique_id=279588054]
+layout_mode = 2
+texture = ExtResource("59_y28h8")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="ScreenManager/OptionsScreen/Footer/Content/ClearControls" unique_id=1691037991]
+layout_mode = 2
+text = "Clear"
+label_settings = SubResource("LabelSettings_n7xk5")
+
+[node name="ResetControls" type="HBoxContainer" parent="ScreenManager/OptionsScreen/Footer/Content" unique_id=1892145468]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="ScreenManager/OptionsScreen/Footer/Content/ResetControls" unique_id=11150088]
+layout_mode = 2
+texture = ExtResource("58_m3cpd")
+expand_mode = 3
+
+[node name="Label2" type="Label" parent="ScreenManager/OptionsScreen/Footer/Content/ResetControls" unique_id=892248310]
+layout_mode = 2
+text = "/"
+label_settings = SubResource("LabelSettings_n7xk5")
+
+[node name="TextureRect" type="TextureRect" parent="ScreenManager/OptionsScreen/Footer/Content/ResetControls" unique_id=1012970802]
+layout_mode = 2
+texture = ExtResource("57_h5v5y")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="ScreenManager/OptionsScreen/Footer/Content/ResetControls" unique_id=1959093361]
+layout_mode = 2
+text = "Reset"
+label_settings = SubResource("LabelSettings_n7xk5")
 
 [node name="Notifications" type="Node" parent="." unique_id=2060452021]
 
