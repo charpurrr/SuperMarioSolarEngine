@@ -11,6 +11,7 @@ extends SyntaxHighlighter
 @export var boolean_color: Color
 @export var string_color: Color
 @export var string_name_color: Color
+@export var critical_error_color: Color
 
 
 func _get_line_syntax_highlighting(line: int) -> Dictionary:

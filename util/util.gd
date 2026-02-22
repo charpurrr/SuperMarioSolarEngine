@@ -15,7 +15,7 @@ static func set_cursor_to_default():
 	)
 
 
-static func get_default_events(action: String, as_strings: bool = false) -> Array:
+static func get_default_events(action: String, as_strings: bool = false) -> Variant:
 	var action_path: String = "input/" + action
 	var action_data: Dictionary = ProjectSettings.get(action_path)
 

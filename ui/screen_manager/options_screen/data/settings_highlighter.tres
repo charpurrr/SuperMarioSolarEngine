@@ -12,4 +12,5 @@ number_color = Color(0.25882354, 1, 0.7607843, 1)
 boolean_color = Color(1, 0.4392157, 0.5176471, 1)
 string_color = Color(1, 0.92941177, 0.6313726, 1)
 string_name_color = Color(1, 0.7607843, 0.6509804, 1)
+critical_error_color = Color(0.76862746, 0.34901962, 0.34901962, 1)
 metadata/_custom_type_script = "uid://chowmypbcyrmx"

@@ -124,7 +124,13 @@ func get_section(setting: String):
 ## Sets all settings back to their default values.
 func reset_settings() -> void:
 	for section in config.get_sections():
+		if section not in settings.keys():
+			config.erase_section(section)
+
 		for key in config.get_section_keys(section):
+			if key not in defaults.keys():
+				config.erase_section_key(section, key)
+
 			# Only reset if there's a default value to reset to.
 			if defaults.has(key):
 				change_setting(section, key, defaults.get(key))
