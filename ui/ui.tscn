@@ -1202,11 +1202,10 @@ theme_override_font_sizes/font_size = 16
 theme_override_styles/panel = SubResource("StyleBoxEmpty_q1vx3")
 theme_override_styles/tab_selected = SubResource("StyleBoxFlat_m3cpd")
 tab_alignment = 1
-current_tab = 2
+current_tab = 0
 tab_focus_mode = 0
 
 [node name="General" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs" unique_id=1400883172 node_paths=PackedStringArray("fps_cap_button")]
-visible = false
 layout_mode = 2
 script = ExtResource("47_mvot7")
 fps_cap_button = NodePath("ScrollContainer/Content/TopButtons/FPS/SelectorButton")
@@ -1252,7 +1251,7 @@ layout_mode = 2
 layout_mode = 2
 text = "OFF"
 script = ExtResource("47_t7euy")
-setting = "v_sync"
+setting = "General - v_sync"
 
 [node name="FPS" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons" unique_id=2093886096]
 layout_mode = 2
@@ -1274,7 +1273,7 @@ layout_mode = 2
 text = "60 FPS"
 script = ExtResource("45_23m8v")
 options = Array[StringName]([&"OFF", &"30 FPS", &"60 FPS", &"120 FPS"])
-setting = "fps_cap"
+setting = "General - fps_cap"
 
 [node name="Quality" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons" unique_id=236672133]
 layout_mode = 2
@@ -1296,7 +1295,7 @@ layout_mode = 2
 text = "HIGH"
 script = ExtResource("45_23m8v")
 options = Array[StringName]([&"HIGH", &"LOW", &"MEDIUM"])
-setting = "quality"
+setting = "General - quality"
 
 [node name="MiddleButtons" type="HBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content" unique_id=871884779]
 layout_mode = 2
@@ -1332,7 +1331,7 @@ layout_mode = 2
 layout_mode = 2
 text = "ON"
 script = ExtResource("47_t7euy")
-setting = "rich_presence"
+setting = "General - rich_presence"
 
 [node name="Window" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/MiddleButtons" unique_id=1169009786]
 layout_mode = 2
@@ -1354,7 +1353,7 @@ layout_mode = 2
 text = "x1 SCALE"
 script = ExtResource("45_23m8v")
 options = Array[StringName]([&"x1 SCALE", &"x2 SCALE", &"x3 SCALE", &"FULLSCREEN"])
-setting = "scale"
+setting = "General - scale"
 
 [node name="BottomButtons" type="HBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content" unique_id=431223058]
 layout_mode = 2
@@ -1390,7 +1389,7 @@ layout_mode = 2
 layout_mode = 2
 text = "OFF"
 script = ExtResource("47_t7euy")
-setting = "motion_controls"
+setting = "General - motion_controls"
 
 [node name="RumbleStrength" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/BottomButtons" unique_id=1854420787]
 layout_mode = 2
@@ -1423,7 +1422,7 @@ layout_mode = 2
 text = "HIGH"
 script = ExtResource("45_23m8v")
 options = Array[StringName]([&"OFF", &"LOW", &"MEDIUM", &"HIGH"])
-setting = "rumble_strength"
+setting = "General - rumble_strength"
 
 [node name="Controls" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs" unique_id=1709646911]
 visible = false
@@ -1537,6 +1536,7 @@ layout_mode = 2
 size_flags_stretch_ratio = 0.1
 
 [node name="Sound" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs" unique_id=2093018172]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 

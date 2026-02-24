@@ -5,11 +5,13 @@ extends UIButton
 
 var setting: String:
 	set(val):
-		section = val.get_slice("/", 0)
-		var key: String = val.get_slice("/", 1)
-		setting = key
+		setting = val
+
+		section = val.get_slice(" - ", 0)
+		key = val.get_slice(" - ", 1)
 
 var section: String
+var key: String
 
 ## Variant typed so extended classes can set their own type.
 var value: Variant = false
@@ -24,21 +26,18 @@ func _ready():
 	LocalSettings.connect(&"setting_changed", update_value)
 
 	# Initialise button
-	var saved_val: Variant = LocalSettings.load_setting(
-		LocalSettings.get_section(setting), setting
-	)
-	update_value(setting, saved_val)
+	var saved_val: Variant = LocalSettings.load_setting(section, key)
+	update_value(key, saved_val)
 
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if has_focus() and Input.is_action_just_pressed("setting_reset"):
-		LocalSettings.change_setting(section, setting, LocalSettings.defaults.get(setting))
+		LocalSettings.change_setting(section, key, LocalSettings.defaults.get(key))
 		avfx()
 
 
-func update_value(key: String, new_value: Variant = null):
-	# If the entered key doesn't relate to the button running this code
-	if key != setting:
+func update_value(changed_key: String, new_value: Variant = null):
+	if changed_key != key:
 		return
 
 	value = new_value
@@ -50,11 +49,7 @@ func change_setting(new_value):
 	if setting.is_empty():
 		return
 
-	LocalSettings.change_setting(
-		section,
-		setting,
-		new_value
-	)
+	LocalSettings.change_setting(section, key, new_value)
 
 
 func _get_property_list() -> Array[Dictionary]:
@@ -64,8 +59,8 @@ func _get_property_list() -> Array[Dictionary]:
 	var all_keys: PackedStringArray = []
 
 	for sec in LocalSettings.settings:
-		for key in LocalSettings.settings[sec]:
-			all_keys.append("%s/%s" % [sec, key])
+		for k in LocalSettings.settings[sec]:
+			all_keys.append("%s - %s" % [sec, k])
 
 	return [
 		{
