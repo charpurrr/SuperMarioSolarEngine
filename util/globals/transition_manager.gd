@@ -10,6 +10,8 @@ signal ready_for_load_in
 
 ## The [KeyScene] we are transitioning from.
 var current_key_screen
+## Whether or not the TransitionManager is currently in a transition.
+var transitioning: bool = false
 
 
 ## Plays a transition effect and loads in a new scene.
@@ -21,6 +23,9 @@ func transition_scene(
 		color = Color.BLACK,
 		speed_scale = 1.0
 	) -> void:
+	if transitioning: return
+	transitioning = true
+
 	assert(ResourceLoader.exists(new_scene_uid), "Given scene doesn't exist!")
 
 	scene_transition.start_transition(
@@ -45,6 +50,9 @@ func transition_scene(
 	await ready_for_load_in
 	scene_transition.ready_for_second_half.emit()
 
+	await scene_transition.from_trans_finished
+	transitioning = false
+
 
 ## Plays a transition effect without changing scenes.
 func transition_local(
@@ -53,6 +61,9 @@ func transition_local(
 		color = Color.BLACK,
 		speed_scale = 1.0
 	) -> void:
+	if transitioning: return
+	transitioning = true
+
 	scene_transition.start_transition(
 		start_overlay,
 		end_overlay,
@@ -63,6 +74,9 @@ func transition_local(
 	await scene_transition.to_trans_finished
 	await ready_for_load_in
 	scene_transition.ready_for_second_half.emit()
+
+	await scene_transition.from_trans_finished
+	transitioning = false
 
 
 func greenlight_load_in() -> void:

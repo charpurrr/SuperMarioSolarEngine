@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://hott1qcj6hk"]
+[gd_scene format=3 uid="uid://hott1qcj6hk"]
 
 [ext_resource type="FontFile" uid="uid://e821cxxeybxh" path="res://ui/fonts/mario_sunshine.ttf" id="1_akfdm"]
 [ext_resource type="Script" uid="uid://cbwg2ki8ycmo5" path="res://ui/mission_select/mission_select.gd" id="1_htlb4"]
@@ -16,9 +16,9 @@ colors = PackedColorArray(0, 0, 0.439216, 1, 0, 1, 0.596078, 1)
 gradient = SubResource("Gradient_vmnes")
 fill_to = Vector2(1, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ef0oo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7h1r"]
 atlas = ExtResource("4_vmnes")
-region = Rect2(224, 0, 32, 32)
+region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8tod2"]
 atlas = ExtResource("4_vmnes")
@@ -36,10 +36,6 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("4_vmnes")
 region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k7h1r"]
-atlas = ExtResource("4_vmnes")
-region = Rect2(128, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_8pcnw"]
 atlas = ExtResource("4_vmnes")
 region = Rect2(160, 0, 32, 32)
@@ -47,6 +43,10 @@ region = Rect2(160, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_psysn"]
 atlas = ExtResource("4_vmnes")
 region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ef0oo"]
+atlas = ExtResource("4_vmnes")
+region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kylom"]
 atlas = ExtResource("4_vmnes")
@@ -187,7 +187,7 @@ shadow_size = 10
 shadow_color = Color(0, 0, 0, 0.25098)
 shadow_offset = Vector2(3, 3)
 
-[node name="MissionSelect" type="TextureRect"]
+[node name="MissionSelect" type="TextureRect" unique_id=747437769]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -198,7 +198,7 @@ script = ExtResource("1_htlb4")
 startup_sound = ExtResource("2_ulxry")
 wm_scene = "uid://bite6o37o0mpt"
 
-[node name="ShineContainer" type="Container" parent="."]
+[node name="ShineContainer" type="Container" parent="." unique_id=821829310]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -217,21 +217,21 @@ wraparound_radius = 200.0
 wraparound_height = -20.0
 opacity_strength = 0.5
 
-[node name="AnimatedTextureRect" type="TextureRect" parent="ShineContainer"]
+[node name="AnimatedTextureRect" type="TextureRect" parent="ShineContainer" unique_id=2105173061]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 focus_mode = 2
-texture = SubResource("AtlasTexture_ef0oo")
+texture = SubResource("AtlasTexture_k7h1r")
 expand_mode = 3
 stretch_mode = 5
 script = ExtResource("5_htlb4")
 sprites = SubResource("SpriteFrames_rs1nv")
 animation = &"normal"
-frame = 7
+frame = 4
 playing = true
 metadata/_custom_type_script = "uid://bya6u8daue8n2"
 
-[node name="AnimatedTextureRect2" type="TextureRect" parent="ShineContainer"]
+[node name="AnimatedTextureRect2" type="TextureRect" parent="ShineContainer" unique_id=262506406]
 modulate = Color(1, 1, 1, 0.5)
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
@@ -244,7 +244,7 @@ sprites = SubResource("SpriteFrames_rs1nv")
 animation = &"normal"
 metadata/_custom_type_script = "uid://bya6u8daue8n2"
 
-[node name="AnimatedTextureRect3" type="TextureRect" parent="ShineContainer"]
+[node name="AnimatedTextureRect3" type="TextureRect" parent="ShineContainer" unique_id=1822755243]
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
@@ -257,7 +257,7 @@ sprites = SubResource("SpriteFrames_rs1nv")
 animation = &"normal"
 metadata/_custom_type_script = "uid://bya6u8daue8n2"
 
-[node name="AnimatedTextureRect4" type="TextureRect" parent="ShineContainer"]
+[node name="AnimatedTextureRect4" type="TextureRect" parent="ShineContainer" unique_id=811935265]
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
@@ -270,7 +270,7 @@ sprites = SubResource("SpriteFrames_rs1nv")
 animation = &"normal"
 metadata/_custom_type_script = "uid://bya6u8daue8n2"
 
-[node name="AnimatedTextureRect5" type="TextureRect" parent="ShineContainer"]
+[node name="AnimatedTextureRect5" type="TextureRect" parent="ShineContainer" unique_id=690614361]
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
@@ -283,7 +283,7 @@ sprites = SubResource("SpriteFrames_rs1nv")
 animation = &"normal"
 metadata/_custom_type_script = "uid://bya6u8daue8n2"
 
-[node name="Borders" type="VBoxContainer" parent="."]
+[node name="Borders" type="VBoxContainer" parent="." unique_id=1223384980]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -291,22 +291,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="Borders"]
+[node name="Panel" type="Panel" parent="Borders" unique_id=330221961]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxTexture_p2cwd")
 
-[node name="Control" type="Control" parent="Borders"]
+[node name="Control" type="Control" parent="Borders" unique_id=1877551021]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 
-[node name="Panel3" type="Panel" parent="Borders"]
+[node name="Panel3" type="Panel" parent="Borders" unique_id=1481826188]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxTexture_vmnes")
 
-[node name="Score" type="Label" parent="."]
+[node name="Score" type="Label" parent="." unique_id=1301209433]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -321,7 +321,7 @@ label_settings = SubResource("LabelSettings_yb0xu")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Level" type="Label" parent="."]
+[node name="Level" type="Label" parent="." unique_id=2023083282]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -337,7 +337,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Episode" type="Label" parent="."]
+[node name="Episode" type="Label" parent="." unique_id=1278748181]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5

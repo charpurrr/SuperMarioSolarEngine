@@ -11,7 +11,7 @@ extends KeyScene
 
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("gui_accept"):
+	if Input.is_action_just_pressed(&"gui_accept"):
 		TransitionManager.transition_scene(
 			wm_scene,
 			SceneTransition.Type.CIRCLE,
