@@ -38,7 +38,7 @@ func _on_enter(force_walk_dir: Variant) -> void:
 
 func _physics_tick(_delta: float) -> void:
 	walk_timer = max(walk_timer - 1, 0)
-	actor.vel.x = walk_speed * walk_direction
+	actor.velocity.x = walk_speed * walk_direction
 
 
 func _subsequent_ticks(_delta: float) -> void:

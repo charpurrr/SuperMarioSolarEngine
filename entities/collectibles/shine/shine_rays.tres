@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=10 format=4 uid="uid://c07ohb32c5vfa"]
+[gd_resource type="ShaderMaterial" format=4 uid="uid://c07ohb32c5vfa"]
 
 [ext_resource type="Shader" uid="uid://beoro7ravdwag" path="res://entities/collectibles/shine/shine_rays.gdshader" id="1_kit30"]
 

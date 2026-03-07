@@ -16,11 +16,11 @@ extends EnemyState
 
 
 func _on_enter(jump_power_overwrite: Variant) -> void:
-	actor.vel.y -= jump_power if jump_power_overwrite == null else jump_power_overwrite
+	actor.velocity.y = -jump_power if jump_power_overwrite == null else jump_power_overwrite
 
 
 func _physics_tick(_delta: float) -> void:
-	if actor.vel.y > 0:
+	if actor.velocity.y > 0:
 		actor.doll.play(fall_animation)
 		actor.doll.offset = fall_offset
 	else:
@@ -33,7 +33,7 @@ func _physics_tick(_delta: float) -> void:
 	actor.diff = actor.spotted_player.global_position - actor.global_position
 
 	if abs(actor.diff.x) <= range_jump.x and actor.diff.y <= range_jump.y:
-		actor.vel.x = move_toward(actor.vel.x, 0, jump_decel)
+		actor.velocity.x = move_toward(actor.velocity.x, 0, jump_decel)
 
 
 func _trans_rules() -> Variant:

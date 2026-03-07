@@ -23,7 +23,7 @@ func _on_enter(_param: Variant) -> void:
 
 
 func _physics_tick(_delta: float) -> void:
-	actor.vel.x = move_toward(actor.vel.x, 0, decel)
+	actor.velocity.x = move_toward(actor.velocity.x, 0, decel)
 	wait_timer = max(wait_timer - 1, 0)
 
 

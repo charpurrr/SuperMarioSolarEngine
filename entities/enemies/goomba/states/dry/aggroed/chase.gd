@@ -20,10 +20,10 @@ func _physics_tick(_delta: float) -> void:
 	actor.diff = actor.spotted_player.global_position - actor.global_position
 	dir = sign(actor.diff.x)
 
-	actor.vel.x = move_toward(actor.vel.x, chase_max_speed * dir, chase_accel)
+	actor.velocity.x = move_toward(actor.velocity.x, chase_max_speed * dir, chase_accel)
 
 	actor.doll.flip_h = true if dir == 1 else false
-	actor.doll.speed_scale = actor.vel.x / chase_max_speed * 2
+	actor.doll.speed_scale = actor.velocity.x / chase_max_speed * 2
 
 
 func _on_exit() -> void:

@@ -17,11 +17,11 @@ var ready_to_perish: bool = false:
 			actor.queue_free()
 
 
-func _physics_tick(_delta: float) -> void:
+func _physics_tick(delta: float) -> void:
 	# Special death requirements
 	if death_type == HealthModule.DamageType.STRIKE:
-		actor.vel.y += actor.gravity
-		ready_to_perish = actor.is_on_floor() and actor.vel.y >= 0
+		actor.velocity.y += actor.gravity * delta
+		ready_to_perish = actor.is_on_floor() and actor.velocity.y >= 0
 
 
 # The first entry in the array is where the damage came from,

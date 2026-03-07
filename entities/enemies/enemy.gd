@@ -15,19 +15,13 @@ extends CharacterBody2D
 
 @onready var health_module := HealthModule.new(hp, take_hit, die)
 
-## Current velocity.
-var vel := Vector2.ZERO
-
 
 func _ready():
 	set_up_direction(Vector2.UP)
 
 
-func _physics_process(delta):
-	set_velocity(vel / delta)
+func _physics_process(_delta):
 	move_and_slide()
-
-	vel = velocity * delta
 
 
 ## Behaviour for getting hit. (Gets overridden by child class.)

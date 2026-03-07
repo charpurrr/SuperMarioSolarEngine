@@ -11,37 +11,22 @@
 [ext_resource type="Resource" uid="uid://daebewcgqirrt" path="res://props/music/chillwave.tres" id="9_f78fx"]
 [ext_resource type="PackedScene" uid="uid://dgqp3sqvmcvpu" path="res://entities/player/mario/mario.tscn" id="10_dvxun"]
 [ext_resource type="PackedScene" uid="uid://cnd277snrwca5" path="res://entities/player/shared/camera/player_camera.tscn" id="11_rowtk"]
-[ext_resource type="Script" uid="uid://c8rvart030ldu" path="res://entities/enemies/goomba/goomba.gd" id="12_xra04"]
+[ext_resource type="PackedScene" uid="uid://cvbbpn56rtjwd" path="res://entities/enemies/goomba/goomba.tscn" id="12_x6j5q"]
 [ext_resource type="Script" uid="uid://dhdc4b8yddyej" path="res://addons/rmsmartshape/shapes/shape.gd" id="13_03dry"]
-[ext_resource type="Texture2D" uid="uid://b5eno3kq3b43" path="res://entities/enemies/goomba/anime/chase.png" id="13_oi7ak"]
-[ext_resource type="Texture2D" uid="uid://cv67vhsfir242" path="res://entities/enemies/goomba/anime/jump.png" id="14_hxeo7"]
 [ext_resource type="Script" uid="uid://bwcf4pjgprn0k" path="res://addons/rmsmartshape/shapes/point.gd" id="15_lfm5d"]
-[ext_resource type="Texture2D" uid="uid://x2edebevq3c7" path="res://entities/enemies/goomba/anime/idle.png" id="15_pgqos"]
 [ext_resource type="Script" uid="uid://llobjh5hvry" path="res://addons/rmsmartshape/shapes/mesh.gd" id="16_l20wn"]
-[ext_resource type="Texture2D" uid="uid://cu6rg1coyo1db" path="res://entities/enemies/goomba/anime/squish.png" id="16_p8xrs"]
 [ext_resource type="Script" uid="uid://bo5f7qe27jfje" path="res://addons/rmsmartshape/shapes/point_array.gd" id="16_tgy2j"]
-[ext_resource type="Texture2D" uid="uid://c2j0dluh2g7xb" path="res://entities/enemies/goomba/anime/walk.png" id="17_kxi3b"]
 [ext_resource type="Script" uid="uid://0lhxan4cqrc1" path="res://addons/rmsmartshape/materials/edge_material_metadata.gd" id="17_t78sq"]
 [ext_resource type="Script" uid="uid://d0xjijisx1woh" path="res://addons/rmsmartshape/materials/edge_material.gd" id="18_4jkwe"]
-[ext_resource type="Script" uid="uid://bqea8us6rsyeb" path="res://entities/enemies/enemy_state_manager.gd" id="18_e3f0l"]
-[ext_resource type="Script" uid="uid://b74qvih6e4hw5" path="res://entities/enemies/enemy_state.gd" id="19_2t11y"]
 [ext_resource type="Texture2D" uid="uid://863p1rrlve7s" path="res://props/terrain/synth/f1_edge.png" id="19_37d1f"]
-[ext_resource type="Script" uid="uid://conp87snrevw3" path="res://entities/enemies/goomba/states/dry/dry.gd" id="20_sii3m"]
 [ext_resource type="Texture2D" uid="uid://blolh614wogoh" path="res://props/terrain/synth/f1_corner_in.png" id="20_xra04"]
-[ext_resource type="Script" uid="uid://bt60g7c7t2yr4" path="res://entities/enemies/goomba/states/dry/roam/roam.gd" id="21_5ltkg"]
 [ext_resource type="Texture2D" uid="uid://dhy6xyxjkigxc" path="res://props/terrain/synth/f1_corner_out.png" id="21_oi7ak"]
 [ext_resource type="Script" uid="uid://d218yx0d1ilsn" path="res://addons/rmsmartshape/normal_range.gd" id="22_hxeo7"]
-[ext_resource type="Script" uid="uid://c6oicwume2p0p" path="res://entities/enemies/goomba/states/dry/roam/walk.gd" id="22_ihghk"]
 [ext_resource type="Texture2D" uid="uid://cjn0bmi8tqg81" path="res://props/terrain/synth/f1_fill_2.png" id="23_pgqos"]
-[ext_resource type="Script" uid="uid://clg5e4gmr1ii2" path="res://entities/enemies/goomba/states/dry/roam/idle.gd" id="23_xybke"]
 [ext_resource type="Texture2D" uid="uid://drvfwb0fv2xhe" path="res://props/terrain/synth/f1_fill_1.png" id="24_p8xrs"]
-[ext_resource type="Script" uid="uid://tgkyiw0ihqda" path="res://entities/enemies/goomba/states/dry/aggroed/aggroed.gd" id="24_xrolx"]
-[ext_resource type="Script" uid="uid://cje50kiar8st1" path="res://entities/enemies/goomba/states/dry/aggroed/chase.gd" id="25_3avjy"]
 [ext_resource type="Texture2D" uid="uid://c2guro06tpjfp" path="res://props/terrain/synth/f1_fill_3.png" id="25_kxi3b"]
-[ext_resource type="Script" uid="uid://cjeme0ny363gg" path="res://entities/enemies/goomba/states/dry/aggroed/jump.gd" id="26_2i4r0"]
 [ext_resource type="Texture2D" uid="uid://bkkhnpd6qwun3" path="res://props/terrain/synth/f1_fill_4.png" id="26_e3f0l"]
 [ext_resource type="Script" uid="uid://nc5bfedvnpgm" path="res://addons/rmsmartshape/materials/shape_material.gd" id="27_2t11y"]
-[ext_resource type="Script" uid="uid://bmx2b0vs1a8vm" path="res://entities/enemies/goomba/states/die.gd" id="27_005qd"]
 [ext_resource type="Script" uid="uid://wrg07se7dxsj" path="res://util/polyshape.gd" id="28_sii3m"]
 [ext_resource type="PackedScene" uid="uid://dk2cdc5aktq22" path="res://props/terrain/synth/semi_solid.tscn" id="29_5ltkg"]
 [ext_resource type="PackedScene" uid="uid://b14pbye1baqly" path="res://entities/collectibles/coin/coin.tscn" id="30_ihghk"]
@@ -56,233 +41,6 @@ shuffle = true
 loop = true
 songs = Array[ExtResource("4_kuv8v")]([ExtResource("5_l20wn"), ExtResource("6_1nvlm"), ExtResource("7_fwr2a"), ExtResource("8_rnb4s"), ExtResource("9_f78fx")])
 metadata/_custom_type_script = "uid://dspslemtuknxr"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aecnx"]
-atlas = ExtResource("13_oi7ak")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bt7rn"]
-atlas = ExtResource("13_oi7ak")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o5h1e"]
-atlas = ExtResource("13_oi7ak")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5dppb"]
-atlas = ExtResource("13_oi7ak")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cmvqd"]
-atlas = ExtResource("13_oi7ak")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wnwc8"]
-atlas = ExtResource("13_oi7ak")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2mgq4"]
-atlas = ExtResource("14_hxeo7")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wwbio"]
-atlas = ExtResource("15_pgqos")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_spovy"]
-atlas = ExtResource("15_pgqos")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vuybc"]
-atlas = ExtResource("15_pgqos")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qtetb"]
-atlas = ExtResource("15_pgqos")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fvrek"]
-atlas = ExtResource("14_hxeo7")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b0ahg"]
-atlas = ExtResource("16_p8xrs")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0ngrs"]
-atlas = ExtResource("16_p8xrs")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jbmpu"]
-atlas = ExtResource("17_kxi3b")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x02my"]
-atlas = ExtResource("17_kxi3b")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_twr7t"]
-atlas = ExtResource("17_kxi3b")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_grbl7"]
-atlas = ExtResource("17_kxi3b")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2rnn8"]
-atlas = ExtResource("17_kxi3b")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jor08"]
-atlas = ExtResource("17_kxi3b")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_doiik"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aecnx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bt7rn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o5h1e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5dppb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cmvqd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wnwc8")
-}],
-"loop": true,
-"name": &"chase",
-"speed": 15.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2mgq4")
-}],
-"loop": true,
-"name": &"fall",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 8.0,
-"texture": SubResource("AtlasTexture_wwbio")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_spovy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vuybc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qtetb")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 9.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fvrek")
-}],
-"loop": true,
-"name": &"jump",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b0ahg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0ngrs")
-}],
-"loop": false,
-"name": &"squish",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jbmpu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x02my")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_twr7t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_grbl7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2rnn8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jor08")
-}],
-"loop": true,
-"name": &"walk",
-"speed": 15.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4v7vj"]
-size = Vector2(14, 14)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qtetb"]
-size = Vector2(25, 8)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_jor08"]
-radius = 256.0
-
-[sub_resource type="Animation" id="Animation_b0ahg"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_yvt7r"]
-resource_name = "die_squish"
-length = 0.1
-step = 0.005
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationTransformer:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.1),
-"transitions": PackedFloat32Array(0.5, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.7, 0.3), Vector2(1.2, 0.8)]
-}
-
-[sub_resource type="Animation" id="Animation_kc47k"]
-resource_name = "die_strike"
-length = 0.6
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationTransformer:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
-"transitions": PackedFloat32Array(2, 0.5, 2, 0.5),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.7, 1.3), Vector2(1, 1), Vector2(1.3, 0.7)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ju3gn"]
-_data = {
-&"RESET": SubResource("Animation_b0ahg"),
-&"die_squish": SubResource("Animation_yvt7r"),
-&"die_strike": SubResource("Animation_kc47k")
-}
 
 [sub_resource type="Resource" id="Resource_l73rp"]
 script = ExtResource("15_lfm5d")
@@ -4201,247 +3959,8 @@ position = Vector2(-1070, -464)
 [node name="PlayerCamera" parent="Mario" unique_id=1074775060 instance=ExtResource("11_rowtk")]
 ignore_rotation = false
 
-[node name="Goomba" type="CharacterBody2D" parent="." unique_id=1010003310 node_paths=PackedStringArray("hurtbox", "ledge_ray_l", "ledge_ray_r", "wall_ray_l", "wall_ray_r", "hitbox", "state_manager", "anime", "doll")]
-position = Vector2(-862, -528)
-collision_layer = 4
-collision_mask = 5
-script = ExtResource("12_xra04")
-stationary = true
-gravity = 0.215
-hurtbox = NodePath("Areas/Hurtbox")
-ledge_ray_l = NodePath("Rays/LedgeRayL")
-ledge_ray_r = NodePath("Rays/LedgeRayR")
-wall_ray_l = NodePath("Rays/WallRayL")
-wall_ray_r = NodePath("Rays/WallRayR")
-hp = 1
-hitbox = NodePath("Hitbox")
-state_manager = NodePath("StateManager")
-anime = NodePath("AnimationPlayer")
-doll = NodePath("AnimationTransformer/Doll")
-
-[node name="AnimationTransformer" type="Node2D" parent="Goomba" unique_id=1453936927]
-
-[node name="Doll" type="AnimatedSprite2D" parent="Goomba/AnimationTransformer" unique_id=1502926051]
-position = Vector2(0, -16)
-sprite_frames = SubResource("SpriteFrames_doiik")
-animation = &"idle"
-
-[node name="Hitbox" type="CollisionShape2D" parent="Goomba" unique_id=259435705]
-position = Vector2(0, -7)
-shape = SubResource("RectangleShape2D_4v7vj")
-
-[node name="Areas" type="Node2D" parent="Goomba" unique_id=726863772]
-
-[node name="Hurtbox" type="Area2D" parent="Goomba/Areas" unique_id=346998919]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Goomba/Areas/Hurtbox" unique_id=1875654331]
-position = Vector2(0.5, -4)
-shape = SubResource("RectangleShape2D_qtetb")
-debug_color = Color(1, 0, 0.14509805, 0.14117648)
-
-[node name="DetectionArea" type="Area2D" parent="Goomba/Areas" unique_id=1021720972]
-position = Vector2(0, -7)
-collision_layer = 0
-collision_mask = 2
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Goomba/Areas/DetectionArea" unique_id=608737551]
-shape = SubResource("CircleShape2D_jor08")
-debug_color = Color(1, 1, 1, 0.039215688)
-metadata/_edit_lock_ = true
-
-[node name="Rays" type="Node2D" parent="Goomba" unique_id=149979066]
-
-[node name="LedgeRayL" type="RayCast2D" parent="Goomba/Rays" unique_id=1057839404]
-modulate = Color(1, 1, 0.16470589, 1)
-position = Vector2(-6, 0)
-target_position = Vector2(0, 4)
-
-[node name="LedgeRayR" type="RayCast2D" parent="Goomba/Rays" unique_id=265503100]
-modulate = Color(1, 1, 0.16470589, 1)
-position = Vector2(7, 0)
-target_position = Vector2(0, 4)
-
-[node name="WallRayL" type="RayCast2D" parent="Goomba/Rays" unique_id=1632622956]
-modulate = Color(1, 1, 0.16470589, 1)
-position = Vector2(-7, -7)
-target_position = Vector2(-16, 0)
-
-[node name="WallRayR" type="RayCast2D" parent="Goomba/Rays" unique_id=1285731197]
-modulate = Color(1, 1, 0.16470589, 1)
-position = Vector2(7, -7)
-target_position = Vector2(16, 0)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Goomba" unique_id=891216943]
-libraries/ = SubResource("AnimationLibrary_ju3gn")
-
-[node name="StateManager" type="Node" parent="Goomba" unique_id=793355505 node_paths=PackedStringArray("target_actor")]
-script = ExtResource("18_e3f0l")
-target_actor = NodePath("..")
-
-[node name="Submerged" type="Node" parent="Goomba/StateManager" unique_id=1587256394]
-script = ExtResource("19_2t11y")
-
-[node name="Dry" type="Node" parent="Goomba/StateManager" unique_id=2119960401]
-script = ExtResource("20_sii3m")
-
-[node name="Roam" type="Node" parent="Goomba/StateManager/Dry" unique_id=1484527350]
-script = ExtResource("21_5ltkg")
-
-[node name="Walk" type="Node" parent="Goomba/StateManager/Dry/Roam" unique_id=1839853774]
-script = ExtResource("22_ihghk")
-min_walk_time = 50
-max_walk_time = 100
-walk_speed = 0.4
-animation = &"walk"
-
-[node name="Idle" type="Node" parent="Goomba/StateManager/Dry/Roam" unique_id=1308881418]
-script = ExtResource("23_xybke")
-decel = 0.2
-animation = &"idle"
-
-[node name="Aggroed" type="Node" parent="Goomba/StateManager/Dry" unique_id=1568307120]
-script = ExtResource("24_xrolx")
-notice_jump_power = 2
-
-[node name="Chase" type="Node" parent="Goomba/StateManager/Dry/Aggroed" unique_id=1813952300]
-script = ExtResource("25_3avjy")
-chase_max_speed = 2.0
-chase_accel = 0.1
-range_jump = Vector2(2, 10)
-animation = &"chase"
-
-[node name="Jump" type="Node" parent="Goomba/StateManager/Dry/Aggroed" unique_id=1281765211]
-script = ExtResource("26_2i4r0")
-jump_decel = 0.2
-jump_animation = &"jump"
-fall_animation = &"fall"
-
-[node name="Die" type="Node" parent="Goomba/StateManager" unique_id=1247413312]
-script = ExtResource("27_005qd")
-
-[node name="Goomba2" type="CharacterBody2D" parent="." unique_id=1403319358 node_paths=PackedStringArray("hurtbox", "ledge_ray_l", "ledge_ray_r", "wall_ray_l", "wall_ray_r", "hitbox", "state_manager", "anime", "doll")]
-position = Vector2(-534, -464)
-collision_layer = 4
-collision_mask = 5
-script = ExtResource("12_xra04")
-stationary = true
-gravity = 0.215
-hurtbox = NodePath("Areas/Hurtbox")
-ledge_ray_l = NodePath("Rays/LedgeRayL")
-ledge_ray_r = NodePath("Rays/LedgeRayR")
-wall_ray_l = NodePath("Rays/WallRayL")
-wall_ray_r = NodePath("Rays/WallRayR")
-hp = 1
-hitbox = NodePath("Hitbox")
-state_manager = NodePath("StateManager")
-anime = NodePath("AnimationPlayer")
-doll = NodePath("AnimationTransformer/Doll")
-
-[node name="AnimationTransformer" type="Node2D" parent="Goomba2" unique_id=1752515429]
-
-[node name="Doll" type="AnimatedSprite2D" parent="Goomba2/AnimationTransformer" unique_id=1880103321]
-position = Vector2(0, -16)
-sprite_frames = SubResource("SpriteFrames_doiik")
-animation = &"idle"
-
-[node name="Hitbox" type="CollisionShape2D" parent="Goomba2" unique_id=106865157]
-position = Vector2(0, -7)
-shape = SubResource("RectangleShape2D_4v7vj")
-
-[node name="Areas" type="Node2D" parent="Goomba2" unique_id=1362709482]
-
-[node name="Hurtbox" type="Area2D" parent="Goomba2/Areas" unique_id=1797695142]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Goomba2/Areas/Hurtbox" unique_id=497616651]
-position = Vector2(0.5, -4)
-shape = SubResource("RectangleShape2D_qtetb")
-debug_color = Color(1, 0, 0.14509805, 0.14117648)
-
-[node name="DetectionArea" type="Area2D" parent="Goomba2/Areas" unique_id=463656054]
-position = Vector2(0, -7)
-collision_layer = 0
-collision_mask = 2
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Goomba2/Areas/DetectionArea" unique_id=1374117466]
-shape = SubResource("CircleShape2D_jor08")
-debug_color = Color(1, 1, 1, 0.039215688)
-metadata/_edit_lock_ = true
-
-[node name="Rays" type="Node2D" parent="Goomba2" unique_id=1459696499]
-
-[node name="LedgeRayL" type="RayCast2D" parent="Goomba2/Rays" unique_id=1323008343]
-modulate = Color(1, 1, 0.16470589, 1)
-position = Vector2(-6, 0)
-target_position = Vector2(0, 4)
-
-[node name="LedgeRayR" type="RayCast2D" parent="Goomba2/Rays" unique_id=1611932088]
-modulate = Color(1, 1, 0.16470589, 1)
-position = Vector2(7, 0)
-target_position = Vector2(0, 4)
-
-[node name="WallRayL" type="RayCast2D" parent="Goomba2/Rays" unique_id=502677161]
-modulate = Color(1, 1, 0.16470589, 1)
-position = Vector2(-7, -7)
-target_position = Vector2(-16, 0)
-
-[node name="WallRayR" type="RayCast2D" parent="Goomba2/Rays" unique_id=359743337]
-modulate = Color(1, 1, 0.16470589, 1)
-position = Vector2(7, -7)
-target_position = Vector2(16, 0)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Goomba2" unique_id=1401520007]
-libraries/ = SubResource("AnimationLibrary_ju3gn")
-
-[node name="StateManager" type="Node" parent="Goomba2" unique_id=516978713 node_paths=PackedStringArray("target_actor")]
-script = ExtResource("18_e3f0l")
-target_actor = NodePath("..")
-
-[node name="Submerged" type="Node" parent="Goomba2/StateManager" unique_id=1671627665]
-script = ExtResource("19_2t11y")
-
-[node name="Dry" type="Node" parent="Goomba2/StateManager" unique_id=60695302]
-script = ExtResource("20_sii3m")
-
-[node name="Roam" type="Node" parent="Goomba2/StateManager/Dry" unique_id=1852313315]
-script = ExtResource("21_5ltkg")
-
-[node name="Walk" type="Node" parent="Goomba2/StateManager/Dry/Roam" unique_id=529431296]
-script = ExtResource("22_ihghk")
-min_walk_time = 50
-max_walk_time = 100
-walk_speed = 0.4
-animation = &"walk"
-
-[node name="Idle" type="Node" parent="Goomba2/StateManager/Dry/Roam" unique_id=1233282501]
-script = ExtResource("23_xybke")
-decel = 0.2
-animation = &"idle"
-
-[node name="Aggroed" type="Node" parent="Goomba2/StateManager/Dry" unique_id=1219586140]
-script = ExtResource("24_xrolx")
-notice_jump_power = 2
-
-[node name="Chase" type="Node" parent="Goomba2/StateManager/Dry/Aggroed" unique_id=1678581511]
-script = ExtResource("25_3avjy")
-chase_max_speed = 2.0
-chase_accel = 0.1
-range_jump = Vector2(2, 10)
-animation = &"chase"
-
-[node name="Jump" type="Node" parent="Goomba2/StateManager/Dry/Aggroed" unique_id=110876623]
-script = ExtResource("26_2i4r0")
-jump_decel = 0.2
-jump_animation = &"jump"
-fall_animation = &"fall"
-
-[node name="Die" type="Node" parent="Goomba2/StateManager" unique_id=1220985381]
-script = ExtResource("27_005qd")
+[node name="Goomba" parent="." unique_id=2065082591 instance=ExtResource("12_x6j5q")]
+position = Vector2(-816, -464)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=124023712]
 position = Vector2(0, 8)
@@ -4610,154 +4129,154 @@ position = Vector2(-129, -625)
 
 [node name="Coin" parent="." unique_id=340800817 instance=ExtResource("30_ihghk")]
 position = Vector2(816, -56)
-frame_progress = 0.95707566
+frame_progress = 0.8803781
 
 [node name="Coin4" parent="." unique_id=277150002 instance=ExtResource("30_ihghk")]
 position = Vector2(840, -56)
-frame_progress = 0.95707566
+frame_progress = 0.8803781
 
 [node name="Coin5" parent="." unique_id=404130534 instance=ExtResource("30_ihghk")]
 position = Vector2(864, -56)
-frame_progress = 0.95707566
+frame_progress = 0.8803781
 
 [node name="Coin6" parent="." unique_id=1322689316 instance=ExtResource("30_ihghk")]
 position = Vector2(888, -56)
-frame_progress = 0.95707566
+frame_progress = 0.8803781
 
 [node name="Coin7" parent="." unique_id=1378051243 instance=ExtResource("30_ihghk")]
 position = Vector2(912, -56)
-frame_progress = 0.95707566
+frame_progress = 0.8803781
 
 [node name="Coin8" parent="." unique_id=17712182 instance=ExtResource("30_ihghk")]
 position = Vector2(816, -80)
-frame_progress = 0.95707566
+frame_progress = 0.8803781
 
 [node name="Coin9" parent="." unique_id=1470669526 instance=ExtResource("30_ihghk")]
 position = Vector2(840, -80)
-frame_progress = 0.95707566
+frame_progress = 0.8803781
 
 [node name="Coin10" parent="." unique_id=713682470 instance=ExtResource("30_ihghk")]
 position = Vector2(864, -80)
-frame_progress = 0.95707566
+frame_progress = 0.8803781
 
 [node name="Coin11" parent="." unique_id=1622627861 instance=ExtResource("30_ihghk")]
 position = Vector2(888, -80)
-frame_progress = 0.95707566
+frame_progress = 0.8803781
 
 [node name="Coin12" parent="." unique_id=208637934 instance=ExtResource("30_ihghk")]
 position = Vector2(912, -80)
-frame_progress = 0.95707566
+frame_progress = 0.8803781
 
 [node name="Coin13" parent="." unique_id=907856111 instance=ExtResource("30_ihghk")]
 position = Vector2(1352, -368)
 animation = &"1"
-frame_progress = 0.97130585
+frame_progress = 0.8946082
 type = 1
 
 [node name="Coin14" parent="." unique_id=511112308 instance=ExtResource("30_ihghk")]
 position = Vector2(1376, -368)
 animation = &"1"
-frame_progress = 0.97130585
+frame_progress = 0.8946082
 type = 1
 
 [node name="Coin15" parent="." unique_id=105276685 instance=ExtResource("30_ihghk")]
 position = Vector2(1400, -368)
 animation = &"1"
-frame_progress = 0.97130585
+frame_progress = 0.8946082
 type = 1
 
 [node name="Coin16" parent="." unique_id=1274666472 instance=ExtResource("30_ihghk")]
 position = Vector2(1424, -368)
 animation = &"1"
-frame_progress = 0.97130585
+frame_progress = 0.8946082
 type = 1
 
 [node name="Coin17" parent="." unique_id=1786769016 instance=ExtResource("30_ihghk")]
 position = Vector2(1448, -368)
 animation = &"1"
-frame_progress = 0.97130585
+frame_progress = 0.8946082
 type = 1
 
 [node name="Coin18" parent="." unique_id=939281997 instance=ExtResource("30_ihghk")]
 position = Vector2(1352, -392)
 animation = &"1"
-frame_progress = 0.97130585
+frame_progress = 0.8946082
 type = 1
 
 [node name="Coin19" parent="." unique_id=1871986574 instance=ExtResource("30_ihghk")]
 position = Vector2(1376, -392)
 animation = &"1"
-frame_progress = 0.97130585
+frame_progress = 0.8946082
 type = 1
 
 [node name="Coin20" parent="." unique_id=1493925600 instance=ExtResource("30_ihghk")]
 position = Vector2(1400, -392)
 animation = &"1"
-frame_progress = 0.97130585
+frame_progress = 0.8946082
 type = 1
 
 [node name="Coin21" parent="." unique_id=111746828 instance=ExtResource("30_ihghk")]
 position = Vector2(1424, -392)
 animation = &"1"
-frame_progress = 0.97130585
+frame_progress = 0.8946082
 type = 1
 
 [node name="Coin22" parent="." unique_id=1708821704 instance=ExtResource("30_ihghk")]
 position = Vector2(1448, -392)
 animation = &"1"
-frame_progress = 0.97130585
+frame_progress = 0.8946082
 type = 1
 
 [node name="Coin103" parent="." unique_id=764779499 instance=ExtResource("30_ihghk")]
 position = Vector2(80, -48)
-frame_progress = 0.95707566
+frame_progress = 0.8803781
 
 [node name="Coin3" parent="." unique_id=184724743 instance=ExtResource("30_ihghk")]
 position = Vector2(1416, -600)
 animation = &"2"
-frame_progress = 0.21711107
+frame_progress = 0.14041331
 type = 2
 
 [node name="Coin23" parent="." unique_id=1541214465 instance=ExtResource("30_ihghk")]
 position = Vector2(1440, -600)
 animation = &"2"
-frame_progress = 0.21711107
+frame_progress = 0.14041331
 type = 2
 
 [node name="Coin24" parent="." unique_id=596649156 instance=ExtResource("30_ihghk")]
 position = Vector2(1464, -600)
 animation = &"2"
-frame_progress = 0.21711107
+frame_progress = 0.14041331
 type = 2
 
 [node name="Coin25" parent="." unique_id=289522181 instance=ExtResource("30_ihghk")]
 position = Vector2(1488, -600)
 animation = &"2"
-frame_progress = 0.21711107
+frame_progress = 0.14041331
 type = 2
 
 [node name="Coin26" parent="." unique_id=191404582 instance=ExtResource("30_ihghk")]
 position = Vector2(1512, -600)
 animation = &"2"
-frame_progress = 0.21711107
+frame_progress = 0.14041331
 type = 2
 
 [node name="Coin27" parent="." unique_id=622251736 instance=ExtResource("30_ihghk")]
 position = Vector2(1536, -600)
 animation = &"2"
-frame_progress = 0.21711107
+frame_progress = 0.14041331
 type = 2
 
 [node name="Coin28" parent="." unique_id=886201400 instance=ExtResource("30_ihghk")]
 position = Vector2(1560, -600)
 animation = &"2"
-frame_progress = 0.21711107
+frame_progress = 0.14041331
 type = 2
 
 [node name="Coin29" parent="." unique_id=810516682 instance=ExtResource("30_ihghk")]
 position = Vector2(1584, -600)
 animation = &"2"
-frame_progress = 0.21711107
+frame_progress = 0.14041331
 type = 2
 
 [node name="Shine" parent="." unique_id=1728559446 instance=ExtResource("31_nma4k")]
@@ -4843,10 +4362,3 @@ position = Vector2(-1204, -594)
 
 [node name="Crate" parent="." unique_id=1981688815 instance=ExtResource("34_l20wn")]
 position = Vector2(-720, -544)
-
-[connection signal="body_entered" from="Goomba/Areas/Hurtbox" to="Goomba" method="_on_hurtbox_body_entered"]
-[connection signal="body_entered" from="Goomba/Areas/DetectionArea" to="Goomba/StateManager/Dry/Roam" method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="Goomba/Areas/DetectionArea" to="Goomba/StateManager/Dry/Aggroed" method="_on_detection_area_body_exited"]
-[connection signal="body_entered" from="Goomba2/Areas/Hurtbox" to="Goomba2" method="_on_hurtbox_body_entered"]
-[connection signal="body_entered" from="Goomba2/Areas/DetectionArea" to="Goomba2/StateManager/Dry/Roam" method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="Goomba2/Areas/DetectionArea" to="Goomba2/StateManager/Dry/Aggroed" method="_on_detection_area_body_exited"]

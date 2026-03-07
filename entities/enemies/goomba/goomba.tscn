@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cvbbpn56rtjwd"]
+[gd_scene format=3 uid="uid://cvbbpn56rtjwd"]
 
 [ext_resource type="Script" uid="uid://c8rvart030ldu" path="res://entities/enemies/goomba/goomba.gd" id="1_hhlu2"]
 [ext_resource type="Texture2D" uid="uid://x2edebevq3c7" path="res://entities/enemies/goomba/anime/idle.png" id="1_hp473"]
@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cv67vhsfir242" path="res://entities/enemies/goomba/anime/jump.png" id="2_qtetb"]
 [ext_resource type="Texture2D" uid="uid://cu6rg1coyo1db" path="res://entities/enemies/goomba/anime/squish.png" id="4_04ccq"]
 [ext_resource type="Texture2D" uid="uid://c2j0dluh2g7xb" path="res://entities/enemies/goomba/anime/walk.png" id="5_g0x7x"]
-[ext_resource type="Script" path="res://entities/enemies/enemy_state_manager.gd" id="6_04ccq"]
-[ext_resource type="Script" path="res://entities/enemies/enemy_state.gd" id="7_g0x7x"]
+[ext_resource type="Script" uid="uid://bqea8us6rsyeb" path="res://entities/enemies/enemy_state_manager.gd" id="6_04ccq"]
+[ext_resource type="Script" uid="uid://b74qvih6e4hw5" path="res://entities/enemies/enemy_state.gd" id="7_g0x7x"]
 [ext_resource type="Script" uid="uid://bt60g7c7t2yr4" path="res://entities/enemies/goomba/states/dry/roam/roam.gd" id="8_2mgq4"]
 [ext_resource type="Script" uid="uid://tgkyiw0ihqda" path="res://entities/enemies/goomba/states/dry/aggroed/aggroed.gd" id="9_fvrek"]
 [ext_resource type="Script" uid="uid://conp87snrevw3" path="res://entities/enemies/goomba/states/dry/dry.gd" id="9_jor08"]
@@ -244,11 +244,11 @@ _data = {
 &"die_strike": SubResource("Animation_kc47k")
 }
 
-[node name="Goomba" type="CharacterBody2D" node_paths=PackedStringArray("hurtbox", "ledge_ray_l", "ledge_ray_r", "wall_ray_l", "wall_ray_r", "hitbox", "state_manager", "anime", "doll")]
+[node name="Goomba" type="CharacterBody2D" unique_id=1024455853 node_paths=PackedStringArray("hurtbox", "ledge_ray_l", "ledge_ray_r", "wall_ray_l", "wall_ray_r", "hitbox", "state_manager", "anime", "doll")]
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_hhlu2")
-gravity = 0.215
+gravity = 774.0
 hurtbox = NodePath("Areas/Hurtbox")
 ledge_ray_l = NodePath("Rays/LedgeRayL")
 ledge_ray_r = NodePath("Rays/LedgeRayR")
@@ -260,110 +260,109 @@ state_manager = NodePath("StateManager")
 anime = NodePath("AnimationPlayer")
 doll = NodePath("AnimationTransformer/Doll")
 
-[node name="AnimationTransformer" type="Node2D" parent="."]
+[node name="AnimationTransformer" type="Node2D" parent="." unique_id=25554351]
 
-[node name="Doll" type="AnimatedSprite2D" parent="AnimationTransformer"]
+[node name="Doll" type="AnimatedSprite2D" parent="AnimationTransformer" unique_id=1587415728]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_doiik")
 animation = &"idle"
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1136568226]
 position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_4v7vj")
 
-[node name="Areas" type="Node2D" parent="."]
+[node name="Areas" type="Node2D" parent="." unique_id=2049462154]
 
-[node name="Hurtbox" type="Area2D" parent="Areas"]
+[node name="Hurtbox" type="Area2D" parent="Areas" unique_id=1501247859]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Hurtbox" unique_id=1687356690]
 position = Vector2(0.5, -4)
 shape = SubResource("RectangleShape2D_qtetb")
 debug_color = Color(1, 0, 0.14509805, 0.14117648)
 
-[node name="DetectionArea" type="Area2D" parent="Areas"]
+[node name="DetectionArea" type="Area2D" parent="Areas" unique_id=1974915601]
 position = Vector2(0, -7)
 collision_layer = 0
 collision_mask = 2
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/DetectionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/DetectionArea" unique_id=1324816554]
 shape = SubResource("CircleShape2D_jor08")
 debug_color = Color(1, 1, 1, 0.039215688)
 metadata/_edit_lock_ = true
 
-[node name="Rays" type="Node2D" parent="."]
+[node name="Rays" type="Node2D" parent="." unique_id=282496266]
 
-[node name="LedgeRayL" type="RayCast2D" parent="Rays"]
+[node name="LedgeRayL" type="RayCast2D" parent="Rays" unique_id=250707045]
 modulate = Color(1, 1, 0.16470589, 1)
 position = Vector2(-6, 0)
 target_position = Vector2(0, 4)
 
-[node name="LedgeRayR" type="RayCast2D" parent="Rays"]
+[node name="LedgeRayR" type="RayCast2D" parent="Rays" unique_id=1621339367]
 modulate = Color(1, 1, 0.16470589, 1)
 position = Vector2(7, 0)
 target_position = Vector2(0, 4)
 
-[node name="WallRayL" type="RayCast2D" parent="Rays"]
+[node name="WallRayL" type="RayCast2D" parent="Rays" unique_id=1343274958]
 modulate = Color(1, 1, 0.16470589, 1)
 position = Vector2(-7, -7)
 target_position = Vector2(-16, 0)
 
-[node name="WallRayR" type="RayCast2D" parent="Rays"]
+[node name="WallRayR" type="RayCast2D" parent="Rays" unique_id=688713022]
 modulate = Color(1, 1, 0.16470589, 1)
 position = Vector2(7, -7)
 target_position = Vector2(16, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ju3gn")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1437564975]
+libraries/ = SubResource("AnimationLibrary_ju3gn")
 
-[node name="StateManager" type="Node" parent="." node_paths=PackedStringArray("target_actor", "initial_state")]
+[node name="StateManager" type="Node" parent="." unique_id=1753812895 node_paths=PackedStringArray("target_actor", "initial_state")]
 script = ExtResource("6_04ccq")
 target_actor = NodePath("..")
 initial_state = NodePath("Dry/Roam")
 
-[node name="Submerged" type="Node" parent="StateManager"]
+[node name="Submerged" type="Node" parent="StateManager" unique_id=1703175890]
 script = ExtResource("7_g0x7x")
 
-[node name="Dry" type="Node" parent="StateManager"]
+[node name="Dry" type="Node" parent="StateManager" unique_id=110193190]
 script = ExtResource("9_jor08")
 
-[node name="Roam" type="Node" parent="StateManager/Dry"]
+[node name="Roam" type="Node" parent="StateManager/Dry" unique_id=308749585]
 script = ExtResource("8_2mgq4")
 
-[node name="Walk" type="Node" parent="StateManager/Dry/Roam"]
+[node name="Walk" type="Node" parent="StateManager/Dry/Roam" unique_id=1280118669]
 script = ExtResource("9_x02my")
 min_walk_time = 50
 max_walk_time = 100
-walk_speed = 0.4
+walk_speed = 24.0
 animation = &"walk"
 
-[node name="Idle" type="Node" parent="StateManager/Dry/Roam"]
+[node name="Idle" type="Node" parent="StateManager/Dry/Roam" unique_id=724370088]
 script = ExtResource("10_twr7t")
-decel = 0.2
+decel = 12.0
 animation = &"idle"
 
-[node name="Aggroed" type="Node" parent="StateManager/Dry"]
+[node name="Aggroed" type="Node" parent="StateManager/Dry" unique_id=973552010]
 script = ExtResource("9_fvrek")
 notice_jump_power = 2
 
-[node name="Chase" type="Node" parent="StateManager/Dry/Aggroed"]
+[node name="Chase" type="Node" parent="StateManager/Dry/Aggroed" unique_id=745168733]
 script = ExtResource("12_grbl7")
-chase_max_speed = 2.0
-chase_accel = 0.1
+chase_max_speed = 120.0
+chase_accel = 6.0
 range_jump = Vector2(2, 10)
 animation = &"chase"
 
-[node name="Jump" type="Node" parent="StateManager/Dry/Aggroed"]
+[node name="Jump" type="Node" parent="StateManager/Dry/Aggroed" unique_id=69935508]
 script = ExtResource("13_2rnn8")
-jump_decel = 0.2
+jump_power = 240.0
+jump_decel = 12.0
 jump_animation = &"jump"
 fall_animation = &"fall"
 
-[node name="Die" type="Node" parent="StateManager"]
+[node name="Die" type="Node" parent="StateManager" unique_id=271050733]
 script = ExtResource("10_b0ahg")
 
 [connection signal="body_entered" from="Areas/Hurtbox" to="." method="_on_hurtbox_body_entered"]
