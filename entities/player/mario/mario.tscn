@@ -2706,7 +2706,7 @@ script = ExtResource("73_acu3g")
 [node name="Wallslide" type="Node" parent="StateManager/Dry/Airborne/WalljumpStates" unique_id=643447574]
 script = ExtResource("105_6ryk6")
 term_vel = 180.0
-gravity_friction = 240.0
+gravity_friction = 4.0
 animation_data = SubResource("Resource_86kn8")
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_2nx7x"), SubResource("Resource_5idsp")])
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_w3vn1")])
