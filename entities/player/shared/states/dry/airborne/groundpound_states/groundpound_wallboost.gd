@@ -19,7 +19,7 @@ func _trans_rules():
 	if actor.push_rays.is_colliding() and input.buffered_input(&"jump"):
 		reset_state(-movement.facing_direction)
 
-	if actor.vel.y > 0:
+	if actor.velocity.y > 0:
 		return &"Fall"
 
 	return &""

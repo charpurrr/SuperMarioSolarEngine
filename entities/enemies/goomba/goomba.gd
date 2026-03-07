@@ -41,5 +41,5 @@ func _on_hurtbox_body_entered(_body: Node2D) -> void:
 	if spotted_player == null:
 		return
 
-	if (spotted_player.vel.y >= 0.0 or diff.y > 0.0):
+	if (spotted_player.velocity.y >= 0.0 or diff.y > 0.0):
 		spotted_player.health_module.damage(self, HealthModule.DamageType.GENERIC, 1)

@@ -96,8 +96,8 @@ func _grounded():
 	# Modify slide_speed prior to setting velocity
 	_modify_speed(floor_normal)
 
-	actor.vel = slide_direction * slide_speed
-	actor.vel.y += 0.1
+	actor.velocity = slide_direction * slide_speed
+	actor.velocity.y += 6.0
 
 	# Store the sliding direction so we can check for changes
 	old_direction = slide_direction
@@ -132,12 +132,12 @@ func _apply_slide_direction(floor_normal: Vector2, slide_direction: Vector2):
 	# If we have only just started sliding,
 	# we need to convert the player's velocity into sliding speed.
 	if floor_normal == Vector2.UP:
-		slide_speed = actor.vel.x
+		slide_speed = actor.velocity.x
 	else:
-		if abs(actor.vel.x) > abs(actor.vel.dot(slide_direction)):
-			slide_speed = actor.vel.x * sign(floor_normal.x)
+		if abs(actor.velocity.x) > abs(actor.velocity.dot(slide_direction)):
+			slide_speed = actor.velocity.x * sign(floor_normal.x)
 		else:
-			slide_speed = actor.vel.dot(slide_direction)
+			slide_speed = actor.velocity.dot(slide_direction)
 
 	no_direction = false
 
@@ -165,7 +165,7 @@ func _modify_speed(floor_normal: Vector2):
 		elif input_dir == -slope_dir:
 			target_speed = accel_ease * min_speed
 		
-	slide_decel = max(slide_decel, 0.1)
+	slide_decel = max(slide_decel, 6.0)
 
 	# Accelerate down the slope
 	_accelerate(slide_accel, target_speed)
@@ -226,7 +226,7 @@ func _set_appropriate_anim():
 
 
 func _trans_rules():
-	if not movement.is_slide_slope() and abs(actor.vel.x) < min_remain_speed:
+	if not movement.is_slide_slope() and abs(actor.velocity.x) < min_remain_speed:
 		return [&"Crouch", [true, false]]
 
 	if not Input.is_action_pressed(&"down"):

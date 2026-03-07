@@ -16,7 +16,8 @@ func _defer_rules():
 
 	match movement.consec_jumps:
 		2:
-			if abs(actor.vel.x) > triple_min_vel and sign(actor.vel.x) == movement.facing_direction:
+			if (abs(actor.velocity.x) > triple_min_vel and
+			sign(actor.velocity.x) == movement.facing_direction):
 				return &"TripleJump"
 			else:
 				return &"DoubleJump"

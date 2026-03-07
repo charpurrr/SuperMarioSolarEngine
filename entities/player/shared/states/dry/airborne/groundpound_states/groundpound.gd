@@ -12,8 +12,8 @@ var linger_timer: float
 func _on_enter(_param):
 	movement.consume_coyote_timer()
 
-	actor.vel.y = 0
-	actor.vel.x = 0
+	actor.velocity.y = 0
+	actor.velocity.x = 0
 
 	actor.position.y += gp_offset
 

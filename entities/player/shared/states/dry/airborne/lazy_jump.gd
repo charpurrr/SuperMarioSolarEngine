@@ -10,7 +10,7 @@ extends Fall
 func _physics_tick():
 	super()
 
-	if actor.vel.y < 0:
+	if actor.velocity.y < 0:
 		overwrite_animation(jump_data)
 	else:
 		overwrite_animation(fall_data)
@@ -32,7 +32,7 @@ func _trans_rules():
 	if movement.can_init_wallslide():
 		return &"Wallslide"
 
-	if actor.vel.y > 0:
+	if actor.velocity.y > 0:
 		return &"Fall"
 
 	return &""

@@ -2,6 +2,8 @@ class_name Crouch
 extends PlayerState
 ## Holding down on the floor.
 
+@export var decel: float = 0.07
+
 
 # The first entry in the array is wether the first frame
 # of the crouch animation should be skipped or not,
@@ -17,13 +19,13 @@ func _on_enter(array):
 
 func _physics_tick():
 	movement.update_direction(InputManager.get_x_dir())
-	movement.decelerate(0.07 * Vector2.RIGHT)
+	movement.decelerate(decel * Vector2.RIGHT)
 
 
 ## Return whether or not you can crouchwalk.
 func _can_crouchwalk() -> bool:
 	return (
-		actor.vel.x == 0
+		actor.velocity.x == 0
 		and InputManager.is_moving_x()
 		and not actor.test_move(actor.transform, Vector2(0.1 * movement.facing_direction, 0))
 	)
@@ -40,10 +42,11 @@ func _trans_rules():
 		return &"CrouchSpin"
 
 	if not actor.auto_crouch_check.enabled and input.buffered_input(&"jump"):
-		if is_equal_approx(actor.vel.x, 0.0) or sign(actor.vel.x) != movement.facing_direction:
+		if (is_equal_approx(actor.velocity.x, 0.0) or
+		sign(actor.velocity.x) != movement.facing_direction):
 			return &"Backflip"
 
-		if sign(actor.vel.x) == movement.facing_direction:
+		if sign(actor.velocity.x) == movement.facing_direction:
 			return &"Longjump"
 
 	if not Input.is_action_pressed(&"down") and not actor.auto_crouch_check.enabled:

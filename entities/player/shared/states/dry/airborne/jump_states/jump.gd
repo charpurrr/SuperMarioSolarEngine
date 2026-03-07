@@ -18,7 +18,7 @@ var applied_variation: bool = false
 
 func _on_enter(_param):
 	applied_variation = false
-	actor.vel.y = -jump_power
+	actor.velocity.y = -jump_power
 
 	min_jump_power = jump_power * (1 - min_jump_percent / 100)
 
@@ -26,7 +26,7 @@ func _on_enter(_param):
 
 
 func _subsequent_ticks():
-	movement.apply_gravity(-actor.vel.y / jump_power)
+	movement.apply_gravity(-actor.velocity.y / jump_power)
 
 
 func _physics_tick():
@@ -34,7 +34,7 @@ func _physics_tick():
 
 	if movement.can_release_jump(applied_variation, min_jump_power):
 		applied_variation = true
-		actor.vel.y *= 0.5
+		actor.velocity.y *= 0.5
 
 
 func _trans_rules():
@@ -53,7 +53,7 @@ func _trans_rules():
 	if movement.can_init_wallslide():
 		return &"Wallslide"
 
-	if actor.vel.y > 0:
+	if actor.velocity.y > 0:
 		return fall_state.name
 
 	return &""

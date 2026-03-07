@@ -34,8 +34,8 @@ func _on_enter(array) -> void:
 
 	match damage_type:
 		HealthModule.DamageType.STRIKE:
-			actor.vel.x = source.vel.x - sign(source.position.x - actor.position.x) * strike_x_power
-			actor.vel.y = -strike_y_power
+			actor.velocity.x = source.velocity.x - sign(source.position.x - actor.position.x) * strike_x_power
+			actor.velocity.y = -strike_y_power
 			actor.anime.play(&"die_strike")
 
 		HealthModule.DamageType.SQUISH:

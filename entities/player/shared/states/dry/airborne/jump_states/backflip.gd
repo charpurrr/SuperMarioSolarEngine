@@ -2,6 +2,7 @@ class_name Backflip
 extends PlayerState
 ## Jumping backwards from a crouch.
 
+@export var air_accel: float = 0.06
 @export var jump_power: float = 9.1
 ## How much the backflip sends you backwards.
 @export var push_power: float = 1.4
@@ -12,15 +13,15 @@ var start_freefall_timer: bool = false
 
 func _on_enter(_param):
 	start_freefall_timer = false
-	actor.vel.y = -jump_power
-	actor.vel.x = push_power * -movement.facing_direction
+	actor.velocity.y = -jump_power
+	actor.velocity.x = push_power * -movement.facing_direction
 
 
 func _physics_tick():
 	if InputManager.is_moving_x():
-		movement.move_x_analog(0.06, false)
+		movement.move_x_analog(air_accel, false)
 
-	if actor.vel.y > 0 and not start_freefall_timer:
+	if actor.velocity.y > 0 and not start_freefall_timer:
 		start_freefall_timer = true
 
 		movement.activate_freefall_timer()

@@ -10,19 +10,19 @@ extends Node
 ## Max horizontal speed.
 @export var max_speed: float = 2.8
 
-## How long it takes to accelerate. (when grounded)
+## How long it takes to accelerate when grounded.
 @export var ground_accel_time: float = 22.5
 @onready var ground_accel_step: float = max_speed / ground_accel_time
 
-## How long it takes to decelerate. (when grounded)
+## How long it takes to decelerate when grounded.
 @export var ground_decel_time: float = 13.5
 @onready var ground_decel_step: float = max_speed / ground_decel_time
 
-## How long it takes to accelerate. (when airborne)
+## How long it takes to accelerate when airborne.
 @export var air_accel_time: float = 20.0
 @onready var air_accel_step: float = max_speed / air_accel_time
 
-## How long it takes to decelerate. (when airborne)
+## How long it takes to decelerate when airborne.
 @export var air_decel_time: float = 18.0
 @onready var air_decel_step: float = max_speed / air_decel_time
 
@@ -108,7 +108,7 @@ var dived: bool = false
 ## Amount of consecutive jumps performed for a triple jump.
 var consec_jumps: int = 0
 
-## The player body rotation (in radians.)
+## The player body rotation in radians.
 var body_rotation: float = 0
 #endregion
 
@@ -128,10 +128,10 @@ func _physics_process(_delta):
 		coyote_timer = max(coyote_timer - 1, 0)
 
 		# Rising
-		if actor.vel.y < 0:
+		if actor.velocity.y < 0:
 			consume_coyote_timer()
 		# Falling
-		elif actor.vel.y > 0:
+		elif actor.velocity.y > 0:
 			freefall_timer = max(freefall_timer - 1, -1)
 
 
@@ -148,7 +148,7 @@ func accelerate(add_vel: Vector2, cap: float, angular_friction: float = 0) -> vo
 
 	var direction = add_vel.normalized()
 	
-	var speed = actor.vel.dot(direction)
+	var speed = actor.velocity.dot(direction)
 	var speed_step = add_vel.length()
 
 	# How much speed allowed to be add before getting capped
@@ -162,11 +162,11 @@ func accelerate(add_vel: Vector2, cap: float, angular_friction: float = 0) -> vo
 	# Apply the speed in the correct direction
 	var speed_step_vec: Vector2 = speed_step * direction
 
-	var target_vel: Vector2 = actor.vel + speed_step_vec
+	var target_vel: Vector2 = actor.velocity + speed_step_vec
 
 	if angular_friction > 0:
 		var target_speed: float = target_vel.length()
-		var current_absolute_difference: float = min(cap - actor.vel.length(), 0)
+		var current_absolute_difference: float = min(cap - actor.velocity.length(), 0)
 		var target_absolute_difference: float = cap - target_vel.length()
 		var speed_overshoot: float = min(target_absolute_difference - current_absolute_difference, 0)
 
@@ -177,7 +177,7 @@ func accelerate(add_vel: Vector2, cap: float, angular_friction: float = 0) -> vo
 
 		target_vel = perp.limit_length(perp_len_reduced) + target_vel.project(direction)
 
-	actor.vel = target_vel
+	actor.velocity = target_vel
 
 
 ## Decelerate by a given velocity.
@@ -188,20 +188,20 @@ func decelerate(sub_vel: Vector2):
 		return
 
 	var direction = sub_vel.normalized()
-	var speed = actor.vel.dot(direction)
+	var speed = actor.velocity.dot(direction)
 	var speed_step = sub_vel.length()
 
-	actor.vel = move_toward(speed, 0, speed_step) * direction + actor.vel.slide(direction)
+	actor.velocity = move_toward(speed, 0, speed_step) * direction + actor.velocity.slide(direction)
 
 
 ## Force friction when above a certain threshold.
 func radial_friction(friction: float, threshold: float) -> void:
-	var speed = actor.vel.length()
+	var speed = actor.velocity.length()
 
 	if speed > threshold:
 		speed = move_toward(speed, threshold, friction)
 
-	actor.vel = actor.vel.limit_length(speed)
+	actor.velocity = actor.velocity.limit_length(speed)
 
 
 ## Handles movement on the X axis.
@@ -228,7 +228,7 @@ func move_x_analog(
 
 	accelerate(accel_val * Vector2.RIGHT * input, speed_cap * analog_input)
 
-	if abs(actor.vel.x) > speed_cap * analog_input:
+	if abs(actor.velocity.x) > speed_cap * analog_input:
 		decelerate(friction_val * Vector2.RIGHT)
 
 
@@ -280,10 +280,10 @@ func get_input_x() -> float:
 func apply_gravity(gravity_weight: float = 1, friction: float = 1):
 	var gravity = lerpf(min_grav, max_grav, gravity_weight) / friction
 
-	if actor.vel.y + gravity < term_vel:
-		actor.vel.y += gravity
-	elif actor.vel.y < term_vel:
-		actor.vel.y = term_vel
+	if actor.velocity.y + gravity < term_vel:
+		actor.velocity.y += gravity
+	elif actor.velocity.y < term_vel:
+		actor.velocity.y = term_vel
 
 
 #endregion
@@ -375,9 +375,9 @@ func is_steep_slope() -> bool:
 func can_release_jump(applied_variation: bool, min_jump_power: float) -> bool:
 	return (
 		not Input.is_action_pressed(&"jump")
-		and actor.vel.y > -min_jump_power
+		and actor.velocity.y > -min_jump_power
 		and not applied_variation
-		and actor.vel.y < 0
+		and actor.velocity.y < 0
 	)
 
 
@@ -387,7 +387,7 @@ func can_init_wallslide(input_based: bool = false) -> bool:
 	if should_end_wallslide(input_based):
 		return false
 
-	if not actor.vel.y >= 0:
+	if not actor.velocity.y >= 0:
 		return false
 
 	return input_based or get_input_x() == facing_direction
@@ -416,7 +416,7 @@ func can_air_action() -> bool:
 	var collision := KinematicCollision2D.new()
 	actor.test_move(actor.transform, Vector2i(0, air_margin), collision)
 
-	return collision.get_angle() > actor.floor_max_angle or actor.vel.y < 0
+	return collision.get_angle() > actor.floor_max_angle or actor.velocity.y < 0
 
 
 func is_submerged() -> bool:

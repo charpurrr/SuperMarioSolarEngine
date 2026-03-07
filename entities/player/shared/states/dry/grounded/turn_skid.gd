@@ -18,7 +18,7 @@ func _on_enter(array):
 	movement.update_direction(-movement.facing_direction)
 
 	actor.doll.frame = array[0]
-	actor.vel.x = 0
+	actor.velocity.x = 0
 
 	skid_accel_step = (movement.max_speed + over_accel) / array[1]
 
@@ -29,13 +29,13 @@ func _physics_tick():
 
 
 func _trans_rules():
-	if not InputManager.is_moving_x() or actor.vel.x == 0 or actor.is_on_wall():
+	if not InputManager.is_moving_x() or actor.velocity.x == 0 or actor.is_on_wall():
 		return &"Idle"
 
 	if InputManager.get_x_dir() == -movement.facing_direction:
 		reset_state([0, 16])
 
-	if abs(actor.vel.x) > movement.max_speed + over_accel:
+	if abs(actor.velocity.x) > movement.max_speed + over_accel:
 		return &"Walk"
 
 	if movement.can_spin() and input.buffered_input(&"spin"):

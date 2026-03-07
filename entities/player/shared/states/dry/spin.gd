@@ -18,10 +18,10 @@ func _on_enter(_param):
 
 	if is_airspin:
 		movement.air_spun = true
-		actor.vel.y = -spin_power
+		actor.velocity.y = -spin_power
 
-		if InputManager.get_x_dir() == -sign(actor.vel.x):
-			actor.vel.x = 0
+		if InputManager.get_x_dir() == -sign(actor.velocity.x):
+			actor.velocity.x = 0
 
 	movement.activate_freefall_timer()
 	movement.consume_coyote_timer()

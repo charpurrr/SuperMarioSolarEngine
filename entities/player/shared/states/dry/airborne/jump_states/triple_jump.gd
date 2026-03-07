@@ -2,18 +2,20 @@ class_name TripleJump
 extends Jump
 ## Third consecutively timed jump.
 
+@export var air_accel: float = 0.15
+
 ## If the activate_freefall_timer() function should be called.
 var start_freefall_timer: bool = false
 
 
 func _physics_tick():
-	movement.move_x_analog(0.15, actor.vel.y < 0)
+	movement.move_x_analog(air_accel, actor.velocity.y < 0)
 
 	if movement.can_release_jump(applied_variation, min_jump_power):
 		applied_variation = true
-		actor.vel.y *= 0.5
+		actor.velocity.y *= 0.5
 
-	if actor.vel.y > 0 and not start_freefall_timer:
+	if actor.velocity.y > 0 and not start_freefall_timer:
 		start_freefall_timer = true
 
 		movement.activate_freefall_timer()

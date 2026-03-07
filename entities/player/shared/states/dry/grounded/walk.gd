@@ -23,7 +23,7 @@ func _physics_tick():
 	movement.activate_coyote_timer()
 	movement.move_x_analog(movement.ground_accel_step, true, movement.ground_decel_step)
 
-	actor.doll.speed_scale = actor.vel.x / movement.max_speed * 2
+	actor.doll.speed_scale = actor.velocity.x / movement.max_speed * 2
 	_set_appropriate_anim()
 
 	if current_frame != last_frame:
@@ -37,9 +37,13 @@ func _physics_tick():
 
 ## Sets either the walking or running animation depending on velocity.
 func _set_appropriate_anim():
-	if snappedf(abs(actor.vel.x), 3) > movement.max_speed:
+	if snappedf(abs(actor.velocity.x), 3) > movement.max_speed:
 		overwrite_animation(run_animation_data)
-		actor.vel.x = move_toward(actor.vel.x, movement.max_speed * movement.facing_direction, 0.1)
+		actor.velocity.x = move_toward(
+			actor.velocity.x,
+			movement.max_speed * movement.facing_direction,
+			0.1
+		)
 	else:
 		overwrite_animation(walk_animation_data)
 
@@ -67,7 +71,8 @@ func _trans_rules():
 	if input.buffered_input(&"jump"):
 		return &"DummyJump"
 
-	if InputManager.get_x_dir() == -movement.prev_facing_direction and abs(actor.vel.x) > 1:
+	if (InputManager.get_x_dir() == -movement.prev_facing_direction
+	and abs(actor.velocity.x) > 1):
 		movement.update_prev_direction()
 		return [&"Skid", [0, 16]]
 

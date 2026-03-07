@@ -19,8 +19,8 @@ var finished_rotating: bool
 func _on_enter(_param):
 	movement.activate_freefall_timer()
 
-	actor.vel.x = wall_kickback_power_x * actor.get_wall_normal().x
-	actor.vel.y = -wall_kickback_power_y
+	actor.velocity.x = wall_kickback_power_x * actor.get_wall_normal().x
+	actor.velocity.y = -wall_kickback_power_y
 
 	rotation_timer = 0
 

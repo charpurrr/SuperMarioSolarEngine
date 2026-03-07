@@ -29,10 +29,10 @@ func _on_enter(dive_direction):
 	actor.dive_hurtbox.monitoring = true
 
 	if actor.is_on_floor():
-		actor.vel.y = -bellyflop_power
+		actor.velocity.y = -bellyflop_power
 
-	if movement.facing_direction != sign(actor.vel.x):
-		actor.vel.x = 0
+	if movement.facing_direction != sign(actor.velocity.x):
+		actor.velocity.x = 0
 
 	movement.accelerate(Vector2.RIGHT * movement.facing_direction * x_power, speed_cap)
 
@@ -41,14 +41,14 @@ func _on_enter(dive_direction):
 	# To get around this problem we use the 
 	# opposite complement of the velocity angle:
 	# (TAU / 4 - alpha)
-	actor.doll.rotation = TAU / 4 + actor.vel.angle()
+	actor.doll.rotation = TAU / 4 + actor.velocity.angle()
 
 
 func _physics_tick():
 	if not actor.is_on_floor():
-		movement.body_rotation = TAU / 4 + actor.vel.angle()
+		movement.body_rotation = TAU / 4 + actor.velocity.angle()
 
-	var speed_factor: float = min(1.0, inverse_lerp(0.0, speed_cap, abs(actor.vel.x)))
+	var speed_factor: float = min(1.0, inverse_lerp(0.0, speed_cap, abs(actor.velocity.x)))
 	var accel: float = lerp(min_accel, max_accel, speed_factor)
 
 	movement.move_x_analog(accel, false)

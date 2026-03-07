@@ -7,7 +7,7 @@ func _physics_tick():
 
 	if movement.can_release_jump(applied_variation, min_jump_power):
 		applied_variation = true
-		actor.vel.y *= 0.5
+		actor.velocity.y *= 0.5
 
 
 func _trans_rules():

@@ -4,7 +4,7 @@ extends PlayerState
 
 ## How fast you can slide downwards during a wallslide.
 @export var term_vel: float = 1.10
-## How fast you accelerate to the terminal velocity (basically).
+## How fast you accelerate to the terminal velocity.
 @export var gravity_friction: float = 8.0
 
 
@@ -14,9 +14,9 @@ func _on_enter(_param):
 
 
 func _physics_tick():
-	actor.vel.y = min(actor.vel.y, term_vel)
+	actor.velocity.y = min(actor.velocity.y, term_vel)
 	# Vertical push force so the player stays on the wall.
-	actor.vel.x = movement.facing_direction
+	actor.velocity.x = movement.facing_direction
 
 
 func _subsequent_ticks():

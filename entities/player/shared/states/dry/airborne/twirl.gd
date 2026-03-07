@@ -11,7 +11,7 @@ var finished_init: bool
 
 func _on_enter(_param):
 	if movement.can_air_action():
-		actor.vel.y = -spin_power
+		actor.velocity.y = -spin_power
 
 	movement.activate_freefall_timer()
 	movement.consume_coyote_timer()

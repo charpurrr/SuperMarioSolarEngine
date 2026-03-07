@@ -48,7 +48,7 @@ func _trans_rules():
 
 		return [&"Crouch", [true, false]]
 
-	if is_zero_approx(actor.vel.x) or InputManager.get_x_dir() == -movement.facing_direction:
+	if is_zero_approx(actor.velocity.x) or InputManager.get_x_dir() == -movement.facing_direction:
 		if actor.auto_crouch_check.enabled:
 			return [&"Crouch", [true, false]]
 

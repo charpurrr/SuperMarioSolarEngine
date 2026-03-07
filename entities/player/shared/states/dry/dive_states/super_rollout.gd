@@ -42,7 +42,7 @@ func _trans_rules():
 	if (
 		not movement.dived
 		and movement.can_air_action()
-		and actor.vel.y > 0
+		and actor.velocity.y > 0
 		and (input.buffered_input(&"dive") or Input.is_action_pressed(&"dive"))
 	):
 		return &"Dive"

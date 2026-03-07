@@ -76,11 +76,11 @@ func hover() -> void:
 	var power_effectiveness = hover_effectiveness.sample_baked(1 - stamina / 100.0)
 	var boost_vec: Vector2 = rot_vec * (hover_power * power_effectiveness)
 
-	if abs(actor.vel.x) < abs(boost_vec.x):
-		actor.vel.x += hover_accel * rot_vec.x
+	if abs(actor.velocity.x) < abs(boost_vec.x):
+		actor.velocity.x += hover_accel * rot_vec.x
 
-	if (sign(rot_vec.y) * (actor.vel.y - boost_vec.y) < 0):
-		actor.vel.y += hover_accel * rot_vec.y
+	if (sign(rot_vec.y) * (actor.velocity.y - boost_vec.y) < 0):
+		actor.velocity.y += hover_accel * rot_vec.y
 
 	stamina -= hover_exhaustion
 	fuel -= hover_fuel_usage

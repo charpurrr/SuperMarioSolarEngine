@@ -21,7 +21,7 @@ func _trans_rules():
 		return &"ButtSlide"
 
 	if not actor.auto_crouch_check.enabled and input.buffered_input(&"jump"):
-		if actor.vel.x == 0:
+		if actor.velocity.x == 0:
 			return &"Backflip"
 
 		return &"Longjump"

@@ -2,6 +2,7 @@ class_name Sideflip
 extends PlayerState
 ## Jumping after turning.
 
+@export var air_accel: float = 0.1
 @export var jump_power: float = 8.8
 ## How much the sideflip sends you forwards.
 @export var push_power: float = 1.2
@@ -16,18 +17,18 @@ func _on_enter(_param):
 	movement.update_direction(sign(movement.get_input_x()))
 	movement.consec_jumps = 1
 
-	actor.vel.y = -jump_power
-	actor.vel.x = push_power * InputManager.get_x_dir()
+	actor.velocity.y = -jump_power
+	actor.velocity.x = push_power * InputManager.get_x_dir()
 
 
 func _subsequent_ticks():
-	movement.apply_gravity(-actor.vel.y / jump_power)
+	movement.apply_gravity(-actor.velocity.y / jump_power)
 
 
 func _physics_tick():
-	movement.move_x_analog(0.1, false)
+	movement.move_x_analog(air_accel, false)
 
-	if actor.vel.y > 0 and not start_freefall_timer:
+	if actor.velocity.y > 0 and not start_freefall_timer:
 		start_freefall_timer = true
 
 		movement.activate_freefall_timer()

@@ -8,9 +8,9 @@ func _physics_tick():
 
 
 func _subsequent_ticks():
-	if actor.vel.y < 0:
-		movement.apply_gravity(-actor.vel.y / jump_power)
-	if actor.vel.y > 0:
+	if actor.velocity.y < 0:
+		movement.apply_gravity(-actor.velocity.y / jump_power)
+	if actor.velocity.y > 0:
 		movement.apply_gravity(1, 2)
 
 
@@ -24,7 +24,7 @@ func _trans_rules():
 	if not movement.dived and movement.can_air_action() and input.buffered_input(&"dive"):
 		return &"Dive"
 
-	if actor.vel.y > 0 and input.buffered_input(&"spin"):
+	if actor.velocity.y > 0 and input.buffered_input(&"spin"):
 		movement.update_direction(InputManager.get_x_dir())
 		return &"Twirl"
 

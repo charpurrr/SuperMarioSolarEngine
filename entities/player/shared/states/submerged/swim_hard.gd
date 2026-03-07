@@ -10,7 +10,7 @@ var boost_speed: float
 
 func _on_enter(_param):
 	boost_speed = movement.swim_speed + extra_boost_speed
-	actor.vel = _get_input_vec() * boost_speed
+	actor.velocity = _get_input_vec() * boost_speed
 
 
 func _physics_tick():

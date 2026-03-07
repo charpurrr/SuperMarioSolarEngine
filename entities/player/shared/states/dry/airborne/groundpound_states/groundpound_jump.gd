@@ -19,7 +19,7 @@ func _trans_rules():
 	if movement.can_init_wallslide():
 		return &"Wallslide"
 
-	if actor.vel.y > 0:
+	if actor.velocity.y > 0:
 		return fall_state.name
 
 	return &""

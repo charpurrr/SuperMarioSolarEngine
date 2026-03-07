@@ -11,10 +11,10 @@ func _on_enter(_param):
 
 
 func _physics_tick():
-	if not actor.vel.is_equal_approx(Vector2.ZERO):
-		actor.doll.rotation = actor.vel.angle()
+	if not actor.velocity.is_equal_approx(Vector2.ZERO):
+		actor.doll.rotation = actor.velocity.angle()
 
-		movement.update_direction(sign(actor.vel.x))
+		movement.update_direction(sign(actor.velocity.x))
 
 		if actor.doll.flip_h:
 			actor.doll.rotation += PI

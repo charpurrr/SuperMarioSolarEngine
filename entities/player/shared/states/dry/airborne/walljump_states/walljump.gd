@@ -2,6 +2,9 @@ class_name Walljump
 extends PlayerState
 ## Jumping from a wallslide.
 
+## The acceleration value for when you're moving against the direction you walljumped in.
+@export var resistance_accel: float = 0.13
+@export var air_decel: float = 0.01
 @export var jump_power: float = 8.15
 ## How much the walljump sends you forwards.
 @export var push_power: float = 3
@@ -17,8 +20,8 @@ func _on_enter(direction):
 	movement.update_direction(direction)
 	movement.activate_freefall_timer()
 
-	actor.vel.y = -jump_power
-	actor.vel.x = push_power * direction
+	actor.velocity.y = -jump_power
+	actor.velocity.x = push_power * direction
 
 	movement.consec_jumps = 1
 
@@ -29,12 +32,12 @@ func _physics_tick():
 	should_flip = actor.position.y > movement.walljump_start_y + movement.walljump_turn_threshold
 
 	if InputManager.get_x_dir() != movement.facing_direction:
-		movement.move_x_analog(0.13, should_flip)
+		movement.move_x_analog(resistance_accel, should_flip)
 	elif InputManager.is_moving_x():
 		movement.move_x_analog(movement.air_accel_step, should_flip)
 
-	movement.apply_gravity(-actor.vel.y / jump_power)
-	movement.decelerate(0.01 * Vector2.RIGHT)
+	movement.apply_gravity(-actor.velocity.y / jump_power)
+	movement.decelerate(air_decel * Vector2.RIGHT)
 
 
 func _trans_rules():

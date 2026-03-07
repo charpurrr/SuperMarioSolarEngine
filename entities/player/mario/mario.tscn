@@ -432,7 +432,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Resource" id="Resource_cpqj3"]
+[sub_resource type="Resource" id="Resource_spsxp"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
 doll_path = NodePath("Doll")
@@ -442,23 +442,17 @@ frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
 frame_fludd = Dictionary[int, String]({
-0: "default",
-1: "default"
+0: "default"
 })
 frame_fludd_offsets = Dictionary[int, Vector2i]({
-0: Vector2i(0, 0),
-1: Vector2i(0, 0),
-3: Vector2i(0, 1),
-4: Vector2i(0, 2),
-5: Vector2i(0, 2),
-6: Vector2i(0, 1)
+0: Vector2i(0, 5)
 })
-animation = "idle"
+animation = "bonk"
 frame = 0
 preview = false
 frame_offset = Vector2i(0, 0)
 fludd_animation = "default"
-fludd_offset = Vector2i(0, 0)
+fludd_offset = Vector2i(0, 5)
 metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f3xbj"]
@@ -902,6 +896,35 @@ bus = &"Motion"
 overwrite_other = false
 cutoff_sfx = false
 metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
+
+[sub_resource type="Resource" id="Resource_cpqj3"]
+resource_local_to_scene = true
+script = ExtResource("23_bbld7")
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
+frame_fludd = Dictionary[int, String]({
+0: "default",
+1: "default"
+})
+frame_fludd_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0),
+1: Vector2i(0, 0),
+3: Vector2i(0, 1),
+4: Vector2i(0, 2),
+5: Vector2i(0, 2),
+6: Vector2i(0, 1)
+})
+animation = "idle"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_xh3w7"]
 resource_local_to_scene = true
@@ -2261,29 +2284,6 @@ bus = &"Motion"
 overwrite_other = false
 metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
 
-[sub_resource type="Resource" id="Resource_spsxp"]
-resource_local_to_scene = true
-script = ExtResource("23_bbld7")
-doll_path = NodePath("Doll")
-fludd_f_path = NodePath("FluddInfront")
-fludd_b_path = NodePath("FluddBehind")
-frame_offsets = Dictionary[int, Vector2i]({
-0: Vector2i(0, 0)
-})
-frame_fludd = Dictionary[int, String]({
-0: "default"
-})
-frame_fludd_offsets = Dictionary[int, Vector2i]({
-0: Vector2i(0, 5)
-})
-animation = "bonk"
-frame = 0
-preview = false
-frame_offset = Vector2i(0, 0)
-fludd_animation = "default"
-fludd_offset = Vector2i(0, 5)
-metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
-
 [node name="Mario" type="CharacterBody2D" unique_id=63323883 node_paths=PackedStringArray("doll", "fludd_f", "fludd_b", "state_manager", "movement", "input", "push_rays", "hitbox", "dive_hitbox", "small_hitbox", "water_check", "auto_crouch_check", "dive_hurtbox", "spin_hurtbox", "crouch_spin_hurtbox", "stomp_hurtbox", "gp_hurtbox")]
 material = SubResource("ShaderMaterial_wdv80")
 collision_layer = 2
@@ -2326,8 +2326,8 @@ sprite_frames = SubResource("SpriteFrames_e1ut2")
 [node name="Doll" type="AnimatedSprite2D" parent="." unique_id=1876045562]
 position = Vector2(0, -24)
 sprite_frames = ExtResource("4_xenv0")
-animation = &"wallslide"
-metadata/last_previewed = SubResource("Resource_cpqj3")
+animation = &"bonk"
+metadata/last_previewed = SubResource("Resource_spsxp")
 
 [node name="FluddInfront" type="AnimatedSprite2D" parent="." unique_id=1928286412]
 visible = false
@@ -2451,8 +2451,12 @@ buffer_duration = 6
 
 [node name="FluddManager" type="Node" parent="." unique_id=2015663485 node_paths=PackedStringArray("actor", "stamina_bar", "fludd_b", "fludd_f", "spray_player")]
 script = ExtResource("151_4womg")
+hover_power = 90.0
+hover_accel = 30.0
 hover_effectiveness = SubResource("Curve_u3pyw")
 hover_spray_sfx = ExtResource("10_8wyc1")
+rocket_power = 600.0
+turbo_power = 180.0
 actor = NodePath("..")
 stamina_bar = NodePath("../FluddStamina")
 fludd_b = NodePath("../FluddBehind")
@@ -2468,16 +2472,18 @@ bus = &"Motion"
 [node name="Movement" type="Node" parent="." unique_id=1261744189 node_paths=PackedStringArray("actor")]
 script = ExtResource("37_quca3")
 actor = NodePath("..")
-max_speed = 3.0
-term_vel = 8.0
-min_grav = 0.215
+max_speed = 180.0
+term_vel = 480.0
+max_grav = 13.2
+min_grav = 12.9
 snap_length = 8.0
-swim_speed = 3.0
+swim_speed = 180.0
 min_slide_incline = 0.4
 
-[node name="StateManager" type="Node" parent="." unique_id=1337517111 node_paths=PackedStringArray("input", "movement", "target_actor", "initial_state")]
+[node name="StateManager" type="Node" parent="." unique_id=1337517111 node_paths=PackedStringArray("input", "fludd", "movement", "target_actor", "initial_state")]
 script = ExtResource("38_vxs65")
 input = NodePath("../InputManager")
+fludd = NodePath("../FluddManager")
 movement = NodePath("../Movement")
 target_actor = NodePath("..")
 initial_state = NodePath("Dry/Airborne")
@@ -2498,7 +2504,7 @@ animation_data = SubResource("Resource_mqps4")
 
 [node name="SwimHard" type="Node" parent="StateManager/Submerged" unique_id=1273972862]
 script = ExtResource("42_7ru02")
-extra_boost_speed = 0.5
+extra_boost_speed = 30.0
 hitbox_type = "Dive"
 animation_data = SubResource("Resource_q75g6")
 
@@ -2509,7 +2515,7 @@ animation_data = SubResource("Resource_hnhty")
 
 [node name="SwimSpin" type="Node" parent="StateManager/Submerged" unique_id=288718187]
 script = ExtResource("43_vu16w")
-extra_boost_speed = 2.0
+extra_boost_speed = 120.0
 hitbox_type = "Dive"
 animation_data = SubResource("Resource_ata35")
 
@@ -2540,7 +2546,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_8p2oq"), SubR
 [node name="Skid" type="Node" parent="StateManager/Dry/Grounded" unique_id=402900983]
 script = ExtResource("48_w11sb")
 skid_accel_time = 8.0
-over_accel = 1.0
+over_accel = 60.0
 animation_data = SubResource("Resource_1vsdu")
 
 [node name="Push" type="Node" parent="StateManager/Dry/Grounded" unique_id=1888659466]
@@ -2558,6 +2564,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_sitp4")])
 
 [node name="Crouch" type="Node" parent="StateManager/Dry/Grounded" unique_id=62433339]
 script = ExtResource("51_38is8")
+decel = 4.2
 hitbox_type = "Small"
 animation_data = SubResource("Resource_8wyc1")
 on_enter = false
@@ -2572,6 +2579,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_upqlf")])
 
 [node name="Waddle" type="Node" parent="StateManager/Dry/Grounded" unique_id=1080692194]
 script = ExtResource("53_blm5r")
+accel = 7.2
 footstep_frames = Array[int]([1, 3])
 hitbox_type = "Small"
 animation_data = SubResource("Resource_f3xbj")
@@ -2604,10 +2612,11 @@ particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_kvfvp")])
 
 [node name="DummyJump" type="Node" parent="StateManager/Dry/Airborne/JumpStates" unique_id=66212913]
 script = ExtResource("65_6w5qc")
+triple_min_vel = 60.0
 
 [node name="Jump" type="Node" parent="StateManager/Dry/Airborne/JumpStates/DummyJump" unique_id=7423888 node_paths=PackedStringArray("fall_state")]
 script = ExtResource("66_2qkrt")
-jump_power = 5.3
+jump_power = 318.0
 min_jump_percent = 20.0
 jump_number = 1
 fall_state = NodePath("../../../FallStates/Fall")
@@ -2616,7 +2625,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_2esv2"), SubR
 
 [node name="DoubleJump" type="Node" parent="StateManager/Dry/Airborne/JumpStates/DummyJump" unique_id=2019446783 node_paths=PackedStringArray("fall_state")]
 script = ExtResource("75_nf276")
-jump_power = 6.7
+jump_power = 402.0
 min_jump_percent = 35.0
 jump_number = 2
 fall_state = NodePath("../../../FallStates/DoubleFall")
@@ -2625,14 +2634,15 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_js1ac"), SubR
 
 [node name="TripleJump" type="Node" parent="StateManager/Dry/Airborne/JumpStates/DummyJump" unique_id=1251492730]
 script = ExtResource("82_h02h3")
-jump_power = 8.0
+air_accel = 9.0
+jump_power = 480.0
 min_jump_percent = 50.0
 animation_data = SubResource("Resource_2siud")
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_c6n5s"), SubResource("Resource_0beus"), SubResource("Resource_32052")])
 
 [node name="Spinjump" type="Node" parent="StateManager/Dry/Airborne/JumpStates" unique_id=1140773851]
 script = ExtResource("92_pwmyp")
-jump_power = 6.7
+jump_power = 402.0
 min_jump_percent = 100.0
 jump_number = 2
 animation_data = SubResource("Resource_pakf6")
@@ -2640,8 +2650,8 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_h8xfq"), SubR
 
 [node name="Longjump" type="Node" parent="StateManager/Dry/Airborne/JumpStates" unique_id=1781876804]
 script = ExtResource("100_6d35n")
-jump_power = 3.6
-push_power = 6.0
+jump_power = 216.0
+push_power = 360.0
 forward_accel_time = 15
 backward_accel_time = 30
 animation_data = SubResource("Resource_ufl2i")
@@ -2649,19 +2659,23 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_5f3i0"), SubR
 
 [node name="Sideflip" type="Node" parent="StateManager/Dry/Airborne/JumpStates" unique_id=1494292787]
 script = ExtResource("101_4gu6d")
-jump_power = 7.2
+air_accel = 6.0
+jump_power = 432.0
+push_power = 72.0
 animation_data = SubResource("Resource_m576x")
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ts3h6"), SubResource("Resource_foa8p")])
 
 [node name="Backflip" type="Node" parent="StateManager/Dry/Airborne/JumpStates" unique_id=502392670]
 script = ExtResource("103_ky35g")
-jump_power = 7.5
+air_accel = 3.6
+jump_power = 450.0
+push_power = 84.0
 animation_data = SubResource("Resource_2h0ab")
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_yrs16"), SubResource("Resource_l81lv")])
 
 [node name="ButtSlideJump" type="Node" parent="StateManager/Dry/Airborne/JumpStates" unique_id=1501405754]
 script = ExtResource("104_py71u")
-jump_power = 5.3
+jump_power = 318.0
 min_jump_percent = 20.0
 jump_number = 1
 animation_data = SubResource("Resource_o485y")
@@ -2669,7 +2683,8 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_jo8kb")])
 
 [node name="WallBoost" type="Node" parent="StateManager/Dry/Airborne/JumpStates" unique_id=18307691]
 script = ExtResource("113_s1bjj")
-jump_power = 6.9
+jump_power = 414.0
+push_power = 180.0
 animation_data = SubResource("Resource_gacnc")
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_5gjtv")])
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_nl575"), SubResource("Resource_a2hl0")])
@@ -2690,22 +2705,25 @@ script = ExtResource("73_acu3g")
 
 [node name="Wallslide" type="Node" parent="StateManager/Dry/Airborne/WalljumpStates" unique_id=643447574]
 script = ExtResource("105_6ryk6")
-term_vel = 3.0
-gravity_friction = 4.0
+term_vel = 180.0
+gravity_friction = 240.0
 animation_data = SubResource("Resource_86kn8")
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_2nx7x"), SubResource("Resource_5idsp")])
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_w3vn1")])
 
 [node name="Walljump" type="Node" parent="StateManager/Dry/Airborne/WalljumpStates" unique_id=1733765310]
 script = ExtResource("90_0xuyq")
-jump_power = 5.3
-push_power = 4.0
+resistance_accel = 7.8
+air_decel = 0.6
+jump_power = 318.0
+push_power = 240.0
 animation_data = SubResource("Resource_mk8bu")
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_pq6ep"), SubResource("Resource_a2hl0")])
 
 [node name="SpinWallbonk" type="Node" parent="StateManager/Dry/Airborne/WalljumpStates" unique_id=1750358578]
 script = ExtResource("109_w8m04")
-wall_kickback_power_y = 1.5
+wall_kickback_power_x = 102.0
+wall_kickback_power_y = 90.0
 animation_data = SubResource("Resource_wc0bq")
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_bloag"), SubResource("Resource_2nfvq")])
 
@@ -2736,6 +2754,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_7r27p"), SubR
 
 [node name="GroundPoundFall" type="Node" parent="StateManager/Dry/Airborne/GroundPoundStates" unique_id=857633780]
 script = ExtResource("111_fyebu")
+gp_fall_vel = 540.0
 animation_data = SubResource("Resource_qbnhj")
 
 [node name="AfterimageModule" parent="StateManager/Dry/Airborne/GroundPoundStates/GroundPoundFall" unique_id=1104081810 node_paths=PackedStringArray("actor") instance=ExtResource("120_f3xbj")]
@@ -2749,7 +2768,7 @@ animation_data = SubResource("Resource_ngcav")
 
 [node name="GroundPoundJump" type="Node" parent="StateManager/Dry/Airborne/GroundPoundStates" unique_id=1346335720 node_paths=PackedStringArray("fall_state")]
 script = ExtResource("105_g4v7o")
-jump_power = 6.7
+jump_power = 402.0
 min_jump_percent = 35.0
 jump_number = 2
 fall_state = NodePath("../../FallStates/Fall")
@@ -2765,7 +2784,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_2y8iw")])
 
 [node name="Spin" type="Node" parent="StateManager/Dry" unique_id=118406051]
 script = ExtResource("135_qf53u")
-spin_power = 3.0
+spin_power = 180.0
 animation_data = SubResource("Resource_wc0bq")
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_totbj")])
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_vehmo"), SubResource("Resource_0hpnu")])
@@ -2775,9 +2794,11 @@ script = ExtResource("73_acu3g")
 
 [node name="Dive" type="Node" parent="StateManager/Dry/DiveStates" unique_id=1783448395]
 script = ExtResource("134_dsbpr")
-x_power = 3.2
-bellyflop_power = 2.8
-max_accel = 0.4
+x_power = 192.0
+bellyflop_power = 168.0
+min_accel = 3.0
+max_accel = 24.0
+speed_cap = 480.0
 hitbox_type = "Dive"
 animation_data = SubResource("Resource_u3pyw")
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_lib4c"), SubResource("Resource_6roi5")])
@@ -2785,8 +2806,8 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_lib4c"), SubR
 [node name="Rollout" type="Node" parent="StateManager/Dry/DiveStates" unique_id=1320544296]
 script = ExtResource("129_e0h20")
 x_multiplier = 1.2
-accel_cap = 8.0
-jump_power = 3.0
+accel_cap = 480.0
+jump_power = 180.0
 min_jump_percent = 100.0
 jump_number = 1
 animation_data = SubResource("Resource_cootw")
@@ -2795,10 +2816,11 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_4xwjg")])
 
 [node name="SuperRollout" type="Node" parent="StateManager/Dry/DiveStates" unique_id=362376650]
 script = ExtResource("150_4duxu")
-x_power = 3.2
+x_power = 192.0
+speed_cap = 480.0
 x_multiplier = 1.2
-accel_cap = 8.0
-jump_power = 3.2
+accel_cap = 480.0
+jump_power = 192.0
 min_jump_percent = 100.0
 jump_number = 1
 hitbox_type = "Dive"
@@ -2814,13 +2836,20 @@ afterimage_offset = Vector2(-32, -32)
 
 [node name="Bonk" type="Node" parent="StateManager/Dry/DiveStates" unique_id=348195047]
 script = ExtResource("131_f03w0")
+wall_kickback_power_x = 102.0
+wall_kickback_power_y = 90.0
 rotation_time = 45.0
 animation_data = SubResource("Resource_qko5d")
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ujdp5"), SubResource("Resource_pxspy")])
 
 [node name="ButtSlide" type="Node" parent="StateManager/Dry" unique_id=720337721]
 script = ExtResource("140_lfmwr")
-speed = 12.5
+speed = 750.0
+min_speed = 300.0
+max_speed = 1200.0
+min_remain_speed = 6.0
+friction = 7.5
+max_accel = 13.2
 turn_forgiveness = 1.5
 shallow_penalty = 0.25
 incline_friction = 90.0
@@ -2835,7 +2864,6 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_mc84f")])
 [node name="Hit" type="Node" parent="StateManager/Dry" unique_id=795940851]
 process_mode = 3
 script = ExtResource("144_xenv0")
-freeze_time = 20
 animation_data = SubResource("Resource_spsxp")
 
 [connection signal="body_entered" from="Areas/DiveHurtBox" to="StateManager/Dry/DiveStates/Dive" method="_on_dive_hurt_box_body_entered"]

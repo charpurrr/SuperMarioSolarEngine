@@ -20,8 +20,8 @@ func _on_enter(_param):
 	movement.activate_freefall_timer()
 	movement.consume_coyote_timer()
 
-	actor.vel.x = wall_kickback_power_x * -movement.facing_direction
-	actor.vel.y = -wall_kickback_power_y
+	actor.velocity.x = wall_kickback_power_x * -movement.facing_direction
+	actor.velocity.y = -wall_kickback_power_y
 
 
 func _subsequent_ticks():

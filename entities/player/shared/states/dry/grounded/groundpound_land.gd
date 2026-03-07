@@ -9,7 +9,7 @@ extends PlayerState
 
 
 func _on_enter(_param):
-	actor.vel.x = 0
+	actor.velocity.x = 0
 
 	actor.camera.shake(Math.random_coord(camera_shake_power))
 

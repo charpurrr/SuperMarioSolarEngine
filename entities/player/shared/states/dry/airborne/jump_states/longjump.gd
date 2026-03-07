@@ -21,11 +21,11 @@ func _on_enter(_param):
 	movement.update_direction(sign(movement.get_input_x()))
 	movement.consec_jumps = 0
 
-	actor.vel.y = -jump_power
+	actor.velocity.y = -jump_power
 
 
 func _subsequent_ticks():
-	movement.apply_gravity(-actor.vel.y / jump_power, 1.2)
+	movement.apply_gravity(-actor.velocity.y / jump_power, 1.2)
 
 
 func _physics_tick():
@@ -38,7 +38,7 @@ func _physics_tick():
 
 	movement.accelerate(accel_val, push_power)
 
-	if actor.vel.y > 0 and not start_freefall_timer:
+	if actor.velocity.y > 0 and not start_freefall_timer:
 		start_freefall_timer = true
 
 		movement.activate_freefall_timer()

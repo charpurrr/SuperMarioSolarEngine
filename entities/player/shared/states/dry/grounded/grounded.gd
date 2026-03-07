@@ -20,8 +20,8 @@ func _on_enter(play_land_sfx):
 
 
 func _physics_tick():
-	if actor.vel.y < 0:
-		actor.vel.y += 1
+	if actor.velocity.y < 0:
+		actor.velocity.y += 1
 
 
 func _trans_rules():

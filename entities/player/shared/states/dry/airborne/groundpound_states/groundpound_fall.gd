@@ -13,7 +13,7 @@ func _on_enter(_param: Variant) -> void:
 func _physics_tick():
 	movement.move_x_analog(0.04, false)
 
-	actor.vel.y = gp_fall_vel
+	actor.velocity.y = gp_fall_vel
 
 
 func _on_exit() -> void:

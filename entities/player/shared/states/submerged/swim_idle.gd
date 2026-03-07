@@ -11,7 +11,7 @@ var entered_vel_vec: Vector2
 
 
 func _on_enter(_param):
-	entered_vel_vec = actor.vel
+	entered_vel_vec = actor.velocity
 	decel_timer = decel_time
 
 

@@ -2,6 +2,9 @@ class_name Waddle
 extends PlayerState
 ## Walking whilse crouching on the floor.
 
+
+@export var speed: float = 90.0
+@export var accel: float = 0.12
 ## On what frames of the walking animation a footstep soundeffect should play.
 @export var footstep_frames: Array[int]
 
@@ -13,15 +16,13 @@ var last_frame: int
 
 
 func _physics_tick():
-	var crouch_walk_speed: float = movement.max_speed / 2
-
 	current_frame = actor.doll.get_frame()
 
 	movement.activate_coyote_timer()
-	movement.move_x(0.12, true, crouch_walk_speed)
+	movement.move_x(accel, true, speed)
 
 	current_frame = actor.doll.get_frame()
-	actor.doll.speed_scale = actor.vel.x / crouch_walk_speed
+	actor.doll.speed_scale = actor.velocity.x / speed
 
 	if current_frame != last_frame:
 		_play_footstep_sfx()
@@ -52,9 +53,10 @@ func _trans_rules():
 		return [&"Crouch", [true, false]]
 
 	if not actor.auto_crouch_check.enabled and input.buffered_input(&"jump"):
-		if is_equal_approx(actor.vel.x, 0.0) or sign(actor.vel.x) != movement.facing_direction:
+		if (is_equal_approx(actor.velocity.x, 0.0) or
+		sign(actor.velocity.x) != movement.facing_direction):
 			return &"Backflip"
-		elif sign(actor.vel.x) == movement.facing_direction:
+		elif sign(actor.velocity.x) == movement.facing_direction:
 			return &"Longjump"
 
 	if not Input.is_action_pressed(&"down") and not actor.auto_crouch_check.enabled:
