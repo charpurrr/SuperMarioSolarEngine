@@ -2905,7 +2905,7 @@ process_mode = 3
 script = ExtResource("144_xenv0")
 freeze_time = 20
 i_frames = 90
-camera_shake_power = 20
+camera_shake_power = 10
 sfx = Dictionary[int, Array]({
 5: [SubResource("Resource_ngayn"), SubResource("Resource_i30f1")]
 })
