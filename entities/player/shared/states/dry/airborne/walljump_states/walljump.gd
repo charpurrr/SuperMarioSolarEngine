@@ -26,7 +26,7 @@ func _on_enter(direction):
 	movement.consec_jumps = 1
 
 
-func _physics_tick(_delta: float):
+func _physics_tick(delta: float):
 	var should_flip: bool
 
 	should_flip = actor.position.y > movement.walljump_start_y + movement.walljump_turn_threshold
@@ -36,7 +36,7 @@ func _physics_tick(_delta: float):
 	elif InputManager.is_moving_x():
 		movement.move_x_analog(movement.air_accel_step, should_flip)
 
-	movement.apply_gravity(-actor.velocity.y / jump_power)
+	movement.apply_gravity(delta, -actor.velocity.y / jump_power)
 	movement.decelerate(air_decel * Vector2.RIGHT)
 
 

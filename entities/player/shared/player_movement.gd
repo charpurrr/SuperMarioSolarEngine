@@ -40,10 +40,10 @@ var return_timer: float
 ## Max vertical speed.
 @export var term_vel: float = 6.60
 
-## How high gravity can interpolate.
-@export var max_grav: float = 0.22
 ## How low gravity can interpolate.
 @export var min_grav: float = max_grav
+## How high gravity can interpolate.
+@export var max_grav: float = 0.22
 
 ## Amount of units the player needs to be above the ground to perform an airborne action.
 @export var air_margin: int = 10
@@ -280,11 +280,11 @@ func get_input_x() -> float:
 
 
 #region Y Functions
-func apply_gravity(gravity_weight: float = 1, friction: float = 1):
+func apply_gravity(delta:float, gravity_weight: float = 1, friction: float = 1):
 	var gravity = lerpf(min_grav, max_grav, gravity_weight) / friction
 
-	if actor.velocity.y + gravity < term_vel:
-		actor.velocity.y += gravity
+	if actor.velocity.y + gravity * delta < term_vel:
+		actor.velocity.y += gravity * delta
 	elif actor.velocity.y < term_vel:
 		actor.velocity.y = term_vel
 

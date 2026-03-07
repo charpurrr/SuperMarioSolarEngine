@@ -104,11 +104,11 @@ func _grounded(delta: float):
 
 
 ## Buttsliding in the air.
-func _airborne(_delta: float):
+func _airborne(delta: float):
 	no_direction = true
 	slide_speed = 0
 
-	movement.apply_gravity()
+	movement.apply_gravity(delta)
 
 
 ## Get the slide direction downwards along the slope.

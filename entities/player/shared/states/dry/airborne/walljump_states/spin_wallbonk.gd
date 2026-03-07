@@ -24,8 +24,8 @@ func _on_enter(_param):
 	actor.velocity.y = -wall_kickback_power_y
 
 
-func _subsequent_ticks(_delta: float):
-	movement.apply_gravity()
+func _subsequent_ticks(delta: float):
+	movement.apply_gravity(delta)
 
 
 func _physics_tick(_delta: float):

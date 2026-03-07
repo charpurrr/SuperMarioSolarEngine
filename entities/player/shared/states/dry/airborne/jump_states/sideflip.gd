@@ -21,8 +21,8 @@ func _on_enter(_param):
 	actor.velocity.x = push_power * InputManager.get_x_dir()
 
 
-func _subsequent_ticks(_delta: float):
-	movement.apply_gravity(-actor.velocity.y / jump_power)
+func _subsequent_ticks(delta: float):
+	movement.apply_gravity(delta, -actor.velocity.y / jump_power)
 
 
 func _physics_tick(_delta: float):

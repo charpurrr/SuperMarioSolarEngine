@@ -27,15 +27,15 @@ func _on_enter(_param):
 	movement.consume_coyote_timer()
 
 
-func _first_tick(_delta: float):
+func _first_tick(delta: float):
 	# Gravity needs to be applied when a grounded spin is buffered.
 	# (Pressing the spin actions while being a few units from the ground.)
 	if not is_airspin:
-		movement.apply_gravity()
+		movement.apply_gravity(delta)
 
 
-func _subsequent_ticks(_delta: float):
-	movement.apply_gravity()
+func _subsequent_ticks(delta: float):
+	movement.apply_gravity(delta)
 
 
 func _physics_tick(_delta: float):

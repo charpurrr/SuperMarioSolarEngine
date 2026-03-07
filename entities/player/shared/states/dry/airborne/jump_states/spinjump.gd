@@ -7,11 +7,11 @@ func _physics_tick(_delta: float):
 	movement.move_x_analog(0.15, false)
 
 
-func _subsequent_ticks(_delta: float):
+func _subsequent_ticks(delta: float):
 	if actor.velocity.y < 0:
-		movement.apply_gravity(-actor.velocity.y / jump_power)
+		movement.apply_gravity(delta, -actor.velocity.y / jump_power)
 	if actor.velocity.y > 0:
-		movement.apply_gravity(1, 2)
+		movement.apply_gravity(delta, 1, 2)
 
 
 func _trans_rules():
