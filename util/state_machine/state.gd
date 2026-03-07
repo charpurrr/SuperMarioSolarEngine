@@ -24,14 +24,14 @@ func _to_string():
 
 
 ## Calls the fixed tick functions
-func tick_hook() -> void:
+func tick_hook(delta: float) -> void:
 	if _first_cycle:
 		_first_tick()
 		_first_cycle = false
 	else:
 		_subsequent_ticks()
 
-	_physics_tick()
+	_physics_tick(delta)
 
 
 ## Call a callable from a function name and given arguments.
@@ -205,7 +205,7 @@ func _is_live() -> bool:
 
 
 ## Called on every cycle of the physics process loop.
-func _physics_tick() -> void:
+func _physics_tick(_delta: float) -> void:
 	pass
 
 

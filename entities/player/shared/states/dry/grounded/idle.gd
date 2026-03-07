@@ -6,7 +6,7 @@ extends PlayerState
 @export var lookup_animation_data: PStateAnimData
 
 
-func _physics_tick():
+func _physics_tick(_delta: float):
 	movement.update_prev_direction()
 	movement.decelerate(movement.ground_decel_step * Vector2.RIGHT)
 

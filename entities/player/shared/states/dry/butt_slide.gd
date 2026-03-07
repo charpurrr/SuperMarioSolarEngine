@@ -58,7 +58,7 @@ func _on_enter(handover_speed):
 		slide_speed = 0
 
 
-func _physics_tick():
+func _physics_tick(_delta: float):
 	if actor.is_on_floor():
 		_grounded()
 	else:

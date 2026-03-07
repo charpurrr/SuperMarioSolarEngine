@@ -13,7 +13,7 @@ func _on_enter(_param):
 	movement.consec_jumps = 0
 
 
-func _physics_tick():
+func _physics_tick(_delta: float):
 	actor.velocity.y = min(actor.velocity.y, term_vel)
 	# Vertical push force so the player stays on the wall.
 	actor.velocity.x = movement.facing_direction

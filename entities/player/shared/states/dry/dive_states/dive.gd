@@ -44,7 +44,7 @@ func _on_enter(dive_direction):
 	actor.doll.rotation = TAU / 4 + actor.velocity.angle()
 
 
-func _physics_tick():
+func _physics_tick(_delta: float):
 	if not actor.is_on_floor():
 		movement.body_rotation = TAU / 4 + actor.velocity.angle()
 

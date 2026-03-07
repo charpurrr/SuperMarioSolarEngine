@@ -7,8 +7,8 @@ extends Fall
 @export var fall_data: PStateAnimData
 
 
-func _physics_tick():
-	super()
+func _physics_tick(delta: float):
+	super(delta)
 
 	if actor.velocity.y < 0:
 		overwrite_animation(jump_data)

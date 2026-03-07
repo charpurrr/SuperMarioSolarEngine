@@ -8,7 +8,7 @@ func _on_enter(_param):
 	actor.doll.rotation = movement.body_rotation
 
 
-func _physics_tick():
+func _physics_tick(_delta: float):
 	var normal_angle: float = actor.get_floor_normal().angle()
 	var angle: float = normal_angle + TAU / 2 * Math.sign_positive(movement.facing_direction)
 

@@ -19,7 +19,7 @@ func _on_enter(play_land_sfx):
 			sfx_layers[1].play_sfx_at(self)
 
 
-func _physics_tick():
+func _physics_tick(_delta: float):
 	if actor.velocity.y < 0:
 		actor.velocity.y += 1
 

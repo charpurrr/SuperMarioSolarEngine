@@ -4,5 +4,5 @@ extends EnemyState
 ## Handles all the other non-water states. (I.e. roaming and aggroed states)
 
 
-func _physics_tick() -> void:
+func _physics_tick(_delta: float) -> void:
 	actor.vel.y += actor.gravity

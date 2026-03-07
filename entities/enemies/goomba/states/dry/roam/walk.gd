@@ -36,7 +36,7 @@ func _on_enter(force_walk_dir: Variant) -> void:
 		actor.doll.flip_h = !flip
 
 
-func _physics_tick() -> void:
+func _physics_tick(_delta: float) -> void:
 	walk_timer = max(walk_timer - 1, 0)
 	actor.vel.x = walk_speed * walk_direction
 

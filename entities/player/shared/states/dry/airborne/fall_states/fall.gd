@@ -11,7 +11,7 @@ func _subsequent_ticks():
 	movement.apply_gravity()
 
 
-func _physics_tick():
+func _physics_tick(_delta: float):
 	movement.move_x_analog(movement.air_accel_step, true)
 
 

@@ -22,7 +22,7 @@ func _on_enter(_param: Variant) -> void:
 	wait_timer = randi_range(min_wait_time, max_wait_time)
 
 
-func _physics_tick() -> void:
+func _physics_tick(_delta: float) -> void:
 	actor.vel.x = move_toward(actor.vel.x, 0, decel)
 	wait_timer = max(wait_timer - 1, 0)
 

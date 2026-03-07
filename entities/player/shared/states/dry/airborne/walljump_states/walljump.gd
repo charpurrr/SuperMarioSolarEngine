@@ -26,7 +26,7 @@ func _on_enter(direction):
 	movement.consec_jumps = 1
 
 
-func _physics_tick():
+func _physics_tick(_delta: float):
 	var should_flip: bool
 
 	should_flip = actor.position.y > movement.walljump_start_y + movement.walljump_turn_threshold

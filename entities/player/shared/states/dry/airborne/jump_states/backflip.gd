@@ -17,7 +17,7 @@ func _on_enter(_param):
 	actor.velocity.x = push_power * -movement.facing_direction
 
 
-func _physics_tick():
+func _physics_tick(_delta: float):
 	if InputManager.is_moving_x():
 		movement.move_x_analog(air_accel, false)
 

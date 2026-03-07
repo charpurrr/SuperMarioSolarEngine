@@ -6,7 +6,7 @@ extends PlayerState
 @export var extra_boost_speed: float
 
 
-func _physics_tick():
+func _physics_tick(_delta: float):
 	var boost_speed = movement.swim_speed + extra_boost_speed
 
 	movement.accelerate(

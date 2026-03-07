@@ -8,7 +8,7 @@ extends Jump
 var start_freefall_timer: bool = false
 
 
-func _physics_tick():
+func _physics_tick(_delta: float):
 	movement.move_x_analog(air_accel, actor.velocity.y < 0)
 
 	if movement.can_release_jump(applied_variation, min_jump_power):

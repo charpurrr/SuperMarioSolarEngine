@@ -3,7 +3,7 @@ extends PlayerState
 ## Stylish cheer after a move.
 
 
-func _physics_tick():
+func _physics_tick(_delta: float):
 	movement.decelerate(movement.ground_decel_step * Vector2.RIGHT)
 
 

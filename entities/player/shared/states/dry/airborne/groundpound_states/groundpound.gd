@@ -20,7 +20,7 @@ func _on_enter(_param):
 	linger_timer = linger_time
 
 
-func _physics_tick():
+func _physics_tick(_delta: float):
 	if not actor.doll.is_playing():
 		linger_timer = max(linger_timer - 1, 0)
 

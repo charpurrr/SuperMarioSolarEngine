@@ -16,7 +16,7 @@ var current_frame: int
 var last_frame: int
 
 
-func _physics_tick():
+func _physics_tick(_delta: float):
 	current_frame = actor.doll.get_frame()
 
 	movement.update_prev_direction()

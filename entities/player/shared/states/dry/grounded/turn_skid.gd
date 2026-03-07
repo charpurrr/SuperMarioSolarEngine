@@ -23,7 +23,7 @@ func _on_enter(array):
 	skid_accel_step = (movement.max_speed + over_accel) / array[1]
 
 
-func _physics_tick():
+func _physics_tick(_delta: float):
 	accel_val = Vector2.RIGHT * skid_accel_step * movement.facing_direction
 	movement.accelerate(accel_val, INF)
 

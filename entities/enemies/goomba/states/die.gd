@@ -17,7 +17,7 @@ var ready_to_perish: bool = false:
 			actor.queue_free()
 
 
-func _physics_tick() -> void:
+func _physics_tick(_delta: float) -> void:
 	# Special death requirements
 	if death_type == HealthModule.DamageType.STRIKE:
 		actor.vel.y += actor.gravity

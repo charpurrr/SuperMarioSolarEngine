@@ -10,7 +10,7 @@ func _on_enter(_param):
 	movement.dived = false
 
 
-func _physics_tick():
+func _physics_tick(_delta: float):
 	if not actor.velocity.is_equal_approx(Vector2.ZERO):
 		actor.doll.rotation = actor.velocity.angle()
 

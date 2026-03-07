@@ -3,7 +3,7 @@ extends PlayerState
 ## Moving around underwater while holding the jump button.
 
 
-func _physics_tick():
+func _physics_tick(_delta: float):
 	movement.accelerate(
 		InputManager.get_vec() * movement.swim_accel_step / 2,
 		movement.swim_speed,

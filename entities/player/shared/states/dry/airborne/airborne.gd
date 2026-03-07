@@ -3,7 +3,7 @@ extends PlayerState
 ## A base state for all airborne states.
 
 
-func _physics_tick():
+func _physics_tick(_delta: float):
 	actor.set_floor_snap_length(0.0)
 
 	actor.stomp_hurtbox.monitoring = actor.velocity.y > 0

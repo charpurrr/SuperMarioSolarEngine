@@ -19,7 +19,7 @@ func _on_enter(jump_power_overwrite: Variant) -> void:
 	actor.vel.y -= jump_power if jump_power_overwrite == null else jump_power_overwrite
 
 
-func _physics_tick() -> void:
+func _physics_tick(_delta: float) -> void:
 	if actor.vel.y > 0:
 		actor.doll.play(fall_animation)
 		actor.doll.offset = fall_offset

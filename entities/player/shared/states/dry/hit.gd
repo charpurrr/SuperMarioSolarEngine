@@ -26,7 +26,7 @@ func _on_enter(_param: Variant) -> void:
 	actor.health_module.enabled = false
 
 
-func _physics_tick() -> void:
+func _physics_tick(_delta: float) -> void:
 	freeze_timer = max(freeze_timer - 1, 0)
 
 

@@ -2,7 +2,7 @@ class_name ButtSlideJump
 extends Jump
 
 
-func _physics_tick():
+func _physics_tick(_delta: float):
 	movement.move_x_analog(0.1, true)
 
 	if movement.can_release_jump(applied_variation, min_jump_power):

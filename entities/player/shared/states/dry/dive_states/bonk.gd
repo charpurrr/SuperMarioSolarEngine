@@ -29,7 +29,7 @@ func _subsequent_ticks():
 	movement.apply_gravity()
 
 
-func _physics_tick():
+func _physics_tick(_delta: float):
 	rotation_timer = min(rotation_timer + 1, rotation_time)
 
 	actor.doll.rotation = (

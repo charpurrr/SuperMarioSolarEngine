@@ -28,11 +28,11 @@ func _ready():
 		live_substate.trigger_enter(null)
 
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if live_substate != null:
-		live_substate.recurse_live("tick_hook")
+		live_substate.recurse_live(&"tick_hook", [delta])
 
-	recurse_live("probe_switch", [], true)
+	recurse_live(&"probe_switch", [], true)
 
 
 func _custom_passdowns() -> Dictionary:

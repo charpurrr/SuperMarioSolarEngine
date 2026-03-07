@@ -3,7 +3,7 @@ extends Jump
 ## Jumping during a grounded spin attack.
 
 
-func _physics_tick():
+func _physics_tick(_delta: float):
 	movement.move_x_analog(0.15, false)
 
 

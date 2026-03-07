@@ -13,7 +13,7 @@ func _on_enter(_param):
 	actor.velocity = _get_input_vec() * boost_speed
 
 
-func _physics_tick():
+func _physics_tick(_delta: float):
 	movement.accelerate(_get_input_vec() * movement.swim_accel_step, boost_speed, 0.03125)
 	movement.radial_friction(0.0625, boost_speed)
 

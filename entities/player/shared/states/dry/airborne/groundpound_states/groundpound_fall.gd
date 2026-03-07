@@ -10,7 +10,7 @@ func _on_enter(_param: Variant) -> void:
 	actor.gp_hurtbox.monitoring = true
 
 
-func _physics_tick():
+func _physics_tick(_delta: float):
 	movement.move_x_analog(0.04, false)
 
 	actor.velocity.y = gp_fall_vel

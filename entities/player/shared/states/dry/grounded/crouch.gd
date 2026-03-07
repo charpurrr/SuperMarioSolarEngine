@@ -17,7 +17,7 @@ func _on_enter(array):
 			sfx_list.play_sfx_at(self)
 
 
-func _physics_tick():
+func _physics_tick(_delta: float):
 	movement.update_direction(InputManager.get_x_dir())
 	movement.decelerate(decel * Vector2.RIGHT)
 

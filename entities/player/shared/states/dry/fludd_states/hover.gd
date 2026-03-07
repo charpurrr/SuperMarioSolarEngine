@@ -6,8 +6,8 @@ extends LazyJump
 @export var rotate_speed: float
 
 
-func _physics_tick():
-	super()
+func _physics_tick(delta: float):
+	super(delta)
 
 	if not actor.movement.is_submerged():
 		_dry_logic()

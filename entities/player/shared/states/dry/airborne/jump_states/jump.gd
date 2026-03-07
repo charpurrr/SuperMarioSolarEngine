@@ -29,7 +29,7 @@ func _subsequent_ticks():
 	movement.apply_gravity(-actor.velocity.y / jump_power)
 
 
-func _physics_tick():
+func _physics_tick(_delta: float):
 	movement.move_x_analog(movement.air_accel_step, true)
 
 	if movement.can_release_jump(applied_variation, min_jump_power):

@@ -13,7 +13,7 @@ extends EnemyState
 var dir: int
 
 
-func _physics_tick() -> void:
+func _physics_tick(_delta: float) -> void:
 	if not actor.spotted_player:
 		return
 

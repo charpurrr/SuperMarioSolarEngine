@@ -15,7 +15,7 @@ func _on_enter(_param):
 	decel_timer = decel_time
 
 
-func _physics_tick():
+func _physics_tick(_delta: float):
 	if decel_timer != 0:
 		movement.decelerate(entered_vel_vec / decel_time)
 		decel_timer -= 1

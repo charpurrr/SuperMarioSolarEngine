@@ -28,7 +28,7 @@ func _subsequent_ticks():
 	movement.apply_gravity(-actor.velocity.y / jump_power, 1.2)
 
 
-func _physics_tick():
+func _physics_tick(_delta: float):
 	if InputManager.get_x_dir() == movement.facing_direction:
 		var forward_accel_step: float = push_power / forward_accel_time
 		accel_val = Vector2.RIGHT * forward_accel_step * movement.facing_direction
