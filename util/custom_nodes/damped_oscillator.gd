@@ -46,13 +46,14 @@ func _adaptive_process() -> void:
 	if debug_draw:
 		queue_redraw()
 
-	if not is_zero_approx(velocity):
+	if not is_zero_approx(velocity) or not is_zero_approx(displacement):
 		_update()
-	else:
-		velocity = 0
-		displacement = 0
 
-		debug_draw = false
+		# Only settle once BOTH are effectively zero
+		if is_zero_approx(velocity) and is_zero_approx(displacement):
+			velocity = 0.0
+			displacement = 0.0
+			debug_draw = false
 
 
 func _preview() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=517 format=4 uid="uid://co7kk1h1rwbn6"]
+[gd_scene format=4 uid="uid://co7kk1h1rwbn6"]
 
 [ext_resource type="Script" uid="uid://whyqyw8guuki" path="res://stages/level.gd" id="1_v54hh"]
 [ext_resource type="PackedScene" uid="uid://bfb4xq874buf6" path="res://props/level_environments/synth/synth.tscn" id="2_nma4k"]
@@ -11,22 +11,37 @@
 [ext_resource type="Resource" uid="uid://daebewcgqirrt" path="res://props/music/chillwave.tres" id="9_f78fx"]
 [ext_resource type="PackedScene" uid="uid://dgqp3sqvmcvpu" path="res://entities/player/mario/mario.tscn" id="10_dvxun"]
 [ext_resource type="PackedScene" uid="uid://cnd277snrwca5" path="res://entities/player/shared/camera/player_camera.tscn" id="11_rowtk"]
-[ext_resource type="PackedScene" uid="uid://cvbbpn56rtjwd" path="res://entities/enemies/goomba/goomba.tscn" id="12_x6j5q"]
+[ext_resource type="Script" uid="uid://c8rvart030ldu" path="res://entities/enemies/goomba/goomba.gd" id="12_xra04"]
 [ext_resource type="Script" uid="uid://dhdc4b8yddyej" path="res://addons/rmsmartshape/shapes/shape.gd" id="13_03dry"]
+[ext_resource type="Texture2D" uid="uid://b5eno3kq3b43" path="res://entities/enemies/goomba/anime/chase.png" id="13_oi7ak"]
+[ext_resource type="Texture2D" uid="uid://cv67vhsfir242" path="res://entities/enemies/goomba/anime/jump.png" id="14_hxeo7"]
 [ext_resource type="Script" uid="uid://bwcf4pjgprn0k" path="res://addons/rmsmartshape/shapes/point.gd" id="15_lfm5d"]
+[ext_resource type="Texture2D" uid="uid://x2edebevq3c7" path="res://entities/enemies/goomba/anime/idle.png" id="15_pgqos"]
 [ext_resource type="Script" uid="uid://llobjh5hvry" path="res://addons/rmsmartshape/shapes/mesh.gd" id="16_l20wn"]
+[ext_resource type="Texture2D" uid="uid://cu6rg1coyo1db" path="res://entities/enemies/goomba/anime/squish.png" id="16_p8xrs"]
 [ext_resource type="Script" uid="uid://bo5f7qe27jfje" path="res://addons/rmsmartshape/shapes/point_array.gd" id="16_tgy2j"]
+[ext_resource type="Texture2D" uid="uid://c2j0dluh2g7xb" path="res://entities/enemies/goomba/anime/walk.png" id="17_kxi3b"]
 [ext_resource type="Script" uid="uid://0lhxan4cqrc1" path="res://addons/rmsmartshape/materials/edge_material_metadata.gd" id="17_t78sq"]
 [ext_resource type="Script" uid="uid://d0xjijisx1woh" path="res://addons/rmsmartshape/materials/edge_material.gd" id="18_4jkwe"]
+[ext_resource type="Script" uid="uid://bqea8us6rsyeb" path="res://entities/enemies/enemy_state_manager.gd" id="18_e3f0l"]
+[ext_resource type="Script" uid="uid://b74qvih6e4hw5" path="res://entities/enemies/enemy_state.gd" id="19_2t11y"]
 [ext_resource type="Texture2D" uid="uid://863p1rrlve7s" path="res://props/terrain/synth/f1_edge.png" id="19_37d1f"]
+[ext_resource type="Script" uid="uid://conp87snrevw3" path="res://entities/enemies/goomba/states/dry/dry.gd" id="20_sii3m"]
 [ext_resource type="Texture2D" uid="uid://blolh614wogoh" path="res://props/terrain/synth/f1_corner_in.png" id="20_xra04"]
+[ext_resource type="Script" uid="uid://bt60g7c7t2yr4" path="res://entities/enemies/goomba/states/dry/roam/roam.gd" id="21_5ltkg"]
 [ext_resource type="Texture2D" uid="uid://dhy6xyxjkigxc" path="res://props/terrain/synth/f1_corner_out.png" id="21_oi7ak"]
 [ext_resource type="Script" uid="uid://d218yx0d1ilsn" path="res://addons/rmsmartshape/normal_range.gd" id="22_hxeo7"]
+[ext_resource type="Script" uid="uid://c6oicwume2p0p" path="res://entities/enemies/goomba/states/dry/roam/walk.gd" id="22_ihghk"]
 [ext_resource type="Texture2D" uid="uid://cjn0bmi8tqg81" path="res://props/terrain/synth/f1_fill_2.png" id="23_pgqos"]
+[ext_resource type="Script" uid="uid://clg5e4gmr1ii2" path="res://entities/enemies/goomba/states/dry/roam/idle.gd" id="23_xybke"]
 [ext_resource type="Texture2D" uid="uid://drvfwb0fv2xhe" path="res://props/terrain/synth/f1_fill_1.png" id="24_p8xrs"]
+[ext_resource type="Script" uid="uid://tgkyiw0ihqda" path="res://entities/enemies/goomba/states/dry/aggroed/aggroed.gd" id="24_xrolx"]
+[ext_resource type="Script" uid="uid://cje50kiar8st1" path="res://entities/enemies/goomba/states/dry/aggroed/chase.gd" id="25_3avjy"]
 [ext_resource type="Texture2D" uid="uid://c2guro06tpjfp" path="res://props/terrain/synth/f1_fill_3.png" id="25_kxi3b"]
+[ext_resource type="Script" uid="uid://cjeme0ny363gg" path="res://entities/enemies/goomba/states/dry/aggroed/jump.gd" id="26_2i4r0"]
 [ext_resource type="Texture2D" uid="uid://bkkhnpd6qwun3" path="res://props/terrain/synth/f1_fill_4.png" id="26_e3f0l"]
 [ext_resource type="Script" uid="uid://nc5bfedvnpgm" path="res://addons/rmsmartshape/materials/shape_material.gd" id="27_2t11y"]
+[ext_resource type="Script" uid="uid://bmx2b0vs1a8vm" path="res://entities/enemies/goomba/states/die.gd" id="27_005qd"]
 [ext_resource type="Script" uid="uid://wrg07se7dxsj" path="res://util/polyshape.gd" id="28_sii3m"]
 [ext_resource type="PackedScene" uid="uid://dk2cdc5aktq22" path="res://props/terrain/synth/semi_solid.tscn" id="29_5ltkg"]
 [ext_resource type="PackedScene" uid="uid://b14pbye1baqly" path="res://entities/collectibles/coin/coin.tscn" id="30_ihghk"]
@@ -41,6 +56,233 @@ shuffle = true
 loop = true
 songs = Array[ExtResource("4_kuv8v")]([ExtResource("5_l20wn"), ExtResource("6_1nvlm"), ExtResource("7_fwr2a"), ExtResource("8_rnb4s"), ExtResource("9_f78fx")])
 metadata/_custom_type_script = "uid://dspslemtuknxr"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aecnx"]
+atlas = ExtResource("13_oi7ak")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt7rn"]
+atlas = ExtResource("13_oi7ak")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5h1e"]
+atlas = ExtResource("13_oi7ak")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dppb"]
+atlas = ExtResource("13_oi7ak")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmvqd"]
+atlas = ExtResource("13_oi7ak")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnwc8"]
+atlas = ExtResource("13_oi7ak")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mgq4"]
+atlas = ExtResource("14_hxeo7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwbio"]
+atlas = ExtResource("15_pgqos")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spovy"]
+atlas = ExtResource("15_pgqos")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vuybc"]
+atlas = ExtResource("15_pgqos")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtetb"]
+atlas = ExtResource("15_pgqos")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvrek"]
+atlas = ExtResource("14_hxeo7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0ahg"]
+atlas = ExtResource("16_p8xrs")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ngrs"]
+atlas = ExtResource("16_p8xrs")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbmpu"]
+atlas = ExtResource("17_kxi3b")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x02my"]
+atlas = ExtResource("17_kxi3b")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twr7t"]
+atlas = ExtResource("17_kxi3b")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grbl7"]
+atlas = ExtResource("17_kxi3b")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rnn8"]
+atlas = ExtResource("17_kxi3b")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jor08"]
+atlas = ExtResource("17_kxi3b")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_doiik"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aecnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt7rn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5h1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dppb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmvqd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnwc8")
+}],
+"loop": true,
+"name": &"chase",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mgq4")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 8.0,
+"texture": SubResource("AtlasTexture_wwbio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spovy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vuybc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtetb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvrek")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0ahg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ngrs")
+}],
+"loop": false,
+"name": &"squish",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbmpu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x02my")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twr7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_grbl7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rnn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jor08")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4v7vj"]
+size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qtetb"]
+size = Vector2(25, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jor08"]
+radius = 256.0
+
+[sub_resource type="Animation" id="Animation_b0ahg"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_yvt7r"]
+resource_name = "die_squish"
+length = 0.1
+step = 0.005
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationTransformer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.1),
+"transitions": PackedFloat32Array(0.5, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.7, 0.3), Vector2(1.2, 0.8)]
+}
+
+[sub_resource type="Animation" id="Animation_kc47k"]
+resource_name = "die_strike"
+length = 0.6
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationTransformer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(2, 0.5, 2, 0.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.7, 1.3), Vector2(1, 1), Vector2(1.3, 0.7)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ju3gn"]
+_data = {
+&"RESET": SubResource("Animation_b0ahg"),
+&"die_squish": SubResource("Animation_yvt7r"),
+&"die_strike": SubResource("Animation_kc47k")
+}
 
 [sub_resource type="Resource" id="Resource_l73rp"]
 script = ExtResource("15_lfm5d")
@@ -3941,7 +4183,7 @@ script = ExtResource("16_l20wn")
 texture = ExtResource("19_37d1f")
 mesh = SubResource("ArrayMesh_ie2xe")
 
-[node name="SynthStratum" type="Node2D" node_paths=PackedStringArray("player", "camera")]
+[node name="SynthStratum" type="Node2D" unique_id=482401929 node_paths=PackedStringArray("player", "camera")]
 script = ExtResource("1_v54hh")
 level_name = &"Synth Stratum"
 mission_name = &"Operation: System Unnoticed"
@@ -3953,19 +4195,258 @@ level_music = SubResource("Resource_80yte")
 player = NodePath("Mario")
 camera = NodePath("Mario/PlayerCamera")
 
-[node name="Mario" parent="." instance=ExtResource("10_dvxun")]
-position = Vector2(566, 0)
+[node name="Mario" parent="." unique_id=1736652210 instance=ExtResource("10_dvxun")]
+position = Vector2(-1070, -464)
 
-[node name="PlayerCamera" parent="Mario" instance=ExtResource("11_rowtk")]
+[node name="PlayerCamera" parent="Mario" unique_id=1074775060 instance=ExtResource("11_rowtk")]
 ignore_rotation = false
 
-[node name="Goomba" parent="." instance=ExtResource("12_x6j5q")]
-position = Vector2(782, -44)
+[node name="Goomba" type="CharacterBody2D" parent="." unique_id=1010003310 node_paths=PackedStringArray("hurtbox", "ledge_ray_l", "ledge_ray_r", "wall_ray_l", "wall_ray_r", "hitbox", "state_manager", "anime", "doll")]
+position = Vector2(-862, -528)
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("12_xra04")
+stationary = true
+gravity = 0.215
+hurtbox = NodePath("Areas/Hurtbox")
+ledge_ray_l = NodePath("Rays/LedgeRayL")
+ledge_ray_r = NodePath("Rays/LedgeRayR")
+wall_ray_l = NodePath("Rays/WallRayL")
+wall_ray_r = NodePath("Rays/WallRayR")
+hp = 1
+hitbox = NodePath("Hitbox")
+state_manager = NodePath("StateManager")
+anime = NodePath("AnimationPlayer")
+doll = NodePath("AnimationTransformer/Doll")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="AnimationTransformer" type="Node2D" parent="Goomba" unique_id=1453936927]
+
+[node name="Doll" type="AnimatedSprite2D" parent="Goomba/AnimationTransformer" unique_id=1502926051]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_doiik")
+animation = &"idle"
+
+[node name="Hitbox" type="CollisionShape2D" parent="Goomba" unique_id=259435705]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_4v7vj")
+
+[node name="Areas" type="Node2D" parent="Goomba" unique_id=726863772]
+
+[node name="Hurtbox" type="Area2D" parent="Goomba/Areas" unique_id=346998919]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goomba/Areas/Hurtbox" unique_id=1875654331]
+position = Vector2(0.5, -4)
+shape = SubResource("RectangleShape2D_qtetb")
+debug_color = Color(1, 0, 0.14509805, 0.14117648)
+
+[node name="DetectionArea" type="Area2D" parent="Goomba/Areas" unique_id=1021720972]
+position = Vector2(0, -7)
+collision_layer = 0
+collision_mask = 2
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goomba/Areas/DetectionArea" unique_id=608737551]
+shape = SubResource("CircleShape2D_jor08")
+debug_color = Color(1, 1, 1, 0.039215688)
+metadata/_edit_lock_ = true
+
+[node name="Rays" type="Node2D" parent="Goomba" unique_id=149979066]
+
+[node name="LedgeRayL" type="RayCast2D" parent="Goomba/Rays" unique_id=1057839404]
+modulate = Color(1, 1, 0.16470589, 1)
+position = Vector2(-6, 0)
+target_position = Vector2(0, 4)
+
+[node name="LedgeRayR" type="RayCast2D" parent="Goomba/Rays" unique_id=265503100]
+modulate = Color(1, 1, 0.16470589, 1)
+position = Vector2(7, 0)
+target_position = Vector2(0, 4)
+
+[node name="WallRayL" type="RayCast2D" parent="Goomba/Rays" unique_id=1632622956]
+modulate = Color(1, 1, 0.16470589, 1)
+position = Vector2(-7, -7)
+target_position = Vector2(-16, 0)
+
+[node name="WallRayR" type="RayCast2D" parent="Goomba/Rays" unique_id=1285731197]
+modulate = Color(1, 1, 0.16470589, 1)
+position = Vector2(7, -7)
+target_position = Vector2(16, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Goomba" unique_id=891216943]
+libraries/ = SubResource("AnimationLibrary_ju3gn")
+
+[node name="StateManager" type="Node" parent="Goomba" unique_id=793355505 node_paths=PackedStringArray("target_actor")]
+script = ExtResource("18_e3f0l")
+target_actor = NodePath("..")
+
+[node name="Submerged" type="Node" parent="Goomba/StateManager" unique_id=1587256394]
+script = ExtResource("19_2t11y")
+
+[node name="Dry" type="Node" parent="Goomba/StateManager" unique_id=2119960401]
+script = ExtResource("20_sii3m")
+
+[node name="Roam" type="Node" parent="Goomba/StateManager/Dry" unique_id=1484527350]
+script = ExtResource("21_5ltkg")
+
+[node name="Walk" type="Node" parent="Goomba/StateManager/Dry/Roam" unique_id=1839853774]
+script = ExtResource("22_ihghk")
+min_walk_time = 50
+max_walk_time = 100
+walk_speed = 0.4
+animation = &"walk"
+
+[node name="Idle" type="Node" parent="Goomba/StateManager/Dry/Roam" unique_id=1308881418]
+script = ExtResource("23_xybke")
+decel = 0.2
+animation = &"idle"
+
+[node name="Aggroed" type="Node" parent="Goomba/StateManager/Dry" unique_id=1568307120]
+script = ExtResource("24_xrolx")
+notice_jump_power = 2
+
+[node name="Chase" type="Node" parent="Goomba/StateManager/Dry/Aggroed" unique_id=1813952300]
+script = ExtResource("25_3avjy")
+chase_max_speed = 2.0
+chase_accel = 0.1
+range_jump = Vector2(2, 10)
+animation = &"chase"
+
+[node name="Jump" type="Node" parent="Goomba/StateManager/Dry/Aggroed" unique_id=1281765211]
+script = ExtResource("26_2i4r0")
+jump_decel = 0.2
+jump_animation = &"jump"
+fall_animation = &"fall"
+
+[node name="Die" type="Node" parent="Goomba/StateManager" unique_id=1247413312]
+script = ExtResource("27_005qd")
+
+[node name="Goomba2" type="CharacterBody2D" parent="." unique_id=1403319358 node_paths=PackedStringArray("hurtbox", "ledge_ray_l", "ledge_ray_r", "wall_ray_l", "wall_ray_r", "hitbox", "state_manager", "anime", "doll")]
+position = Vector2(-534, -464)
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("12_xra04")
+stationary = true
+gravity = 0.215
+hurtbox = NodePath("Areas/Hurtbox")
+ledge_ray_l = NodePath("Rays/LedgeRayL")
+ledge_ray_r = NodePath("Rays/LedgeRayR")
+wall_ray_l = NodePath("Rays/WallRayL")
+wall_ray_r = NodePath("Rays/WallRayR")
+hp = 1
+hitbox = NodePath("Hitbox")
+state_manager = NodePath("StateManager")
+anime = NodePath("AnimationPlayer")
+doll = NodePath("AnimationTransformer/Doll")
+
+[node name="AnimationTransformer" type="Node2D" parent="Goomba2" unique_id=1752515429]
+
+[node name="Doll" type="AnimatedSprite2D" parent="Goomba2/AnimationTransformer" unique_id=1880103321]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_doiik")
+animation = &"idle"
+
+[node name="Hitbox" type="CollisionShape2D" parent="Goomba2" unique_id=106865157]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_4v7vj")
+
+[node name="Areas" type="Node2D" parent="Goomba2" unique_id=1362709482]
+
+[node name="Hurtbox" type="Area2D" parent="Goomba2/Areas" unique_id=1797695142]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goomba2/Areas/Hurtbox" unique_id=497616651]
+position = Vector2(0.5, -4)
+shape = SubResource("RectangleShape2D_qtetb")
+debug_color = Color(1, 0, 0.14509805, 0.14117648)
+
+[node name="DetectionArea" type="Area2D" parent="Goomba2/Areas" unique_id=463656054]
+position = Vector2(0, -7)
+collision_layer = 0
+collision_mask = 2
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goomba2/Areas/DetectionArea" unique_id=1374117466]
+shape = SubResource("CircleShape2D_jor08")
+debug_color = Color(1, 1, 1, 0.039215688)
+metadata/_edit_lock_ = true
+
+[node name="Rays" type="Node2D" parent="Goomba2" unique_id=1459696499]
+
+[node name="LedgeRayL" type="RayCast2D" parent="Goomba2/Rays" unique_id=1323008343]
+modulate = Color(1, 1, 0.16470589, 1)
+position = Vector2(-6, 0)
+target_position = Vector2(0, 4)
+
+[node name="LedgeRayR" type="RayCast2D" parent="Goomba2/Rays" unique_id=1611932088]
+modulate = Color(1, 1, 0.16470589, 1)
+position = Vector2(7, 0)
+target_position = Vector2(0, 4)
+
+[node name="WallRayL" type="RayCast2D" parent="Goomba2/Rays" unique_id=502677161]
+modulate = Color(1, 1, 0.16470589, 1)
+position = Vector2(-7, -7)
+target_position = Vector2(-16, 0)
+
+[node name="WallRayR" type="RayCast2D" parent="Goomba2/Rays" unique_id=359743337]
+modulate = Color(1, 1, 0.16470589, 1)
+position = Vector2(7, -7)
+target_position = Vector2(16, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Goomba2" unique_id=1401520007]
+libraries/ = SubResource("AnimationLibrary_ju3gn")
+
+[node name="StateManager" type="Node" parent="Goomba2" unique_id=516978713 node_paths=PackedStringArray("target_actor")]
+script = ExtResource("18_e3f0l")
+target_actor = NodePath("..")
+
+[node name="Submerged" type="Node" parent="Goomba2/StateManager" unique_id=1671627665]
+script = ExtResource("19_2t11y")
+
+[node name="Dry" type="Node" parent="Goomba2/StateManager" unique_id=60695302]
+script = ExtResource("20_sii3m")
+
+[node name="Roam" type="Node" parent="Goomba2/StateManager/Dry" unique_id=1852313315]
+script = ExtResource("21_5ltkg")
+
+[node name="Walk" type="Node" parent="Goomba2/StateManager/Dry/Roam" unique_id=529431296]
+script = ExtResource("22_ihghk")
+min_walk_time = 50
+max_walk_time = 100
+walk_speed = 0.4
+animation = &"walk"
+
+[node name="Idle" type="Node" parent="Goomba2/StateManager/Dry/Roam" unique_id=1233282501]
+script = ExtResource("23_xybke")
+decel = 0.2
+animation = &"idle"
+
+[node name="Aggroed" type="Node" parent="Goomba2/StateManager/Dry" unique_id=1219586140]
+script = ExtResource("24_xrolx")
+notice_jump_power = 2
+
+[node name="Chase" type="Node" parent="Goomba2/StateManager/Dry/Aggroed" unique_id=1678581511]
+script = ExtResource("25_3avjy")
+chase_max_speed = 2.0
+chase_accel = 0.1
+range_jump = Vector2(2, 10)
+animation = &"chase"
+
+[node name="Jump" type="Node" parent="Goomba2/StateManager/Dry/Aggroed" unique_id=110876623]
+script = ExtResource("26_2i4r0")
+jump_decel = 0.2
+jump_animation = &"jump"
+fall_animation = &"fall"
+
+[node name="Die" type="Node" parent="Goomba2/StateManager" unique_id=1220985381]
+script = ExtResource("27_005qd")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=124023712]
 position = Vector2(0, 8)
 
-[node name="SS2D_Shape" type="Node2D" parent="StaticBody2D"]
+[node name="SS2D_Shape" type="Node2D" parent="StaticBody2D" unique_id=1948764324]
 texture_repeat = 2
 script = ExtResource("13_03dry")
 _points = SubResource("Resource_pxpwp")
@@ -3973,12 +4454,12 @@ _meshes = Array[ExtResource("16_l20wn")]([SubResource("Resource_fwr2a"), SubReso
 shape_material = SubResource("Resource_d44u0")
 collision_polygon_node_path = NodePath("../CollisionPolygon2D")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1592141709]
 visible = false
 modulate = Color(1, 1, 1, 0.3)
 polygon = PackedVector2Array(4079.89, -1167, 4078.99, 536.727, -1219.06, 515.798, -1221.69, 133.49, -918.783, 135.272, -917.001, -303.05, -1145.07, -303.05, -1144, -472, -496, -472, -496.497, -310.177, -796.386, -305.27, -809.827, 72.8017, -586.211, 75.4744, -584, -8, -536, -8, -448, -8, -448, 184, -48, 184, -48, -8, 213.637, -8.30319, 214.826, 187.916, 531.462, 187.03, 528, -8, 639.816, -7.54599, 703.069, 53.926, 767.214, 52.1443, 768, -8, 976, -8, 976, -80, 1032, -80, 1088, -8, 1136, -80, 1264, -80, 1263.58, -13.6897, 1547.66, -10.1141, 1547.73, -152.614, 1652.3, -153.587, 1653.47, -481.029, 1532.61, -483.973, 1381.67, -484.534, 1359.29, -484.408, 1360.56, -537.559, 1361.67, -563.348, 1633.4, -562.088, 1700.44, -625.238, 1867.08, -622.546, 1863.56, -176.895, 1949.45, -176.592, 1990.31, -175.504, 2072.27, -177.285, 2150.67, -176.395, 2248.3, -81.1601, 2386.87, -80.7391, 2384.34, 125.341, 2668.24, 126.232, 2670.68, -8.40781, 2617.51, -59.2047, 2619.32, -187.724, 2766.77, -188.785, 2773.13, -307.054, 2537.09, -310.399, 2532.61, -165.212, 2422.61, -165.283, 2421.72, -278.935, 2422.32, -345.553, 2345.31, -344.86, 2302.12, -347.447, 2062.47, -339.429, 2063.36, -267.266, 1955.56, -268.157, 1958.27, -416.543, 2423.95, -408.676, 2432.05, -701.924, 2385.12, -757.285, 2383.3, -818.467, 2537.32, -819.912, 2889.15, -496.611, 3038.54, -502.653, 3038.81, -708.814, 3332.08, -707.945, 3361.466, -716.21674, 3431.5188, -747.60486, 3473.308, -775.04865, 3515.0796, -811.9689, 3553.4385, -859.5978, 3584.99, -919.168, 3617.1187, -980.2391, 3656.9988, -1031.8248, 3700.9211, -1074.3391, 3745.1765, -1108.1957, 3819.8452, -1151.5906, 3851.33, -1165.32)
 
-[node name="SS2D_Shape2" type="Node2D" parent="StaticBody2D"]
+[node name="SS2D_Shape2" type="Node2D" parent="StaticBody2D" unique_id=192281743]
 texture_repeat = 2
 script = ExtResource("13_03dry")
 _points = SubResource("Resource_1ttgb")
@@ -3986,12 +4467,12 @@ _meshes = Array[ExtResource("16_l20wn")]([SubResource("Resource_128ii"), SubReso
 shape_material = SubResource("Resource_d44u0")
 collision_polygon_node_path = NodePath("../CollisionPolygon2D2")
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1970575944]
 visible = false
 modulate = Color(1, 1, 1, 0.3)
 polygon = PackedVector2Array(1273.58, -349.007, 1526.31, -349.161, 1527.88, -250.533, 1447.77, -250.464, 1448.19, -286.165, 1272.5, -285.73)
 
-[node name="SS2D_Shape3" type="Node2D" parent="StaticBody2D"]
+[node name="SS2D_Shape3" type="Node2D" parent="StaticBody2D" unique_id=1411631852]
 texture_repeat = 2
 script = ExtResource("13_03dry")
 _points = SubResource("Resource_cvl1d")
@@ -3999,12 +4480,12 @@ _meshes = Array[ExtResource("16_l20wn")]([SubResource("Resource_wdl83"), SubReso
 shape_material = SubResource("Resource_d44u0")
 collision_polygon_node_path = NodePath("../CollisionPolygon2D3")
 
-[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1174659806]
 visible = false
 modulate = Color(1, 1, 1, 0.3)
 polygon = PackedVector2Array(-228.968, -425.175, -15.5444, -421.646, -10.3951, -637.394, 106.074, -641.154, 101.192, -419.401, 377.176, -413.619, 371.546, -315.575, 306.55664, -311.96893, 250.16965, -303.45895, 223.25085, -296.35986, 199.943, -286.92, 179.08412, -273.75635, 158.62178, -256.83997, 121.82673, -218.53958, 85.3348, -171.602, -38.783, -172.441, -41.7104, -312.67, -231.862, -321.126)
 
-[node name="SS2D_Shape4" type="Node2D" parent="StaticBody2D"]
+[node name="SS2D_Shape4" type="Node2D" parent="StaticBody2D" unique_id=1093711035]
 texture_repeat = 2
 script = ExtResource("13_03dry")
 _points = SubResource("Resource_tk7ds")
@@ -4012,353 +4493,360 @@ _meshes = Array[ExtResource("16_l20wn")]([SubResource("Resource_3pwok"), SubReso
 shape_material = SubResource("Resource_d44u0")
 collision_polygon_node_path = NodePath("../CollisionPolygon2D4")
 
-[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D"]
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=689962838]
 visible = false
 modulate = Color(1, 1, 1, 0.3)
 polygon = PackedVector2Array(3090.2, -905.587, 3091.6194, -922.1357, 3090.075, -962.0747, 3085.4714, -986.26526, 3076.863, -1010.84314, 3070.7168, -1022.7084, 3063.162, -1033.988, 3054.0615, -1044.4543, 3043.28, -1053.88, 3030.8337, -1062.1024, 3017.029, -1069.1681, 2986.5361, -1080.1759, 2922.37, -1092.1138, 2848.13, -1095.03, 1628.36, -1104.03, 1608.1476, -1097.9459, 1582.7252, -1082.5012, 1519.4196, -1029.0256, 1216.2284, -715.4672, 1159.6235, -667.11597, 1138.5568, -655.002, 1123.37, -652.761, 398.02, -655.555, 257.1, -804.902, 398.413, -802.567, 626.014, -1022.59, 732.08, -1024.01, 864.781, -898.339, 977.724, -902.011, 982.949, -1042.57, 1161.11, -1044.82, 1443.94, -1299.85, 1326.98, -1408.98, 1492.02, -1574.21, 1607.99, -1469.56, 1797.47, -1467.6, 1800.59, -1617.57, 1902.4164, -1631.2239, 1987.0801, -1657.9, 2025.4187, -1679.0029, 2042.0361, -1691.8458, 2056.36, -1706.35, 2078.8916, -1736.1932, 2095.0588, -1763.8765, 2105.898, -1788.8394, 2112.4436, -1810.5211, 2116.799, -1841.7976, 2116.41, -1853.22, 2398.14, -1860.01, 2395.3, -1955.34, 2481.09, -1952.63, 2833.98, -1541.87, 2829.43, -1386.27, 2830.4304, -1321.6985, 2834.867, -1294.3845, 2842.8376, -1266.9255, 2855.2722, -1241.4834, 2863.4539, -1230.1942, 2873.1, -1220.22, 2883.5352, -1210.0498, 2898.8518, -1201.4779, 2941.0652, -1188.6089, 3050.3472, -1176.3298, 3196.64, -1176.49, 3282.74, -1097.31, 3419.58, -1095.41, 3417.26, -1072.53, 3232.22, -904.985)
 
-[node name="Water" type="Polygon2D" parent="."]
+[node name="Water" type="Polygon2D" parent="." unique_id=305831178]
 position = Vector2(-448, 0)
 color = Color(0.439216, 0.741176, 0.823529, 0.588235)
 
-[node name="Area2D" type="Area2D" parent="Water"]
+[node name="Area2D" type="Area2D" parent="Water" unique_id=477288227]
 collision_layer = 16
 collision_mask = 0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Water/Area2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Water/Area2D" unique_id=931595313]
 polygon = PackedVector2Array(0, 0, 400, 0, 400, 192, 0, 192)
 script = ExtResource("28_sii3m")
 
-[node name="SynthSemi" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi" parent="." unique_id=601844623 instance=ExtResource("29_5ltkg")]
 position = Vector2(296, 0)
 
-[node name="SynthSemi2" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi2" parent="." unique_id=1119436948 instance=ExtResource("29_5ltkg")]
 position = Vector2(402, 0)
 
-[node name="SynthSemi3" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi3" parent="." unique_id=1653010078 instance=ExtResource("29_5ltkg")]
 position = Vector2(-730, -49)
 
-[node name="SynthSemi6" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi6" parent="." unique_id=130428890 instance=ExtResource("29_5ltkg")]
 position = Vector2(-700, -49)
 
-[node name="SynthSemi4" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi4" parent="." unique_id=1724929100 instance=ExtResource("29_5ltkg")]
 position = Vector2(-730, -200)
 
-[node name="SynthSemi5" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi5" parent="." unique_id=160614789 instance=ExtResource("29_5ltkg")]
 position = Vector2(-700, -200)
 
-[node name="SynthSemi7" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi7" parent="." unique_id=1893914281 instance=ExtResource("29_5ltkg")]
 position = Vector2(-467, -200)
 
-[node name="SynthSemi8" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi8" parent="." unique_id=1532963853 instance=ExtResource("29_5ltkg")]
 position = Vector2(-437, -200)
 
-[node name="SynthSemi9" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi9" parent="." unique_id=1558600325 instance=ExtResource("29_5ltkg")]
 position = Vector2(-179, -200)
 
-[node name="SynthSemi10" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi10" parent="." unique_id=2035202827 instance=ExtResource("29_5ltkg")]
 position = Vector2(-149, -200)
 
-[node name="SynthSemi11" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi11" parent="." unique_id=196505900 instance=ExtResource("29_5ltkg")]
 position = Vector2(-401, -407)
 
-[node name="SynthSemi12" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi12" parent="." unique_id=44784108 instance=ExtResource("29_5ltkg")]
 position = Vector2(-371, -407)
 
-[node name="SynthSemi15" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi15" parent="." unique_id=115681301 instance=ExtResource("29_5ltkg")]
 position = Vector2(170, -625)
 
-[node name="SynthSemi16" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi16" parent="." unique_id=316069947 instance=ExtResource("29_5ltkg")]
 position = Vector2(200, -625)
 
-[node name="SynthSemi21" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi21" parent="." unique_id=1193647225 instance=ExtResource("29_5ltkg")]
 position = Vector2(525, -395)
 
-[node name="SynthSemi22" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi22" parent="." unique_id=1084572496 instance=ExtResource("29_5ltkg")]
 position = Vector2(555, -395)
 
-[node name="SynthSemi23" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi23" parent="." unique_id=896020293 instance=ExtResource("29_5ltkg")]
 position = Vector2(1071, -348)
 
-[node name="SynthSemi24" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi24" parent="." unique_id=764219359 instance=ExtResource("29_5ltkg")]
 position = Vector2(1101, -348)
 
-[node name="SynthSemi25" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi25" parent="." unique_id=417000236 instance=ExtResource("29_5ltkg")]
 position = Vector2(1259, -559)
 
-[node name="SynthSemi26" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi26" parent="." unique_id=2022998290 instance=ExtResource("29_5ltkg")]
 position = Vector2(1289, -559)
 
-[node name="SynthSemi27" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi27" parent="." unique_id=31552587 instance=ExtResource("29_5ltkg")]
 position = Vector2(2240, -680)
 
-[node name="SynthSemi30" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi30" parent="." unique_id=512938086 instance=ExtResource("29_5ltkg")]
 position = Vector2(2270, -680)
 
-[node name="SynthSemi31" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi31" parent="." unique_id=1123983741 instance=ExtResource("29_5ltkg")]
 position = Vector2(2314, -562)
 
-[node name="SynthSemi32" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi32" parent="." unique_id=89080067 instance=ExtResource("29_5ltkg")]
 position = Vector2(2344, -562)
 
-[node name="SynthSemi28" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi28" parent="." unique_id=1996338518 instance=ExtResource("29_5ltkg")]
 position = Vector2(1442, -114)
 
-[node name="SynthSemi29" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi29" parent="." unique_id=204188079 instance=ExtResource("29_5ltkg")]
 position = Vector2(1331, -81)
 
-[node name="SynthSemi17" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi17" parent="." unique_id=165159708 instance=ExtResource("29_5ltkg")]
 position = Vector2(12, -774)
 
-[node name="SynthSemi18" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi18" parent="." unique_id=121609506 instance=ExtResource("29_5ltkg")]
 position = Vector2(42, -774)
 
-[node name="SynthSemi19" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi19" parent="." unique_id=1453793260 instance=ExtResource("29_5ltkg")]
 position = Vector2(1241, -1302)
 rotation = -0.523598
 
-[node name="SynthSemi20" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi20" parent="." unique_id=1090093455 instance=ExtResource("29_5ltkg")]
 position = Vector2(1267, -1317)
 rotation = -0.523598
 
-[node name="SynthSemi13" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi13" parent="." unique_id=385206639 instance=ExtResource("29_5ltkg")]
 position = Vector2(-159, -625)
 
-[node name="SynthSemi14" parent="." instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi14" parent="." unique_id=1303330812 instance=ExtResource("29_5ltkg")]
 position = Vector2(-129, -625)
 
-[node name="Coin" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin" parent="." unique_id=340800817 instance=ExtResource("30_ihghk")]
 position = Vector2(816, -56)
-frame_progress = 0.17460658
+frame_progress = 0.95707566
 
-[node name="Coin4" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin4" parent="." unique_id=277150002 instance=ExtResource("30_ihghk")]
 position = Vector2(840, -56)
-frame_progress = 0.17460658
+frame_progress = 0.95707566
 
-[node name="Coin5" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin5" parent="." unique_id=404130534 instance=ExtResource("30_ihghk")]
 position = Vector2(864, -56)
-frame_progress = 0.17460658
+frame_progress = 0.95707566
 
-[node name="Coin6" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin6" parent="." unique_id=1322689316 instance=ExtResource("30_ihghk")]
 position = Vector2(888, -56)
-frame_progress = 0.17460658
+frame_progress = 0.95707566
 
-[node name="Coin7" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin7" parent="." unique_id=1378051243 instance=ExtResource("30_ihghk")]
 position = Vector2(912, -56)
-frame_progress = 0.17460658
+frame_progress = 0.95707566
 
-[node name="Coin8" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin8" parent="." unique_id=17712182 instance=ExtResource("30_ihghk")]
 position = Vector2(816, -80)
-frame_progress = 0.17460658
+frame_progress = 0.95707566
 
-[node name="Coin9" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin9" parent="." unique_id=1470669526 instance=ExtResource("30_ihghk")]
 position = Vector2(840, -80)
-frame_progress = 0.17460658
+frame_progress = 0.95707566
 
-[node name="Coin10" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin10" parent="." unique_id=713682470 instance=ExtResource("30_ihghk")]
 position = Vector2(864, -80)
-frame_progress = 0.17460658
+frame_progress = 0.95707566
 
-[node name="Coin11" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin11" parent="." unique_id=1622627861 instance=ExtResource("30_ihghk")]
 position = Vector2(888, -80)
-frame_progress = 0.17460658
+frame_progress = 0.95707566
 
-[node name="Coin12" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin12" parent="." unique_id=208637934 instance=ExtResource("30_ihghk")]
 position = Vector2(912, -80)
-frame_progress = 0.17460658
+frame_progress = 0.95707566
 
-[node name="Coin13" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin13" parent="." unique_id=907856111 instance=ExtResource("30_ihghk")]
 position = Vector2(1352, -368)
 animation = &"1"
-frame_progress = 0.18883725
+frame_progress = 0.97130585
 type = 1
 
-[node name="Coin14" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin14" parent="." unique_id=511112308 instance=ExtResource("30_ihghk")]
 position = Vector2(1376, -368)
 animation = &"1"
-frame_progress = 0.18883725
+frame_progress = 0.97130585
 type = 1
 
-[node name="Coin15" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin15" parent="." unique_id=105276685 instance=ExtResource("30_ihghk")]
 position = Vector2(1400, -368)
 animation = &"1"
-frame_progress = 0.18883725
+frame_progress = 0.97130585
 type = 1
 
-[node name="Coin16" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin16" parent="." unique_id=1274666472 instance=ExtResource("30_ihghk")]
 position = Vector2(1424, -368)
 animation = &"1"
-frame_progress = 0.18883725
+frame_progress = 0.97130585
 type = 1
 
-[node name="Coin17" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin17" parent="." unique_id=1786769016 instance=ExtResource("30_ihghk")]
 position = Vector2(1448, -368)
 animation = &"1"
-frame_progress = 0.18883725
+frame_progress = 0.97130585
 type = 1
 
-[node name="Coin18" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin18" parent="." unique_id=939281997 instance=ExtResource("30_ihghk")]
 position = Vector2(1352, -392)
 animation = &"1"
-frame_progress = 0.18883725
+frame_progress = 0.97130585
 type = 1
 
-[node name="Coin19" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin19" parent="." unique_id=1871986574 instance=ExtResource("30_ihghk")]
 position = Vector2(1376, -392)
 animation = &"1"
-frame_progress = 0.18883725
+frame_progress = 0.97130585
 type = 1
 
-[node name="Coin20" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin20" parent="." unique_id=1493925600 instance=ExtResource("30_ihghk")]
 position = Vector2(1400, -392)
 animation = &"1"
-frame_progress = 0.18883725
+frame_progress = 0.97130585
 type = 1
 
-[node name="Coin21" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin21" parent="." unique_id=111746828 instance=ExtResource("30_ihghk")]
 position = Vector2(1424, -392)
 animation = &"1"
-frame_progress = 0.18883725
+frame_progress = 0.97130585
 type = 1
 
-[node name="Coin22" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin22" parent="." unique_id=1708821704 instance=ExtResource("30_ihghk")]
 position = Vector2(1448, -392)
 animation = &"1"
-frame_progress = 0.18883725
+frame_progress = 0.97130585
 type = 1
 
-[node name="Coin103" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin103" parent="." unique_id=764779499 instance=ExtResource("30_ihghk")]
 position = Vector2(80, -48)
-frame_progress = 0.17460658
+frame_progress = 0.95707566
 
-[node name="Coin3" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin3" parent="." unique_id=184724743 instance=ExtResource("30_ihghk")]
 position = Vector2(1416, -600)
 animation = &"2"
-frame_progress = 0.4346348
+frame_progress = 0.21711107
 type = 2
 
-[node name="Coin23" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin23" parent="." unique_id=1541214465 instance=ExtResource("30_ihghk")]
 position = Vector2(1440, -600)
 animation = &"2"
-frame_progress = 0.4346348
+frame_progress = 0.21711107
 type = 2
 
-[node name="Coin24" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin24" parent="." unique_id=596649156 instance=ExtResource("30_ihghk")]
 position = Vector2(1464, -600)
 animation = &"2"
-frame_progress = 0.4346348
+frame_progress = 0.21711107
 type = 2
 
-[node name="Coin25" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin25" parent="." unique_id=289522181 instance=ExtResource("30_ihghk")]
 position = Vector2(1488, -600)
 animation = &"2"
-frame_progress = 0.4346348
+frame_progress = 0.21711107
 type = 2
 
-[node name="Coin26" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin26" parent="." unique_id=191404582 instance=ExtResource("30_ihghk")]
 position = Vector2(1512, -600)
 animation = &"2"
-frame_progress = 0.4346348
+frame_progress = 0.21711107
 type = 2
 
-[node name="Coin27" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin27" parent="." unique_id=622251736 instance=ExtResource("30_ihghk")]
 position = Vector2(1536, -600)
 animation = &"2"
-frame_progress = 0.4346348
+frame_progress = 0.21711107
 type = 2
 
-[node name="Coin28" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin28" parent="." unique_id=886201400 instance=ExtResource("30_ihghk")]
 position = Vector2(1560, -600)
 animation = &"2"
-frame_progress = 0.4346348
+frame_progress = 0.21711107
 type = 2
 
-[node name="Coin29" parent="." instance=ExtResource("30_ihghk")]
+[node name="Coin29" parent="." unique_id=810516682 instance=ExtResource("30_ihghk")]
 position = Vector2(1584, -600)
 animation = &"2"
-frame_progress = 0.4346348
+frame_progress = 0.21711107
 type = 2
 
-[node name="Shine" parent="." instance=ExtResource("31_nma4k")]
+[node name="Shine" parent="." unique_id=1728559446 instance=ExtResource("31_nma4k")]
 position = Vector2(3912, -1224)
 
-[node name="Sign" parent="." instance=ExtResource("32_rtnqg")]
+[node name="Sign" parent="." unique_id=1861350829 instance=ExtResource("32_rtnqg")]
 position = Vector2(305, 196)
 
-[node name="BreakableBox" parent="." instance=ExtResource("33_kuv8v")]
+[node name="BreakableBox" parent="." unique_id=312081325 instance=ExtResource("33_kuv8v")]
 position = Vector2(414, 134)
 
-[node name="BreakableBox2" parent="." instance=ExtResource("33_kuv8v")]
+[node name="BreakableBox2" parent="." unique_id=1072334867 instance=ExtResource("33_kuv8v")]
 position = Vector2(-1204, 142)
 
-[node name="BreakableBox3" parent="." instance=ExtResource("33_kuv8v")]
+[node name="BreakableBox3" parent="." unique_id=683256449 instance=ExtResource("33_kuv8v")]
 position = Vector2(-1204, 110)
 
-[node name="BreakableBox4" parent="." instance=ExtResource("33_kuv8v")]
+[node name="BreakableBox4" parent="." unique_id=694546795 instance=ExtResource("33_kuv8v")]
 position = Vector2(-1204, 78)
 
-[node name="BreakableBox5" parent="." instance=ExtResource("33_kuv8v")]
+[node name="BreakableBox5" parent="." unique_id=1213049527 instance=ExtResource("33_kuv8v")]
 position = Vector2(-1204, 46)
 
-[node name="BreakableBox6" parent="." instance=ExtResource("33_kuv8v")]
+[node name="BreakableBox6" parent="." unique_id=419942331 instance=ExtResource("33_kuv8v")]
 position = Vector2(-1204, 14)
 
-[node name="BreakableBox7" parent="." instance=ExtResource("33_kuv8v")]
+[node name="BreakableBox7" parent="." unique_id=1860061106 instance=ExtResource("33_kuv8v")]
 position = Vector2(-1204, -18)
 
-[node name="BreakableBox8" parent="." instance=ExtResource("33_kuv8v")]
+[node name="BreakableBox8" parent="." unique_id=1040201686 instance=ExtResource("33_kuv8v")]
 position = Vector2(-1204, -50)
 
-[node name="BreakableBox9" parent="." instance=ExtResource("33_kuv8v")]
+[node name="BreakableBox9" parent="." unique_id=136260331 instance=ExtResource("33_kuv8v")]
 position = Vector2(-1204, -82)
 
-[node name="BreakableBox10" parent="." instance=ExtResource("33_kuv8v")]
+[node name="BreakableBox10" parent="." unique_id=1289058696 instance=ExtResource("33_kuv8v")]
 position = Vector2(-1204, -114)
 
-[node name="BreakableBox11" parent="." instance=ExtResource("33_kuv8v")]
+[node name="BreakableBox11" parent="." unique_id=1300954599 instance=ExtResource("33_kuv8v")]
 position = Vector2(-1204, -146)
 
-[node name="BreakableBox12" parent="." instance=ExtResource("33_kuv8v")]
+[node name="BreakableBox12" parent="." unique_id=656541595 instance=ExtResource("33_kuv8v")]
 position = Vector2(-1204, -178)
 
-[node name="BreakableBox13" parent="." instance=ExtResource("33_kuv8v")]
+[node name="BreakableBox13" parent="." unique_id=88451946 instance=ExtResource("33_kuv8v")]
 position = Vector2(-1204, -210)
 
-[node name="BreakableBox14" parent="." instance=ExtResource("33_kuv8v")]
+[node name="BreakableBox14" parent="." unique_id=102489875 instance=ExtResource("33_kuv8v")]
 position = Vector2(-1204, -242)
 
-[node name="BreakableBox15" parent="." instance=ExtResource("33_kuv8v")]
+[node name="BreakableBox15" parent="." unique_id=641525862 instance=ExtResource("33_kuv8v")]
 position = Vector2(-1204, -274)
 
-[node name="BreakableBox16" parent="." instance=ExtResource("33_kuv8v")]
+[node name="BreakableBox16" parent="." unique_id=1073604060 instance=ExtResource("33_kuv8v")]
 position = Vector2(-1204, -306)
 
-[node name="BreakableBox17" parent="." instance=ExtResource("33_kuv8v")]
+[node name="BreakableBox17" parent="." unique_id=787515854 instance=ExtResource("33_kuv8v")]
 position = Vector2(-1204, -338)
 
-[node name="BreakableBox18" parent="." instance=ExtResource("33_kuv8v")]
+[node name="BreakableBox18" parent="." unique_id=1953244146 instance=ExtResource("33_kuv8v")]
 position = Vector2(-1204, -370)
 
-[node name="BreakableBox19" parent="." instance=ExtResource("33_kuv8v")]
+[node name="BreakableBox19" parent="." unique_id=830586745 instance=ExtResource("33_kuv8v")]
 position = Vector2(-1204, -402)
 
-[node name="BreakableBox20" parent="." instance=ExtResource("33_kuv8v")]
+[node name="BreakableBox20" parent="." unique_id=1441363458 instance=ExtResource("33_kuv8v")]
 position = Vector2(-1204, -434)
 
-[node name="BreakableBox21" parent="." instance=ExtResource("33_kuv8v")]
+[node name="BreakableBox21" parent="." unique_id=474827149 instance=ExtResource("33_kuv8v")]
 position = Vector2(-1204, -466)
 
-[node name="BreakableBox22" parent="." instance=ExtResource("33_kuv8v")]
+[node name="BreakableBox22" parent="." unique_id=1481239770 instance=ExtResource("33_kuv8v")]
 position = Vector2(-1204, -498)
 
-[node name="BreakableBox23" parent="." instance=ExtResource("33_kuv8v")]
+[node name="BreakableBox23" parent="." unique_id=471594361 instance=ExtResource("33_kuv8v")]
 position = Vector2(-1204, -530)
 
-[node name="BreakableBox24" parent="." instance=ExtResource("33_kuv8v")]
+[node name="BreakableBox24" parent="." unique_id=1179270821 instance=ExtResource("33_kuv8v")]
 position = Vector2(-1204, -562)
 
-[node name="BreakableBox25" parent="." instance=ExtResource("33_kuv8v")]
+[node name="BreakableBox25" parent="." unique_id=440025446 instance=ExtResource("33_kuv8v")]
 position = Vector2(-1204, -594)
 
-[node name="Crate" parent="." instance=ExtResource("34_l20wn")]
+[node name="Crate" parent="." unique_id=1981688815 instance=ExtResource("34_l20wn")]
 position = Vector2(-720, -544)
+
+[connection signal="body_entered" from="Goomba/Areas/Hurtbox" to="Goomba" method="_on_hurtbox_body_entered"]
+[connection signal="body_entered" from="Goomba/Areas/DetectionArea" to="Goomba/StateManager/Dry/Roam" method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="Goomba/Areas/DetectionArea" to="Goomba/StateManager/Dry/Aggroed" method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="Goomba2/Areas/Hurtbox" to="Goomba2" method="_on_hurtbox_body_entered"]
+[connection signal="body_entered" from="Goomba2/Areas/DetectionArea" to="Goomba2/StateManager/Dry/Roam" method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="Goomba2/Areas/DetectionArea" to="Goomba2/StateManager/Dry/Aggroed" method="_on_detection_area_body_exited"]

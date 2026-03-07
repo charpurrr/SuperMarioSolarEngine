@@ -27,8 +27,8 @@ func _physics_tick(_delta: float) -> void:
 # The first entry in the array is where the damage came from,
 # the second entry is what type of damage was received.
 func _on_enter(array) -> void:
-	var source := array[0] as Node
-	var damage_type := array[1] as HealthModule.DamageType
+	var source: Node = array[0]
+	var damage_type: HealthModule.DamageType = array[1]
 
 	death_type = damage_type
 

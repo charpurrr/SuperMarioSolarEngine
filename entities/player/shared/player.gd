@@ -42,8 +42,8 @@ func _physics_process(_delta):
 	move_and_slide()
 
 
-func take_hit(_source: Node, _damage_type: HealthModule.DamageType):
-	state_manager.set_to_state(&"Hit")
+func take_hit(source: Node, damage_type: HealthModule.DamageType):
+	state_manager.set_to_state(&"Hit", [source, damage_type])
 
 
 func die(_source: Node, _damage_type: HealthModule.DamageType):

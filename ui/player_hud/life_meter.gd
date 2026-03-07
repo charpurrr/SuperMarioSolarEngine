@@ -23,13 +23,25 @@ const ROTATION: float = TAU / 4
 
 		queue_redraw()
 
+@export var hit_shake_power: float = 6
+@export_tool_button("Preview Hit", "Play")
+var preview_action = take_hit.bind(0)
+
+var is_shaking: bool = false
+
 @export_category("References")
+@export var graphics: Control
+@export var text: Control
 @export var outline: Button 
 @export var label: Label
+@export var graphics_x_spring: DampedOscillator
+@export var graphics_y_spring: DampedOscillator
+@export var text_x_spring: DampedOscillator
+@export var text_y_spring: DampedOscillator
 
 
 func _draw() -> void:
-	var center: Vector2 = size / 2
+	var center: Vector2 = size / 2 + Vector2(graphics_x_spring.displacement, graphics_y_spring.displacement)
 	# A small margin is subtracted so the lines don't stick out
 	# at the edges of the circle.
 	var radius: float = outline.size.x / 2 - 0.2
@@ -44,8 +56,38 @@ func _draw() -> void:
 		_draw_seperators(center, radius, step)
 
 
-func take_hit(amt: int, _type: HealthModule.DamageType):
+func _process(_delta: float) -> void:
+	if not is_shaking: return
+
+	graphics.position = Vector2(graphics_x_spring.displacement, graphics_y_spring.displacement)
+	text.position = Vector2(text_x_spring.displacement, text_y_spring.displacement)
+	queue_redraw()
+
+	if (
+		is_zero_approx(graphics_x_spring.displacement) and
+		is_zero_approx(graphics_y_spring.displacement) and 
+		is_zero_approx(text_x_spring.displacement) and
+		is_zero_approx(text_y_spring.displacement)
+	):
+		is_shaking = false
+		graphics.position = Vector2.ZERO
+
+
+func take_hit(amt: int, _type: HealthModule.DamageType = HealthModule.DamageType.GENERIC):
 	hp -= amt
+	shake(hit_shake_power)
+
+
+func shake(power: float) -> void:
+	var graphics_power_vec := Math.random_coord(power)
+	var text_power_vec := Math.random_coord(power)
+
+	graphics_x_spring.start(graphics_power_vec.x)
+	graphics_y_spring.start(graphics_power_vec.y)
+	text_x_spring.start(text_power_vec.x)
+	text_y_spring.start(text_power_vec.y)
+
+	is_shaking = true
 
 
 func _draw_seperators(center: Vector2, radius: float, step: float) -> void:
@@ -73,11 +115,18 @@ func _draw_circle_arc_poly(
 	) -> void:
 	var nb_points: int = 32
 
+	# Clamp to just under TAU to prevent first/last points overlapping
+	var clamped_to: float = minf(angle_to, TAU - 0.0001)
+	
+	# Need at least ~2 degrees of arc or triangulation can fail
+	if clamped_to - angle_from < 0.035:
+		nb_points = 8
+
 	var points_arc := PackedVector2Array()
 	points_arc.append(center)
 
 	for i in range(nb_points + 1):
-		var angle_point = angle_from + i * (angle_to - angle_from) / nb_points - PI / 2
+		var angle_point = angle_from + i * (clamped_to - angle_from) / nb_points - PI / 2
 		points_arc.append(center + Vector2(cos(angle_point), sin(angle_point)) * radius)
 
 	draw_colored_polygon(points_arc, color)
