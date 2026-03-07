@@ -12,7 +12,7 @@ var finished_init: bool
 
 
 func _on_enter(_param):
-	movement.return_res_prog = movement.return_res
+	movement.return_timer = movement.return_time
 	movement.air_spun = true
 	
 	actor.spin_hurtbox.monitoring = true

@@ -10,6 +10,9 @@ extends Node
 ## Max horizontal speed.
 @export var max_speed: float = 2.8
 
+## The minimum velocity required to enter a [Skid] state.
+@export var min_skid_vel: float = 60.0
+
 ## How long it takes to accelerate when grounded.
 @export var ground_accel_time: float = 22.5
 @onready var ground_accel_step: float = max_speed / ground_accel_time
@@ -27,8 +30,8 @@ extends Node
 @onready var air_decel_step: float = max_speed / air_decel_time
 
 ## How many frames have to progress before you can accelerate forward again.
-@export var return_res: int = 15
-var return_res_prog: float
+@export var return_time: int = 15
+var return_timer: float
 #endregion
 
 #region Y Variables
@@ -115,7 +118,7 @@ var body_rotation: float = 0
 
 func _physics_process(_delta):
 	ground_spin_cooldown_timer = max(ground_spin_cooldown_timer - 1, 0)
-	return_res_prog = max(return_res_prog - 1, 0)
+	return_timer = max(return_timer - 1, 0)
 
 	# Grounded
 	if actor.is_on_floor():

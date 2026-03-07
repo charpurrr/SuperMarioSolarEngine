@@ -72,7 +72,7 @@ func _trans_rules():
 		return &"DummyJump"
 
 	if (InputManager.get_x_dir() == -movement.prev_facing_direction
-	and abs(actor.velocity.x) > 1):
+	and abs(actor.velocity.x) > movement.min_skid_vel):
 		movement.update_prev_direction()
 		return [&"Skid", [0, 16]]
 
