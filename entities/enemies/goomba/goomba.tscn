@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b5eno3kq3b43" path="res://entities/enemies/goomba/anime/chase.png" id="2_2rnn8"]
 [ext_resource type="Texture2D" uid="uid://cv67vhsfir242" path="res://entities/enemies/goomba/anime/jump.png" id="2_qtetb"]
 [ext_resource type="Texture2D" uid="uid://cu6rg1coyo1db" path="res://entities/enemies/goomba/anime/squish.png" id="4_04ccq"]
+[ext_resource type="Texture2D" uid="uid://hyof6b570a1e" path="res://entities/enemies/goomba/anime/hurt.png" id="4_aecnx"]
 [ext_resource type="Texture2D" uid="uid://c2j0dluh2g7xb" path="res://entities/enemies/goomba/anime/walk.png" id="5_g0x7x"]
 [ext_resource type="Script" uid="uid://bqea8us6rsyeb" path="res://entities/enemies/enemy_state_manager.gd" id="6_04ccq"]
 [ext_resource type="Script" uid="uid://b74qvih6e4hw5" path="res://entities/enemies/enemy_state.gd" id="7_g0x7x"]
@@ -131,6 +132,14 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_aecnx")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 8.0,
 "texture": SubResource("AtlasTexture_wwbio")
 }, {
@@ -201,6 +210,18 @@ radius = 256.0
 
 [sub_resource type="Animation" id="Animation_b0ahg"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationTransformer:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_yvt7r"]
 resource_name = "die_squish"
@@ -236,6 +257,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(0.7, 1.3), Vector2(1, 1), Vector2(1.3, 0.7)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationTransformer:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ju3gn"]
 _data = {
@@ -261,11 +294,12 @@ anime = NodePath("AnimationPlayer")
 doll = NodePath("AnimationTransformer/Doll")
 
 [node name="AnimationTransformer" type="Node2D" parent="." unique_id=25554351]
+position = Vector2(0, -9)
 
 [node name="Doll" type="AnimatedSprite2D" parent="AnimationTransformer" unique_id=1587415728]
-position = Vector2(0, -16)
+position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_doiik")
-animation = &"idle"
+animation = &"hurt"
 
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1136568226]
 position = Vector2(0, -7)
@@ -364,6 +398,9 @@ fall_animation = &"fall"
 
 [node name="Die" type="Node" parent="StateManager" unique_id=271050733]
 script = ExtResource("10_b0ahg")
+strike_x_power = 120.0
+strike_y_power = 240.0
+animation = &"hurt"
 
 [connection signal="body_entered" from="Areas/Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_entered" from="Areas/DetectionArea" to="StateManager/Dry/Roam" method="_on_detection_area_body_entered"]
