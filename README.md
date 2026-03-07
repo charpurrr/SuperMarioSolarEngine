@@ -9,9 +9,10 @@ Also comes with a bare-bones level-editor that you can build off for your own in
 [<img src="https://github.com/user-attachments/assets/2b9f2372-16cc-4275-9964-4ef19121b9dd">](https://discord.gg/qgfErCy)
 
 ## Current Status
-**Playable** ([Bugfixing](https://github.com/Charpurrr/SuperMarioSolarEngine/issues) and [fine tuning](https://docs.google.com/document/d/1hzFKpgm-1IukFWBig9A5ZsCQQEqVqJFVrNOAVmHSHJI/edit))
+Super Mario Solar Engine has a public [roadmap](https://docs.google.com/spreadsheets/d/e/2PACX-1vS1ds81X-vbqgJX289ct4EjkDnZ-gODDjcfHilUsX1nZjLIjEyZZ0lwTgf1z02kf_AeLZt41mz7d6WS/pubhtml) where you can actively track the progress on specific parts of the engine.<br />
+It also has a public [Discord server](https://discord.com/invite/NVQFayv8te) where you can follow development more directly and report issues, provide feedback, or even contribute.
 
-*(Currently accepting feedback!)*
+The engine is currently still in active development.
 
 ### To-do
 1. FLUDD mechanics
@@ -40,24 +41,26 @@ Most classes contain documentation that you can find using the Help menu in the 
 ## Credits
 Charlotte "Charpurrr" Fox - Lead director and programmer <br /><br />
 
-"CardboardCarl" - Additional programming <br />
-"Unequipped" - Additional programming <br />
-"aloelucidity" - Additional programming <br /><br />
+Davin Christino - Additional programming <br />
+CardboardCarl - Additional programming <br />
+aloelucidity - Additional programming <br /><br />
+Unequipped - Additional programming <br />
+Cruglet - Additional programming <br />
 
 Brian "Linktober" - Level design <br /><br />
 
-"Frums" - Credits & Options songs <br />
-"LSPLASH" - Chillwave song <br />
+femtanyl - ATTACKING VERTICAL song <br /><br >
 Gale Sosa - Synth Stratnum song <br />
-"femtanyl" - ATTACKING VERTICAL song <br /><br >
+Frums - Credits & Options songs <br />
+LSPLASH - Chillwave song <br />
 
 Mack "masterminer176" - Miscellaneous sprites <br />
-"KrystalPhantasm" - Miscellaneous sprites <br /><br >
+KrystalPhantasm - Miscellaneous sprites <br /><br >
 
-"KenneyNL" - UI Input Icons <br /><br >
+KenneyNL - UI Input Icons <br /><br >
 
-"KingAsylus91" - Mario & Luigi sprites <br />
-"TuffTony" - Mario & Luigi sprites <br />
-"NineBit" - Mario & Luigi sprites <br /><br />
+KingAsylus91 - Mario & Luigi sprites <br />
+TuffTony - Mario & Luigi sprites <br />
+NineBit - Mario & Luigi sprites <br /><br />
 
-Robert "runouw" Hewitt - Main inspiration <br />
+Robert & Steven "runouw" Hewitt - Main inspiration <br />
