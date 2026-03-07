@@ -299,7 +299,7 @@ position = Vector2(0, -9)
 [node name="Doll" type="AnimatedSprite2D" parent="AnimationTransformer" unique_id=1587415728]
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_doiik")
-animation = &"hurt"
+animation = &"idle"
 
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1136568226]
 position = Vector2(0, -7)
