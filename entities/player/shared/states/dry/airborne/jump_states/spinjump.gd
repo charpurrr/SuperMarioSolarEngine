@@ -7,7 +7,7 @@ func _physics_tick(_delta: float):
 	movement.move_x_analog(0.15, false)
 
 
-func _subsequent_ticks():
+func _subsequent_ticks(_delta: float):
 	if actor.velocity.y < 0:
 		movement.apply_gravity(-actor.velocity.y / jump_power)
 	if actor.velocity.y > 0:

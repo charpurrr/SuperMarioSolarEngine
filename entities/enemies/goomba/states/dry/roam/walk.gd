@@ -41,7 +41,7 @@ func _physics_tick(_delta: float) -> void:
 	actor.vel.x = walk_speed * walk_direction
 
 
-func _subsequent_ticks() -> void:
+func _subsequent_ticks(_delta: float) -> void:
 	# Don't walk into walls. (Life advice!)
 	if actor.is_on_wall():
 		reset_state(-walk_direction)

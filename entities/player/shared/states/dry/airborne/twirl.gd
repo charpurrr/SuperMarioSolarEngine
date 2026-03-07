@@ -17,7 +17,7 @@ func _on_enter(_param):
 	movement.consume_coyote_timer()
 
 
-func _subsequent_ticks():
+func _subsequent_ticks(_delta: float):
 	movement.apply_gravity()
 
 

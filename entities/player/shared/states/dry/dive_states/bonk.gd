@@ -25,7 +25,7 @@ func _on_enter(_param):
 	rotation_timer = 0
 
 
-func _subsequent_ticks():
+func _subsequent_ticks(_delta: float):
 	movement.apply_gravity()
 
 

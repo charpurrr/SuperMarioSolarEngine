@@ -27,7 +27,7 @@ func _physics_tick(_delta: float):
 		movement.activate_freefall_timer()
 
 
-func _subsequent_ticks():
+func _subsequent_ticks(_delta: float):
 	movement.apply_gravity()
 
 

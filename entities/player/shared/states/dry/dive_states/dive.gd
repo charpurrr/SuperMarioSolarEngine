@@ -56,7 +56,7 @@ func _physics_tick(_delta: float):
 	actor.doll.rotation = lerp_angle(actor.doll.rotation, movement.body_rotation, 0.5)
 
 
-func _subsequent_ticks():
+func _subsequent_ticks(_delta: float):
 	movement.apply_gravity()
 
 

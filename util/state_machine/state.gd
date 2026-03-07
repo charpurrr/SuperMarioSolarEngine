@@ -26,10 +26,10 @@ func _to_string():
 ## Calls the fixed tick functions
 func tick_hook(delta: float) -> void:
 	if _first_cycle:
-		_first_tick()
+		_first_tick(delta)
 		_first_cycle = false
 	else:
-		_subsequent_ticks()
+		_subsequent_ticks(delta)
 
 	_physics_tick(delta)
 
@@ -210,12 +210,12 @@ func _physics_tick(_delta: float) -> void:
 
 
 ## Called on the first cycle of the physics process loop.
-func _first_tick() -> void:
+func _first_tick(_delta: float) -> void:
 	pass
 
 
 ## Called on every cycle of the physics process loop minus the first.
-func _subsequent_ticks() -> void:
+func _subsequent_ticks(_delta: float) -> void:
 	pass
 
 

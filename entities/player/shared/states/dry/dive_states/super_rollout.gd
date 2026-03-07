@@ -30,8 +30,8 @@ func _on_exit() -> void:
 	actor.dive_hurtbox.monitoring = false
 
 
-func _subsequent_ticks():
-	super()
+func _subsequent_ticks(delta: float):
+	super(delta)
 
 	if particle_counter > 0:
 		particles[1].emit_at(actor)

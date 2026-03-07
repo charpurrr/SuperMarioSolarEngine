@@ -19,7 +19,7 @@ func _physics_tick(_delta: float):
 	actor.velocity.x = movement.facing_direction
 
 
-func _subsequent_ticks():
+func _subsequent_ticks(_delta: float):
 	movement.apply_gravity(1, gravity_friction)
 
 	var offset_hand := Vector2(

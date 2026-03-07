@@ -2452,7 +2452,7 @@ buffer_duration = 6
 [node name="FluddManager" type="Node" parent="." unique_id=2015663485 node_paths=PackedStringArray("actor", "stamina_bar", "fludd_b", "fludd_f", "spray_player")]
 script = ExtResource("151_4womg")
 hover_power = 90.0
-hover_accel = 30.0
+hover_accel = 1800.0
 hover_effectiveness = SubResource("Curve_u3pyw")
 hover_spray_sfx = ExtResource("10_8wyc1")
 rocket_power = 600.0

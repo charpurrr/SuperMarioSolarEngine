@@ -58,16 +58,16 @@ func _on_enter(handover_speed):
 		slide_speed = 0
 
 
-func _physics_tick(_delta: float):
+func _physics_tick(delta: float):
 	if actor.is_on_floor():
-		_grounded()
+		_grounded(delta)
 	else:
-		_airborne()
+		_airborne(delta)
 
 	_set_appropriate_anim()
 
 
-func _subsequent_ticks():
+func _subsequent_ticks(_delta: float):
 	if actor.is_on_floor():
 		particles[0].emit_at(actor)
 
@@ -78,7 +78,7 @@ func _subsequent_ticks():
 
 
 ## Buttsliding on the ground / slope.
-func _grounded():
+func _grounded(delta: float):
 	var floor_normal: Vector2 = actor.get_floor_normal()
 
 	var slide_direction: Vector2
@@ -97,14 +97,14 @@ func _grounded():
 	_modify_speed(floor_normal)
 
 	actor.velocity = slide_direction * slide_speed
-	actor.velocity.y += 6.0
+	actor.velocity.y += 6.0 * delta
 
 	# Store the sliding direction so we can check for changes
 	old_direction = slide_direction
 
 
 ## Buttsliding in the air.
-func _airborne():
+func _airborne(_delta: float):
 	no_direction = true
 	slide_speed = 0
 

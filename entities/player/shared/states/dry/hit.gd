@@ -13,14 +13,14 @@ func _on_enter(_param: Variant) -> void:
 	actor.velocity = Vector2.ZERO
 	freeze_timer = freeze_time
 
-	Engine.time_scale = 0.01
-	await get_tree().create_timer(
-		freeze_time / Engine.get_frames_per_second(),
-		true,
-		false,
-		true
-		).timeout
-	Engine.time_scale = 1.0
+	Engine.time_scale = 0.5
+	#await get_tree().create_timer(
+		#freeze_time / Engine.get_frames_per_second(),
+		#true,
+		#false,
+		#true
+		#).timeout
+	#Engine.time_scale = 1.0
 
 	actor.camera.shake(Math.random_coord(camera_shake_power))
 	actor.health_module.enabled = false

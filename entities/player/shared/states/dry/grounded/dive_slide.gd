@@ -16,7 +16,7 @@ func _physics_tick(_delta: float):
 	movement.decelerate(movement.ground_decel_step * Vector2.RIGHT)
 
 
-func _subsequent_ticks():
+func _subsequent_ticks(_delta: float):
 	particles[0].emit_at(actor)
 
 

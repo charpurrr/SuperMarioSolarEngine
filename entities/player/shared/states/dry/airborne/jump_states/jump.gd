@@ -25,7 +25,7 @@ func _on_enter(_param):
 	movement.consec_jumps = jump_number
 
 
-func _subsequent_ticks():
+func _subsequent_ticks(_delta: float):
 	movement.apply_gravity(-actor.velocity.y / jump_power)
 
 

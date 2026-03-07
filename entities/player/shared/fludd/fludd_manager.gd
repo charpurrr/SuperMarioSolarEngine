@@ -71,16 +71,16 @@ static var fuel: float = 100.0:
 
 ## The base behaviour of the hover nozzle.
 ## Boosts you in the direction of the player's body rotation and plays a sound.
-func hover() -> void:
+func hover(delta: float) -> void:
 	var rot_vec := Vector2.UP.rotated(actor.movement.body_rotation)
 	var power_effectiveness = hover_effectiveness.sample_baked(1 - stamina / 100.0)
 	var boost_vec: Vector2 = rot_vec * (hover_power * power_effectiveness)
 
 	if abs(actor.velocity.x) < abs(boost_vec.x):
-		actor.velocity.x += hover_accel * rot_vec.x
+		actor.velocity.x += hover_accel * rot_vec.x * delta
 
 	if (sign(rot_vec.y) * (actor.velocity.y - boost_vec.y) < 0):
-		actor.velocity.y += hover_accel * rot_vec.y
+		actor.velocity.y += hover_accel * rot_vec.y * delta
 
 	stamina -= hover_exhaustion
 	fuel -= hover_fuel_usage
@@ -128,7 +128,7 @@ func _process(_delta: float) -> void:
 	fludd_f.rotation = actor.doll.rotation
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if active_nozzle == Nozzle.NONE:
 		stamina_bar.modulate = Math.lerp_colr(stamina_bar.modulate, Color.TRANSPARENT, stamina_fade_out, 0.01)
 		return
@@ -149,6 +149,6 @@ func _physics_process(_delta: float) -> void:
 
 		match active_nozzle:
 			Nozzle.HOVER:
-				hover()
+				hover(delta)
 	else:
 		spray_player.stop()
