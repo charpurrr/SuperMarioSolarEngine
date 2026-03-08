@@ -57,6 +57,7 @@ func start_transition(
 	mouse_filter = Control.MOUSE_FILTER_STOP
 
 	await start_node.animation.animation_finished
+	await get_tree().process_frame
 	to_trans_finished.emit()
 
 	# Wait for the greenlight from the TransitionManager.

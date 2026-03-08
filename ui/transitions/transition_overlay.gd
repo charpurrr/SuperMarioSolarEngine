@@ -1,8 +1,9 @@
 @tool
 class_name TransitionOverlay
 extends ColorRect
-## The base class for all transition overlays. To be instanced in a scene file along with an [AnimationPlayer].[br]
-## For a list of all available transitions, see [SceneTransition].[br][br]
+## The base class for all transition overlays.[br][br]
+## To be instanced in a scene file along with an [AnimationPlayer].[br]
+## For a list of all available transitions, see [SceneTransition].
 
 @onready var default_color = color
 @onready var animation: AnimationPlayer = $AnimationPlayer
