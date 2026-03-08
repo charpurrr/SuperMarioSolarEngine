@@ -17,6 +17,15 @@
 [ext_resource type="Script" uid="uid://clg5e4gmr1ii2" path="res://entities/enemies/goomba/states/dry/roam/idle.gd" id="10_twr7t"]
 [ext_resource type="Script" uid="uid://cje50kiar8st1" path="res://entities/enemies/goomba/states/dry/aggroed/chase.gd" id="12_grbl7"]
 [ext_resource type="Script" uid="uid://cjeme0ny363gg" path="res://entities/enemies/goomba/states/dry/aggroed/jump.gd" id="13_2rnn8"]
+[ext_resource type="Script" uid="uid://dvlt5sb8enmu8" path="res://util/resources/sfx_layer.gd" id="13_5dppb"]
+[ext_resource type="AudioStream" uid="uid://bbxq15u5b6bka" path="res://entities/enemies/goomba/sfx/step_1.wav" id="14_cmvqd"]
+[ext_resource type="AudioStream" uid="uid://dy3c5tcmneu06" path="res://entities/enemies/goomba/sfx/step_2.wav" id="15_wnwc8"]
+[ext_resource type="AudioStream" uid="uid://7n4a0mwhu08y" path="res://entities/enemies/goomba/sfx/notice.wav" id="18_0ngrs"]
+[ext_resource type="Script" uid="uid://dd8oyhd4nllix" path="res://util/resources/particle_effect.gd" id="20_u3i55"]
+[ext_resource type="AudioStream" uid="uid://crqrusg3etjqu" path="res://entities/enemies/goomba/sfx/land.wav" id="21_t3ksn"]
+[ext_resource type="Texture2D" uid="uid://chws3rokc6d0i" path="res://props/particles/dust.png" id="21_um0uc"]
+[ext_resource type="AudioStream" uid="uid://xoqi4ol2swle" path="res://entities/enemies/goomba/sfx/jump.wav" id="22_u3i55"]
+[ext_resource type="PackedScene" uid="uid://dewmusa85yj1w" path="res://props/particles/dust_explosion_big.tscn" id="26_um0uc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aecnx"]
 atlas = ExtResource("2_2rnn8")
@@ -277,6 +286,62 @@ _data = {
 &"die_strike": SubResource("Animation_kc47k")
 }
 
+[sub_resource type="Resource" id="Resource_0ngrs"]
+script = ExtResource("13_5dppb")
+sfx_list = [ExtResource("14_cmvqd"), ExtResource("15_wnwc8")]
+bus = &"Motion"
+force_new = true
+overwrite_other = false
+cutoff_sfx = false
+metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
+
+[sub_resource type="Resource" id="Resource_um0uc"]
+script = ExtResource("13_5dppb")
+sfx_list = [ExtResource("18_0ngrs")]
+bus = &"Motion"
+overwrite_other = false
+cutoff_sfx = false
+metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
+
+[sub_resource type="Resource" id="Resource_a562u"]
+script = ExtResource("13_5dppb")
+sfx_list = [ExtResource("14_cmvqd"), ExtResource("15_wnwc8")]
+bus = &"Motion"
+force_new = true
+overwrite_other = false
+cutoff_sfx = false
+metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ivan8"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PackedScene" id="PackedScene_a562u"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [],
+"names": PackedStringArray("Kick", "CPUParticles2D", "material", "emitting", "amount", "texture", "lifetime", "one_shot", "gravity", "scale_amount_min", "scale_amount_max", "anim_speed_min", "anim_speed_max"),
+"node_count": 1,
+"node_ids": PackedInt32Array(0),
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 11, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 8, 11, 9, 12, 10, 0),
+"variants": [SubResource("CanvasItemMaterial_ivan8"), false, 1, ExtResource("21_um0uc"), 0.6, true, Vector2(0, -200), 0.8, 1.2, 2.0, 2.0],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_i1yyq"]
+script = ExtResource("20_u3i55")
+particle_scene = SubResource("PackedScene_a562u")
+
+[sub_resource type="Resource" id="Resource_rr0dy"]
+script = ExtResource("20_u3i55")
+particle_scene = ExtResource("26_um0uc")
+metadata/_custom_type_script = "uid://dd8oyhd4nllix"
+
 [node name="Goomba" type="CharacterBody2D" unique_id=1024455853 node_paths=PackedStringArray("hurtbox", "ledge_ray_l", "ledge_ray_r", "wall_ray_l", "wall_ray_r", "hitbox", "state_manager", "anime", "doll")]
 collision_layer = 4
 collision_mask = 5
@@ -299,7 +364,8 @@ position = Vector2(0, -9)
 [node name="Doll" type="AnimatedSprite2D" parent="AnimationTransformer" unique_id=1587415728]
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_doiik")
-animation = &"idle"
+animation = &"walk"
+frame = 2
 
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1136568226]
 position = Vector2(0, -7)
@@ -368,6 +434,8 @@ script = ExtResource("8_2mgq4")
 
 [node name="Walk" type="Node" parent="StateManager/Dry/Roam" unique_id=1280118669]
 script = ExtResource("9_x02my")
+step_sfx = SubResource("Resource_0ngrs")
+footstep_frames = Array[int]([2])
 min_walk_time = 50
 max_walk_time = 100
 walk_speed = 24.0
@@ -381,16 +449,22 @@ animation = &"idle"
 [node name="Aggroed" type="Node" parent="StateManager/Dry" unique_id=973552010]
 script = ExtResource("9_fvrek")
 notice_jump_power = 2
+sfx_layers = Array[ExtResource("13_5dppb")]([SubResource("Resource_um0uc")])
 
 [node name="Chase" type="Node" parent="StateManager/Dry/Aggroed" unique_id=745168733]
 script = ExtResource("12_grbl7")
+step_sfx = SubResource("Resource_a562u")
+footstep_frames = Array[int]([0, 3])
 chase_max_speed = 120.0
 chase_accel = 6.0
 range_jump = Vector2(2, 10)
 animation = &"chase"
+particles = Array[ExtResource("20_u3i55")]([SubResource("Resource_i1yyq")])
 
 [node name="Jump" type="Node" parent="StateManager/Dry/Aggroed" unique_id=69935508]
 script = ExtResource("13_2rnn8")
+jump_sfx = ExtResource("22_u3i55")
+land_sfx = ExtResource("21_t3ksn")
 jump_power = 240.0
 jump_decel = 12.0
 jump_animation = &"jump"
@@ -400,6 +474,7 @@ fall_animation = &"fall"
 script = ExtResource("10_b0ahg")
 strike_x_power = 120.0
 strike_y_power = 240.0
+explode_pfx = SubResource("Resource_rr0dy")
 animation = &"hurt"
 
 [connection signal="body_entered" from="Areas/Hurtbox" to="." method="_on_hurtbox_body_entered"]

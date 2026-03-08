@@ -8,9 +8,6 @@ extends PlayerState
 ## On what frames of the walking animation a footstep soundeffect should play.
 @export var footstep_frames: Array[int]
 
-## Wether the footstep sound effect has played or not.
-var sfx_has_played: bool = false
-
 var current_frame: int
 var last_frame: int
 

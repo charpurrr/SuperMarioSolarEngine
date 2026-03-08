@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://dewmusa85yj1w"]
+
+[ext_resource type="Texture2D" uid="uid://chws3rokc6d0i" path="res://props/particles/dust.png" id="1_pqnpc"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vb2tc"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_y88i5"]
+_data = [Vector2(0, 0), 0.0, 4.66533, 0, 0, Vector2(0.375, 1), 0.0, 0.0, 0, 0, Vector2(0.689024, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -7.44763, 0.0, 0, 0]
+point_count = 4
+
+[node name="Node2D" type="Node2D" unique_id=1004416271]
+
+[node name="ExplosionBig" type="CPUParticles2D" parent="." unique_id=768129790]
+material = SubResource("CanvasItemMaterial_vb2tc")
+emitting = false
+amount = 10
+texture = ExtResource("1_pqnpc")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.25
+direction = Vector2(0, -100)
+spread = 100.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 30.0
+scale_amount_min = 0.9
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_y88i5")
+anim_speed_min = 1.0
+anim_speed_max = 2.0
+
+[node name="ExplosionSmall" type="CPUParticles2D" parent="." unique_id=663308457]
+material = SubResource("CanvasItemMaterial_vb2tc")
+emitting = false
+amount = 10
+texture = ExtResource("1_pqnpc")
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.25
+direction = Vector2(0, -100)
+spread = 100.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 40.0
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_y88i5")
+anim_speed_min = 1.0
+anim_speed_max = 2.0

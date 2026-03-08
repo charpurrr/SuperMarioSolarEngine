@@ -13,7 +13,7 @@ func _trans_rules() -> Variant:
 
 
 func _defer_rules() -> Variant:
-	return [&"Jump", notice_jump_power]
+	return [&"Jump", [notice_jump_power, false]]
 
 
 func _on_detection_area_body_exited(_body: Node2D) -> void:

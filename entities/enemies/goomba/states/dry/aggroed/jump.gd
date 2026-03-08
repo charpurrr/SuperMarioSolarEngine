@@ -2,6 +2,9 @@ class_name GoombaJump
 extends EnemyState
 ## Jump towards the player, and attempt to jump over obstacles.
 
+@export var jump_sfx: AudioStream
+@export var land_sfx: AudioStream
+
 @export var jump_power: float = 4.0
 @export var jump_decel: float = 0.1
 
@@ -15,8 +18,12 @@ extends EnemyState
 @export var fall_offset := Vector2.ZERO
 
 
-func _on_enter(jump_power_overwrite: Variant) -> void:
+func _on_enter(params: Variant = null) -> void:
+	var jump_power_overwrite = params[0] if params != null else null
+	var play_jump_sfx = params[1] if params != null else true
+
 	actor.velocity.y = -jump_power if jump_power_overwrite == null else jump_power_overwrite
+	if play_jump_sfx: SFX.play_sfx(jump_sfx, &"Motion", self)
 
 
 func _physics_tick(_delta: float) -> void:
@@ -34,6 +41,10 @@ func _physics_tick(_delta: float) -> void:
 
 	if abs(actor.diff.x) <= range_jump.x and actor.diff.y <= range_jump.y:
 		actor.velocity.x = move_toward(actor.velocity.x, 0, jump_decel)
+
+
+func _on_exit() -> void:
+	SFX.play_sfx(land_sfx, &"Motion", self)
 
 
 func _trans_rules() -> Variant:

@@ -21,9 +21,9 @@ var freeze_timer: int
 @export var sfx: Dictionary[HealthModule.DamageType, Array]
 
 
-func _on_enter(param: Variant) -> void:
+func _on_enter(params: Variant) -> void:
 	#var source: Node = param[0]
-	var damage_type: HealthModule.DamageType = param[1]
+	var damage_type: HealthModule.DamageType = params[1]
 
 	actor.velocity = Vector2.ZERO
 	freeze_timer = freeze_time

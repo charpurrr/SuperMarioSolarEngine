@@ -3,6 +3,10 @@ class_name GoombaWalk
 extends EnemyState
 ## Roaming around, looking for the player.
 
+@export var step_sfx: SFXLayer
+## On what frames of the walking animation a footstep soundeffect should play.
+@export var footstep_frames: Array[int]
+
 ## The minimum amount of time (in frames) the Goomba walks for.
 @export var min_walk_time: int = 100:
 	set(val):
@@ -19,6 +23,9 @@ var walk_timer: int = 0
 var walk_direction: int
 
 var anim_frame_count: int = -1
+
+var current_frame: int
+var last_frame: int
 
 
 func _on_enter(force_walk_dir: Variant) -> void:
@@ -39,6 +46,16 @@ func _on_enter(force_walk_dir: Variant) -> void:
 func _physics_tick(_delta: float) -> void:
 	walk_timer = max(walk_timer - 1, 0)
 	actor.velocity.x = walk_speed * walk_direction
+
+	# Play footstep effects
+	current_frame = actor.doll.get_frame()
+
+	if current_frame != last_frame:
+		for frame in footstep_frames:
+			if frame == current_frame:
+				step_sfx.play_sfx_at(self)
+
+	last_frame = current_frame
 
 
 func _subsequent_ticks(_delta: float) -> void:

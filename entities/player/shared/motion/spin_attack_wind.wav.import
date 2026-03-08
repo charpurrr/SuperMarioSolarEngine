@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://co7mswjhivvvl"
-path="res://.godot/imported/spinattack_wind.wav-8345ff6265182b15183a093464c555f7.sample"
+path="res://.godot/imported/spin_attack_wind.wav-c2d1b6197cdc35e666e5f315ca65d9de.sample"
 
 [deps]
 
-source_file="res://entities/player/shared/motion/spinattack_wind.wav"
-dest_files=["res://.godot/imported/spinattack_wind.wav-8345ff6265182b15183a093464c555f7.sample"]
+source_file="res://entities/player/shared/motion/spin_attack_wind.wav"
+dest_files=["res://.godot/imported/spin_attack_wind.wav-c2d1b6197cdc35e666e5f315ca65d9de.sample"]
 
 [params]
 

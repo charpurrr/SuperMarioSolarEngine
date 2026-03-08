@@ -5,6 +5,8 @@ extends EnemyState
 @export var strike_x_power: float = 2
 @export var strike_y_power: float = 4
 
+@export var explode_pfx: ParticleEffect
+
 ## What kind of death is happening.
 var death_type: HealthModule.DamageType
 
@@ -13,15 +15,25 @@ var ready_to_perish: bool = false:
 	set(val):
 		ready_to_perish = val
 
-		if val == true:
-			actor.queue_free()
+		if val == true and not begun_perish:
+			actor.doll.visible = false
+
+			var pfx: Node2D = explode_pfx.emit_at(actor)
+			# The second child "ExplosionSmall" takes the longest out of the two.
+			pfx.get_child(1).finished.connect(actor.queue_free)
+
+			begun_perish = true
+
+var begun_perish: bool = false
 
 
 func _physics_tick(delta: float) -> void:
 	# Special death requirements
 	if death_type == HealthModule.DamageType.STRIKE:
 		actor.velocity.y += actor.gravity * delta
-		ready_to_perish = actor.is_on_floor() and actor.velocity.y >= 0
+
+		if actor.is_on_floor() and actor.velocity.y >= 0:
+			ready_to_perish = true
 
 
 # The first entry in the array is where the damage came from,

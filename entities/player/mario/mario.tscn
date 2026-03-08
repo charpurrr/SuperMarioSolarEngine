@@ -125,15 +125,17 @@
 [ext_resource type="AudioStream" uid="uid://djqa3wceoa2j5" path="res://entities/player/shared/motion_nsmbw/twirl.wav" id="126_6gu1v"]
 [ext_resource type="AudioStream" uid="uid://dm72woypee3vc" path="res://entities/player/mario/voice_sunshine/wah_ho.wav" id="126_onkkq"]
 [ext_resource type="AudioStream" uid="uid://subxqwbuwn6p" path="res://entities/player/shared/motion/SE_PM_DAMAGE_S.wav" id="126_totbj"]
+[ext_resource type="AudioStream" uid="uid://cldge32ofs4y8" path="res://entities/player/shared/motion/spin_attack_hit.wav" id="127_gacnc"]
 [ext_resource type="AudioStream" uid="uid://dev6wksv27l0i" path="res://entities/player/mario/voice_sunshine/yah_kick.wav" id="127_skj22"]
 [ext_resource type="AudioStream" uid="uid://xpf0g652x833" path="res://entities/player/mario/voice_sunshine/ha.wav" id="128_r0wmf"]
+[ext_resource type="PackedScene" uid="uid://b6kr06nvygtb5" path="res://props/particles/sparkle_blue.tscn" id="128_txrxb"]
 [ext_resource type="Script" uid="uid://blb4fskcwsmnw" path="res://entities/player/shared/states/dry/dive_states/rollout.gd" id="129_e0h20"]
 [ext_resource type="AudioStream" uid="uid://dk2bgrv0sear5" path="res://entities/player/shared/motion_nsmbw/slide.wav" id="130_sxalk"]
 [ext_resource type="Script" uid="uid://b5yhwvdb0wrpl" path="res://entities/player/shared/states/dry/dive_states/bonk.gd" id="131_f03w0"]
 [ext_resource type="Script" uid="uid://ucctyrbj17dh" path="res://entities/player/shared/states/dry/dive_states/dive.gd" id="134_dsbpr"]
 [ext_resource type="Script" uid="uid://bvgd4nu3s20j8" path="res://entities/player/shared/states/submerged/submerged.gd" id="135_2utkk"]
 [ext_resource type="Script" uid="uid://dlpjg4cyss8bg" path="res://entities/player/shared/states/dry/spin.gd" id="135_qf53u"]
-[ext_resource type="AudioStream" uid="uid://bbw3474fd3uxc" path="res://entities/player/shared/motion/spinattack_shine.wav" id="136_a6kal"]
+[ext_resource type="AudioStream" uid="uid://bbw3474fd3uxc" path="res://entities/player/shared/motion/spin_attack_shine.wav" id="136_a6kal"]
 [ext_resource type="AudioStream" uid="uid://bowyc14wpkcra" path="res://entities/player/shared/motion/dive.wav" id="138_88upi"]
 [ext_resource type="Script" uid="uid://cbg4mbnpu1bvj" path="res://entities/player/shared/states/dry/butt_slide.gd" id="140_lfmwr"]
 [ext_resource type="Script" uid="uid://cghkwmax26iwr" path="res://entities/player/shared/states/dry/hit.gd" id="144_xenv0"]
@@ -991,6 +993,14 @@ sfx_list = [ExtResource("45_mh7x3"), ExtResource("46_q6juv")]
 bus = &"Motion"
 overwrite_other = false
 cutoff_sfx = false
+
+[sub_resource type="Resource" id="Resource_f1ghf"]
+script = ExtResource("49_apkmk")
+sfx_list = [ExtResource("31_u3pyw"), ExtResource("32_ijnwc")]
+bus = &"Motion"
+overwrite_other = false
+cutoff_sfx = false
+metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
 
 [sub_resource type="Resource" id="Resource_1vsdu"]
 resource_local_to_scene = true
@@ -2050,6 +2060,11 @@ bus = &"Motion"
 overwrite_other = false
 cutoff_sfx = false
 
+[sub_resource type="Resource" id="Resource_1gb22"]
+script = ExtResource("55_bxnxc")
+particle_scene = ExtResource("128_txrxb")
+metadata/_custom_type_script = "uid://dd8oyhd4nllix"
+
 [sub_resource type="Resource" id="Resource_totbj"]
 resource_local_to_scene = true
 script = ExtResource("55_bxnxc")
@@ -2580,7 +2595,7 @@ walk_animation_data = SubResource("Resource_1i10v")
 run_animation_data = SubResource("Resource_5iloq")
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_cej6f")])
 on_enter = false
-sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_8p2oq"), SubResource("Resource_efjxb")])
+sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_8p2oq"), SubResource("Resource_f1ghf")])
 
 [node name="Skid" type="Node" parent="StateManager/Dry/Grounded" unique_id=402900983]
 script = ExtResource("48_w11sb")
@@ -2824,6 +2839,10 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_2y8iw")])
 [node name="Spin" type="Node" parent="StateManager/Dry" unique_id=118406051]
 script = ExtResource("135_qf53u")
 spin_power = 180.0
+enemy_strike_sfx = ExtResource("127_gacnc")
+enemy_strike_pfx = SubResource("Resource_1gb22")
+enemy_strike_slow_factor = 0.4
+enemy_strike_slow_time = 3
 animation_data = SubResource("Resource_wc0bq")
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_totbj")])
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_vehmo"), SubResource("Resource_0hpnu")])

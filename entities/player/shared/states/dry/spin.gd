@@ -5,6 +5,14 @@ extends PlayerState
 ## How much the spin sends you upwards when airborne.
 @export var spin_power: float = 6
 
+@export var enemy_strike_sfx: AudioStream
+@export var enemy_strike_pfx: ParticleEffect
+## How much the game slows down after you hit an enemy.
+@export var enemy_strike_slow_factor: float = 0.5
+## How long the game slows down after you hit an enemy.
+@export var enemy_strike_slow_time: int = 10
+var slow_timer: int
+
 ## Whether the spin action was performed while airborne or not.
 var is_airspin: bool
 ## Whether the initial spin action has finished or not.
@@ -113,6 +121,13 @@ func _on_spin_hurt_box_body_entered(body: Node2D) -> void:
 		return
 
 	if body is Enemy:
+		SFX.play_sfx(enemy_strike_sfx, &"Motion", self)
+		enemy_strike_pfx.emit_at(body)
 		body.health_module.damage(actor, HealthModule.DamageType.STRIKE, 1)
+
+		Engine.time_scale = enemy_strike_slow_factor
+		var slow_duration := enemy_strike_slow_time / Engine.get_frames_per_second()
+		await get_tree().create_timer(slow_duration, true, false, true).timeout
+		Engine.time_scale = 1.0
 	elif body is Breakable:
 		body.shatter()

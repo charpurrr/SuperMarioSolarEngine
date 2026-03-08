@@ -2,15 +2,12 @@ class_name Walk
 extends PlayerState
 ## Moving left and right on the ground.
 
-## On what frames of the walking animation a footstep soundeffect should play.
+## On what frames of the walking animation the footstep effects should run.
 @export var footstep_frames: Array[int]
 
 @export_category(&"Animation (Unique to State)")
 @export var walk_animation_data: PStateAnimData
 @export var run_animation_data: PStateAnimData
-
-## Wether the footstep sound effect has played or not.
-var sfx_has_played: bool = false
 
 var current_frame: int
 var last_frame: int

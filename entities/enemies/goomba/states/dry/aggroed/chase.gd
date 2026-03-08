@@ -2,6 +2,10 @@ class_name GoombaChase
 extends EnemyState
 ## Chase after the player.
 
+@export var step_sfx: SFXLayer
+## On what frames of the chasing animation the footstep effects should run.
+@export var footstep_frames: Array[int]
+
 @export var chase_max_speed: float = 1.0
 @export var chase_accel: float = 0.23
 
@@ -11,6 +15,9 @@ extends EnemyState
 
 ## Direction the player is in, in relation to this Goomba.
 var dir: int
+
+var current_frame: int
+var last_frame: int
 
 
 func _physics_tick(_delta: float) -> void:
@@ -24,6 +31,17 @@ func _physics_tick(_delta: float) -> void:
 
 	actor.doll.flip_h = true if dir == 1 else false
 	actor.doll.speed_scale = actor.velocity.x / chase_max_speed * 2
+
+	# Play footstep effects
+	current_frame = actor.doll.get_frame()
+
+	if current_frame != last_frame:
+		for frame in footstep_frames:
+			if frame == current_frame:
+				particles[0].emit_at(actor) # Emit the first particle (dust kick) every footstep.
+				step_sfx.play_sfx_at(self)
+
+	last_frame = current_frame
 
 
 func _on_exit() -> void:
