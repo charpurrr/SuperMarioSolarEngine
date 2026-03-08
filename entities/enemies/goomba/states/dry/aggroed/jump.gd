@@ -22,7 +22,7 @@ func _on_enter(params: Variant = null) -> void:
 	var jump_power_overwrite = params[0] if params != null else null
 	var play_jump_sfx = params[1] if params != null else true
 
-	actor.velocity.y = -jump_power if jump_power_overwrite == null else jump_power_overwrite
+	actor.velocity.y = -jump_power if jump_power_overwrite == null else -jump_power_overwrite
 	if play_jump_sfx: SFX.play_sfx(jump_sfx, &"Motion", self)
 
 

@@ -448,7 +448,7 @@ animation = &"idle"
 
 [node name="Aggroed" type="Node" parent="StateManager/Dry" unique_id=973552010]
 script = ExtResource("9_fvrek")
-notice_jump_power = 2
+notice_jump_power = 120
 sfx_layers = Array[ExtResource("13_5dppb")]([SubResource("Resource_um0uc")])
 
 [node name="Chase" type="Node" parent="StateManager/Dry/Aggroed" unique_id=745168733]
