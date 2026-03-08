@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bgl7f8thu2y4"]
 
 [ext_resource type="Script" uid="uid://c1xcar4l5tqv7" path="res://ui/player_hud/life_meter.gd" id="1_rqs60"]
+[ext_resource type="AudioStream" uid="uid://jogpycjpxk85" path="res://ui/player_hud/low_health.wav" id="2_0p7qp"]
 [ext_resource type="FontFile" uid="uid://e821cxxeybxh" path="res://ui/fonts/mario_sunshine.ttf" id="2_66wu2"]
 [ext_resource type="Script" uid="uid://b53d42qg4e27d" path="res://util/custom_nodes/damped_oscillator.gd" id="3_35xan"]
 
@@ -92,9 +93,13 @@ offset_top = 15.0
 offset_right = -15.0
 offset_bottom = 75.0
 grow_horizontal = 0
+pivot_offset = Vector2(30, 30)
 script = ExtResource("1_rqs60")
 hp = 4
-hit_shake_power = 2
+hit_shake_power = 2.0
+low_health_sfx = ExtResource("2_0p7qp")
+low_health_pulse_speed = 15.0
+low_health_pulse_amount = 0.02
 graphics = NodePath("Graphics")
 text = NodePath("Text")
 outline = NodePath("Graphics/OutlineInside")
@@ -192,8 +197,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -4.196167e-05
-offset_bottom = -1.5258789e-05
+offset_right = -5.340576e-05
 grow_horizontal = 2
 grow_vertical = 2
 

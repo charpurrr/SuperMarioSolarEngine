@@ -29,6 +29,28 @@ var preview_action = take_hit.bind(0)
 
 var is_shaking: bool = false
 
+@export var low_health_sfx: AudioStream
+@export var low_health_pulse_speed: float = 2.0
+@export var low_health_pulse_amount: float = 0.2
+@export var low_health_preview: bool = false:
+	set(val):
+		low_health_preview = val
+
+		if val == true:
+			is_pulsing = true
+			hp = 1
+			take_hit(0)
+		else:
+			is_pulsing = false
+			hp = max_hp
+
+var is_pulsing: bool = false:
+	set(val):
+		is_pulsing = val
+
+		if val == false:
+			scale = Vector2.ONE
+
 @export_category("References")
 @export var graphics: Control
 @export var text: Control
@@ -57,6 +79,16 @@ func _draw() -> void:
 
 
 func _process(_delta: float) -> void:
+	if is_pulsing:
+		var sine: float = (
+			1.0
+			+ sin(Time.get_ticks_msec()
+			/ 1000.0 * low_health_pulse_speed)
+			* low_health_pulse_amount
+		)
+
+		scale = Vector2(sine, sine)
+
 	if not is_shaking: return
 
 	graphics.position = Vector2(graphics_x_spring.displacement, graphics_y_spring.displacement)
@@ -75,6 +107,11 @@ func _process(_delta: float) -> void:
 
 func take_hit(amt: int, _type: HealthModule.DamageType = HealthModule.DamageType.GENERIC):
 	hp -= amt
+
+	if hp == 1:
+		SFX.play_sfx(low_health_sfx, &"UI", self)
+		is_pulsing = true
+
 	shake(hit_shake_power)
 
 

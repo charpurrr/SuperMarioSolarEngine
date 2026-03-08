@@ -14,14 +14,14 @@ var last_frame: int
 
 
 func _physics_tick(_delta: float):
-	current_frame = actor.doll.get_frame()
-
 	movement.update_prev_direction()
 	movement.activate_coyote_timer()
 	movement.move_x_analog(movement.ground_accel_step, true, movement.ground_decel_step)
 
 	actor.doll.speed_scale = actor.velocity.x / movement.max_speed * 2
 	_set_appropriate_anim()
+
+	current_frame = actor.doll.get_frame()
 
 	if current_frame != last_frame:
 		for frame in footstep_frames:

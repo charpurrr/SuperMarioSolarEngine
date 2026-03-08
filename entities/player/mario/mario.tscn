@@ -10,7 +10,9 @@
 [ext_resource type="Script" uid="uid://clh7ssy21bpqv" path="res://entities/player/shared/input_manager.gd" id="21_onm15"]
 [ext_resource type="Script" uid="uid://cb4g1yl24gj7m" path="res://entities/player/shared/player_animation_data.gd" id="23_bbld7"]
 [ext_resource type="AudioStream" uid="uid://xo4pwcv0jo6k" path="res://entities/player/shared/fludd/fludd_step1.wav" id="31_u3pyw"]
+[ext_resource type="AudioStream" uid="uid://d07hufi3q46nb" path="res://entities/player/mario/voice_sunshine/ah_breathe.wav" id="31_ufl2i"]
 [ext_resource type="AudioStream" uid="uid://clyf3gdiwfqta" path="res://entities/player/shared/fludd/fludd_step2.wav" id="32_ijnwc"]
+[ext_resource type="AudioStream" uid="uid://vg8ujmmlrqi5" path="res://entities/player/mario/voice_64/panting.wav" id="33_2h0ab"]
 [ext_resource type="Script" uid="uid://d0q4h02e1xlo6" path="res://entities/player/shared/push_rays.gd" id="35_g7d1t"]
 [ext_resource type="Script" uid="uid://ddr3ta4g2q457" path="res://entities/player/shared/player_movement.gd" id="37_quca3"]
 [ext_resource type="AudioStream" uid="uid://b0wlrkn5oy6gr" path="res://entities/player/shared/motion/SE_PM_SQUAT_WALK.wav" id="38_pxspy"]
@@ -435,7 +437,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Resource" id="Resource_cpqj3"]
+[sub_resource type="Resource" id="Resource_676rb"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
 doll_path = NodePath("Doll")
@@ -458,7 +460,8 @@ frame_fludd_offsets = Dictionary[int, Vector2i]({
 })
 animation = "idle"
 frame = 0
-preview = false
+preview = true
+preview_fludd = false
 frame_offset = Vector2i(0, 0)
 fludd_animation = "default"
 fludd_offset = Vector2i(0, 0)
@@ -925,6 +928,40 @@ frame_offset = Vector2i(0, 0)
 fludd_animation = "default"
 fludd_offset = Vector2i(0, 0)
 metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
+[sub_resource type="Resource" id="Resource_cpqj3"]
+resource_local_to_scene = true
+script = ExtResource("23_bbld7")
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
+frame_offsets = Dictionary[int, Vector2i]({
+5: Vector2i(0, 0)
+})
+frame_fludd_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(2, 1),
+1: Vector2i(2, 1),
+2: Vector2i(3, 2),
+3: Vector2i(4, 3),
+4: Vector2i(4, 3),
+5: Vector2i(4, 3),
+6: Vector2i(3, 2),
+7: Vector2i(2, 1)
+})
+animation = "tired"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(2, 1)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
+[sub_resource type="Resource" id="Resource_7jeag"]
+script = ExtResource("49_apkmk")
+sfx_list = [ExtResource("31_ufl2i"), ExtResource("33_2h0ab")]
+bus = &"Voice"
+cutoff_sfx = false
+metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
 
 [sub_resource type="Resource" id="Resource_1i10v"]
 resource_local_to_scene = true
@@ -2381,7 +2418,7 @@ sprite_frames = SubResource("SpriteFrames_e1ut2")
 position = Vector2(0, -24)
 sprite_frames = ExtResource("4_xenv0")
 animation = &"idle"
-metadata/last_previewed = SubResource("Resource_cpqj3")
+metadata/last_previewed = SubResource("Resource_676rb")
 
 [node name="FluddInfront" type="AnimatedSprite2D" parent="." unique_id=1928286412]
 visible = false
@@ -2585,8 +2622,11 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_r5xry"), SubR
 
 [node name="Idle" type="Node" parent="StateManager/Dry/Grounded" unique_id=1104727765]
 script = ExtResource("44_87kyt")
-idle_animation_data = SubResource("Resource_cpqj3")
+idle_animation_data = SubResource("Resource_676rb")
 lookup_animation_data = SubResource("Resource_xh3w7")
+low_health_animation_data = SubResource("Resource_cpqj3")
+low_health_sfx = SubResource("Resource_7jeag")
+low_health_frames = Array[int]([4])
 
 [node name="Walk" type="Node" parent="StateManager/Dry/Grounded" unique_id=505074340]
 script = ExtResource("45_ka4vl")
