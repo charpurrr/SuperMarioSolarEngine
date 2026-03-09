@@ -35,7 +35,7 @@ func _on_stomp_hurt_box_body_entered(body: Node2D) -> void:
 	if body is Enemy and body.health_module.hp != 0:
 		body.health_module.damage(actor, HealthModule.DamageType.SQUISH, 1)
 
-		if not live_substate is GroundPoundFall:
+		if not get_leaf() is GroundPoundFall:
 			manager.set_to_state(&"Jump", true)
 	elif body is Breakable:
 		body.shatter()
