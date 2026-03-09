@@ -3000,6 +3000,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_mc84f")])
 [node name="Hit" type="Node" parent="StateManager/Dry" unique_id=795940851]
 process_mode = 3
 script = ExtResource("144_xenv0")
+camera_shake_power = 3
 sfx = Dictionary[int, Array]({
 5: [SubResource("Resource_ngayn"), SubResource("Resource_i30f1")]
 })
