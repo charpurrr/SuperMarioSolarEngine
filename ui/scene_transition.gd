@@ -22,13 +22,14 @@ signal from_trans_finished
 
 @export var preview_end: Type
 
-@export_category(&"Overlays")
+@export_category("Overlays")
 ## The list of possible overlays.
 ## [b]Add to this when creating your own overlays.[/b]
 enum Type {
 	PLAIN,
 	CIRCLE,
 	INV_CIRCLE,
+	BOWSER,
 }
 
 ## The associated overlay node of every [enum Type].

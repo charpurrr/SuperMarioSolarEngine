@@ -31,6 +31,8 @@ extends CharacterBody2D
 @onready var health_module := HealthModule.new(hp, take_hit, die)
 
 ## This is set in [WorldMachine].
+@onready var world_machine: WorldMachine
+## This is set in [WorldMachine].
 @onready var camera: PlayerCamera
 
 
@@ -43,8 +45,8 @@ func _physics_process(_delta):
 
 
 func take_hit(source: Node, damage_type: HealthModule.DamageType):
-	state_manager.set_to_state(&"Hit", [source, damage_type])
+	state_manager.set_to_state(&"Hit", [source, damage_type, false])
 
 
-func die(_source: Node, _damage_type: HealthModule.DamageType):
-	get_tree().call_deferred(&"reload_current_scene")
+func die(source: Node, damage_type: HealthModule.DamageType):
+	state_manager.set_to_state(&"Hit", [source, damage_type, true])

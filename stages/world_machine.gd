@@ -60,10 +60,14 @@ func load_level(level: Level, store: bool = false) -> void:
 	if level_node.level_environment and user_interface:
 		ui_node.level_environment = env_node
 
-	# Assign player to camera and vice-versa if applicable.
-	if level_node.camera is PlayerCamera:
-		level_node.player.camera = level_node.camera
-		level_node.camera.player = level_node.player
+	# Set the world machine reference for the player
+	if level_node.player:
+		level_node.player.world_machine = self
+
+		# Assign player to camera and vice-versa if applicable.
+		if level_node.camera and level_node.camera is PlayerCamera:
+			level_node.player.camera = level_node.camera
+			level_node.camera.player = level_node.player
 
 	# Set the appropriate background music.
 	MusicManager.music = level_node.level_music
@@ -86,8 +90,11 @@ func deload_level() -> void:
 
 
 ## Reloads the current level.
-func reload_level() -> void:
-	TransitionManager.transition_local(SceneTransition.Type.CIRCLE, SceneTransition.Type.CIRCLE)
+func reload_level(
+		to_overlay: SceneTransition.Type = SceneTransition.Type.CIRCLE,
+		from_overlay: SceneTransition.Type = SceneTransition.Type.CIRCLE
+	) -> void:
+	TransitionManager.transition_local(to_overlay, from_overlay)
 
 	await TransitionManager.scene_transition.to_trans_finished
 

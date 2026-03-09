@@ -111,6 +111,8 @@ func take_hit(amt: int, _type: HealthModule.DamageType = HealthModule.DamageType
 	if hp == 1:
 		SFX.play_sfx(low_health_sfx, &"UI", self)
 		is_pulsing = true
+	else:
+		is_pulsing = false
 
 	shake(hit_shake_power)
 

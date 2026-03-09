@@ -181,6 +181,8 @@ func _toggle_debug_hitboxes():
 func _set_player():
 	player = world_machine.level_node.player
 
+	life_meter.max_hp = player.hp
+
 	if not player.health_module.damaged.is_connected(life_meter.take_hit):
 		player.health_module.damaged.connect(life_meter.take_hit)
 

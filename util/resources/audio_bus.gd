@@ -30,15 +30,12 @@ func _init(new_bus_name: StringName, new_setting_name: String):
 	update_volume(saved_linear)
 
 
-func update_volume(new_vol_linear: float, no_signal: bool = false):
+func update_volume(new_vol_linear: float):
 	current_vol_linear = new_vol_linear
 
 	var db = linear_to_db(new_vol_linear)
 
 	AudioServer.set_bus_volume_db(bus_index, db + default_db)
-
-	if not no_signal:
-		LocalSettings.change_setting("Audio", setting_name, new_vol_linear)
 
 
 func update_mute(to: bool):
@@ -50,5 +47,5 @@ func update_mute(to: bool):
 
 func _setting_changed(key: String, value: Variant) -> void:
 	if key == setting_name:
-		update_volume(value, true)
+		update_volume(value)
 		bus_volume_updated.emit(value)

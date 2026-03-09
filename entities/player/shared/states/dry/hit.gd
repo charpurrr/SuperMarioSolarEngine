@@ -3,7 +3,9 @@ extends PlayerState
 ## Getting hit and taking damage.
 
 ## How long the game freezes after you get hit.
-@export var freeze_time: int = 10
+@export var freeze_time: int = 20
+## How long the game freezes after you receive your final hit before dying.
+@export var freeze_time_last_hit: int = 60
 var freeze_timer: int
 
 ## Which color the player flashes while freezed.
@@ -12,24 +14,35 @@ var freeze_timer: int
 @export var freeze_flashes: int = 6
 
 ## For how many frames the player gains invincibility after being hit.
-@export var i_frames: int = 30
+@export var i_frames: int = 90
 
 ## The strength at which the camera shakes when hit.
-@export var camera_shake_power: int = 6
+@export var camera_shake_power: int = 10
 
 ## The associated sound effects for every [enum HealthModule.DamageType].
 @export var sfx: Dictionary[HealthModule.DamageType, Array]
+@export var sfx_final_hit: AudioStream
+
+var is_last_hit: bool = false
 
 
 func _on_enter(params: Variant) -> void:
 	#var source: Node = param[0]
 	var damage_type: HealthModule.DamageType = params[1]
+	is_last_hit = params[2]
 
 	actor.velocity = Vector2.ZERO
-	freeze_timer = freeze_time
 
-	for sfx_layer: SFXLayer in sfx.get(damage_type):
-		sfx_layer.play_sfx_at(self)
+	if not is_last_hit:
+		freeze_timer = freeze_time
+
+		for sfx_layer: SFXLayer in sfx.get(damage_type):
+			sfx_layer.play_sfx_at(self)
+	else:
+		MusicManager.stop()
+		freeze_timer = freeze_time_last_hit
+
+		SFX.play_sfx(sfx_final_hit, &"Motion", self)
 
 	actor.doll.self_modulate = freeze_flash_modulate
 
@@ -59,9 +72,16 @@ func _physics_tick(_delta: float) -> void:
 	freeze_timer = max(freeze_timer - 1, 0)
 
 
+func _on_exit() -> void:
+	if not is_last_hit:
+		actor.health_module.grant_i_frames(actor, i_frames)
+
+
 func _trans_rules() -> Variant:
 	if freeze_timer == 0:
-		actor.health_module.grant_i_frames(actor, i_frames)
-		return &"Airborne"
+		if is_last_hit:
+			return &"Die"
+		else:
+			return &"Airborne"
 
 	return &""

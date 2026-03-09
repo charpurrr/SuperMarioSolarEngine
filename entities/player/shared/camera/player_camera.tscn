@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnd277snrwca5"]
+[gd_scene format=3 uid="uid://cnd277snrwca5"]
 
 [ext_resource type="Script" uid="uid://b8xq8roo5asyr" path="res://entities/player/shared/camera/player_camera.gd" id="1_8exb6"]
 [ext_resource type="Script" uid="uid://dvlt5sb8enmu8" path="res://util/resources/sfx_layer.gd" id="2_hvhmj"]
@@ -16,7 +16,7 @@ script = ExtResource("2_hvhmj")
 sfx_list = [ExtResource("4_bl75n")]
 bus = &"UI"
 
-[node name="PlayerCamera" type="Camera2D" node_paths=PackedStringArray("shake_x_spring", "shake_y_spring")]
+[node name="PlayerCamera" type="Camera2D" unique_id=1824461476 node_paths=PackedStringArray("shake_x_spring", "shake_y_spring")]
 offset = Vector2(0, -50)
 process_callback = 0
 position_smoothing_enabled = true
@@ -30,10 +30,10 @@ zoom_out_sfx = SubResource("Resource_rtieh")
 shake_x_spring = NodePath("ShakeXSpring")
 shake_y_spring = NodePath("ShakeYSpring")
 
-[node name="ShakeXSpring" type="Node2D" parent="."]
+[node name="ShakeXSpring" type="Node2D" parent="." unique_id=1522301161]
 script = ExtResource("5_qicgx")
 process_in_physics = true
 
-[node name="ShakeYSpring" type="Node2D" parent="."]
+[node name="ShakeYSpring" type="Node2D" parent="." unique_id=666112470]
 script = ExtResource("5_qicgx")
 process_in_physics = true

@@ -101,10 +101,8 @@ func load_setting(section: String, key: String) -> Variant:
 ## Update a setting [param key] at a category [param section],
 ## with a new [param value] in the config file.
 func change_setting(section: String, key: String, value: Variant):
-	config.set_value(section, key, value)
+	_apply_setting(section, key, value)
 	config.save(FILE_PATH)
-
-	emit_signal(&"setting_changed", key, value)
 
 
 ## Returns whether or not a key exists and has a value.
@@ -133,4 +131,11 @@ func reset_settings() -> void:
 
 			# Only reset if there's a default value to reset to.
 			if defaults.has(key):
-				change_setting(section, key, defaults.get(key))
+				_apply_setting(section, key, defaults.get(key))
+
+	config.save(FILE_PATH)
+
+
+func _apply_setting(section: String, key: String, value: Variant):
+	config.set_value(section, key, value)
+	emit_signal(&"setting_changed", key, value)

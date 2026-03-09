@@ -95,9 +95,6 @@ func emit_particles() -> void:
 
 
 func _set_hitbox() -> void:
-	if hitbox_type == "None":
-		return
-
 	var was_diving = not actor.dive_hitbox.disabled
 
 	actor.hitbox.disabled = true

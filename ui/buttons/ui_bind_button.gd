@@ -43,9 +43,9 @@ func _ready() -> void:
 	# Delete all events attached to the [InputMap] by default so we have our own control.
 	InputMap.action_erase_events(action_name)
 
-	var saved_data: PackedStringArray = LocalSettings.load_setting(
-		"Bindings", action_name
-	)
+	var saved_data: PackedStringArray = LocalSettings.load_setting("Bindings", action_name)
+
+	_suppress_setting_change = true
 
 	for event_name: String in saved_data:
 		var event: InputEvent = IconMap.get_associated_event(event_name)
@@ -53,6 +53,8 @@ func _ready() -> void:
 		if _is_valid_event(event):
 			_add_input(event, event_name)
 			_add_icon(event)
+
+	_suppress_setting_change = false
 
 
 func _input(event: InputEvent) -> void:
@@ -78,6 +80,7 @@ func _input(event: InputEvent) -> void:
 	if not icons.get_child_count() >= max_binds and not bound_inputs.has(event_name):
 		_add_input(event, event_name)
 		_add_icon(event)
+		_commit_bindings()
 	else:
 		_reject()
 
@@ -112,8 +115,6 @@ func _add_input(event: InputEvent, event_name: String) -> void:
 
 	if not InputMap.action_has_event(action_name, event):
 		InputMap.action_add_event(action_name, event)
-
-	_commit_bindings()
 
 
 func _commit_bindings():

@@ -1,13 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ta0eilpcncdp"]
+[gd_scene format=3 uid="uid://ta0eilpcncdp"]
 
-[ext_resource type="Shader" uid="uid://dnedkb86qi844" path="res://util/shaders/inverted_circular_scene_transition.gdshader" id="1_o0622"]
+[ext_resource type="Shader" uid="uid://dnedkb86qi844" path="res://ui/transitions/inverted_circle_overlay.gdshader" id="1_o0622"]
 [ext_resource type="Script" uid="uid://dr18ye8epeqdh" path="res://ui/transitions/transition_overlay.gd" id="2_atkyy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o0622"]
 shader = ExtResource("1_o0622")
 shader_parameter/circle_size = 1.05
-shader_parameter/screen_width = 640.0
-shader_parameter/screen_height = 360.0
 
 [sub_resource type="Animation" id="Animation_x6hoo"]
 length = 0.001
@@ -46,7 +44,7 @@ _data = {
 &"transition": SubResource("Animation_uj4vy")
 }
 
-[node name="InvertedCircleOverlay" type="ColorRect"]
+[node name="InvertedCircleOverlay" type="ColorRect" unique_id=43915922]
 material = SubResource("ShaderMaterial_o0622")
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,7 +54,5 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("2_atkyy")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_odo4l")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2011279427]
+libraries/ = SubResource("AnimationLibrary_odo4l")

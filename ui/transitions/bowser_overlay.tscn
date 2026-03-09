@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://cwngbvsc4rv6p"]
+
+[ext_resource type="Shader" uid="uid://thviyd31javx" path="res://ui/transitions/bowser_overlay.gdshader" id="1_3kne0"]
+[ext_resource type="Script" uid="uid://dr18ye8epeqdh" path="res://ui/transitions/transition_overlay.gd" id="1_hhyu7"]
+[ext_resource type="Texture2D" uid="uid://svkb40d05e3t" path="res://ui/transitions/bowser_overlay_cutout.png" id="2_3kne0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a57jg"]
+shader = ExtResource("1_3kne0")
+shader_parameter/scale = 13.0
+shader_parameter/cutout_texture = ExtResource("2_3kne0")
+
+[sub_resource type="Animation" id="Animation_gkoch"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [13.0]
+}
+
+[sub_resource type="Animation" id="Animation_3kne0"]
+resource_name = "transition"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [13.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a57jg"]
+_data = {
+&"RESET": SubResource("Animation_gkoch"),
+&"transition": SubResource("Animation_3kne0")
+}
+
+[node name="BowserOverlay" type="ColorRect" unique_id=1023907164]
+material = SubResource("ShaderMaterial_a57jg")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hhyu7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=316018502]
+libraries/ = SubResource("AnimationLibrary_a57jg")

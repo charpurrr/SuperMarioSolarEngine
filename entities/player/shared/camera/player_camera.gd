@@ -1,6 +1,8 @@
 class_name PlayerCamera
 extends Camera2D
 
+@export var focus: Node2D
+
 @export var zoom_in_sfx: SFXLayer
 @export var zoom_out_sfx: SFXLayer
 
@@ -40,13 +42,15 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if focus and focus is Player and player.health_module.hp == 0:
+		focus = null
+
 	zoom_percentage = lerp(zoom_percentage, 
 		target_zoom,
 		Math.interp_weight_idp(zoom_follow_speed, delta)
 	)
 
 	var zoom_factor: float = 1 / (zoom_percentage / 100)
-
 	zoom = Vector2(zoom_factor, zoom_factor)
 
 	velocity_offset = velocity_offset.lerp(
@@ -54,8 +58,10 @@ func _physics_process(delta: float) -> void:
 		Math.interp_weight_idp(pan_follow_speed, delta)
 	)
 
-	position = velocity_offset
 	offset = base_offset + Vector2(shake_x_spring.displacement, shake_y_spring.displacement)
+
+	if is_instance_valid(focus):
+		global_position = focus.global_position + velocity_offset
 
 
 func _input(event: InputEvent) -> void:

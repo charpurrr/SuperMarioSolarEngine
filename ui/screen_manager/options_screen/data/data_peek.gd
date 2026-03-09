@@ -6,21 +6,21 @@ extends CodeEdit
 @export var data_debugger: CodeEdit
 
 var has_errors: bool = false
-var is_external_change: bool = false
+var _ignore_external_changes: bool = true
 
 
 func _ready() -> void:
 	LocalSettings.setting_changed.connect(_update_content.unbind(2))
-	_update_content(true)
+	_update_content()
 
 
-func _update_content(bypass: bool = false):
-	if is_external_change or bypass:
+func _update_content():
+	if not _ignore_external_changes:
 		text = LocalSettings.config.encode_to_text()
 
 
 func _on_lines_edited_from(from_line: int, to_line: int) -> void:
-	is_external_change = false
+	_ignore_external_changes = true
 
 	for n in range(to_line - from_line + 1):
 		set_line_background_color(from_line + n, Color(0, 0, 0, 0))
@@ -74,8 +74,6 @@ func _on_lines_edited_from(from_line: int, to_line: int) -> void:
 		# Unrecognised
 		else:
 			_push_error(from_line + n, "Unrecognised input.")
-
-	is_external_change = true
 
 
 func _push_error(line: int, msg: String):
