@@ -11,24 +11,23 @@ extends PlayerState
 @export var death_time: int = 100
 var death_timer: int
 
+var throw_direction: int
+
 
 func _on_enter(damage_source: Variant) -> void:
 	actor.z_index += 1
 
-	var throw_direction = Vector2(
-		sign(damage_source.global_position.x - actor.global_position.x)
-		* throw_x_factor,
-		-1
-	).normalized()
+	throw_direction = sign(damage_source.global_position.x - actor.global_position.x)
+	var throw_vec = Vector2(throw_direction * throw_x_factor, -1).normalized()
 
-	actor.velocity = throw_direction * throw_power
+	actor.velocity = throw_vec * throw_power
 
 	death_timer = death_time
 
 
 func _physics_tick(delta: float) -> void:
 	movement.apply_gravity(delta)
-	actor.doll.rotation += rotate_power * delta
+	actor.doll.rotation += rotate_power * throw_direction * delta
 
 	death_timer = max(death_timer - 1, 0)
 
