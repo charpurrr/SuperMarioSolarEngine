@@ -4,6 +4,7 @@ extends PlayerState
 
 ## How hard the player gets thrown when dying.
 @export var throw_power: float = 100
+@export var throw_x_factor: float = 0.3
 ## How hard the player rotates when dying.
 @export var rotate_power: float = 5.0
 ## How long the player dies in frames.
@@ -11,10 +12,15 @@ extends PlayerState
 var death_timer: int
 
 
-func _on_enter(_param: Variant) -> void:
+func _on_enter(damage_source: Variant) -> void:
 	actor.z_index += 1
 
-	var throw_direction = Vector2(randf_range(-0.5, 0.5), -1).normalized()
+	var throw_direction = Vector2(
+		sign(damage_source.global_position.x - actor.global_position.x)
+		* throw_x_factor,
+		-1
+	).normalized()
+
 	actor.velocity = throw_direction * throw_power
 
 	death_timer = death_time

@@ -23,12 +23,14 @@ var freeze_timer: int
 @export var sfx: Dictionary[HealthModule.DamageType, Array]
 @export var sfx_final_hit: AudioStream
 
+var source: Node2D
+var damage_type: HealthModule.DamageType
 var is_last_hit: bool = false
 
 
 func _on_enter(params: Variant) -> void:
-	#var source: Node = param[0]
-	var damage_type: HealthModule.DamageType = params[1]
+	source = params[0]
+	damage_type = params[1]
 	is_last_hit = params[2]
 
 	actor.velocity = Vector2.ZERO
@@ -80,7 +82,7 @@ func _on_exit() -> void:
 func _trans_rules() -> Variant:
 	if freeze_timer == 0:
 		if is_last_hit:
-			return &"Die"
+			return [&"Die", source]
 		else:
 			return &"Airborne"
 
