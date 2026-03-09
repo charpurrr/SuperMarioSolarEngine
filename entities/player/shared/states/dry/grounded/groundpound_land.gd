@@ -11,7 +11,7 @@ extends PlayerState
 func _on_enter(_param):
 	actor.velocity.x = 0
 
-	actor.camera.shake(Math.random_coord(camera_shake_power))
+	actor.camera.shake(Vector2(0, -camera_shake_power))
 
 
 func _trans_rules():
