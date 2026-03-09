@@ -41,7 +41,9 @@ func trigger_enter(handover) -> void:
 
 	set_modules(true)
 	emit_particles()
-	play_sounds()
+
+	if on_enter:
+		play_sounds()
 
 	super(handover)
 
@@ -84,7 +86,7 @@ func set_modules(enable: bool) -> void:
 
 
 func play_sounds() -> void:
-	if on_enter and not sfx_layers.is_empty():
+	if not sfx_layers.is_empty():
 		for sfx_list in sfx_layers:
 			sfx_list.play_sfx_at(self)
 

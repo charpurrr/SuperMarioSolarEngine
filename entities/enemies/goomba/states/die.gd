@@ -5,7 +5,10 @@ extends EnemyState
 @export var strike_x_power: float = 2
 @export var strike_y_power: float = 4
 
+@export var stomp_sfx: AudioStream
+
 @export var explode_pfx: ParticleEffect
+@export var explode_sfx: AudioStream
 
 ## What kind of death is happening.
 var death_type: HealthModule.DamageType
@@ -21,6 +24,7 @@ var ready_to_perish: bool = false:
 			var pfx: Node2D = explode_pfx.emit_at(actor)
 			# The second child "ExplosionSmall" takes the longest out of the two.
 			pfx.get_child(1).finished.connect(actor.queue_free)
+			SFX.play_sfx(explode_sfx, &"Motion", self)
 
 			begun_perish = true
 
@@ -51,6 +55,7 @@ func _on_enter(array) -> void:
 			actor.anime.play(&"die_strike")
 
 		HealthModule.DamageType.SQUISH:
+			SFX.play_sfx(stomp_sfx, &"Motion", self)
 			actor.doll.animation = &"squish"
 			actor.anime.play(&"die_squish")
 			actor.anime.animation_finished.connect(func(_anim_name: StringName): ready_to_perish = true)

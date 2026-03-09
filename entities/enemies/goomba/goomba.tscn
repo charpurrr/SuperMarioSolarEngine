@@ -25,7 +25,9 @@
 [ext_resource type="AudioStream" uid="uid://crqrusg3etjqu" path="res://entities/enemies/goomba/sfx/land.wav" id="21_t3ksn"]
 [ext_resource type="Texture2D" uid="uid://chws3rokc6d0i" path="res://props/particles/dust.png" id="21_um0uc"]
 [ext_resource type="AudioStream" uid="uid://xoqi4ol2swle" path="res://entities/enemies/goomba/sfx/jump.wav" id="22_u3i55"]
+[ext_resource type="AudioStream" uid="uid://bxsqcti1aisso" path="res://entities/enemies/shared/sfx/stomped.wav" id="26_rr0dy"]
 [ext_resource type="PackedScene" uid="uid://dewmusa85yj1w" path="res://props/particles/dust_explosion_big.tscn" id="26_um0uc"]
+[ext_resource type="AudioStream" uid="uid://vdnh3xkub41i" path="res://entities/enemies/shared/sfx/explode.wav" id="28_i1yyq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aecnx"]
 atlas = ExtResource("2_2rnn8")
@@ -474,7 +476,9 @@ fall_animation = &"fall"
 script = ExtResource("10_b0ahg")
 strike_x_power = 120.0
 strike_y_power = 240.0
+stomp_sfx = ExtResource("26_rr0dy")
 explode_pfx = SubResource("Resource_rr0dy")
+explode_sfx = ExtResource("28_i1yyq")
 animation = &"hurt"
 
 [connection signal="body_entered" from="Areas/Hurtbox" to="." method="_on_hurtbox_body_entered"]

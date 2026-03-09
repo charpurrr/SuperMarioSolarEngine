@@ -12,11 +12,16 @@ var min_jump_power: float
 
 @export var fall_state: PlayerState
 
+@export var voice_sfx: SFXLayer
+
 ## Check if you've applied variable jump height.
 var applied_variation: bool = false
 
 
-func _on_enter(_param):
+func _on_enter(muted: Variant):
+	if not muted:
+		play_sounds()
+
 	applied_variation = false
 	actor.velocity.y = -jump_power
 

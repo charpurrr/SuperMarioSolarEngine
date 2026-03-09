@@ -2752,6 +2752,7 @@ min_jump_percent = 20.0
 jump_number = 1
 fall_state = NodePath("../../../FallStates/Fall")
 animation_data = SubResource("Resource_gacnc")
+on_enter = false
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_2esv2"), SubResource("Resource_qmxtc")])
 
 [node name="DoubleJump" type="Node" parent="StateManager/Dry/Airborne/JumpStates/DummyJump" unique_id=2019446783 node_paths=PackedStringArray("fall_state")]
