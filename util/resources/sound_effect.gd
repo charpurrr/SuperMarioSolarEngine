@@ -21,7 +21,7 @@ var pitch: float = 1.0
 ## all the other sound effects in the same [member audio_bus].
 var overwrite_other_in_bus: bool = false
 ## Whether or not playing this sound effect should end
-## all the other sound effects played at [method play]'s [code]from[/code] node.
+## all the other sound effects played at [method play]'s [code]source[/code] node.
 var overwrite_other_in_source: bool = false
 
 ## Whether or not the sound effect is 2 dimensional.
@@ -31,7 +31,7 @@ var is_2d: bool = true:
 		is_2d = val
 		notify_property_list_changed()
 ## Whether or not the position at which the sound effect plays
-## is the same as [method play]'s [code]from[/code] node's position.
+## is the same as [method play]'s [code]source[/code] node's position.
 var inherit_position: bool = true:
 	set(val):
 		inherit_position = val
@@ -48,11 +48,11 @@ var current_player: Node
 
 
 ## Creates an [AudioStreamPlayer] or [AudioStreamPlayer2D] depending on [member is_2d],
-## adds it to [param from], then destroys it when the sound effect finishes.[br]
+## adds it to [param source], then destroys it when the sound effect finishes.[br]
 ## Returns an optionally usable reference to the assigned [AudioStreamPlayer] or [AudioStreamPlayer2D].
-func play(from: Node) -> Variant:
-	if not is_instance_valid(from):
-		push_error("Cannot fetch node %s." % from.name)
+func play(source: Node) -> Variant:
+	if not is_instance_valid(source):
+		push_error("Cannot fetch node %s." % source.name)
 		return
 
 	if stream == null:
@@ -60,13 +60,20 @@ func play(from: Node) -> Variant:
 		return
 
 	if overwrite_other_in_bus:
-		from.get_tree().call_group(audio_bus, &"queue_free")
+		source.get_tree().call_group(audio_bus, &"queue_free")
 	if overwrite_other_in_source:
-		from.get_tree().call_group(from.name + "/sfx", &"queue_free")
+		source.get_tree().call_group(source.name + "/sfx", &"queue_free")
 
 	var player = null
 
 	if is_2d:
+		if source is not Node2D:
+			push_warning(
+				"SoundEffect is set to be 2 dimensional, but %s is of type %s.
+				The SoundEffect will play at world coordinates (0, 0)." % [
+					source.name, source.get_class()
+				]
+			) 
 		player = AudioStreamPlayer2D.new()
 
 		player.attenuation = attenuation
@@ -82,11 +89,11 @@ func play(from: Node) -> Variant:
 	# For referencing all sfx in the bus.
 	player.add_to_group(audio_bus)
 	# For referencing all sfx in the parent. (For example, all sfx from a [State].)
-	player.add_to_group(from.name + "/sfx")
+	player.add_to_group(source.name + "/sfx")
 	player.set_volume_db(volume)
 	player.set_pitch_scale(pitch)
 
-	from.add_child(player)
+	source.add_child(player)
 
 	player.connect(&"finished", player.queue_free)
 	player.play()
