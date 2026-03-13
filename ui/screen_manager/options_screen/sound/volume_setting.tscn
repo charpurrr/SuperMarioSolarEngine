@@ -19,7 +19,7 @@ font_size = 20
 font = ExtResource("1_udgn8")
 font_size = 25
 
-[node name="PresetVolume" type="VBoxContainer" node_paths=PackedStringArray("header", "reset", "slider", "mute_tell", "percentage")]
+[node name="PresetVolume" type="VBoxContainer" unique_id=110025853 node_paths=PackedStringArray("header", "reset", "slider", "mute_tell", "percentage")]
 offset_right = 420.0
 offset_bottom = 57.0
 size_flags_horizontal = 3
@@ -33,32 +33,32 @@ slider = NodePath("HBoxContainer/Control/AudioSlider")
 mute_tell = NodePath("HBoxContainer/Control/MuteTell")
 percentage = NodePath("HBoxContainer/Percentage")
 
-[node name="Header" type="Label" parent="."]
+[node name="Header" type="Label" parent="." unique_id=1504628600]
 layout_mode = 2
 text = "Bus Volume"
 label_settings = SubResource("LabelSettings_xphw0")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Space" type="Control" parent="."]
+[node name="Space" type="Control" parent="." unique_id=1950108732]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2125917060]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="ResetButton" parent="HBoxContainer" instance=ExtResource("2_8m8no")]
+[node name="ResetButton" parent="HBoxContainer" unique_id=743869466 instance=ExtResource("2_8m8no")]
 layout_mode = 2
 size_flags_stretch_ratio = 0.08
 text = ""
 icon = ExtResource("3_ht11o")
 icon_alignment = 1
 
-[node name="Control" type="Control" parent="HBoxContainer"]
+[node name="Control" type="Control" parent="HBoxContainer" unique_id=1157007117]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="AudioSlider" parent="HBoxContainer/Control" instance=ExtResource("4_ys8q8")]
+[node name="AudioSlider" parent="HBoxContainer/Control" unique_id=1911371848 instance=ExtResource("4_ys8q8")]
 custom_minimum_size = Vector2(10, 27)
 layout_mode = 1
 anchors_preset = 15
@@ -74,7 +74,7 @@ max_value = 200.0
 value = 100.0
 default_value = 100.0
 
-[node name="MuteTell" type="Label" parent="HBoxContainer/Control"]
+[node name="MuteTell" type="Label" parent="HBoxContainer/Control" unique_id=843583397]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -87,7 +87,7 @@ label_settings = SubResource("LabelSettings_a3wox")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Percentage" type="Label" parent="HBoxContainer"]
+[node name="Percentage" type="Label" parent="HBoxContainer" unique_id=732685874]
 custom_minimum_size = Vector2(63, 24)
 layout_mode = 2
 text = "100%"

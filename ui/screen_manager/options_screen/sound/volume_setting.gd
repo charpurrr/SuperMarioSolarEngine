@@ -28,7 +28,7 @@ func _ready():
 
 func _slider_updated(slider_val: float):
 	percentage.text = "%d%%" % (slider_val)
-	bus.update_volume(slider_val / 100)
+	LocalSettings.change_setting("Audio", bus.setting_name, slider_val / 100)
 
 
 func _on_reset_button_pressed() -> void:

@@ -49,7 +49,6 @@
 [ext_resource type="PackedScene" uid="uid://q67oo8p20ee4" path="res://ui/screen_manager/options_screen/controls/bind_setting.tscn" id="49_svocp"]
 [ext_resource type="Theme" uid="uid://blj83dty2taxs" path="res://ui/buttons/scrollbar.tres" id="50_5i7o0"]
 [ext_resource type="SyntaxHighlighter" uid="uid://caviijwsp8wjw" path="res://ui/screen_manager/options_screen/data/settings_highlighter.tres" id="51_q1vx3"]
-[ext_resource type="Script" uid="uid://omsf7uvmpj3q" path="res://ui/screen_manager/options_screen/data/data_peek.gd" id="52_q1vx3"]
 [ext_resource type="PackedScene" uid="uid://b08q042unmcxf" path="res://ui/buttons/ui_selector.tscn" id="52_sk6td"]
 [ext_resource type="PackedScene" uid="uid://puhluie3m3cp" path="res://ui/screen_manager/options_screen/sound/volume_setting.tscn" id="53_i1icy"]
 [ext_resource type="Texture2D" uid="uid://c125fwk30fu0" path="res://ui/input_icons/keyboard_mouse/keyboard_escape.svg" id="54_6apma"]
@@ -70,7 +69,7 @@ audio_bus = &"UI"
 volume = 0.0
 pitch = 1.0
 overwrite_other_in_bus = false
-overwrite_other_in_source = null
+overwrite_other_in_source = false
 is_2d = false
 metadata/_custom_type_script = "uid://b262pbs7y0djt"
 
@@ -81,7 +80,7 @@ audio_bus = &"UI"
 volume = 0.0
 pitch = 1.0
 overwrite_other_in_bus = false
-overwrite_other_in_source = null
+overwrite_other_in_source = false
 is_2d = false
 metadata/_custom_type_script = "uid://b262pbs7y0djt"
 
@@ -450,7 +449,7 @@ audio_bus = &"UI"
 volume = 0.0
 pitch = 1.0
 overwrite_other_in_bus = false
-overwrite_other_in_source = null
+overwrite_other_in_source = false
 is_2d = false
 metadata/_custom_type_script = "uid://b262pbs7y0djt"
 
@@ -461,7 +460,7 @@ audio_bus = &"UI"
 volume = 0.0
 pitch = 1.0
 overwrite_other_in_bus = false
-overwrite_other_in_source = null
+overwrite_other_in_source = false
 is_2d = false
 metadata/_custom_type_script = "uid://b262pbs7y0djt"
 
@@ -472,7 +471,7 @@ audio_bus = &"UI"
 volume = 0.0
 pitch = 1.0
 overwrite_other_in_bus = false
-overwrite_other_in_source = null
+overwrite_other_in_source = false
 is_2d = false
 metadata/_custom_type_script = "uid://b262pbs7y0djt"
 
@@ -483,7 +482,7 @@ audio_bus = &"UI"
 volume = 0.0
 pitch = 1.0
 overwrite_other_in_bus = false
-overwrite_other_in_source = null
+overwrite_other_in_source = false
 is_2d = false
 metadata/_custom_type_script = "uid://b262pbs7y0djt"
 
@@ -627,6 +626,15 @@ func _setting_updated(key: String, new_value: Variant = null):
 	if key != \"device\": return
 
 	selected = get_item_index(audio_device_list.find(new_value))
+"
+
+[sub_resource type="GDScript" id="GDScript_mvot7"]
+script/source = "class_name DataPeek
+extends CodeEdit
+## The DataPeek node allows you to view and edit your [LocalSettings]
+## config file from within the game. This is useful for debugging purposes.
+
+
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7xk5"]
@@ -1721,10 +1729,11 @@ visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
-[node name="Data" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs" unique_id=844587460]
+[node name="Data" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs" unique_id=844587460 node_paths=PackedStringArray("data_peek")]
 visible = false
 layout_mode = 2
 script = ExtResource("57_y28h8")
+data_peek = NodePath("DataPeek")
 metadata/_tab_index = 4
 
 [node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data" unique_id=190457657]
@@ -1749,9 +1758,10 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 
-[node name="DataPeek" type="CodeEdit" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data" unique_id=1588917684 node_paths=PackedStringArray("data_debugger")]
+[node name="DataPeek" type="CodeEdit" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data" unique_id=1588917684]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_readonly_color = Color(0.875, 0.875, 0.875, 0.5)
 theme_override_fonts/font = ExtResource("34_jyo83")
 theme_override_font_sizes/font_size = 16
 text = "[Section]
@@ -1759,19 +1769,8 @@ text = "[Section]
 setting_3=1.0
 setting_4=\"string\"
 setting_5=true
-setting_2=PackedStringArray(\"A\", \"B\", \"C\")
-
-[Section 2]
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d"
+setting_2=PackedStringArray(\"A\", \"B\", \"C\")"
+editable = false
 scroll_smooth = true
 minimap_draw = true
 syntax_highlighter = ExtResource("51_q1vx3")
@@ -1784,17 +1783,7 @@ gutters_zero_pad_line_numbers = true
 gutters_line_numbers_min_digits = 1
 auto_brace_completion_enabled = true
 auto_brace_completion_highlight_matching = true
-script = ExtResource("52_q1vx3")
-data_debugger = NodePath("../DataDebugger")
-
-[node name="DataDebugger" type="CodeEdit" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data" unique_id=849706609]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-theme_override_colors/font_readonly_color = Color(0.76862746, 0.34901962, 0.34901962, 1)
-theme_override_fonts/font = ExtResource("34_jyo83")
-theme_override_font_sizes/font_size = 16
-placeholder_text = "No issues found."
-editable = false
+script = SubResource("GDScript_mvot7")
 
 [node name="Panel" type="Panel" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data" unique_id=1269393658]
 visible = false
@@ -1967,6 +1956,5 @@ label_settings = SubResource("LabelSettings_n7xk5")
 [connection signal="pressed" from="ScreenManager/WarningScreen/Spacing/Main/Buttons/Confirm" to="ScreenManager/WarningScreen" method="_on_confirm_pressed"]
 [connection signal="pressed" from="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data/TopButtons/OpenData" to="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data" method="_on_open_data_pressed"]
 [connection signal="pressed" from="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data/TopButtons/ResetData" to="ScreenManager/OptionsScreen" method="_on_reset_data_pressed"]
-[connection signal="lines_edited_from" from="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data/DataPeek" to="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data/DataPeek" method="_on_lines_edited_from"]
 
 [editable path="RedCoinCounter"]
