@@ -53,7 +53,7 @@ func _physics_tick(_delta: float) -> void:
 	if current_frame != last_frame:
 		for frame in footstep_frames:
 			if frame == current_frame:
-				step_sfx.play_sfx_at(self)
+				step_sfx.play_sfx_at(actor)
 
 	last_frame = current_frame
 

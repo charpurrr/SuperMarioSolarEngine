@@ -10,7 +10,7 @@ func _physics_tick(_delta: float):
 
 	if actor.is_on_ceiling() and actor.velocity.y < 0 and not live_substate is GroundPound:
 		for sfx_list in sfx_layers:
-			sfx_list.play_sfx_at(self)
+			sfx_list.play_sfx_at(actor)
 
 
 func _on_exit() -> void:

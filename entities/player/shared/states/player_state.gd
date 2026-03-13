@@ -56,14 +56,6 @@ func trigger_exit() -> void:
 	if actor.doll.frame_changed.is_connected(_set_frame_specs):
 		actor.doll.frame_changed.disconnect(_set_frame_specs)
 
-	for layer in sfx_layers:
-		if not layer.cutoff_sfx:
-			continue
-
-		for child in get_children():
-			if child is AudioStreamPlayer and child.stream in layer.sfx_list:
-				child.queue_free()
-
 
 ## Uses [parameter new_data] as the state's animation data.[br]
 ## This function is best called in a state's [method _physics_tick].
@@ -80,7 +72,7 @@ func overwrite_animation(new_data: PStateAnimData) -> void:
 
 func set_modules(enable: bool) -> void:
 	for child in get_children():
-		## ADD NEW MODULES UNDERNEATH HERE
+		# ADD NEW MODULES UNDERNEATH HERE
 		if child is AfterimageModule:
 			child.enabled = enable
 
@@ -88,7 +80,7 @@ func set_modules(enable: bool) -> void:
 func play_sounds() -> void:
 	if not sfx_layers.is_empty():
 		for sfx_list in sfx_layers:
-			sfx_list.play_sfx_at(self)
+			sfx_list.play_sfx_at(actor)
 
 
 func emit_particles() -> void:

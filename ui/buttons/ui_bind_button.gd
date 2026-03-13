@@ -13,7 +13,7 @@ extends UIButton
 ## Maximum amount of binds this action can have at once.
 @export_range(0, 100, 1,"hide_slider") var max_binds: int
 ## Sound effect that plays when an input gets denied.
-@export var deny_sfx: AudioStreamWAV
+@export var deny_sfx: SoundEffect
 
 @export_category("References")
 @export var timer: Timer
@@ -163,7 +163,7 @@ func _reset_to_default() -> void:
 
 
 func _reject() -> void:
-	SFX.play_sfx(deny_sfx, &"UI", self)
+	deny_sfx.play(self)
 	modulate = Color.RED
 
 	var tween := self.create_tween()

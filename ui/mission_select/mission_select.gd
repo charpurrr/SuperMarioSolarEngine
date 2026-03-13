@@ -5,7 +5,7 @@ extends KeyScene
 ## Note that which [Shine] you select can alter
 ## the level, spawn-position, or other things greatly.
 
-@export var startup_sound: AudioStream
+@export var startup_sound: SoundEffect
 
 @export_file("*.tscn") var wm_scene: String
 
@@ -21,7 +21,7 @@ func _input(_event: InputEvent) -> void:
 
 func _on_transition_to(_handover: Variant) -> void:
 	TransitionManager.greenlight_load_in()
-	SFX.play_sfx(startup_sound, &"Music", self)
+	startup_sound.play(self)
 
 
 func _on_transition_from() -> void:

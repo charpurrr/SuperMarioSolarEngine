@@ -32,7 +32,7 @@ func _play_footstep_sfx():
 	for frame in footstep_frames:
 		if frame == current_frame:
 			for sfx_list in sfx_layers:
-				sfx_list.play_sfx_at(self)
+				sfx_list.play_sfx_at(actor)
 
 
 func _on_exit():

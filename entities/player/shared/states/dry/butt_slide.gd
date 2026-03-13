@@ -2,6 +2,8 @@ class_name ButtSlide
 extends PlayerState
 ## Crouching while on a slope (or being forced.)
 
+@export var slide_sfx: SoundEffect
+
 ## Default sliding speed.
 @export var speed: float = 10
 ## Minimum sliding speed (through decelerating by holding the opposite direction you're sliding in.)
@@ -48,6 +50,8 @@ var input_dir: int
 
 
 func _on_enter(handover_speed):
+	slide_sfx.play(actor)
+
 	actor.set_floor_snap_length(movement.snap_length)
 
 	if handover_speed is float:
@@ -102,6 +106,8 @@ func _grounded(delta: float):
 	# Store the sliding direction so we can check for changes
 	old_direction = slide_direction
 
+	slide_sfx.unpause()
+
 
 ## Buttsliding in the air.
 func _airborne(delta: float):
@@ -109,6 +115,8 @@ func _airborne(delta: float):
 	slide_speed = 0
 
 	movement.apply_gravity(delta)
+
+	slide_sfx.pause()
 
 
 ## Get the slide direction downwards along the slope.
@@ -223,6 +231,10 @@ func _set_appropriate_anim():
 		)
 		return
 	actor.doll.play(animation_data.animation)
+
+
+func _on_exit() -> void:
+	slide_sfx.stop()
 
 
 func _trans_rules():

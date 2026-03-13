@@ -14,7 +14,7 @@ func _on_enter(array):
 
 	if array[1] == true:
 		for sfx_list in sfx_layers:
-			sfx_list.play_sfx_at(self)
+			sfx_list.play_sfx_at(actor)
 
 
 func _physics_tick(_delta: float):

@@ -3,8 +3,8 @@ extends Camera2D
 
 @export var focus: Node2D
 
-@export var zoom_in_sfx: SFXLayer
-@export var zoom_out_sfx: SFXLayer
+@export var zoom_in_sfx: SoundEffect
+@export var zoom_out_sfx: SoundEffect
 
 @export var zoom_max: float = 200
 @export var zoom_min: float = 50
@@ -42,8 +42,11 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if focus and focus is Player and player.health_module.hp == 0:
+	if focus and focus is Player and player and player.health_module.hp == 0:
 		focus = null
+
+	if not is_instance_valid(focus):
+		return
 
 	zoom_percentage = lerp(zoom_percentage, 
 		target_zoom,
@@ -54,7 +57,7 @@ func _physics_process(delta: float) -> void:
 	zoom = Vector2(zoom_factor, zoom_factor)
 
 	velocity_offset = velocity_offset.lerp(
-		player.velocity * delta * velocity_pan_factor,
+		focus.velocity * delta * velocity_pan_factor,
 		Math.interp_weight_idp(pan_follow_speed, delta)
 	)
 
@@ -67,7 +70,7 @@ func _physics_process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"camera_zoom_in"):
 		if target_zoom != zoom_min:
-			zoom_in_sfx.play_sfx_at(self)
+			zoom_in_sfx.play(self)
 
 		if target_zoom <= 100:
 			target_zoom -= 25
@@ -76,7 +79,7 @@ func _input(event: InputEvent) -> void:
 
 	if event.is_action_pressed(&"camera_zoom_out"):
 		if target_zoom != zoom_max:
-			zoom_out_sfx.play_sfx_at(self)
+			zoom_out_sfx.play(self)
 
 		if target_zoom < 100:
 			target_zoom += 25

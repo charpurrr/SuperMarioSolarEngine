@@ -27,22 +27,10 @@ func trigger_enter(handover) -> void:
 	super(handover)
 
 
-func trigger_exit() -> void:
-	super()
-
-	for layer in sfx_layers:
-		if not layer.cutoff_sfx:
-			continue
-
-		for child in get_children():
-			if child is AudioStreamPlayer and child.stream in layer.sfx_list:
-				child.queue_free()
-
-
 func play_sounds() -> void:
 	if on_enter and not sfx_layers.is_empty():
 		for sfx_list in sfx_layers:
-			sfx_list.play_sfx_at(self)
+			sfx_list.play_sfx_at(actor)
 
 
 func emit_particles() -> void:

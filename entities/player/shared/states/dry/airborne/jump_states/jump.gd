@@ -12,8 +12,6 @@ var min_jump_power: float
 
 @export var fall_state: PlayerState
 
-@export var voice_sfx: SFXLayer
-
 ## Check if you've applied variable jump height.
 var applied_variation: bool = false
 

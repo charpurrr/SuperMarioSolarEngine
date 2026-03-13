@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b0wlrkn5oy6gr"
-path="res://.godot/imported/SE_PM_SQUAT_WALK.wav-ff950925c1ef818050a367ebf034725b.sample"
+path="res://.godot/imported/waddle.wav-75704ff761291aab1252b9c45d382724.sample"
 
 [deps]
 
-source_file="res://entities/player/shared/motion/SE_PM_SQUAT_WALK.wav"
-dest_files=["res://.godot/imported/SE_PM_SQUAT_WALK.wav-ff950925c1ef818050a367ebf034725b.sample"]
+source_file="res://entities/player/shared/motion/waddle.wav"
+dest_files=["res://.godot/imported/waddle.wav-75704ff761291aab1252b9c45d382724.sample"]
 
 [params]
 

@@ -1,7 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://nufgv8gspxs3"]
+[gd_scene format=3 uid="uid://nufgv8gspxs3"]
 
 [ext_resource type="Script" uid="uid://br0et54gkpwyq" path="res://ui/buttons/ui_slider.gd" id="1_skftf"]
 [ext_resource type="AudioStream" uid="uid://dsokoktxblw41" path="res://ui/sfx/cursor.wav" id="2_6wxxs"]
+[ext_resource type="Script" uid="uid://b262pbs7y0djt" path="res://util/resources/sound_effect.gd" id="2_t7s5i"]
+
+[sub_resource type="Resource" id="Resource_8qcs8"]
+script = ExtResource("2_t7s5i")
+stream = ExtResource("2_6wxxs")
+audio_bus = &"UI"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+is_2d = false
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t7s5i"]
 bg_color = Color(1, 1, 1, 1)
@@ -96,7 +107,7 @@ size = Vector2(0, 0)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8qcs8"]
 
-[node name="PresetSlider" type="Control" node_paths=PackedStringArray("slider", "grabber", "outline", "progress_bar")]
+[node name="PresetSlider" type="Control" unique_id=341717682 node_paths=PackedStringArray("slider", "grabber", "outline", "progress_bar")]
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 3
 anchors_preset = 0
@@ -108,9 +119,9 @@ slider = NodePath("ProgressBarBackground/GrabberBounds/HSlider")
 grabber = NodePath("ProgressBarBackground/GrabberBounds/Grabber")
 outline = NodePath("OutlineBounds/GrabberOuterline")
 progress_bar = NodePath("ProgressBarBackground/GrabberBounds/ProgressBar")
-tick_sound = ExtResource("2_6wxxs")
+tick_sound = SubResource("Resource_8qcs8")
 
-[node name="ProgressBarOuterline" type="Panel" parent="."]
+[node name="ProgressBarOuterline" type="Panel" parent="." unique_id=1740944173]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -124,7 +135,7 @@ grow_vertical = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_t7s5i")
 
-[node name="OutlineBounds" type="Control" parent="."]
+[node name="OutlineBounds" type="Control" parent="." unique_id=1652747351]
 editor_description = "Resize this control to modify where the grabber is positioned, based on the slider value. 
 Left edge: position when value = 0, right edge: position when value = 100"
 layout_mode = 1
@@ -136,7 +147,7 @@ offset_right = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GrabberOuterline" type="Panel" parent="OutlineBounds"]
+[node name="GrabberOuterline" type="Panel" parent="OutlineBounds" unique_id=1970545077]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -151,7 +162,7 @@ grow_vertical = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_t7s5i")
 
-[node name="GrabberDropshadow" type="Panel" parent="OutlineBounds/GrabberOuterline"]
+[node name="GrabberDropshadow" type="Panel" parent="OutlineBounds/GrabberOuterline" unique_id=1861202264]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -165,7 +176,7 @@ grow_vertical = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_6wxxs")
 
-[node name="ProgressBarDropshadow" type="Panel" parent="."]
+[node name="ProgressBarDropshadow" type="Panel" parent="." unique_id=1473005970]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -179,7 +190,7 @@ grow_vertical = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_6wxxs")
 
-[node name="ProgressBarBackground" type="ProgressBar" parent="."]
+[node name="ProgressBarBackground" type="ProgressBar" parent="." unique_id=568653563]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -192,7 +203,7 @@ step = 0.0
 value = 50.0
 show_percentage = false
 
-[node name="GrabberBounds" type="Control" parent="ProgressBarBackground"]
+[node name="GrabberBounds" type="Control" parent="ProgressBarBackground" unique_id=774622897]
 editor_description = "Resize this control to modify where the grabber is positioned, based on the slider value. 
 Left edge: position when value = 0, right edge: position when value = 100"
 layout_mode = 1
@@ -204,7 +215,7 @@ offset_right = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="ProgressBarBackground/GrabberBounds"]
+[node name="ProgressBar" type="ProgressBar" parent="ProgressBarBackground/GrabberBounds" unique_id=1434943596]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -217,7 +228,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_dxsau")
 value = 50.0
 show_percentage = false
 
-[node name="Grabber" type="Panel" parent="ProgressBarBackground/GrabberBounds"]
+[node name="Grabber" type="Panel" parent="ProgressBarBackground/GrabberBounds" unique_id=1490862400]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -229,7 +240,7 @@ offset_right = 10.0
 offset_bottom = 4.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_8qcs8")
 
-[node name="ColorRect" type="ColorRect" parent="ProgressBarBackground/GrabberBounds/Grabber"]
+[node name="ColorRect" type="ColorRect" parent="ProgressBarBackground/GrabberBounds/Grabber" unique_id=2121179815]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -240,7 +251,7 @@ offset_right = -7.0
 offset_bottom = -10.0
 color = Color(0, 0, 0, 1)
 
-[node name="HSlider" type="HSlider" parent="ProgressBarBackground/GrabberBounds"]
+[node name="HSlider" type="HSlider" parent="ProgressBarBackground/GrabberBounds" unique_id=1627547083]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0

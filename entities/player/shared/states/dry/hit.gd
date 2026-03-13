@@ -21,7 +21,7 @@ var freeze_timer: int
 
 ## The associated sound effects for every [enum HealthModule.DamageType].
 @export var sfx: Dictionary[HealthModule.DamageType, Array]
-@export var sfx_final_hit: AudioStream
+@export var sfx_final_hit: SoundEffect
 
 var source: Node2D
 var damage_type: HealthModule.DamageType
@@ -39,12 +39,11 @@ func _on_enter(params: Variant) -> void:
 		freeze_timer = freeze_time
 
 		for sfx_layer: SFXLayer in sfx.get(damage_type):
-			sfx_layer.play_sfx_at(self)
+			sfx_layer.play_sfx_at(actor)
 	else:
 		MusicManager.stop()
 		freeze_timer = freeze_time_last_hit
-
-		SFX.play_sfx(sfx_final_hit, &"Motion", self)
+		sfx_final_hit.play(actor)
 
 	actor.doll.self_modulate = freeze_flash_modulate
 

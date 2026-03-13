@@ -59,7 +59,7 @@ extends Control
 @export var grabber: Control
 @export var outline: Control
 @export var progress_bar: ProgressBar
-@export var tick_sound: AudioStream
+@export var tick_sound: SoundEffect
 
 
 func _ready() -> void:
@@ -92,7 +92,7 @@ func _try_sfx():
 	# If not playing on ready, and no sound effects are 
 	# playing in the UI audio bus:
 	if get_tree().get_nodes_in_group(&"UI").is_empty():
-		SFX.play_sfx(tick_sound, &"UI", self)
+		tick_sound.play(self)
 
 
 func _set_disable(to: Variant = null):

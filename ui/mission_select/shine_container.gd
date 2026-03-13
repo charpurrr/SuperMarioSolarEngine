@@ -3,7 +3,7 @@ class_name ShineContainer
 extends CarouselContainer
 ## Carousel container with some extra tweaks to work nicely for the mission select menu.
 
-@export var scroll_sfx: AudioStreamWAV
+@export var scroll_sfx: SoundEffect
 
 ## How many frames need to pass before you can scroll
 ## to the next shine when HOLDING left or right.
@@ -28,9 +28,8 @@ func _input(_event: InputEvent) -> void:
 func _scroll(difference: int):
 	if scroll_timer == 0:
 		scroll_timer = scroll_hold_cooldown
-
-		SFX.play_sfx(scroll_sfx, &"UI", owner)
 		selected_index += difference
+		scroll_sfx.play(owner)
 	else:
 		scroll_timer = max(scroll_timer - 1, 0)
 

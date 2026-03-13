@@ -7,8 +7,8 @@ extends CanvasLayer
 @export_category(&"Pause Variables")
 @export var screen_manager: ScreenManager
 @export var color_blur: ColorRect
-@export var game_pause_sfx: AudioStream
-@export var game_unpause_sfx: AudioStream
+@export var game_pause_sfx: SoundEffect
+@export var game_unpause_sfx: SoundEffect
 
 @export_category(&"Camera Variables")
 @export var zoom_blur_player: AnimationPlayer
@@ -96,13 +96,13 @@ func _pause_logic():
 
 	# Intial pause action:
 	if not GameState.is_paused():
-		SFX.play_sfx(game_pause_sfx, &"UI", screen_manager)
+		game_pause_sfx.play(screen_manager)
 		MusicManager.set_stream_paused(true)
 		screen_manager.switch_screen(null, pause_screen)
 		GameState.emit_signal(&"paused")
 	# Unpausing action:
 	elif screen_manager.current_screen is PauseScreen:
-		SFX.play_sfx(game_unpause_sfx, &"UI", screen_manager)
+		game_unpause_sfx.play(screen_manager)
 		MusicManager.set_stream_paused(false)
 		screen_manager.switch_screen(pause_screen, null)
 		GameState.emit_signal(&"paused")
@@ -179,6 +179,8 @@ func _toggle_debug_hitboxes():
 
 
 func _set_player():
+	if not world_machine: return
+
 	player = world_machine.level_node.player
 
 	life_meter.max_hp = player.hp

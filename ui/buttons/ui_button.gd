@@ -3,9 +3,9 @@ extends Button
 ## A common UI button.
 
 ## Sound effect that plays when the button is pressed.
-@export var press_sfx: AudioStream
+@export var press_sfx: SoundEffect
 ## Sound effect that plays when the button is focused.
-@export var cursor_sfx: AudioStream
+@export var cursor_sfx: SoundEffect
 
 
 func _ready() -> void:
@@ -14,8 +14,7 @@ func _ready() -> void:
 	pressed.connect(avfx)
 
 	# Plays the cursor sound effect when focus is entered.
-	var cursor_sfx_args: Array = [cursor_sfx, &"UI", self]
-	focus_entered.connect(SFX.play_sfx.bindv(cursor_sfx_args))
+	focus_entered.connect(cursor_sfx.play.bind(self))
 
 
 func _try_grab_focus():
@@ -30,7 +29,7 @@ func _try_release_focus():
 
 ## The audio visual effects of a pause button.
 func avfx() -> void:
-	SFX.play_sfx(press_sfx, &"UI", self)
+	press_sfx.play(self)
 	# Could optionally add visual effects too, I relied on the button themes instead.
 
 

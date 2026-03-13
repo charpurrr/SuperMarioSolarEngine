@@ -13,10 +13,10 @@ func _on_enter(play_land_sfx):
 
 	if play_land_sfx:
 		# Normal footsteps
-		sfx_layers[0].play_sfx_at(self)
+		sfx_layers[0].play_sfx_at(actor)
 		# FLUDD footsteps
 		if FluddManager.active_nozzle != FluddManager.Nozzle.NONE:
-			sfx_layers[1].play_sfx_at(self)
+			sfx_layers[1].play_sfx_at(actor)
 
 
 func _trans_rules():

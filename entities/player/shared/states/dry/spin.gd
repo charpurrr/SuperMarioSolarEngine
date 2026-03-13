@@ -5,7 +5,7 @@ extends PlayerState
 ## How much the spin sends you upwards when airborne.
 @export var spin_power: float = 6
 
-@export var enemy_strike_sfx: AudioStream
+@export var enemy_strike_sfx: SoundEffect
 @export var enemy_strike_pfx: ParticleEffect
 ## How much the game slows down after you hit an enemy.
 @export var enemy_strike_slow_factor: float = 0.5
@@ -121,7 +121,7 @@ func _on_spin_hurt_box_body_entered(body: Node2D) -> void:
 		return
 
 	if body is Enemy:
-		SFX.play_sfx(enemy_strike_sfx, &"Motion", self)
+		enemy_strike_sfx.play(actor)
 		enemy_strike_pfx.emit_at(body)
 		body.health_module.damage(actor, HealthModule.DamageType.STRIKE, 1)
 

@@ -36,7 +36,8 @@ func _ready() -> void:
 func switch_screen(from: Screen = null, to: Screen = null) -> void:
 #region FROM
 	if from != null:
-		SFX.play_sfx(from.close_sfx, &"UI", self)
+		if from.close_sfx:
+			from.close_sfx.play(self)
 
 		if from.close_anim == &"BACKWARDS":
 			anime_player.play_backwards(from.open_anim)
@@ -57,7 +58,8 @@ func switch_screen(from: Screen = null, to: Screen = null) -> void:
 	if to == null:
 		return
 
-	SFX.play_sfx(to.open_sfx, &"UI", self)
+	if to.open_sfx:
+		to.open_sfx.play(self)
 
 	anime_player.play(to.open_anim)
 

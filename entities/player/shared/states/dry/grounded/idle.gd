@@ -29,7 +29,7 @@ func _physics_tick(_delta: float):
 		if current_frame != last_frame:
 			for frame in low_health_frames:
 				if frame == current_frame:
-					low_health_sfx.play_sfx_at(self)
+					low_health_sfx.play_sfx_at(actor)
 
 	else:
 		overwrite_animation(idle_animation_data)

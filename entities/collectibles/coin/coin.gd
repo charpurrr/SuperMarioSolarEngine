@@ -4,7 +4,7 @@ extends Collectible
 ## Base class for collectible coins.
 
 
-enum TYPE{
+enum TYPE {
 	YELLOW = 0, ## Common yellow coin, adds +1 to the coin counter.
 	BLUE = 1, ## Uncommon blue coin, adds +5 to the coin counter.
 	RED = 2, ## One of the level's red coins. Collect all of them to spawn a Shine Sprite.
@@ -18,8 +18,8 @@ static var total_reds: int = 0
 		type = val
 		play(str(type))
 
-@export var respective_sounds: Dictionary[TYPE, AudioStream]
-@export var last_red_sound: AudioStream
+@export var respective_sounds: Dictionary[TYPE, SoundEffect]
+@export var last_red_sound: SoundEffect
 @export var respective_particles: Dictionary[TYPE, ParticleEffect]
 
 
@@ -44,11 +44,17 @@ func _on_collect():
 		var remaining_reds: int = get_tree().get_nodes_in_group(&"red_coins").size()
 
 		if remaining_reds == 1:
-			SFX.play_sfx(last_red_sound, &"SFX", parent)
+			last_red_sound.position = global_position
+			last_red_sound.play(parent)
 		else:
+			var sfx: SoundEffect = respective_sounds[type]
 			var pitch: float = Math.map(remaining_reds, 2, total_reds, 1.5, 1.0)
-			SFX.play_sfx(respective_sounds[type], &"SFX", parent, 0.0, pitch)
+			sfx.pitch = pitch
+			sfx.position = global_position
+			sfx.play(parent)
 	else:
-		SFX.play_sfx(respective_sounds[type], &"SFX", parent)
+		var sfx: SoundEffect = respective_sounds[type]
+		sfx.position = global_position
+		sfx.play(parent)
 
 	queue_free()
