@@ -2,9 +2,11 @@ class_name Goomba
 extends Enemy
 ## Goomba behaviour.
 
-## Whether or not the Goomba will move around,
-## searching for the player.
+## Whether or not the Goomba moves at all.
 @export var stationary: bool = false
+## Whether or not the Goomba will roam around,
+## searching for the player.
+@export var roam: bool = true
 @export var gravity: float = 1
 
 @export_category(&"References")

@@ -20,6 +20,7 @@ extends CharacterBody2D
 @export var small_hitbox: CollisionShape2D
 
 @export var water_check: Area2D
+@export var overlap_check: EnemyOverlapDetection
 @export var auto_crouch_check: CrouchlockDetection
 
 @export var dive_hurtbox: Area2D
@@ -28,7 +29,7 @@ extends CharacterBody2D
 @export var stomp_hurtbox: Area2D
 @export var gp_hurtbox: Area2D
 
-@onready var health_module := HealthModule.new(hp, take_hit, die)
+@onready var health_module := HealthModule.new(hp, take_hit, die, is_overlapping)
 
 ## This is set in [WorldMachine].
 @onready var world_machine: WorldMachine
@@ -50,3 +51,7 @@ func take_hit(source: Node, damage_type: HealthModule.DamageType):
 
 func die(source: Node, damage_type: HealthModule.DamageType):
 	state_manager.set_to_state(&"Hit", [source, damage_type, true])
+
+
+func is_overlapping() -> bool:
+	return overlap_check.has_overlapping_bodies()

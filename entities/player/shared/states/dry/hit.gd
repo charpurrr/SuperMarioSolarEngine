@@ -52,7 +52,7 @@ func _on_enter(params: Variant) -> void:
 
 	Engine.time_scale = 0.0
 
-	var freeze_duration := freeze_time / Engine.get_frames_per_second()
+	var freeze_duration := freeze_timer / Engine.get_frames_per_second()
 	var flash_interval := freeze_duration / (freeze_flashes * 2.0)
 
 	_flash_loop(flash_interval)

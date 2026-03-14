@@ -121,7 +121,7 @@ audio_bus = &"SFX"
 volume = 0.0
 pitch = 1.0
 overwrite_other_in_bus = false
-overwrite_other_in_source = null
+overwrite_other_in_source = false
 is_2d = true
 attenuation = 1.0
 max_distance = 2000.0
@@ -166,11 +166,12 @@ audio_bus = &"SFX"
 volume = 0.0
 pitch = 1.0
 overwrite_other_in_bus = false
-overwrite_other_in_source = null
+overwrite_other_in_source = false
 is_2d = true
 attenuation = 1.0
 max_distance = 2000.0
-inherit_position = true
+inherit_position = false
+position = Vector2(0, 0)
 metadata/_custom_type_script = "uid://b262pbs7y0djt"
 
 [sub_resource type="Resource" id="Resource_oxqq6"]
@@ -194,7 +195,7 @@ size = Vector2(16, 16)
 [node name="Coin" type="AnimatedSprite2D" unique_id=1718623630 node_paths=PackedStringArray("area")]
 sprite_frames = SubResource("SpriteFrames_b3an0")
 animation = &"0"
-frame_progress = 0.75760067
+frame_progress = 0.42504722
 script = ExtResource("2_fs6bx")
 respective_sounds = Dictionary[int, ExtResource("3_fvje4")]({
 0: SubResource("Resource_s7cex"),

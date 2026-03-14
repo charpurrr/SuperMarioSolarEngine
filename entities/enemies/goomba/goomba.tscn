@@ -215,7 +215,7 @@ animations = [{
 size = Vector2(14, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qtetb"]
-size = Vector2(25, 8)
+size = Vector2(14, 7)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jor08"]
 radius = 256.0
@@ -296,7 +296,7 @@ audio_bus = &"Motion"
 volume = 0.0
 pitch = 1.0
 overwrite_other_in_bus = false
-overwrite_other_in_source = null
+overwrite_other_in_source = false
 is_2d = true
 attenuation = 1.0
 max_distance = 2000.0
@@ -310,7 +310,7 @@ audio_bus = &"Motion"
 volume = 0.0
 pitch = 1.0
 overwrite_other_in_bus = false
-overwrite_other_in_source = null
+overwrite_other_in_source = false
 is_2d = true
 attenuation = 1.0
 max_distance = 2000.0
@@ -330,7 +330,7 @@ audio_bus = &"Motion"
 volume = 0.0
 pitch = 1.0
 overwrite_other_in_bus = false
-overwrite_other_in_source = null
+overwrite_other_in_source = false
 is_2d = true
 attenuation = 1.0
 max_distance = 2000.0
@@ -349,7 +349,7 @@ audio_bus = &"Motion"
 volume = 0.0
 pitch = 1.0
 overwrite_other_in_bus = false
-overwrite_other_in_source = null
+overwrite_other_in_source = false
 is_2d = true
 attenuation = 1.0
 max_distance = 2000.0
@@ -363,7 +363,7 @@ audio_bus = &"Motion"
 volume = 0.0
 pitch = 1.0
 overwrite_other_in_bus = false
-overwrite_other_in_source = null
+overwrite_other_in_source = false
 is_2d = true
 attenuation = 1.0
 max_distance = 2000.0
@@ -408,7 +408,7 @@ audio_bus = &"Motion"
 volume = 0.0
 pitch = 1.0
 overwrite_other_in_bus = false
-overwrite_other_in_source = null
+overwrite_other_in_source = false
 is_2d = true
 attenuation = 1.0
 max_distance = 2000.0
@@ -422,7 +422,7 @@ audio_bus = &"Motion"
 volume = 0.0
 pitch = 1.0
 overwrite_other_in_bus = false
-overwrite_other_in_source = null
+overwrite_other_in_source = false
 is_2d = true
 attenuation = 1.0
 max_distance = 2000.0
@@ -455,7 +455,7 @@ audio_bus = &"Motion"
 volume = 0.0
 pitch = 1.0
 overwrite_other_in_bus = false
-overwrite_other_in_source = null
+overwrite_other_in_source = false
 is_2d = true
 attenuation = 1.0
 max_distance = 2000.0
@@ -464,7 +464,6 @@ metadata/_custom_type_script = "uid://b262pbs7y0djt"
 
 [node name="Goomba" type="CharacterBody2D" unique_id=1024455853 node_paths=PackedStringArray("hurtbox", "ledge_ray_l", "ledge_ray_r", "wall_ray_l", "wall_ray_r", "hitbox", "state_manager", "anime", "doll")]
 collision_layer = 4
-collision_mask = 5
 script = ExtResource("1_hhlu2")
 gravity = 774.0
 hurtbox = NodePath("Areas/Hurtbox")
@@ -498,7 +497,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Hurtbox" unique_id=1687356690]
-position = Vector2(0.5, -4)
+position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_qtetb")
 debug_color = Color(1, 0, 0.14509805, 0.14117648)
 

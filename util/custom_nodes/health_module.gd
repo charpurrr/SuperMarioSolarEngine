@@ -15,14 +15,20 @@ var hp: int
 
 var hit_callback: Callable
 var die_callback: Callable
+var overlap_check: Callable
 
 
-
-func _init(hit_points: int, hit_callback_pass: Callable, die_callback_pass: Callable):
+func _init(
+		hit_points: int,
+		hit_callback_pass: Callable,
+		die_callback_pass: Callable,
+		overlap_check_pass: Callable = func(): return false
+	):
 	hp = hit_points
 
 	hit_callback = hit_callback_pass
 	die_callback = die_callback_pass
+	overlap_check = overlap_check_pass
 
 	if hp <= 0:
 		push_warning("Object spawned with zero or less health, which caused immediate demise.")
@@ -34,12 +40,14 @@ func grant_i_frames(actor: Node2D, count: int):
 
 	enabled = false
 
-	while i_timer != 0:
+	while i_timer != 0 or overlap_check.call():
 		i_timer = max(i_timer - 1, 0)
+
+		var flash_index := i_timer if i_timer != 0 else Engine.get_process_frames()
 
 		# Handle flashing
 		@warning_ignore("integer_division")
-		if (i_timer / I_FRAME_FREQ) % 2 == 0:
+		if (flash_index / I_FRAME_FREQ) % 2 == 0:
 			actor.doll.self_modulate = Color.TRANSPARENT
 		else:
 			actor.doll.self_modulate = Color.WHITE
