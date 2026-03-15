@@ -47,7 +47,7 @@ var stamina: float = 100:
 @export var toggle_sfx: SoundEffect
 @export var switch_sfx: SoundEffect
 
-enum Nozzle{
+enum Nozzle {
 	NONE,
 	HOVER,
 	ROCKET,

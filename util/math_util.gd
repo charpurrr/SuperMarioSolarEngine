@@ -44,7 +44,7 @@ static func lerp_vecr(vec_start: Variant, vec_end: Variant, incr: float, diff: f
 	return vec_start + (vec_end - vec_start) * incr
 
 
-## Lerp function for colors, includes the functionality of [method lerpfr].
+## Lerp function for colors, includes the functionality of [method lerp_fr].
 static func lerp_colr(col_start: Color, col_end: Color, incr: float, diff: float):
 	if _dist_color(col_start, col_end) < diff:
 		if incr >= 0: return col_end

@@ -4001,9 +4001,12 @@ metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
 [node name="Mario" type="CharacterBody2D" unique_id=63323883 node_paths=PackedStringArray("doll", "fludd_f", "fludd_b", "state_manager", "movement", "input", "push_rays", "hitbox", "dive_hitbox", "small_hitbox", "water_check", "overlap_check", "auto_crouch_check", "dive_hurtbox", "spin_hurtbox", "crouch_spin_hurtbox", "stomp_hurtbox", "gp_hurtbox")]
 material = SubResource("ShaderMaterial_wdv80")
 collision_layer = 2
+collision_mask = 4097
 floor_constant_speed = true
 floor_max_angle = 1.48353
 floor_snap_length = 16.0
+platform_on_leave = 1
+platform_floor_layers = 4096
 script = ExtResource("1_87j6i")
 hp = 4
 doll = NodePath("Doll")

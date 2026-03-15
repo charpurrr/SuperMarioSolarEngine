@@ -35,8 +35,8 @@ func _ready() -> void:
 	init_pos_y = label.position.y
 
 
-func _increment(type: Coin.TYPE):
-	if not type == Coin.TYPE.RED: return
+func _increment(type: Coin.Type):
+	if not type == Coin.Type.RED: return
 
 	coin_count += 1
 

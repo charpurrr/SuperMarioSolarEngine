@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://daaypoi0828b6"
-path="res://.godot/imported/semi_solid.png-3d2837a190b5b0f1107943e376d99c74.ctex"
+uid="uid://cgaxnuin8htik"
+path="res://.godot/imported/moving_platform.png-453636fbd55235e1775bd3d874ca3b4e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://props/terrain/synth/semi_solid.png"
-dest_files=["res://.godot/imported/semi_solid.png-3d2837a190b5b0f1107943e376d99c74.ctex"]
+source_file="res://entities/platforms/moving/moving_platform.png"
+dest_files=["res://.godot/imported/moving_platform.png-453636fbd55235e1775bd3d874ca3b4e.ctex"]
 
 [params]
 

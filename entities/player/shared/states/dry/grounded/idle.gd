@@ -15,9 +15,15 @@ var current_frame: int
 var last_frame: int
 
 
+func _on_enter(_param: Variant) -> void:
+	if actor.get_platform_velocity() != Vector2.ZERO:
+		actor.velocity.x = 0
+
+
 func _physics_tick(_delta: float) -> void:
 	movement.update_prev_direction()
 	movement.decelerate(movement.ground_decel_step * Vector2.RIGHT)
+
 
 	if Input.is_action_pressed(&"up"):
 		overwrite_animation(lookup_animation_data)
