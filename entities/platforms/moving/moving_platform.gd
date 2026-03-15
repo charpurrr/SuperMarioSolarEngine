@@ -62,12 +62,14 @@ var sample_spacing := 1.0
 @export_category("References")
 @export var platform_body: AnimatableBody2D
 @export var platform_body_shape: CollisionShape2D
-@export var platform_sprite: AnimatedSprite2D
-@export var hologram: AnimatedSprite2D
+@export var platform_texture: NinePatchRect
+@export var hologram: NinePatchRect
+@export var player_detector_shape: CollisionShape2D
 
-var target: Node2D
-var target_sprite: AnimatedSprite2D
+var target: Node
+var target_sprite: NinePatchRect
 var target_modulate: Color
+var center := Vector2.ZERO
 
 var samples: PackedVector2Array
 var sample_distances: PackedFloat32Array
@@ -86,18 +88,18 @@ func _ready() -> void:
 	# Set manually so _physics_process() also runs within the editor.
 	set_physics_process(true)
 
-	platform_sprite.play(platform_sprite.animation)
-
 	if speed_multiplier.point_count == 0:
 		speed_multiplier.add_point(Vector2(0, 1))
 		speed_multiplier.add_point(Vector2(1, 1))
 
 	target = platform_body
-	target_sprite = platform_sprite
-	target_modulate = platform_sprite.self_modulate
+	target_sprite = platform_texture
+	target_modulate = platform_texture.self_modulate
 
 	if points.size() >= 2:
 		_build_samples()
+
+	platform_texture.resized.connect(_sync_shapes)
 
 	if not Engine.is_editor_hint():
 		hologram.queue_free()
@@ -109,23 +111,29 @@ func _ready() -> void:
 	target = hologram
 	target_sprite = hologram
 	target_modulate = hologram.self_modulate
+	center = platform_texture.position
 
-	platform_sprite.sprite_frames_changed.connect(_hologram_sync_visuals)
-	platform_sprite.animation_changed.connect(_hologram_sync_visuals)
-	platform_sprite.frame_changed.connect(_hologram_sync_visuals)
-
+	platform_texture.texture_changed.connect(_hologram_sync_visuals)
+	platform_texture.resized.connect(_hologram_sync_visuals)
 	_hologram_sync_visuals()
 
 	if not points.is_empty():
-		hologram.position = points[0]
+		hologram.position = center
 
 	state = PlatformState.MOVING
 
 
 func _hologram_sync_visuals() -> void:
-	hologram.sprite_frames = platform_sprite.sprite_frames
-	hologram.animation = platform_sprite.animation
-	hologram.frame = platform_sprite.frame
+	hologram.texture = platform_texture.texture
+	hologram.size = platform_texture.size
+	center = platform_texture.position
+
+
+func _sync_shapes() -> void:
+	var half_length: float = platform_texture.size.x / 2
+	platform_body_shape.shape.a.x = -half_length
+	platform_body_shape.shape.b.x = half_length
+	player_detector_shape.shape.size.x = platform_texture.size.x
 
 
 func _draw() -> void:
@@ -263,21 +271,6 @@ func _build_samples() -> void:
 	sample_distances.append(total_length)
 
 
-#func _get_position(dist: float) -> Vector2:
-	#var index := 0
-#
-	#while index < sample_distances.size() - 1 and sample_distances[index + 1] < dist:
-		#index += 1
-#
-	#var a_pos := samples[index]
-	#var b_pos := samples[min(index + 1, samples.size() - 1)]
-#
-	#var a_dist := sample_distances[index]
-	#var b_dist := sample_distances[min(index + 1, sample_distances.size() - 1)]
-#
-	#return a_pos.lerp(b_pos, inverse_lerp(a_dist, b_dist, dist))
-
-
 func _get_position(dist: float) -> Vector2:
 	var index := sample_distances.bsearch(dist)
 
@@ -295,7 +288,7 @@ func _get_position(dist: float) -> Vector2:
 		return a_pos
 
 	var delta := (dist - a_dist) / denom
-	return a_pos.lerp(b_pos, delta)
+	return a_pos.lerp(b_pos, delta) + center
 
 
 func _start() -> void:
