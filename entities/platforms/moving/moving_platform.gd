@@ -42,7 +42,11 @@ enum PlatformState {
 var speed := 100.0
 @export var speed_multiplier := Curve.new()
 @export_range(0.01, 1.0) var fade_speed := 0.5
-@export var behaviour := Behaviour.BACK_AND_FORTH
+@export var behaviour := Behaviour.BACK_AND_FORTH:
+	set(val):
+		behaviour = val
+		direction = 1
+		distance = 0.0
 ## The path the platform follows.
 @export var points: PackedVector2Array:
 	set(val):
@@ -64,7 +68,6 @@ var sample_spacing := 1.0
 @export var platform_body_shape: CollisionShape2D
 @export var platform_texture: NinePatchRect
 @export var hologram: NinePatchRect
-@export var player_detector_shape: CollisionShape2D
 
 var target: Node
 var target_sprite: NinePatchRect
@@ -78,8 +81,6 @@ var total_length := 0.0
 var distance := 0.0
 var direction := 1
 var progress := 0.0
-
-var player: Player = null
 
 var state := PlatformState.IDLE
 
@@ -133,7 +134,6 @@ func _sync_shapes() -> void:
 	var half_length: float = platform_texture.size.x / 2
 	platform_body_shape.shape.a.x = -half_length
 	platform_body_shape.shape.b.x = half_length
-	player_detector_shape.shape.size.x = platform_texture.size.x
 
 
 func _draw() -> void:
@@ -224,7 +224,7 @@ func _fade_out():
 	)
 
 	if target_sprite.self_modulate == Color.TRANSPARENT:
-		target.position = points[0]
+		target.position = center
 		state = PlatformState.FADING_IN
 
 
@@ -305,12 +305,6 @@ func _start() -> void:
 	state = PlatformState.MOVING
 
 
-func _on_player_detector_body_entered(body: Node2D) -> void:
-	player = body
-
+func activate_by_player() -> void:
 	if go_on_touch and state == PlatformState.IDLE:
 		state = PlatformState.MOVING
-
-
-func _on_player_detector_body_exited(_body: Node2D) -> void:
-	player = null

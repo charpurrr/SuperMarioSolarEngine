@@ -3,7 +3,6 @@ class_name Coin
 extends Collectible
 ## Base class for collectible coins.
 
-
 enum Type {
 	YELLOW = 0, ## Common yellow coin, adds +1 to the coin counter.
 	BLUE = 1, ## Uncommon blue coin, adds +5 to the coin counter.

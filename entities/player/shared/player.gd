@@ -36,6 +36,8 @@ extends CharacterBody2D
 ## This is set in [WorldMachine].
 @onready var camera: PlayerCamera
 
+var current_platform: MovingPlatform = null
+
 
 func _ready():
 	set_up_direction(Vector2.UP)
@@ -43,6 +45,23 @@ func _ready():
 
 func _physics_process(_delta):
 	move_and_slide()
+
+	var new_platform: MovingPlatform = null
+
+	for i in get_slide_collision_count():
+		var collider = get_slide_collision(i).get_collider()
+
+		if collider is AnimatableBody2D:
+			var parent = collider.get_parent()
+			if parent is MovingPlatform:
+				new_platform = parent
+				break
+
+	if new_platform != current_platform:
+		current_platform = new_platform
+
+		if is_instance_valid(current_platform):
+			current_platform.activate_by_player()
 
 
 func take_hit(source: Node, damage_type: HealthModule.DamageType):
