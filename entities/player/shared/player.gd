@@ -60,7 +60,7 @@ func _physics_process(_delta) -> void:
 		for area in climb_check.get_overlapping_areas():
 			var parent := area.get_parent()
 			if parent is Pole and not movement.is_submerged():
-				state_manager.set_to_state(&"Climb", [area.position, parent.height])
+				state_manager.set_to_state(&"Climb", [area.global_position, parent.height])
 				current_pole = parent
 
 

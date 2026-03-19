@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://crhnxvmsxehei" path="res://entities/interactables/pole/pole.gd" id="1_rvjy0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mtc41"]
+resource_local_to_scene = true
 size = Vector2(8, 32)
 
 [node name="Pole" type="Node2D" unique_id=1712398917 node_paths=PackedStringArray("texture", "area", "collision_shape")]
