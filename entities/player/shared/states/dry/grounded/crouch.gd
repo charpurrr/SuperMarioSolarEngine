@@ -49,7 +49,7 @@ func _trans_rules():
 		if sign(actor.velocity.x) == movement.facing_direction:
 			return &"Longjump"
 
-	if not Input.is_action_pressed(&"down") and not actor.auto_crouch_check.enabled:
+	if not Input.is_action_pressed(&"crouch") and not actor.auto_crouch_check.enabled:
 		return &"Idle"
 
 	return &""
