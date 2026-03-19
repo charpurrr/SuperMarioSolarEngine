@@ -35,6 +35,13 @@ enum PlatformState {
 	FADING_IN
 }
 
+@export_range(32.0, 0.0, 1, "hide_control", "suffix:px", "or_greater") \
+var width := 64:
+	set(val):
+		width = val
+		platform_texture.size.x = width
+		platform_texture.position.x = -width / 2.0
+		hologram.position.x = -width / 2.0
 ## Whether or not the platform should start moving only when it touches the [Player].
 @export var go_on_touch: bool = false
 ## How fast the platform moves across its path.
@@ -101,6 +108,7 @@ func _ready() -> void:
 		_build_samples()
 
 	platform_texture.resized.connect(_sync_shapes)
+	_sync_shapes()
 
 	if not Engine.is_editor_hint():
 		hologram.queue_free()

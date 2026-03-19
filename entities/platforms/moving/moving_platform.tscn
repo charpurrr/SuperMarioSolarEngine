@@ -9,6 +9,7 @@ point_count = 4
 metadata/_snap_enabled = true
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_3bupp"]
+resource_local_to_scene = true
 a = Vector2(-32, -8)
 b = Vector2(32, -8)
 
@@ -30,9 +31,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 251.22635
+offset_left = 205.285
 offset_top = -8.0
-offset_right = 315.22128
+offset_right = 269.28497
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
