@@ -17,7 +17,7 @@ var throw_direction: int
 func _on_enter(damage_source: Variant) -> void:
 	actor.z_index += 1
 
-	throw_direction = sign(damage_source.global_position.x - actor.global_position.x)
+	throw_direction = sign(damage_source.position.x - actor.position.x)
 	var throw_vec = Vector2(throw_direction * throw_x_factor, -1).normalized()
 
 	actor.velocity = throw_vec * throw_power

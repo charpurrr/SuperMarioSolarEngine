@@ -16,9 +16,14 @@ var min_jump_power: float
 var applied_variation: bool = false
 
 
-func _on_enter(muted: Variant):
-	if not muted:
+func _on_enter(params: Variant):
+	var play_sfx: bool = params[0] if params != null else true
+	var play_pfx: bool = params[1] if params != null else true
+
+	if play_sfx:
 		play_sounds()
+	if play_pfx:
+		emit_particles()
 
 	applied_variation = false
 	actor.velocity.y = -jump_power
@@ -51,7 +56,7 @@ func _trans_rules():
 		return &"GroundPound"
 
 	if actor.push_rays.is_colliding() and input.buffered_input(&"jump"):
-		return [&"Walljump", -movement.facing_direction]
+		return &"Walljump"
 
 	if movement.can_init_wallslide():
 		return &"Wallslide"

@@ -47,7 +47,7 @@ func _trans_rules() -> Variant:
 		return &"SpinWallbonk"
 
 	if input.buffered_input(&"jump"):
-		return [&"Walljump", -movement.facing_direction]
+		return &"Walljump"
 
 	if movement.should_end_wallslide():
 		return &"Fall"

@@ -14,7 +14,13 @@ extends PlayerState
 ## By default, it sends you in the opposite of your facing direction,
 ## but for cases like the spinjump; this needs to be handled manually.
 ## Direction is an integer type.
-func _on_enter(direction):
+func _on_enter(params: Variant):
+	var direction: int = params[0] if params != null else -movement.facing_direction
+	var play_sfx: bool = params[1] if params != null else true
+
+	if play_sfx:
+		play_sounds()
+
 	movement.walljump_start_y = actor.position.y
 
 	movement.update_direction(direction)
@@ -54,7 +60,7 @@ func _trans_rules():
 		return &"Wallslide"
 
 	if actor.push_rays.is_colliding() and input.buffered_input(&"jump"):
-		reset_state(-movement.facing_direction)
+		reset_state([-movement.facing_direction, true])
 
 	if movement.finished_freefall_timer():
 		return &"Freefall"

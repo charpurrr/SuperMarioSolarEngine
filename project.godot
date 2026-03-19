@@ -333,6 +333,7 @@ e_curve_toggle={
 2d_physics/layer_9="Preview (Editor)"
 2d_physics/layer_10="Level Preview Field (Editor)"
 2d_physics/layer_13="Platform"
+2d_physics/layer_14="Climbable"
 2d_physics/layer_17="Destructive"
 
 [physics]

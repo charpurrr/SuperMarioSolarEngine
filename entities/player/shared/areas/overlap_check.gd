@@ -1,10 +1,9 @@
 @tool
-class_name EnemyOverlapDetection
+class_name OverlapDetection
 extends Area2D
-## Detect when the player is overlapping with enemies.
+## Detect when the player is overlapping with something.
 ##
-## Note that this is NOT used to damage the player, as that is done by
-## the [Enemy]'s hurt box. This [Area2D] only serves to detect overlap.
+## This can be used to make the player respond to certain entities.
 
 @export var player_hitbox: CollisionShape2D
 

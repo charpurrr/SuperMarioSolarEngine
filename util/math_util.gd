@@ -69,6 +69,14 @@ static func moveto_vec(vec_start: Variant, vec_end: Variant, incr: float):
 	return vec_start + direction*incr if dist > incr else vec_end
 
 
+static func ease_out(progress: float) -> float:
+	return 1.0 - pow(1.0 - progress, 3.0)
+
+
+static func ease_in_out(progress: float):
+	return pow(progress, 2.0) * (3.0 - 2.0 * progress)
+
+
 static func _vector_type_check(vec_start: Variant, vec_end: Variant) -> bool:
 	if vec_start is not Vector2 and vec_start is not Vector3 and vec_start is not Vector4:
 		push_error("vec_start is not a Vector type. Did you mean moveto_f?")
