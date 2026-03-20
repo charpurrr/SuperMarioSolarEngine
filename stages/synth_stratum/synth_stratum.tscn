@@ -4131,159 +4131,162 @@ rotation = -0.523598
 [node name="SynthSemi13" parent="." unique_id=385206639 instance=ExtResource("29_5ltkg")]
 position = Vector2(-159, -625)
 
+[node name="SynthSemi33" parent="." unique_id=2076014878 instance=ExtResource("29_5ltkg")]
+position = Vector2(-892, -537)
+
 [node name="SynthSemi14" parent="." unique_id=1303330812 instance=ExtResource("29_5ltkg")]
 position = Vector2(-129, -625)
 
 [node name="Coin" parent="." unique_id=340800817 instance=ExtResource("30_ihghk")]
 position = Vector2(816, -56)
-frame_progress = 0.4253112
+frame_progress = 0.38176447
 
 [node name="Coin4" parent="." unique_id=277150002 instance=ExtResource("30_ihghk")]
 position = Vector2(840, -56)
-frame_progress = 0.4253112
+frame_progress = 0.38176447
 
 [node name="Coin5" parent="." unique_id=404130534 instance=ExtResource("30_ihghk")]
 position = Vector2(864, -56)
-frame_progress = 0.4253112
+frame_progress = 0.38176447
 
 [node name="Coin6" parent="." unique_id=1322689316 instance=ExtResource("30_ihghk")]
 position = Vector2(888, -56)
-frame_progress = 0.4253112
+frame_progress = 0.38176447
 
 [node name="Coin7" parent="." unique_id=1378051243 instance=ExtResource("30_ihghk")]
 position = Vector2(912, -56)
-frame_progress = 0.4253112
+frame_progress = 0.38176447
 
 [node name="Coin8" parent="." unique_id=17712182 instance=ExtResource("30_ihghk")]
 position = Vector2(816, -80)
-frame_progress = 0.4253112
+frame_progress = 0.38176447
 
 [node name="Coin9" parent="." unique_id=1470669526 instance=ExtResource("30_ihghk")]
 position = Vector2(840, -80)
-frame_progress = 0.4253112
+frame_progress = 0.38176447
 
 [node name="Coin10" parent="." unique_id=713682470 instance=ExtResource("30_ihghk")]
 position = Vector2(864, -80)
-frame_progress = 0.4253112
+frame_progress = 0.38176447
 
 [node name="Coin11" parent="." unique_id=1622627861 instance=ExtResource("30_ihghk")]
 position = Vector2(888, -80)
-frame_progress = 0.4253112
+frame_progress = 0.38176447
 
 [node name="Coin12" parent="." unique_id=208637934 instance=ExtResource("30_ihghk")]
 position = Vector2(912, -80)
-frame_progress = 0.4253112
+frame_progress = 0.38176447
 
 [node name="Coin13" parent="." unique_id=907856111 instance=ExtResource("30_ihghk")]
 position = Vector2(1352, -368)
 animation = &"1"
-frame_progress = 0.43953973
+frame_progress = 0.39599293
 type = 1
 
 [node name="Coin14" parent="." unique_id=511112308 instance=ExtResource("30_ihghk")]
 position = Vector2(1376, -368)
 animation = &"1"
-frame_progress = 0.43953973
+frame_progress = 0.39599293
 type = 1
 
 [node name="Coin15" parent="." unique_id=105276685 instance=ExtResource("30_ihghk")]
 position = Vector2(1400, -368)
 animation = &"1"
-frame_progress = 0.43953973
+frame_progress = 0.39599293
 type = 1
 
 [node name="Coin16" parent="." unique_id=1274666472 instance=ExtResource("30_ihghk")]
 position = Vector2(1424, -368)
 animation = &"1"
-frame_progress = 0.43953973
+frame_progress = 0.39599293
 type = 1
 
 [node name="Coin17" parent="." unique_id=1786769016 instance=ExtResource("30_ihghk")]
 position = Vector2(1448, -368)
 animation = &"1"
-frame_progress = 0.43953973
+frame_progress = 0.39599293
 type = 1
 
 [node name="Coin18" parent="." unique_id=939281997 instance=ExtResource("30_ihghk")]
 position = Vector2(1352, -392)
 animation = &"1"
-frame_progress = 0.43953973
+frame_progress = 0.39599293
 type = 1
 
 [node name="Coin19" parent="." unique_id=1871986574 instance=ExtResource("30_ihghk")]
 position = Vector2(1376, -392)
 animation = &"1"
-frame_progress = 0.43953973
+frame_progress = 0.39599293
 type = 1
 
 [node name="Coin20" parent="." unique_id=1493925600 instance=ExtResource("30_ihghk")]
 position = Vector2(1400, -392)
 animation = &"1"
-frame_progress = 0.43953973
+frame_progress = 0.39599293
 type = 1
 
 [node name="Coin21" parent="." unique_id=111746828 instance=ExtResource("30_ihghk")]
 position = Vector2(1424, -392)
 animation = &"1"
-frame_progress = 0.43953973
+frame_progress = 0.39599293
 type = 1
 
 [node name="Coin22" parent="." unique_id=1708821704 instance=ExtResource("30_ihghk")]
 position = Vector2(1448, -392)
 animation = &"1"
-frame_progress = 0.43953973
+frame_progress = 0.39599293
 type = 1
 
 [node name="Coin103" parent="." unique_id=764779499 instance=ExtResource("30_ihghk")]
 position = Vector2(80, -48)
-frame_progress = 0.4253112
+frame_progress = 0.38176447
 
 [node name="Coin3" parent="." unique_id=184724743 instance=ExtResource("30_ihghk")]
 position = Vector2(1416, -600)
 animation = &"2"
-frame_progress = 0.685363
+frame_progress = 0.64181405
 type = 2
 
 [node name="Coin23" parent="." unique_id=1541214465 instance=ExtResource("30_ihghk")]
 position = Vector2(1440, -600)
 animation = &"2"
-frame_progress = 0.685363
+frame_progress = 0.64181405
 type = 2
 
 [node name="Coin24" parent="." unique_id=596649156 instance=ExtResource("30_ihghk")]
 position = Vector2(1464, -600)
 animation = &"2"
-frame_progress = 0.685363
+frame_progress = 0.64181405
 type = 2
 
 [node name="Coin25" parent="." unique_id=289522181 instance=ExtResource("30_ihghk")]
 position = Vector2(1488, -600)
 animation = &"2"
-frame_progress = 0.685363
+frame_progress = 0.64181405
 type = 2
 
 [node name="Coin26" parent="." unique_id=191404582 instance=ExtResource("30_ihghk")]
 position = Vector2(1512, -600)
 animation = &"2"
-frame_progress = 0.685363
+frame_progress = 0.64181405
 type = 2
 
 [node name="Coin27" parent="." unique_id=622251736 instance=ExtResource("30_ihghk")]
 position = Vector2(1536, -600)
 animation = &"2"
-frame_progress = 0.685363
+frame_progress = 0.64181405
 type = 2
 
 [node name="Coin28" parent="." unique_id=886201400 instance=ExtResource("30_ihghk")]
 position = Vector2(1560, -600)
 animation = &"2"
-frame_progress = 0.685363
+frame_progress = 0.64181405
 type = 2
 
 [node name="Coin29" parent="." unique_id=810516682 instance=ExtResource("30_ihghk")]
 position = Vector2(1584, -600)
 animation = &"2"
-frame_progress = 0.685363
+frame_progress = 0.64181405
 type = 2
 
 [node name="Shine" parent="." unique_id=1728559446 instance=ExtResource("31_nma4k")]

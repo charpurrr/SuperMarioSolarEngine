@@ -1,6 +1,6 @@
 class_name Goomba
 extends Enemy
-## Goomba behaviour.
+## Enemy that chases nearby players, can be squished or spun to kill.
 
 ## Whether or not the Goomba moves at all.
 @export var stationary: bool = false
@@ -17,9 +17,9 @@ extends Enemy
 @export var wall_ray_l: RayCast2D
 @export var wall_ray_r: RayCast2D
 
-## The player that's being chased, if any.
+## The [Player] that's being chased, if any.
 var spotted_player: Player
-## The difference in distance between the player, and the Goomba.
+## The difference in distance between the [Player], and the [Goomba].
 var diff: Vector2
 
 

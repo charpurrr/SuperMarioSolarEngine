@@ -1,6 +1,6 @@
 class_name GoombaChase
 extends EnemyState
-## Chase after the player.
+## Chase after the [Player].
 
 @export var step_sfx: SFXLayer
 ## On what frames of the chasing animation the footstep effects should run.
@@ -9,11 +9,14 @@ extends EnemyState
 @export var chase_max_speed: float = 1.0
 @export var chase_accel: float = 0.23
 
-## How close the player needs to be in order for the Goomba to try
+## How close the [Player] needs to be in order for the Goomba to try
 ## catching them with a jump.
 @export var range_jump := Vector2(10.0, 10.0)
+## The minimum difference in y coordinates between the [Player] and [Goomba]
+## for the [Goomba] to try and jump to catch them.
+@export var jump_min_diff_y := 3.0
 
-## Direction the player is in, in relation to this Goomba.
+## Direction the [Player] is in, in relation to this Goomba.
 var dir: int
 
 var current_frame: int
@@ -69,6 +72,7 @@ func _trans_rules() -> Variant:
 	# Try to catch the player by jumping underneath them.
 	if (
 		abs(actor.diff.x) <= range_jump.x and
+		actor.diff.y < -jump_min_diff_y and
 		actor.diff.y <= range_jump.y and
 		actor.spotted_player.is_on_floor()
 	):
