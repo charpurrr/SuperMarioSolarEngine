@@ -158,6 +158,7 @@
 [ext_resource type="Script" uid="uid://bv5qocut47b7l" path="res://entities/player/shared/states/dry/climb.gd" id="156_wc0bq"]
 [ext_resource type="PackedScene" uid="uid://d1wf1b4d4xfvf" path="res://props/particles/sparkle.tscn" id="158_1s3ss"]
 [ext_resource type="Script" uid="uid://yunont5er8l4" path="res://entities/player/shared/states/dry/climb_handstand.gd" id="158_wihps"]
+[ext_resource type="Script" uid="uid://d2r06iydc4bp" path="res://entities/player/shared/states/enter_pipe.gd" id="159_saqqr"]
 
 [sub_resource type="Shader" id="Shader_xenv0"]
 code = "shader_type canvas_item;
@@ -446,7 +447,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Resource" id="Resource_676rb"]
+[sub_resource type="Resource" id="Resource_etm3l"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
 doll_path = NodePath("Doll")
@@ -457,22 +458,31 @@ frame_offsets = Dictionary[int, Vector2i]({
 })
 frame_fludd = Dictionary[int, String]({
 0: "default",
-1: "default"
+1: "rot_y045",
+2: "rot_y090",
+3: "rot_y315",
+4: "rot_y270",
+5: "rot_y225",
+6: "rot_y180",
+7: "rot_y135"
 })
 frame_fludd_offsets = Dictionary[int, Vector2i]({
-0: Vector2i(0, 0),
-1: Vector2i(0, 0),
-3: Vector2i(0, 1),
-4: Vector2i(0, 2),
-5: Vector2i(0, 2),
-6: Vector2i(0, 1)
+0: Vector2i(0, -1),
+1: Vector2i(0, -1),
+2: Vector2i(0, -1),
+3: Vector2i(0, -1),
+4: Vector2i(0, -1),
+5: Vector2i(0, -1),
+6: Vector2i(0, -1),
+7: Vector2i(0, -1)
 })
-animation = "idle"
-frame = 0
-preview = false
+animation = "enter_pipe_vertical"
+frame = 2
+preview = true
+preview_fludd = true
 frame_offset = Vector2i(0, 0)
-fludd_animation = "default"
-fludd_offset = Vector2i(0, 0)
+fludd_animation = "rot_y090"
+fludd_offset = Vector2i(0, -1)
 metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f3xbj"]
@@ -1001,6 +1011,35 @@ metadata/_custom_type_script = "uid://b262pbs7y0djt"
 script = ExtResource("49_apkmk")
 sfx_list = Array[ExtResource("26_ta4lc")]([SubResource("Resource_rev7q"), SubResource("Resource_ddfva")])
 metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
+
+[sub_resource type="Resource" id="Resource_676rb"]
+resource_local_to_scene = true
+script = ExtResource("23_bbld7")
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
+frame_fludd = Dictionary[int, String]({
+0: "default",
+1: "default"
+})
+frame_fludd_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0),
+1: Vector2i(0, 0),
+3: Vector2i(0, 1),
+4: Vector2i(0, 2),
+5: Vector2i(0, 2),
+6: Vector2i(0, 1)
+})
+animation = "idle"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_xh3w7"]
 resource_local_to_scene = true
@@ -2085,8 +2124,9 @@ frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
 frame_fludd = Dictionary[int, String]({
-0: "rot_y090",
+0: "default",
 1: "rot_y045",
+2: "rot_y090",
 3: "rot_y315",
 4: "rot_y270",
 5: "rot_y225",
@@ -2107,7 +2147,7 @@ animation = "spinjump"
 frame = 0
 preview = false
 frame_offset = Vector2i(0, 0)
-fludd_animation = "rot_y090"
+fludd_animation = "default"
 fludd_offset = Vector2i(0, -1)
 metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
@@ -4190,22 +4230,23 @@ offset_right = -15.0
 offset_bottom = -33.0
 
 [node name="FluddBehind" type="AnimatedSprite2D" parent="." unique_id=605325507]
-visible = false
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_e1ut2")
-animation = &"rot_z315"
+animation = &"rot_y090"
+offset = Vector2(0, -1)
 
 [node name="Doll" type="AnimatedSprite2D" parent="." unique_id=1876045562]
 position = Vector2(0, -24)
 sprite_frames = ExtResource("4_xenv0")
-animation = &"climb_side"
-metadata/last_previewed = SubResource("Resource_676rb")
+animation = &"enter_pipe_vertical"
+frame = 2
+metadata/last_previewed = SubResource("Resource_etm3l")
 
 [node name="FluddInfront" type="AnimatedSprite2D" parent="." unique_id=1928286412]
-visible = false
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_1i10v")
-animation = &"rot_z315"
+animation = &"rot_y090"
+offset = Vector2(0, -1)
 
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=76578262]
 position = Vector2(0, -15)
@@ -4805,6 +4846,12 @@ climb_infront_anim_data = SubResource("Resource_o07yi")
 
 [node name="ClimbHandstand" type="Node" parent="StateManager/Dry" unique_id=1900152631]
 script = ExtResource("158_wihps")
+
+[node name="EnterPipe" type="Node" parent="StateManager" unique_id=556976127]
+script = ExtResource("159_saqqr")
+lineup_x_speed = 0.3
+hitbox_type = "None"
+animation_data = SubResource("Resource_etm3l")
 
 [connection signal="body_entered" from="Areas/DiveHurtBox" to="StateManager/Dry/DiveStates/Dive" method="_on_dive_hurt_box_body_entered"]
 [connection signal="body_entered" from="Areas/SpinHurtBox" to="StateManager/Dry/Airborne/WalljumpStates/SpinWallbonk" method="_on_spin_hurt_box_body_entered"]

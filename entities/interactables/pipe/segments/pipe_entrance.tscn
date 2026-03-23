@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://chxwdg3axgi6"]
+
+[ext_resource type="Texture2D" uid="uid://rm27q1fjgv7d" path="res://entities/interactables/pipe/pipe_parts.png" id="1_m3g8m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdyur"]
+atlas = ExtResource("1_m3g8m")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygsn3"]
+size = Vector2(16, 16)
+
+[node name="Entrance" type="Sprite2D" unique_id=1435683433]
+texture = SubResource("AtlasTexture_bdyur")
+
+[node name="PlayerDetector" type="Area2D" parent="." unique_id=1585604522]
+position = Vector2(0, -16)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" unique_id=121457682]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_ygsn3")

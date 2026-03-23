@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://nkp4jd67r6fk"]
+
+[ext_resource type="Texture2D" uid="uid://u72sbsscsx83" path="res://entities/interactables/pipe/segments/pipe_extension.png" id="1_osb6h"]
+
+[node name="PipeExtension" type="TextureRect" unique_id=303450757]
+offset_left = -16.0
+offset_right = 16.0
+offset_bottom = 32.0
+texture = ExtResource("1_osb6h")
+expand_mode = 1
+stretch_mode = 1

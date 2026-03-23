@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dvmlgiiihnw3d"]
+
+[ext_resource type="Script" uid="uid://74n6meo6gqqk" path="res://entities/interactables/pipe/pipe.gd" id="1_0w4a1"]
+[ext_resource type="Script" uid="uid://1hoebeqg0ktl" path="res://entities/interactables/pipe/segments/pipe_segment.gd" id="2_mklgq"]
+[ext_resource type="Script" uid="uid://ct555gd4ot23x" path="res://entities/interactables/pipe/segments/pipe_entrance.gd" id="3_02bxm"]
+[ext_resource type="Script" uid="uid://by1hkf572ddj0" path="res://entities/interactables/pipe/segments/pipe_extension.gd" id="4_kc8f5"]
+
+[sub_resource type="Resource" id="Resource_kc8f5"]
+script = ExtResource("3_02bxm")
+metadata/_custom_type_script = "uid://ct555gd4ot23x"
+
+[sub_resource type="Resource" id="Resource_v7tjq"]
+script = ExtResource("4_kc8f5")
+metadata/_custom_type_script = "uid://by1hkf572ddj0"
+
+[node name="WarpPipe" type="Node2D" unique_id=544277668]
+position = Vector2(327, 206)
+script = ExtResource("1_0w4a1")
+segments = Array[ExtResource("2_mklgq")]([SubResource("Resource_kc8f5"), SubResource("Resource_v7tjq")])
