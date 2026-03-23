@@ -145,7 +145,7 @@
 [ext_resource type="PackedScene" uid="uid://yxcrkjecabc2" path="res://props/particles/spin_ring.tscn" id="149_qbnhj"]
 [ext_resource type="Script" uid="uid://c6f05nyrdtcd6" path="res://entities/player/shared/states/dry/dive_states/super_rollout.gd" id="150_4duxu"]
 [ext_resource type="AudioStream" uid="uid://ckr28u3htxv4o" path="res://entities/player/shared/motion/final_hit.wav" id="150_m576x"]
-[ext_resource type="Script" uid="uid://b7w0nkvq1wjk" path="res://entities/player/shared/states/dry/die.gd" id="150_ufl2i"]
+[ext_resource type="Script" path="res://entities/player/shared/states/dry/die.gd" id="150_ufl2i"]
 [ext_resource type="Script" uid="uid://ftwidhx88kkq" path="res://entities/player/shared/fludd/fludd_manager.gd" id="151_4womg"]
 [ext_resource type="AudioStream" uid="uid://b1orysswk33x1" path="res://entities/player/mario/voice_sunshine/woah_ledge.wav" id="151_u7cu3"]
 [ext_resource type="AudioStream" uid="uid://l8n6ucspwj5v" path="res://entities/player/shared/sfx/too_bad.wav" id="152_2h0ab"]
@@ -2981,15 +2981,11 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ujdp5"), SubR
 
 [node name="ButtSlide" type="Node" parent="StateManager/Dry" unique_id=720337721]
 script = ExtResource("140_lfmwr")
-speed = 750.0
-min_speed = 300.0
+friction_coefficient_default = 0.15
+friction_coefficient_decel = 0.6
+accel_gravity_multiplier = 1.5
 max_speed = 1200.0
 min_remain_speed = 6.0
-friction = 7.5
-max_accel = 13.2
-turn_forgiveness = 1.5
-shallow_penalty = 0.25
-incline_friction = 90.0
 animation_forward = &"butt_slide_forwards"
 animation_backward = &"butt_slide_backwards"
 animation_airborne = &"butt_slide_jump"
