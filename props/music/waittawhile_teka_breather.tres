@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Song" format=3 uid="uid://dl2ufur7jykmx"]
+
+[ext_resource type="Script" uid="uid://c56bjnj2qtrvg" path="res://util/resources/song.gd" id="1_k2rk0"]
+[ext_resource type="AudioStream" uid="uid://ddcapp32y7wg3" path="res://props/music/streams/waittawhile_teka_breather.ogg" id="2_lxv17"]
+
+[resource]
+script = ExtResource("1_k2rk0")
+song_name = &"waittawhile / teka breather"
+artist = &"boggio, Crablooshi"
+stream = ExtResource("2_lxv17")
+metadata/_custom_type_script = "uid://c56bjnj2qtrvg"

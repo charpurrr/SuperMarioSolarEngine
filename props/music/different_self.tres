@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Song" format=3 uid="uid://csmg13t1qd0ss"]
+
+[ext_resource type="Script" uid="uid://c56bjnj2qtrvg" path="res://util/resources/song.gd" id="1_lp14b"]
+[ext_resource type="AudioStream" uid="uid://b8s7rxpba1bjv" path="res://props/music/streams/different_self.ogg" id="2_elj61"]
+
+[resource]
+script = ExtResource("1_lp14b")
+song_name = &"different self"
+artist = &"boggio, Crablooshi"
+stream = ExtResource("2_elj61")
+metadata/_custom_type_script = "uid://c56bjnj2qtrvg"

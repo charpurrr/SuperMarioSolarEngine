@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Song" format=3 uid="uid://e57r4fe6ogaq"]
+
+[ext_resource type="Script" uid="uid://c56bjnj2qtrvg" path="res://util/resources/song.gd" id="1_5xncs"]
+[ext_resource type="AudioStream" uid="uid://dc3d3xac5slwl" path="res://props/music/streams/voyager.ogg" id="2_cbggg"]
+
+[resource]
+script = ExtResource("1_5xncs")
+song_name = &"Voyager"
+artist = &"Daft Punk"
+stream = ExtResource("2_cbggg")
+metadata/_custom_type_script = "uid://c56bjnj2qtrvg"
