@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bhbom04gtq77a"]
+
+[ext_resource type="Texture2D" uid="uid://c2s6ruflnnu0l" path="res://props/lights/round_256.png" id="1_sr6bq"]
+[ext_resource type="Script" uid="uid://bsmu7j7r26g8h" path="res://props/lights/foreground_spotlight.gd" id="2_euoyd"]
+
+[node name="ForegroundSpotlight" type="PointLight2D" unique_id=1069813592]
+enabled = false
+energy = 0.3
+texture = ExtResource("1_sr6bq")
+script = ExtResource("2_euoyd")

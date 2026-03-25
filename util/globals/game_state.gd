@@ -9,10 +9,10 @@ enum Qualities {
 	}
 var quality: Qualities
 
-var debug_toggle: bool = false
-var debug_toggle_collision_shapes: bool = false
+var debug_toggle := false
+var debug_toggle_collision_shapes := false
 
-var fullscreened: bool = false
+var fullscreened := false
 
 var buses: Dictionary[StringName, AudioBus] = {
 	&"Master":
@@ -24,6 +24,8 @@ var buses: Dictionary[StringName, AudioBus] = {
 	&"Voice":
 		AudioBus.new(&"Voice", "voice_volume")
 }
+
+var spotlights_enabled := false
 
 
 func _ready():

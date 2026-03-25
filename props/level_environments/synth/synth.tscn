@@ -1,9 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://bfb4xq874buf6"]
+[gd_scene format=3 uid="uid://bfb4xq874buf6"]
 
 [ext_resource type="Script" uid="uid://d7edjnk21ad3" path="res://props/level_environments/synth/synth_floor.gd" id="1_dubgv"]
 [ext_resource type="Script" uid="uid://ccysh3ski6mvh" path="res://props/level_environments/environment.gd" id="1_xeoqd"]
-[ext_resource type="Texture2D" uid="uid://bnywpxepvxnxf" path="res://props/level_environments/synth/synth_sky_new.png" id="2_oiv80"]
 [ext_resource type="Texture2D" uid="uid://bbu4m0gd3b85w" path="res://props/level_environments/synth/pause_gradient_map.tres" id="2_vugs5"]
+[ext_resource type="Texture2D" uid="uid://1nelqqfhfo5a" path="res://props/level_environments/synth/synth_sky.png" id="3_mdcif"]
 [ext_resource type="Texture2D" uid="uid://dk76vr4rcjn8x" path="res://props/level_environments/synth/star_twinkle.png" id="4_fkliv"]
 [ext_resource type="Texture2D" uid="uid://h55he5ne87oo" path="res://props/level_environments/synth/sunshine_sun.png" id="5_mb8pf"]
 [ext_resource type="Shader" uid="uid://jy8sm10bwqcu" path="res://util/shaders/crt.gdshader" id="7_e2awe"]
@@ -42,7 +42,7 @@ shader_parameter/scan_line_strength = -8.0
 shader_parameter/pixel_strength = -2.0
 
 [sub_resource type="Gradient" id="Gradient_4rbya"]
-colors = PackedColorArray(0.0980392, 0.0784314, 0.117647, 1, 0.345098, 0, 0.6, 1)
+colors = PackedColorArray(0.345098, 0, 0.6, 1, 0.0980392, 0.0784314, 0.117647, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ko2tk"]
 gradient = SubResource("Gradient_4rbya")
@@ -62,8 +62,8 @@ adjustment_saturation = 1.2
 blend_mode = 3
 
 [sub_resource type="Gradient" id="Gradient_w7jo4"]
-offsets = PackedFloat32Array(0, 0.38496584)
-colors = PackedColorArray(0.639216, 0, 0.917647, 1, 0.639216, 0.627451, 1, 1)
+offsets = PackedFloat32Array(0.31429425, 0.74013156)
+colors = PackedColorArray(1, 0.8260917, 1, 1, 0.935741, 0.7021107, 0.81869453, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qk2fq"]
 gradient = SubResource("Gradient_w7jo4")
@@ -71,29 +71,40 @@ width = 1
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
 
-[node name="Environment" type="CanvasLayer"]
+[sub_resource type="Gradient" id="Gradient_mdcif"]
+offsets = PackedFloat32Array(0.20614558, 0.6667661)
+colors = PackedColorArray(0.39831477, 0.19063938, 0.4715336, 1, 0.47303164, 0.5430458, 0.76564497, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_brsgk"]
+gradient = SubResource("Gradient_mdcif")
+width = 1
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[node name="Environment" type="CanvasLayer" unique_id=1031252099]
 layer = -3
 script = ExtResource("1_xeoqd")
 pause_gradient_map = ExtResource("2_vugs5")
+foreground_spotlights = true
 metadata/_edit_use_anchors_ = true
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=726876680]
 scroll_ignore_camera_zoom = true
 
-[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground" unique_id=482525435]
 texture_repeat = 2
 motion_scale = Vector2(0, 0)
 motion_mirroring = Vector2(512, 0)
 
-[node name="Sky" type="TextureRect" parent="ParallaxBackground/Sky"]
+[node name="Sky" type="TextureRect" parent="ParallaxBackground/Sky" unique_id=1322792578]
 modulate = Color(1.353256, 1.353256, 1.353256, 1)
 offset_right = 2048.0
 offset_bottom = 512.0
-texture = ExtResource("2_oiv80")
+texture = ExtResource("3_mdcif")
 stretch_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Stars" type="GPUParticles2D" parent="ParallaxBackground/Sky"]
+[node name="Stars" type="GPUParticles2D" parent="ParallaxBackground/Sky" unique_id=474055148]
 material = SubResource("CanvasItemMaterial_47xr2")
 position = Vector2(1024, 256)
 amount = 3000
@@ -103,8 +114,8 @@ visibility_rect = Rect2(-512, -128, 1024, 256)
 draw_order = 0
 process_material = SubResource("ParticleProcessMaterial_8i7lr")
 
-[node name="Sun" type="TextureRect" parent="ParallaxBackground"]
-modulate = Color(1.7269721, 1.7269721, 1.7269721, 1)
+[node name="Sun" type="TextureRect" parent="ParallaxBackground" unique_id=1764818373]
+modulate = Color(2.0024445, 2.454227, 2.454227, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -113,10 +124,10 @@ grow_vertical = 2
 texture = ExtResource("5_mb8pf")
 stretch_mode = 3
 
-[node name="BackBufferCopy" type="BackBufferCopy" parent="ParallaxBackground"]
+[node name="BackBufferCopy" type="BackBufferCopy" parent="ParallaxBackground" unique_id=611955010]
 copy_mode = 2
 
-[node name="CRT" type="ColorRect" parent="ParallaxBackground"]
+[node name="CRT" type="ColorRect" parent="ParallaxBackground" unique_id=1745846207]
 material = SubResource("ShaderMaterial_e8pha")
 anchors_preset = 15
 anchor_right = 1.0
@@ -124,47 +135,50 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="QualityToggle" parent="ParallaxBackground/CRT" instance=ExtResource("7_vugs5")]
+[node name="QualityToggle" parent="ParallaxBackground/CRT" unique_id=27503644 instance=ExtResource("7_vugs5")]
 
-[node name="Mountains" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="Mountains" type="ParallaxLayer" parent="ParallaxBackground" unique_id=56640737]
 texture_repeat = 2
-motion_scale = Vector2(0.04, 0)
-motion_offset = Vector2(0, -100)
+motion_scale = Vector2(0.02, 0)
+motion_offset = Vector2(0, -80)
 motion_mirroring = Vector2(1024, 0)
 
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/Mountains"]
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/Mountains" unique_id=1741613559]
 offset_right = 2048.0
 offset_bottom = 540.0
 texture = ExtResource("8_mdcif")
 stretch_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Glow" type="TextureRect" parent="ParallaxBackground/Mountains"]
-modulate = Color(2.844042, 2.844042, 2.844042, 1)
+[node name="Glow" type="TextureRect" parent="ParallaxBackground/Mountains" unique_id=1943402912]
+modulate = Color(6.231, 6.231, 6.231, 1)
 offset_right = 2048.0
 offset_bottom = 540.0
 texture = ExtResource("9_brsgk")
 stretch_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="BGFloor" type="TextureRect" parent="ParallaxBackground"]
+[node name="BGFloor" type="TextureRect" parent="ParallaxBackground" unique_id=1510015101]
 anchors_preset = -1
-anchor_top = 0.7
+anchor_top = 0.8
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = SubResource("GradientTexture2D_ko2tk")
 script = ExtResource("1_dubgv")
-line_color = Color(2.454227, 1.1857394, 2.454227, 1)
-scroll_divisor = 20.0
+line_color = Color(5.912981, 2.8928242, 5.912981, 1)
+line_h_count = 8
+line_v_count = 22
+line_h_exp = 1.3
+scroll_divisor = 30.0
 
-[node name="Parallax2D" type="Parallax2D" parent="ParallaxBackground"]
+[node name="Parallax2D" type="Parallax2D" parent="ParallaxBackground" unique_id=1670987161]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1745254846]
 environment = SubResource("Environment_vugs5")
 
-[node name="Gradient" type="TextureRect" parent="."]
+[node name="Gradient" type="TextureRect" parent="." unique_id=962305165]
 modulate = Color(1.0309138, 1.0309138, 1.0309138, 1)
 texture_filter = 2
 material = SubResource("CanvasItemMaterial_oe8qa")
@@ -174,3 +188,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_qk2fq")
+
+[node name="WorldOverlay" type="CanvasLayer" parent="." unique_id=130537628]
+layer = 0
+
+[node name="Gradient" type="TextureRect" parent="WorldOverlay" unique_id=1898648845]
+texture_filter = 2
+material = SubResource("CanvasItemMaterial_oe8qa")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_brsgk")

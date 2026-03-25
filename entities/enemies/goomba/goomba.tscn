@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c8rvart030ldu" path="res://entities/enemies/goomba/goomba.gd" id="1_hhlu2"]
 [ext_resource type="Texture2D" uid="uid://x2edebevq3c7" path="res://entities/enemies/goomba/anime/idle.png" id="1_hp473"]
 [ext_resource type="Texture2D" uid="uid://b5eno3kq3b43" path="res://entities/enemies/goomba/anime/chase.png" id="2_2rnn8"]
+[ext_resource type="PackedScene" uid="uid://bhbom04gtq77a" path="res://props/lights/foreground_spotlight.tscn" id="2_bgjxe"]
 [ext_resource type="Texture2D" uid="uid://cv67vhsfir242" path="res://entities/enemies/goomba/anime/jump.png" id="2_qtetb"]
 [ext_resource type="Texture2D" uid="uid://cu6rg1coyo1db" path="res://entities/enemies/goomba/anime/squish.png" id="4_04ccq"]
 [ext_resource type="Texture2D" uid="uid://hyof6b570a1e" path="res://entities/enemies/goomba/anime/hurt.png" id="4_aecnx"]
@@ -476,6 +477,9 @@ hitbox = NodePath("Hitbox")
 state_manager = NodePath("StateManager")
 anime = NodePath("AnimationPlayer")
 doll = NodePath("AnimationTransformer/Doll")
+
+[node name="ForegroundSpotlight" parent="." unique_id=1069813592 instance=ExtResource("2_bgjxe")]
+position = Vector2(0, -7)
 
 [node name="AnimationTransformer" type="Node2D" parent="." unique_id=25554351]
 position = Vector2(0, -9)
