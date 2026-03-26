@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://nkp4jd67r6fk"]
 
 [ext_resource type="Texture2D" uid="uid://u72sbsscsx83" path="res://entities/interactables/pipe/segments/pipe_extension.png" id="1_osb6h"]
+[ext_resource type="Script" uid="uid://by1hkf572ddj0" path="res://entities/interactables/pipe/segments/pipe_extension.gd" id="2_qhdu1"]
 
 [node name="PipeExtension" type="TextureRect" unique_id=303450757]
 offset_left = -16.0
 offset_right = 16.0
 offset_bottom = 32.0
+scale = Vector2(1, 4.645)
+pivot_offset = Vector2(16, 0)
 texture = ExtResource("1_osb6h")
 expand_mode = 1
 stretch_mode = 1
+script = ExtResource("2_qhdu1")
+direction = "Down"

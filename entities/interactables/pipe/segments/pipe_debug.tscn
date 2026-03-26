@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cuq7xbwsyn77f"]
+
+[ext_resource type="Theme" uid="uid://c53wuaais37yi" path="res://level_designer/ui/editor_theme.tres" id="1_mj086"]
+
+[node name="pipe_debug" type="Control" unique_id=1821715625]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Index" type="RichTextLabel" parent="." unique_id=787243952]
+z_index = 100
+layout_mode = 0
+offset_left = -23.0
+offset_top = -15.0
+offset_right = -3.0
+offset_bottom = -5.0
+theme = ExtResource("1_mj086")
+theme_override_colors/default_color = Color(0.9776376, 0.038756758, 0, 1)
+theme_override_constants/outline_size = 3
+text = "999"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2106808470]
+z_index = 100
+layout_mode = 0
+offset_left = -1.0
+offset_top = -5.0
+offset_right = 1.0
+offset_bottom = 5.0
+color = Color(0.9764706, 0.039215688, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=185679850]
+z_index = 100
+layout_mode = 0
+offset_left = -5.0
+offset_top = -1.0
+offset_right = 5.0
+offset_bottom = 1.0
+color = Color(0.9764706, 0.039215688, 0, 1)

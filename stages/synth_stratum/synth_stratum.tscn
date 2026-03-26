@@ -36,6 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://ct32lhgrs787t" path="res://entities/platforms/moving/moving_platform.tscn" id="35_1nvlm"]
 [ext_resource type="PackedScene" uid="uid://b0ojpnfyepmw6" path="res://entities/interactables/pole/pole.tscn" id="36_fwr2a"]
 [ext_resource type="PackedScene" uid="uid://dvmlgiiihnw3d" path="res://entities/interactables/pipe/pipe.tscn" id="36_rnb4s"]
+[ext_resource type="Script" uid="uid://dbtqct7ie3dl5" path="res://entities/interactables/pipe/segments/pipe_segment.gd" id="37_rnb4s"]
 
 [sub_resource type="Resource" id="Resource_80yte"]
 script = ExtResource("3_rtnqg")
@@ -3943,6 +3944,55 @@ script = ExtResource("16_l20wn")
 texture = ExtResource("19_37d1f")
 mesh = SubResource("ArrayMesh_ie2xe")
 
+[sub_resource type="Resource" id="Resource_rnb4s"]
+script = ExtResource("37_rnb4s")
+direction = "Down"
+
+[sub_resource type="Resource" id="Resource_dvxun"]
+script = ExtResource("37_rnb4s")
+direction = "Left"
+
+[sub_resource type="Resource" id="Resource_x6j5q"]
+script = ExtResource("37_rnb4s")
+direction = "Up"
+
+[sub_resource type="Resource" id="Resource_061n5"]
+script = ExtResource("37_rnb4s")
+direction = "Left"
+
+[sub_resource type="Resource" id="Resource_tgy2j"]
+script = ExtResource("37_rnb4s")
+direction = "Up"
+
+[sub_resource type="Resource" id="Resource_4jkwe"]
+script = ExtResource("37_rnb4s")
+direction = "Left"
+
+[sub_resource type="Resource" id="Resource_xra04"]
+script = ExtResource("37_rnb4s")
+direction = "Up"
+
+[sub_resource type="Resource" id="Resource_hxeo7"]
+script = ExtResource("37_rnb4s")
+direction = "Left"
+
+[sub_resource type="Resource" id="Resource_p8xrs"]
+script = ExtResource("37_rnb4s")
+direction = "Up"
+
+[sub_resource type="Resource" id="Resource_e3f0l"]
+script = ExtResource("37_rnb4s")
+direction = "Left"
+
+[sub_resource type="Resource" id="Resource_sii3m"]
+script = ExtResource("37_rnb4s")
+direction = "Up"
+
+[sub_resource type="Resource" id="Resource_ihghk"]
+script = ExtResource("37_rnb4s")
+direction = "Left"
+length = 2.415
+
 [node name="SynthStratum" type="Node2D" unique_id=482401929 node_paths=PackedStringArray("player", "camera")]
 script = ExtResource("1_v54hh")
 level_name = &"Synth Stratum"
@@ -4140,154 +4190,154 @@ position = Vector2(-129, -625)
 
 [node name="Coin" parent="." unique_id=340800817 instance=ExtResource("30_ihghk")]
 position = Vector2(816, -56)
-frame_progress = 0.5064234
+frame_progress = 0.34706092
 
 [node name="Coin4" parent="." unique_id=277150002 instance=ExtResource("30_ihghk")]
 position = Vector2(840, -56)
-frame_progress = 0.5064234
+frame_progress = 0.34706092
 
 [node name="Coin5" parent="." unique_id=404130534 instance=ExtResource("30_ihghk")]
 position = Vector2(864, -56)
-frame_progress = 0.5064234
+frame_progress = 0.34706092
 
 [node name="Coin6" parent="." unique_id=1322689316 instance=ExtResource("30_ihghk")]
 position = Vector2(888, -56)
-frame_progress = 0.5064234
+frame_progress = 0.34706092
 
 [node name="Coin7" parent="." unique_id=1378051243 instance=ExtResource("30_ihghk")]
 position = Vector2(912, -56)
-frame_progress = 0.5064234
+frame_progress = 0.34706092
 
 [node name="Coin8" parent="." unique_id=17712182 instance=ExtResource("30_ihghk")]
 position = Vector2(816, -80)
-frame_progress = 0.5064234
+frame_progress = 0.34706092
 
 [node name="Coin9" parent="." unique_id=1470669526 instance=ExtResource("30_ihghk")]
 position = Vector2(840, -80)
-frame_progress = 0.5064234
+frame_progress = 0.34706092
 
 [node name="Coin10" parent="." unique_id=713682470 instance=ExtResource("30_ihghk")]
 position = Vector2(864, -80)
-frame_progress = 0.5064234
+frame_progress = 0.34706092
 
 [node name="Coin11" parent="." unique_id=1622627861 instance=ExtResource("30_ihghk")]
 position = Vector2(888, -80)
-frame_progress = 0.5064234
+frame_progress = 0.34706092
 
 [node name="Coin12" parent="." unique_id=208637934 instance=ExtResource("30_ihghk")]
 position = Vector2(912, -80)
-frame_progress = 0.5064234
+frame_progress = 0.34706092
 
 [node name="Coin13" parent="." unique_id=907856111 instance=ExtResource("30_ihghk")]
 position = Vector2(1352, -368)
 animation = &"1"
-frame_progress = 0.52065206
+frame_progress = 0.36128378
 type = 1
 
 [node name="Coin14" parent="." unique_id=511112308 instance=ExtResource("30_ihghk")]
 position = Vector2(1376, -368)
 animation = &"1"
-frame_progress = 0.52065206
+frame_progress = 0.36128378
 type = 1
 
 [node name="Coin15" parent="." unique_id=105276685 instance=ExtResource("30_ihghk")]
 position = Vector2(1400, -368)
 animation = &"1"
-frame_progress = 0.52065206
+frame_progress = 0.36128378
 type = 1
 
 [node name="Coin16" parent="." unique_id=1274666472 instance=ExtResource("30_ihghk")]
 position = Vector2(1424, -368)
 animation = &"1"
-frame_progress = 0.52065206
+frame_progress = 0.36128378
 type = 1
 
 [node name="Coin17" parent="." unique_id=1786769016 instance=ExtResource("30_ihghk")]
 position = Vector2(1448, -368)
 animation = &"1"
-frame_progress = 0.52065206
+frame_progress = 0.36128378
 type = 1
 
 [node name="Coin18" parent="." unique_id=939281997 instance=ExtResource("30_ihghk")]
 position = Vector2(1352, -392)
 animation = &"1"
-frame_progress = 0.52065206
+frame_progress = 0.36128378
 type = 1
 
 [node name="Coin19" parent="." unique_id=1871986574 instance=ExtResource("30_ihghk")]
 position = Vector2(1376, -392)
 animation = &"1"
-frame_progress = 0.52065206
+frame_progress = 0.36128378
 type = 1
 
 [node name="Coin20" parent="." unique_id=1493925600 instance=ExtResource("30_ihghk")]
 position = Vector2(1400, -392)
 animation = &"1"
-frame_progress = 0.52065206
+frame_progress = 0.36128378
 type = 1
 
 [node name="Coin21" parent="." unique_id=111746828 instance=ExtResource("30_ihghk")]
 position = Vector2(1424, -392)
 animation = &"1"
-frame_progress = 0.52065206
+frame_progress = 0.36128378
 type = 1
 
 [node name="Coin22" parent="." unique_id=1708821704 instance=ExtResource("30_ihghk")]
 position = Vector2(1448, -392)
 animation = &"1"
-frame_progress = 0.52065206
+frame_progress = 0.36128378
 type = 1
 
 [node name="Coin103" parent="." unique_id=764779499 instance=ExtResource("30_ihghk")]
 position = Vector2(80, -48)
-frame_progress = 0.5064234
+frame_progress = 0.34706092
 
 [node name="Coin3" parent="." unique_id=184724743 instance=ExtResource("30_ihghk")]
 position = Vector2(1416, -600)
 animation = &"2"
-frame_progress = 0.7664721
+frame_progress = 0.6071104
 type = 2
 
 [node name="Coin23" parent="." unique_id=1541214465 instance=ExtResource("30_ihghk")]
 position = Vector2(1440, -600)
 animation = &"2"
-frame_progress = 0.7664721
+frame_progress = 0.6071104
 type = 2
 
 [node name="Coin24" parent="." unique_id=596649156 instance=ExtResource("30_ihghk")]
 position = Vector2(1464, -600)
 animation = &"2"
-frame_progress = 0.7664721
+frame_progress = 0.6071104
 type = 2
 
 [node name="Coin25" parent="." unique_id=289522181 instance=ExtResource("30_ihghk")]
 position = Vector2(1488, -600)
 animation = &"2"
-frame_progress = 0.7664721
+frame_progress = 0.6071104
 type = 2
 
 [node name="Coin26" parent="." unique_id=191404582 instance=ExtResource("30_ihghk")]
 position = Vector2(1512, -600)
 animation = &"2"
-frame_progress = 0.7664721
+frame_progress = 0.6071104
 type = 2
 
 [node name="Coin27" parent="." unique_id=622251736 instance=ExtResource("30_ihghk")]
 position = Vector2(1536, -600)
 animation = &"2"
-frame_progress = 0.7664721
+frame_progress = 0.6071104
 type = 2
 
 [node name="Coin28" parent="." unique_id=886201400 instance=ExtResource("30_ihghk")]
 position = Vector2(1560, -600)
 animation = &"2"
-frame_progress = 0.7664721
+frame_progress = 0.6071104
 type = 2
 
 [node name="Coin29" parent="." unique_id=810516682 instance=ExtResource("30_ihghk")]
 position = Vector2(1584, -600)
 animation = &"2"
-frame_progress = 0.7664721
+frame_progress = 0.6071104
 type = 2
 
 [node name="Shine" parent="." unique_id=1728559446 instance=ExtResource("31_nma4k")]
@@ -4324,4 +4374,4 @@ position = Vector2(-1189, 144)
 height = 800
 
 [node name="WarpPipe" parent="." unique_id=544277668 instance=ExtResource("36_rnb4s")]
-position = Vector2(-957, -464)
+segments = Array[ExtResource("37_rnb4s")]([SubResource("Resource_rnb4s"), SubResource("Resource_dvxun"), SubResource("Resource_x6j5q"), SubResource("Resource_061n5"), SubResource("Resource_tgy2j"), SubResource("Resource_4jkwe"), SubResource("Resource_xra04"), SubResource("Resource_hxeo7"), SubResource("Resource_p8xrs"), SubResource("Resource_e3f0l"), SubResource("Resource_sii3m"), SubResource("Resource_ihghk")])

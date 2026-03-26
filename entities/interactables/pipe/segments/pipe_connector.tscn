@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b0i2g4j858qyn"]
+
+[ext_resource type="Texture2D" uid="uid://rm27q1fjgv7d" path="res://entities/interactables/pipe/pipe_parts.png" id="1_5pqpt"]
+[ext_resource type="Script" uid="uid://bmmfddycicu3l" path="res://entities/interactables/pipe/segments/pipe_connector.gd" id="1_86ouj"]
+
+[node name="Node2D" type="Sprite2D" unique_id=122318992]
+texture = ExtResource("1_5pqpt")
+offset = Vector2(-16, 0)
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 32)
+script = ExtResource("1_86ouj")
+type = "Corner"
+entry_dir = "Left"
+exit_dir = "Up"
