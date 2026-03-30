@@ -2,10 +2,7 @@
 class_name UISlider
 extends Control
 ## A common UI slider.[br]
-## The script runs in the editor to update the visuals accordingly.
 
-# TODO: Add ticks, but there's a bug in Godot that prevents this.
-# ISSUE LINK: https://github.com/godotengine/godot/issues/103839
 
 @export var max_value: float = 100.0:
 	set(val):
@@ -47,13 +44,6 @@ extends Control
 		if is_instance_valid(slider):
 			_set_disable(disabled)
 
-#@export var ticked: bool = false:
-	#set(val):
-		#ticked = val
-#
-		#if is_instance_valid(slider):
-			#_update_ticks()
-
 @export_category("References")
 @export var slider: HSlider
 @export var grabber: Control
@@ -61,25 +51,30 @@ extends Control
 @export var progress_bar: ProgressBar
 @export var tick_sound: SoundEffect
 
+## Whether or not the slider is being hovered over / focused.
+var hovering := false
+
 
 func _ready() -> void:
 	_update_slider(default_value, false)
 
 
-func _gui_input(event):
-	if event is InputEventMouseButton or event is InputEventMouseMotion:
-		get_viewport().set_input_as_handled()
+func _process(_delta: float) -> void:
+	var mouse_pos := get_global_mouse_position()
+
+	hovering = (
+		grabber.get_global_rect().has_point(mouse_pos) or
+		slider.has_focus()
+	)
+
+	if hovering:
+		grabber.modulate = Color("f1d937ff")
+	else:
+		grabber.modulate = Color.WHITE
 
 
-#func _update_ticks():
-	#if ticked == true:
-		#slider.tick_count = round(size.x / 8)
-	#else:
-		#slider.tick_count = 0
-
-
-# This function is called when the slider is moved,
-# updating the visuals and optionally playing a sound effect.
+## This function is called when the slider is moved,
+## updating the visuals and optionally playing a sound effect.
 func _update_slider(new_value: float, play_sfx: bool) -> void:
 	value = new_value
 

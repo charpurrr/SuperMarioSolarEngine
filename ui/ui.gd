@@ -38,7 +38,7 @@ var camera: Camera2D
 var hud_enabled: bool = true
 
 
-func _ready():
+func _ready() -> void:
 	_toggle_debug()
 	_toggle_debug_hitboxes()
 
@@ -53,15 +53,14 @@ func _ready():
 	world_machine.level_reloaded.connect(_set_player)
 
 
-func _process(_delta):
+func _process(_delta) -> void:
 	for i in current_notifs:
 		if not is_instance_valid(i):
 			current_notifs.erase(i)
 
 
-func _input(event: InputEvent):
-	if event.is_action_pressed(&"pause"):
-		_pause_logic()
+func _input(event: InputEvent) -> void:
+	_pause_logic(event)
 
 	if GameState.is_paused():
 		return
@@ -87,31 +86,52 @@ func _setting_changed(key: String, _value: Variant) -> void:
 		_toggle_debug_hitboxes()
 
 
-func _pause_logic():
-	# Ignore the pause input if a screen is being transitioned to/from.
+func _pause_logic(event: InputEvent) -> void:
+	var is_pause := event.is_action_pressed(&"pause")
+	var is_cancel := event.is_action_pressed(&"ui_cancel")
+
+	# Only care about pause-related inputs.
+	if not is_pause and not is_cancel:
+		return
+
+	# Block input during screen transitions.
 	if screen_manager.anime_player.is_playing():
 		return
 
+	var is_paused := GameState.is_paused()
+	var current_screen := screen_manager.current_screen
 	var pause_screen: PauseScreen = screen_manager.get_screen(&"PauseScreen")
 
-	# Intial pause action:
-	if not GameState.is_paused():
-		game_pause_sfx.play(screen_manager)
-		MusicManager.set_stream_paused(true)
-		screen_manager.switch_screen(null, pause_screen)
-		GameState.emit_signal(&"paused")
-	# Unpausing action:
-	elif screen_manager.current_screen is PauseScreen:
-		game_unpause_sfx.play(screen_manager)
-		MusicManager.set_stream_paused(false)
-		screen_manager.switch_screen(pause_screen, null)
-		GameState.emit_signal(&"paused")
-	# Pausing when in a submenu, putting you back in the PauseScreen:
-	else:
-		screen_manager.switch_screen(screen_manager.current_screen, pause_screen)
+	# --- PAUSE ---
+	if is_pause and not is_paused:
+		_pause_game(pause_screen)
+		return
+
+	# --- UNPAUSE ---
+	if (is_pause or is_cancel) and is_paused and current_screen is PauseScreen:
+		_unpause_game(pause_screen)
+		return
+
+	# --- RETURN TO PAUSE MENU FROM SUBMENU ---
+	if is_cancel and is_paused:
+		screen_manager.switch_screen(current_screen, pause_screen)
 
 
-func _toggle_color_blur():
+func _pause_game(pause_screen: PauseScreen):
+	game_pause_sfx.play(screen_manager)
+	MusicManager.set_stream_paused(true)
+	screen_manager.switch_screen(null, pause_screen)
+	GameState.emit_signal(&"paused")
+
+
+func _unpause_game(pause_screen: PauseScreen):
+	game_unpause_sfx.play(screen_manager)
+	MusicManager.set_stream_paused(false)
+	screen_manager.switch_screen(pause_screen, null)
+	GameState.emit_signal(&"paused")
+
+
+func _toggle_color_blur() -> void:
 	if not is_instance_valid(color_blur.material):
 		return
 
@@ -124,7 +144,7 @@ func _toggle_color_blur():
 
 
 ## Creates a visual "notification" type indicator on the screen.
-func _push_notif(type: StringName, input: String):
+func _push_notif(type: StringName, input: String) -> void:
 	var notif: Control = notif_scene.instantiate()
 
 	notif.type = type
@@ -139,7 +159,7 @@ func _push_notif(type: StringName, input: String):
 	notif_list.add_child(notif)
 
 
-func _display_input(event: InputEvent):
+func _display_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		return
 
@@ -159,8 +179,8 @@ func _display_input(event: InputEvent):
 		input_display.add_child(texture_rect)
 
 
-func _toggle_debug():
-	var toggle: bool = GameState.debug_toggle
+func _toggle_debug() -> void:
+	var toggle := GameState.debug_toggle
 
 	debug.visible = toggle
 
@@ -170,15 +190,15 @@ func _toggle_debug():
 		debug.process_mode = Node.PROCESS_MODE_DISABLED
 
 
-func _toggle_debug_hitboxes():
-	var toggle: bool = GameState.debug_toggle_collision_shapes
+func _toggle_debug_hitboxes() -> void:
+	var toggle := GameState.debug_toggle_collision_shapes
 
 	get_tree().set_debug_collisions_hint(toggle)
 	# This fixes some buggy behavior which causes the changes to not be visible unless the window is resized.
 	get_tree().root.emit_signal(&"visibility_changed")
 
 
-func _set_player():
+func _set_player() -> void:
 	if not world_machine: return
 
 	player = world_machine.level_node.player
@@ -189,5 +209,5 @@ func _set_player():
 		player.health_module.damaged.connect(life_meter.take_hit)
 
 
-func _set_camera():
+func _set_camera() -> void:
 	camera = world_machine.level_node.camera

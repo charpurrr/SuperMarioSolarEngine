@@ -1,6 +1,8 @@
 @tool
 extends UISlider
 
+@export var press_sfx: SoundEffect
+
 ## Set in [VolumeSetting].
 @onready var bus: AudioBus
 
@@ -15,6 +17,12 @@ func _ready() -> void:
 		bus.bus_volume_updated.connect(_bus_updated)
 	else:
 		super()
+
+
+func _input(_event: InputEvent) -> void:
+	if slider.has_focus() and Input.is_action_just_pressed(&"setting_reset"):
+		slider.value = 100
+		press_sfx.play(self)
 
 
 func _try_sfx():
