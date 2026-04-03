@@ -1,4 +1,3 @@
-
 class_name ClimbHandstand
 extends PlayerState
 ## Handstanding at the tip of a [Pole], lining up to jump off.
