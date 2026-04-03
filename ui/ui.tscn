@@ -48,7 +48,6 @@
 [ext_resource type="Script" uid="uid://dh60w4m18afby" path="res://ui/screen_manager/options_screen/general/general_tab.gd" id="47_mvot7"]
 [ext_resource type="Script" uid="uid://djnqumhmtso2y" path="res://ui/buttons/option_bool.gd" id="47_t7euy"]
 [ext_resource type="Texture2D" uid="uid://dkjx263nlcra" path="res://ui/input_icons/nintendo_switch/controller_switch_motion.svg" id="48_1v6c2"]
-[ext_resource type="Script" uid="uid://4tsw3vcsyedw" path="res://ui/scroll_container_snapper.gd" id="49_aeygf"]
 [ext_resource type="Texture2D" uid="uid://bhvukbqm4v5f3" path="res://ui/input_icons/nintendo_switch/controller_switch_rumble.svg" id="49_lol4u"]
 [ext_resource type="PackedScene" uid="uid://q67oo8p20ee4" path="res://ui/screen_manager/options_screen/controls/bind_setting.tscn" id="49_svocp"]
 [ext_resource type="Theme" uid="uid://blj83dty2taxs" path="res://ui/buttons/scrollbar.tres" id="50_5i7o0"]
@@ -1677,8 +1676,6 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_n7xk5")
 follow_focus = true
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
-script = ExtResource("49_aeygf")
-beginning_node_name = &"PresetSelector"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer" unique_id=722725613]
 z_index = -1
