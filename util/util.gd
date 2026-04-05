@@ -3,7 +3,7 @@ class_name Util
 
 
 ## Resets the mouse cursor graphic to that defined in the project settings.
-static func set_cursor_to_default():
+static func set_cursor_to_default() -> void:
 	var default_cursor_image: Resource = load(
 		ProjectSettings.get_setting("display/mouse_cursor/custom_image")
 		)
@@ -29,26 +29,3 @@ static func get_default_events(action: String, as_strings: bool = false) -> Vari
 			names.append(IconMap.get_filtered_name(event))
 
 		return names
-
-
-## Gets scene root for editor purposes
-static func get_scene_root(node: Node) -> Node:
-	var current = node
-	var last_valid = node
-	while current.get_parent() != null:
-		current = current.get_parent()
-		if "@" not in current.name:
-			last_valid = current
-	return last_valid
-
-
-## Swaps two elements in an array given their indices.
-## Also supports negative indices
-static func swap(array: Array, idx_1: int, idx_2: int):
-	var n = len(array)
-	idx_1 = idx_1 if idx_1 >= 0 else n+idx_1
-	idx_2 = idx_2 if idx_2 >= 0 else n+idx_2
-	
-	var temp = array[idx_1]
-	array[idx_1] = array[idx_2]
-	array[idx_2] = temp

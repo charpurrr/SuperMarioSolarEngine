@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cargcb2py1wcg" path="res://entities/player/shared/fludd/fludd.png" id="2_e1ut2"]
 [ext_resource type="PackedScene" uid="uid://vukdixescka4" path="res://entities/player/shared/fludd/stamina_bar.tscn" id="2_ijnwc"]
 [ext_resource type="SpriteFrames" uid="uid://bqn6b0xmrvxjc" path="res://entities/player/mario/anime/mario_anime.res" id="4_xenv0"]
-[ext_resource type="Script" uid="uid://rtvq2jb66q4u" path="res://entities/player/shared/areas/overlap_check.gd" id="6_mk8bu"]
+[ext_resource type="Script" path="res://entities/player/shared/areas/overlap_check.gd" id="6_mk8bu"]
 [ext_resource type="AudioStream" uid="uid://cyrd56neurj15" path="res://entities/player/shared/fludd/fludd_toggle.wav" id="9_1vsdu"]
 [ext_resource type="AudioStream" uid="uid://bujew7hsjfyar" path="res://entities/player/shared/fludd/nozzle_switch.wav" id="10_4t2h7"]
 [ext_resource type="AudioStream" uid="uid://3bnbwk83tb8g" path="res://entities/player/shared/fludd/hover_spray.wav" id="10_8wyc1"]
@@ -158,7 +158,7 @@
 [ext_resource type="Script" uid="uid://bv5qocut47b7l" path="res://entities/player/shared/states/dry/climb.gd" id="156_wc0bq"]
 [ext_resource type="PackedScene" uid="uid://d1wf1b4d4xfvf" path="res://props/particles/sparkle.tscn" id="158_1s3ss"]
 [ext_resource type="Script" uid="uid://yunont5er8l4" path="res://entities/player/shared/states/dry/climb_handstand.gd" id="158_wihps"]
-[ext_resource type="Script" uid="uid://d2r06iydc4bp" path="res://entities/player/shared/states/enter_pipe.gd" id="159_saqqr"]
+[ext_resource type="Script" path="res://entities/player/shared/states/enter_pipe.gd" id="159_saqqr"]
 
 [sub_resource type="Shader" id="Shader_xenv0"]
 code = "shader_type canvas_item;
@@ -477,11 +477,10 @@ frame_fludd_offsets = Dictionary[int, Vector2i]({
 7: Vector2i(0, -1)
 })
 animation = "enter_pipe_vertical"
-frame = 2
-preview = true
-preview_fludd = true
+frame = 0
+preview = false
 frame_offset = Vector2i(0, 0)
-fludd_animation = "rot_y090"
+fludd_animation = "default"
 fludd_offset = Vector2i(0, -1)
 metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 

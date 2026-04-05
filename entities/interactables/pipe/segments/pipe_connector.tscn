@@ -1,14 +1,20 @@
 [gd_scene format=3 uid="uid://b0i2g4j858qyn"]
 
-[ext_resource type="Texture2D" uid="uid://rm27q1fjgv7d" path="res://entities/interactables/pipe/pipe_parts.png" id="1_5pqpt"]
 [ext_resource type="Script" uid="uid://bmmfddycicu3l" path="res://entities/interactables/pipe/segments/pipe_connector.gd" id="1_86ouj"]
+[ext_resource type="Texture2D" uid="uid://cxv2f3krsr8nw" path="res://entities/interactables/pipe/assets/pipe_block.png" id="2_bss3w"]
+[ext_resource type="Texture2D" uid="uid://buhkxi15xyddt" path="res://entities/interactables/pipe/assets/pipe_corner_tl.png" id="3_2xg5i"]
+[ext_resource type="Texture2D" uid="uid://bcseg4dohcqj" path="res://entities/interactables/pipe/assets/pipe_corner_tr.png" id="4_btggf"]
+[ext_resource type="Texture2D" uid="uid://crt6h21idiui3" path="res://entities/interactables/pipe/assets/pipe_corner_bl.png" id="5_0gnr1"]
+[ext_resource type="Texture2D" uid="uid://bnmrmsscxjsu" path="res://entities/interactables/pipe/assets/pipe_corner_br.png" id="6_vpl7f"]
 
 [node name="Node2D" type="Sprite2D" unique_id=122318992]
-texture = ExtResource("1_5pqpt")
-offset = Vector2(-16, 0)
-region_enabled = true
-region_rect = Rect2(32, 32, 32, 32)
+texture = ExtResource("2_bss3w")
 script = ExtResource("1_86ouj")
-type = "Corner"
-entry_dir = "Left"
+type = "Block"
+entry_dir = "Right"
 exit_dir = "Up"
+texture_block = ExtResource("2_bss3w")
+texture_corner_top_left = ExtResource("3_2xg5i")
+texture_corner_top_right = ExtResource("4_btggf")
+texture_corner_bottom_left = ExtResource("5_0gnr1")
+texture_corner_bottom_right = ExtResource("6_vpl7f")

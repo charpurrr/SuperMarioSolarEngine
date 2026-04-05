@@ -1,30 +1,28 @@
 @tool
 class_name WarpPipe
 extends Node2D
-## Pipe that can be entered to send the player to a new location.
+## Pipe that can optionally be entered to send the player to a new location.
+##
+## Composed of one or more [PipeSegment]s which define the pipe's shape and layout.
+## The pipe is rebuilt automatically whenever segments or properties change.
 
-
-## Whether the [WarpPipe] has an end exit or not.
-@export var end_exit := false:
-	set(value):
-		end_exit = value
-		_build_pipe()
-
-## Maps a direction to the next possible directions from it.
+## Maps a direction to the two perpendicular directions available for the next segment.
 const available_direction_map: Dictionary = {
 	"Left": ["Up", "Down"],
 	"Right": ["Up", "Down"],
 	"Up": ["Left", "Right"],
 	"Down": ["Left", "Right"]
 }
+
 ## Maps a direction to its next clockwise-ordered direction.
-## Up --> Left --> Down --> Right --> Up
+## Up -> Right -> Down -> Left -> Up
 const clockwise_direction: Dictionary = {
-	"Up": "Left",
-	"Left": "Down",
-	"Down": "Right",
-	"Right": "Up"
+	"Up": "Right",
+	"Right": "Down",
+	"Down": "Left",
+	"Left": "Up"
 }
+
 ## Maps a direction to its opposite.
 const opposite_direction: Dictionary = {
 	"Up": "Down",
@@ -32,99 +30,131 @@ const opposite_direction: Dictionary = {
 	"Down": "Up",
 	"Right": "Left"
 }
-## Returns the amount of clockwise steps needed to go from
-## [param start] to [param end].
-func get_direction_steps_with_end(start: String, end: String) -> int:
-	var cur_step = start
-	var steps: int = 0
-	while cur_step != end:
-		cur_step = clockwise_direction[cur_step]
-		steps += 1
-	return steps
-## Returns the reached clockwise direction starting from
-## [param start] with a given amount of [param steps].
-func get_direction_end_with_steps(start: String, steps: int) -> String:
-	var cur_step = start
-	for i in range(steps):
-		cur_step = clockwise_direction[cur_step]
-	return cur_step
 
-var old_segment_length: int = 0
-var new_segment_length: int = 0
-## The different pieces making up the pipe.
+## Whether the pipe has a capped exit at its ending.
+## If false, the pipe is open-ended.
+@export var end_exit := false:
+	set(val):
+		end_exit = val
+		_build_pipe()
+
+## The segments that define the pipe's shape.
+## Adding or removing segments updates the pipe layout automatically.[br][br]
+## [b]Note:[/b] The first segment is always the entrance and cannot be a connector.
 @export var segments: Array[PipeSegment]:
-	set(value):
-		old_segment_length = len(segments)
-		new_segment_length = len(value)
+	set(val):
+		var old := segments.size()
+		var new := val.size()
 
-		if new_segment_length == 0 or old_segment_length == 0:
+		if new == 0 or old == 0:
 			var first_segment := PipeSegment.new()
 			first_segment.available_directions = ["Left", "Down", "Up", "Right"]
 			first_segment.direction = "Down"
 			first_segment.is_connector = false
 
-			if not first_segment.connected_updates:
+			if not first_segment.updated.is_connected(_build_pipe):
 				first_segment.updated.connect(_build_pipe)
-				first_segment.updated_direction.connect(_notify_segment_direction_changed.bind(0))
-				first_segment.connected_updates = true
+			if not first_segment.direction_updated.is_connected(_segment_direction_changed):
+				first_segment.direction_updated.connect(_segment_direction_changed.bind(0))
 
-			new_segment_length = 1
 			segments = [first_segment]
-			_build_pipe()
+
+			if not build_lock:
+				_build_pipe(old, 1)
+
 			return
 
-		for i in range(new_segment_length):
-			if not value[i]:
-				value[i] = PipeSegment.new()
+		for i in new:
+			if not val[i]:
+				val[i] = PipeSegment.new()
+
 			if i > 0:
-				var dir = value[i-1].direction
-				value[i].available_directions = available_direction_map[dir]
-			value[i].is_connector = i != 0
-			value[i].idx = i
-			if not value[i].connected_updates:
-				value[i].updated.connect(_build_pipe)
-				value[i].updated_direction.connect(_notify_segment_direction_changed.bind(i))
-				value[i].connected_updates = true
+				var dir = val[i-1].direction
+				val[i].available_directions = available_direction_map[dir]
 
-		segments = value
-		_build_pipe()
+			val[i].is_connector = i != 0
+			val[i].idx = i
 
+			if not val[i].updated.is_connected(_build_pipe):
+				val[i].updated.connect(_build_pipe)
+			if not val[i].direction_updated.is_connected(_segment_direction_changed):
+				val[i].direction_updated.connect(_segment_direction_changed.bind(i))
 
-var segment_inst: Array = []
-var build_lock: bool = false
+		segments = val
+		_build_pipe(old, new)
 
-@export_group("Debugging")
-## Enables debug markers on pipe pieces to associate them with
-## the corresponding [PipeSegment].
+## If true, renders debug markers on each segment showing its index and entry point.
 @export var debug := false:
-	set(value):
-		debug = value
+	set(val):
+		debug = val
 		_build_pipe()
-## Clears out all instances of pipe pieces in case of
-## a pipe build malfunction.
-@export_tool_button("Reset segment insts") var a: Callable = func():
-	segment_inst.clear()
-	for x in get_children(): x.queue_free()
-	build_lock = false
-	direction_changed_lock = false
 
-
-@export_group("Node References")
+@export_category("References")
+## The scene for pipe entrances. Used for the first segment and optionally the exit.
 @export var pipe_entrance: PackedScene
+## The scene for pipe extensions, which are scaled to match each segment's length.
 @export var pipe_extension: PackedScene
+## The scene for pipe connectors between segments. Can render as a corner or a block.
 @export var pipe_connector: PackedScene
+## The scene for debug markers, shown per-segment when [member debug] is enabled.
 @export var pipe_debug: PackedScene
 
+## Flat array mirroring [member segments], holding the instantiated scene nodes for each slot.
+## Each entry is either an [Array] of 
+## [code][connector_or_entrance, extension, debug_marker][/code],
+## or a [PipeEntrance] node for the end exit (the last element).
+var segment_inst: Array = []
 
-## Returns the end point of the [WarpPipe].
+## Prevents [method _build_pipe] from running before [method _ready],
+## or from being re-entered while a build is already in progress.
+var build_lock: bool = true
+
+## Prevents [method _notify_segment_direction_changed] from re-entering itself
+## while propagating direction changes across segments.
+var direction_changed_lock = false
+
+
+func _ready() -> void:
+	build_lock = false
+	_build_pipe()
+
+
+## Returns the amount of clockwise steps needed to go from
+## [param start] to [param end].
+func get_direction_steps_with_end(start: String, end: String) -> int:
+	var cur_step := start
+	var steps := 0
+
+	while cur_step != end:
+		cur_step = clockwise_direction[cur_step]
+		steps += 1
+
+	return steps
+
+
+## Returns the reached clockwise direction starting from
+## [param start] with a given amount of [param steps].
+func get_direction_end_with_steps(start: String, steps: int) -> String:
+	var cur_step := start
+
+	for i in steps:
+		cur_step = clockwise_direction[cur_step]
+
+	return cur_step
+
+
+## Returns the world-space end point of the pipe (the tip of the last segment).
 func get_end_point() -> Vector2:
-	if len(segment_inst) > 0:
+	if segment_inst.size() > 0:
 		return position + segment_inst[-1][1].get_end_point()
+
 	return position
 
 
-## Main building function for the pipe.
-func _build_pipe():
+## Rebuilds the pipe's scene nodes to match the current [member segments] data.
+## Diffs [member old_segment_length] against [member new_segment_length] to add or
+## remove connector slots, then repositions and reconfigures all nodes in order.
+func _build_pipe(old: int = segments.size(), new: int = segments.size()) -> void:
 	if build_lock: return
 	build_lock = true
 
@@ -132,31 +162,28 @@ func _build_pipe():
 		build_lock = false
 		return
 
-	var _old := old_segment_length
-	var _new := new_segment_length
+	# Bootstrap segment_inst if this is the first build.
+	if segment_inst.is_empty():
+		segment_inst = [[pipe_entrance.instantiate(), pipe_extension.instantiate(), null], null]
 
-	if len(segment_inst) == 0:
-		var entrance: PipeEntrance = pipe_entrance.instantiate()
-		entrance.direction = segments[0].direction
-
-		var entrance_ext: PipeExtension = pipe_extension.instantiate()
-		entrance_ext.direction = segments[0].direction
-		entrance_ext.scale.y = segments[0].length / 32.0
-
-		segment_inst = [[entrance, entrance_ext, null], null]
-		_old = 1
-		_new = 1
+		# Force diff to 0 since bootstrap already created the first slot.
+		old = 1
+		new = 1
 
 	var freed_nodes = []
 
+	# Add or remove the end exit node based on the end_exit flag.
 	if end_exit and not segment_inst[-1]:
 		var exit: PipeEntrance = pipe_entrance.instantiate()
 		segment_inst[-1] = exit
+
 	if not end_exit and segment_inst[-1]:
 		freed_nodes.append(segment_inst[-1])
 		segment_inst[-1] = null
 
-	var diff := _new - _old
+	# Diff segment count and insert/remove connector slots accordingly.
+	var diff := new - old
+
 	if diff < 0:
 		for i in -diff:
 			var deleted = segment_inst.pop_at(-2)
@@ -165,14 +192,16 @@ func _build_pipe():
 		for i in diff:
 			var connector: PipeConnector = pipe_connector.instantiate()
 			var connector_ext: PipeExtension = pipe_extension.instantiate()
+
 			segment_inst.insert(-1, [connector, connector_ext, null])
 
-	old_segment_length = _new
-	new_segment_length = _new
-
-	for i in len(segments):
+	# Add or remove debug marker nodes based on the debug flag.
+	# Done before add_child pass so new debug nodes are parented in the same pass.
+	for i in segments.size():
 		var slot = segment_inst[i]
+
 		if not slot is Array: continue
+
 		if debug and not slot[2]:
 			var dbg = pipe_debug.instantiate()
 			slot[2] = dbg
@@ -183,6 +212,7 @@ func _build_pipe():
 	for x in freed_nodes:
 		if x: x.queue_free()
 
+	# Ensure all live nodes are in the scene tree.
 	for x in segment_inst:
 		if x is Array:
 			for y in x:
@@ -191,39 +221,60 @@ func _build_pipe():
 		elif x and not x.is_inside_tree():
 			add_child(x)
 
-	var last_piece = null
-	for i in len(segments):
-		var cur_segment = segment_inst[i]
-		if not cur_segment or cur_segment is PipeEntrance:
-			break
+	# Update and seed the entrance before processing connectors.
+	var entrance: PipeEntrance = segment_inst[0][0]
+	entrance.direction = opposite_direction[segments[0].direction]
 
-		var segment_start = cur_segment[0]
-		if segment_start is PipeConnector:
-			segment_start.exit_dir = segments[i].direction
-			segment_start.entry_dir = segments[i-1].direction
-			segment_start.type = "Block" if segments[i].is_block else "Corner"
-			segment_start.position = last_piece.get_end_point() if last_piece else Vector2.ZERO
-		else:
-			segment_start.direction = opposite_direction[segments[i].direction]
+	var entrance_ext: PipeExtension = segment_inst[0][1]
+	entrance_ext.direction = segments[0].direction
+	entrance_ext.size.y = segments[0].length
+
+	var entrance_dbg = segment_inst[0][2]
+
+	if entrance_dbg:
+		entrance_dbg.get_node("Index").text = "0"
+		entrance_dbg.get_node("ConnectorEndPoint").position = entrance.get_end_point() - 2*Vector2.ONE
+		entrance_dbg.get_node("ExtensionEndPoint").position = entrance_ext.get_end_point() - Vector2.ONE
+
+	var last_piece = entrance_ext
+
+	for i in range(1, segments.size()):
+		var segment = segment_inst[i]
+
+		# Stop if we've reached the trailing exit slot (a PipeEntrance, not an Array).
+		if not segment is Array: break
+
+		var segment_start = segment[0]
+
+		segment_start.exit_dir = segments[i].direction
+		segment_start.entry_dir = segments[i-1].direction
+		segment_start.type = "Block" if segments[i].is_block else "Corner"
+		segment_start.position = last_piece.get_end_point()
 
 		last_piece = segment_start
 
-		var dbg = cur_segment[2]
-		if dbg:
-			dbg.position = segment_start.position
-			if segment_start is PipeConnector:
-				dbg.position += segment_start.offset
-			else:
-				dbg.position += segment_start.get_node("PlayerDetector").position
-			dbg.get_node("Index").text = str(i)
+		var segment_ext = segment[1] as PipeExtension
 
-		var segment_ext = cur_segment[1]
 		segment_ext.direction = segments[i].direction
-		segment_ext.scale.y = segments[i].length / 32.0
-		segment_ext.position = last_piece.get_end_point() - Vector2(16, 0)
+		segment_ext.size.y = segments[i].length
+		segment_ext.position = last_piece.get_end_point() - segment_ext.get_combined_pivot_offset()
+
 		last_piece = segment_ext
 
+		var dbg = segment[2]
+
+		if dbg:
+			dbg.position = segment_start.position + segment_start.offset
+
+			dbg.get_node("Index").text = str(i)
+			dbg.get_node("ConnectorEndPoint").position = \
+			segment_start.get_end_point() - 2 * Vector2.ONE - dbg.position
+			dbg.get_node("ExtensionEndPoint").position = \
+			segment_ext.get_end_point() - Vector2.ONE - dbg.position
+
+	# Position the end exit at the tip of the last extension.
 	var pipe_exit = segment_inst[-1]
+
 	if pipe_exit and last_piece:
 		pipe_exit.direction = segments[-1].direction
 		pipe_exit.position = last_piece.get_end_point()
@@ -231,21 +282,58 @@ func _build_pipe():
 	build_lock = false
 
 
-var direction_changed_lock = false
-## Applies smart pipe rotation when changing the orientation of one of the segments.
-func _notify_segment_direction_changed(idx: int):
+## When a segment's direction changes, rotates all subsequent segments by the same
+## clockwise delta to preserve the overall pipe shape.
+#func _notify_segment_direction_changed(idx: int) -> void:
+	#if direction_changed_lock: return
+	#direction_changed_lock = true
+#
+	#if idx + 1 < segments.size():
+		#var main_segment := segments[idx]
+		#var steps := get_direction_steps_with_end(main_segment.old_direction, main_segment.direction)
+#
+		#for i in range(idx + 1, segments.size()):
+			#segments[i].direction = get_direction_end_with_steps(segments[i].direction, steps)
+#
+			#for available_directions in [["Left", "Right"], ["Up", "Down"]]:
+				#if segments[i].direction in available_directions:
+					#segments[i].available_directions = available_directions
+#
+	#direction_changed_lock = false
+#
+	#call_deferred("_build_pipe")
+
+
+func _segment_direction_changed(idx: int) -> void:
 	if direction_changed_lock: return
 	direction_changed_lock = true
 
-	if idx + 1 < len(segments):
-		var main_segment := segments[idx]
+	var main_segment := segments[idx]
+
+	if idx == 0:
 		var steps := get_direction_steps_with_end(main_segment.old_direction, main_segment.direction)
-		for i in range(idx + 1, len(segments)):
+
+		for i in range(idx + 1, segments.size()):
 			segments[i].direction = get_direction_end_with_steps(segments[i].direction, steps)
+
 			for available_directions in [["Left", "Right"], ["Up", "Down"]]:
 				if segments[i].direction in available_directions:
 					segments[i].available_directions = available_directions
+	elif + 1 < segments.size():
+		for i in range(idx + 1, segments.size()):
+			if (
+				(
+					main_segment.direction in ["Left", "Right"] and
+					segments[i].direction in ["Left", "Right"]
+				) or
+				(
+					main_segment.direction in ["Up", "Down"] and
+					segments[i].direction in ["Up", "Down"]
+				)
+			):
+				segments[i].direction = opposite_direction.get(segments[i].direction)
 
 	direction_changed_lock = false
+
 	for i in 2:
-		call_deferred("_build_pipe")
+		call_deferred(&"_build_pipe")

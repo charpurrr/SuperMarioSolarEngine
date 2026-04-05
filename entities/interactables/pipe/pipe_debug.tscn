@@ -2,6 +2,20 @@
 
 [ext_resource type="Theme" uid="uid://c53wuaais37yi" path="res://level_designer/ui/editor_theme.tres" id="1_mj086"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_npfny"]
+bg_color = Color(0, 1, 0.89063114, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p2acc"]
+bg_color = Color(0, 0, 0.89063114, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="pipe_debug" type="Control" unique_id=1821715625]
 layout_mode = 3
 anchors_preset = 15
@@ -15,12 +29,13 @@ z_index = 100
 layout_mode = 0
 offset_left = -23.0
 offset_top = -15.0
-offset_right = -3.0
+offset_right = -2.0
 offset_bottom = -5.0
 theme = ExtResource("1_mj086")
 theme_override_colors/default_color = Color(0.9776376, 0.038756758, 0, 1)
 theme_override_constants/outline_size = 3
 text = "999"
+horizontal_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2106808470]
 z_index = 100
@@ -39,3 +54,21 @@ offset_top = -1.0
 offset_right = 5.0
 offset_bottom = 1.0
 color = Color(0.9764706, 0.039215688, 0, 1)
+
+[node name="ConnectorEndPoint" type="Panel" parent="." unique_id=755597539]
+z_index = 100
+layout_mode = 1
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_npfny")
+
+[node name="ExtensionEndPoint" type="Panel" parent="." unique_id=360039670]
+z_index = 100
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p2acc")

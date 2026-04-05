@@ -4,16 +4,31 @@
 [ext_resource type="PackedScene" uid="uid://chxwdg3axgi6" path="res://entities/interactables/pipe/segments/pipe_entrance.tscn" id="2_kc8f5"]
 [ext_resource type="PackedScene" uid="uid://nkp4jd67r6fk" path="res://entities/interactables/pipe/segments/pipe_extension.tscn" id="3_v7tjq"]
 [ext_resource type="PackedScene" uid="uid://b0i2g4j858qyn" path="res://entities/interactables/pipe/segments/pipe_connector.tscn" id="4_d3h6k"]
-[ext_resource type="PackedScene" uid="uid://cuq7xbwsyn77f" path="res://entities/interactables/pipe/segments/pipe_debug.tscn" id="5_v7tjq"]
+[ext_resource type="PackedScene" uid="uid://cuq7xbwsyn77f" path="res://entities/interactables/pipe/pipe_debug.tscn" id="5_v7tjq"]
 [ext_resource type="Script" uid="uid://dbtqct7ie3dl5" path="res://entities/interactables/pipe/segments/pipe_segment.gd" id="6_d3h6k"]
 
 [sub_resource type="Resource" id="Resource_d3h6k"]
 script = ExtResource("6_d3h6k")
 direction = "Down"
 
+[sub_resource type="Resource" id="Resource_xuo72"]
+script = ExtResource("6_d3h6k")
+direction = "Left"
+
+[sub_resource type="Resource" id="Resource_o1kix"]
+script = ExtResource("6_d3h6k")
+direction = "Up"
+
+[sub_resource type="Resource" id="Resource_bhjno"]
+script = ExtResource("6_d3h6k")
+direction = "Left"
+
 [node name="WarpPipe" type="Node2D" unique_id=544277668]
+z_index = 11
 script = ExtResource("1_0w4a1")
-segments = Array[ExtResource("6_d3h6k")]([SubResource("Resource_d3h6k")])
+end_exit = true
+segments = Array[ExtResource("6_d3h6k")]([SubResource("Resource_d3h6k"), SubResource("Resource_xuo72"), SubResource("Resource_o1kix"), SubResource("Resource_bhjno")])
+debug = true
 pipe_entrance = ExtResource("2_kc8f5")
 pipe_extension = ExtResource("3_v7tjq")
 pipe_connector = ExtResource("4_d3h6k")

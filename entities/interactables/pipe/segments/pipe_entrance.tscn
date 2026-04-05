@@ -1,17 +1,13 @@
 [gd_scene format=3 uid="uid://chxwdg3axgi6"]
 
-[ext_resource type="Texture2D" uid="uid://rm27q1fjgv7d" path="res://entities/interactables/pipe/pipe_parts.png" id="1_m3g8m"]
+[ext_resource type="Texture2D" uid="uid://bqba7pf54i7rl" path="res://entities/interactables/pipe/assets/pipe_entrance.png" id="1_0p2u2"]
 [ext_resource type="Script" uid="uid://ct555gd4ot23x" path="res://entities/interactables/pipe/segments/pipe_entrance.gd" id="2_0p2u2"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bdyur"]
-atlas = ExtResource("1_m3g8m")
-region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ygsn3"]
 size = Vector2(16, 16)
 
 [node name="Entrance" type="Sprite2D" unique_id=1435683433]
-texture = SubResource("AtlasTexture_bdyur")
+texture = ExtResource("1_0p2u2")
 offset = Vector2(0, -16)
 script = ExtResource("2_0p2u2")
 
