@@ -4,17 +4,21 @@ extends PlayerState
 
 ## See [member CharacterBody2D.floor_snap_length].
 @export var floor_snap_length: float = 32.0
-## The default frictional coefficient when not accelerating or decelerating.
+## The default frictional coefficient
 @export var friction_coefficient_default: float
-## The frictional coefficient when holding against the direction you're sliding in.
-## (Uphill)
-@export var friction_coefficient_decel: float
+## The frictional coefficient when over the maximum speed.
+@export var friction_coefficient_overspeed: float
 ## The gravity multiplier when holding the direction you're sliding in.
-## (Downhill)
 @export var accel_gravity_multiplier: float
-## How quickly you can slide.
+
+## How quickly you can slide when decelerating.
+@export var max_speed_decel: float
+## How quickly you can slide when not accelerating or decelerating.
 @export var max_speed: float
-## How much speed the [Player]
+## How quickly you can slide when accelerating.
+@export var max_speed_accel: float
+
+## How much speed the [Player] needs to remain in a sliding state.
 @export var min_remain_speed: float
 
 @export_category(&"Animation (Unique to State)")
@@ -63,11 +67,21 @@ func _subsequent_ticks(_delta: float):
 func _grounded(delta: float):
 	# Equal to 1 if accelerating, -1 if decelerating, 0 otherwise.
 	var accel_dir: int = InputManager.get_x_dir() * sign(actor.velocity.x)
-	# Coefficient of friction, should be increased when decelerating.
-	var friction: float = friction_coefficient_decel if accel_dir == -1 else friction_coefficient_default
-	# Acceleration due to sliding from gravity, should be increased when accelerating.
-	var slide_accel: float = movement.max_grav
-	if accel_dir == 1: slide_accel *= accel_gravity_multiplier
+	
+	var slide_accel: float
+	var speed_limit: float
+	var friction: float = friction_coefficient_default
+	var overspeed_friction: float = friction_coefficient_overspeed
+	match accel_dir:
+		-1: # decelerating
+			slide_accel = movement.max_grav
+			speed_limit = max_speed_decel
+		0: # not holding a direction
+			slide_accel = movement.max_grav
+			speed_limit = max_speed
+		1: # accelerating
+			slide_accel = movement.max_grav * accel_gravity_multiplier
+			speed_limit = max_speed_accel
 
 	# Apply gravity
 	actor.velocity += Vector2.DOWN.slide(actor.get_floor_normal()) * slide_accel * delta
@@ -75,11 +89,14 @@ func _grounded(delta: float):
 	# Calculate normal acceleration
 	var normal_accel = Vector2.UP.dot(actor.get_floor_normal()) * slide_accel
 
-	# Calculate frictional acceleration
-	actor.velocity = actor.velocity.move_toward(Vector2.ZERO, friction * normal_accel * delta)
-
-	# Cap the speed
-	actor.velocity = actor.velocity.limit_length(max_speed)
+	# Check if under the speed limit:
+	if actor.velocity.length() <= speed_limit:
+		# If yes, apply regular friction
+		actor.velocity = actor.velocity.move_toward(Vector2.ZERO, friction * normal_accel * delta)
+	else:
+		# If no, apply overspeed friction. Speed should not go below the speed limit.
+		actor.velocity = actor.velocity.move_toward(actor.velocity.limit_length(speed_limit), 
+			overspeed_friction * normal_accel * delta)
 
 
 ## Buttsliding in the air.

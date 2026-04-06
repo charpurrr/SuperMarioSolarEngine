@@ -458,8 +458,7 @@ frame_fludd_offsets = Dictionary[int, Vector2i]({
 })
 animation = "butt_slide_forwards"
 frame = 0
-preview = true
-preview_fludd = false
+preview = false
 frame_offset = Vector2i(0, 0)
 fludd_animation = "default"
 fludd_offset = Vector2i(0, 6)
@@ -3074,9 +3073,11 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ujdp5"), SubR
 [node name="ButtSlide" type="Node" parent="StateManager/Dry" unique_id=720337721]
 script = ExtResource("140_lfmwr")
 friction_coefficient_default = 0.3
-friction_coefficient_decel = 0.7
+friction_coefficient_overspeed = 1.4
 accel_gravity_multiplier = 1.5
+max_speed_decel = 150.0
 max_speed = 300.0
+max_speed_accel = 500.0
 min_remain_speed = 6.0
 default_animation_data = SubResource("Resource_msjg8")
 forward_animation_data = SubResource("Resource_kuq6s")
