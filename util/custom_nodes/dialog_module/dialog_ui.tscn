@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bppnjg356bdsp"]
+[gd_scene format=3 uid="uid://bppnjg356bdsp"]
 
 [ext_resource type="Texture2D" uid="uid://bpd2tb3uscgtq" path="res://entities/interactables/sign/sign_overlay.png" id="1_xflr1"]
 [ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="3_d4hgk"]
 
-[node name="Dialog" type="TextureRect"]
+[node name="DialogUI" type="TextureRect" unique_id=1389229458]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -15,7 +15,7 @@ grow_horizontal = 2
 texture = ExtResource("1_xflr1")
 stretch_mode = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1452024390]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -32,13 +32,3 @@ theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 scroll_active = false
-
-[node name="TextSpeedTimer" type="Timer" parent="."]
-wait_time = 0.05
-ignore_time_scale = true
-
-[node name="VoiceBlip" type="AudioStreamPlayer" parent="."]
-
-[node name="Node" type="Node" parent="."]
-
-[connection signal="timeout" from="TextSpeedTimer" to="." method="_on_text_speed_timer_timeout"]

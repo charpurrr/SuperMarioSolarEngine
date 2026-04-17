@@ -175,7 +175,6 @@ func _get_property_list() -> Array[Dictionary]:
 			"name": "is_2d",
 			"type": TYPE_BOOL,
 			"hint": PROPERTY_HINT_GROUP_ENABLE,
-			#"hint_string": "checkbox_only",
 			"usage": PROPERTY_USAGE_DEFAULT,
 		}
 	]
