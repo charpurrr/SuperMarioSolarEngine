@@ -448,7 +448,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Resource" id="Resource_xenv0"]
+[sub_resource type="Resource" id="Resource_676rb"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
 doll_path = NodePath("Doll")
@@ -458,17 +458,23 @@ frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
 frame_fludd = Dictionary[int, String]({
-0: "default"
+0: "default",
+1: "default"
 })
 frame_fludd_offsets = Dictionary[int, Vector2i]({
-0: Vector2i(12, -11)
+0: Vector2i(0, 0),
+1: Vector2i(0, 0),
+3: Vector2i(0, 1),
+4: Vector2i(0, 2),
+5: Vector2i(0, 2),
+6: Vector2i(0, 1)
 })
-animation = "dive_slide"
+animation = "idle"
 frame = 0
 preview = false
 frame_offset = Vector2i(0, 0)
 fludd_animation = "default"
-fludd_offset = Vector2i(12, -11)
+fludd_offset = Vector2i(0, 0)
 metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f3xbj"]
@@ -992,35 +998,6 @@ script = ExtResource("49_apkmk")
 sfx_list = Array[ExtResource("26_ta4lc")]([SubResource("Resource_rev7q"), SubResource("Resource_ddfva")])
 metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
 
-[sub_resource type="Resource" id="Resource_676rb"]
-resource_local_to_scene = true
-script = ExtResource("23_bbld7")
-doll_path = NodePath("Doll")
-fludd_f_path = NodePath("FluddInfront")
-fludd_b_path = NodePath("FluddBehind")
-frame_offsets = Dictionary[int, Vector2i]({
-0: Vector2i(0, 0)
-})
-frame_fludd = Dictionary[int, String]({
-0: "default",
-1: "default"
-})
-frame_fludd_offsets = Dictionary[int, Vector2i]({
-0: Vector2i(0, 0),
-1: Vector2i(0, 0),
-3: Vector2i(0, 1),
-4: Vector2i(0, 2),
-5: Vector2i(0, 2),
-6: Vector2i(0, 1)
-})
-animation = "idle"
-frame = 0
-preview = false
-frame_offset = Vector2i(0, 0)
-fludd_animation = "default"
-fludd_offset = Vector2i(0, 0)
-metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
-
 [sub_resource type="Resource" id="Resource_xh3w7"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
@@ -1538,6 +1515,29 @@ attenuation = 1.0
 max_distance = 2000.0
 inherit_position = true
 metadata/_custom_type_script = "uid://b262pbs7y0djt"
+
+[sub_resource type="Resource" id="Resource_xenv0"]
+resource_local_to_scene = true
+script = ExtResource("23_bbld7")
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
+frame_fludd = Dictionary[int, String]({
+0: "default"
+})
+frame_fludd_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(12, -11)
+})
+animation = "dive_slide"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(12, -11)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_w3gxr"]
 script = ExtResource("55_bxnxc")
@@ -4179,7 +4179,7 @@ script = ExtResource("49_apkmk")
 sfx_list = Array[ExtResource("26_ta4lc")]([SubResource("Resource_cbkmc")])
 metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
 
-[node name="Mario" type="CharacterBody2D" unique_id=63323883 node_paths=PackedStringArray("doll", "fludd_f", "fludd_b", "state_manager", "movement", "input", "push_rays", "hitbox", "dive_hitbox", "small_hitbox", "water_check", "climb_check", "overlap_check", "auto_crouch_check", "dive_hurtbox", "spin_hurtbox", "crouch_spin_hurtbox", "stomp_hurtbox", "gp_hurtbox")]
+[node name="Mario" type="CharacterBody2D" unique_id=63323883 node_paths=PackedStringArray("doll", "fludd_f", "fludd_b", "state_manager", "movement", "input", "push_rays", "hitbox", "water_check", "climb_check", "overlap_check", "auto_crouch_check", "dive_hurtbox", "spin_hurtbox", "crouch_spin_hurtbox", "stomp_hurtbox", "gp_hurtbox")]
 material = SubResource("ShaderMaterial_wdv80")
 collision_layer = 2
 collision_mask = 4097
@@ -4198,8 +4198,6 @@ movement = NodePath("Movement")
 input = NodePath("InputManager")
 push_rays = NodePath("PushRays")
 hitbox = NodePath("Hitbox")
-dive_hitbox = NodePath("")
-small_hitbox = NodePath("")
 water_check = NodePath("Areas/WaterCheck")
 climb_check = NodePath("Areas/ClimbCheck")
 overlap_check = NodePath("Areas/OverlapCheck")
@@ -4219,26 +4217,27 @@ offset_right = -15.0
 offset_bottom = -33.0
 
 [node name="FluddBehind" type="AnimatedSprite2D" parent="." unique_id=605325507]
+visible = false
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_e1ut2")
-offset = Vector2(12, -11)
 
 [node name="Doll" type="AnimatedSprite2D" parent="." unique_id=1876045562]
 position = Vector2(0, -24)
 sprite_frames = ExtResource("4_xenv0")
-animation = &"dive_slide"
-metadata/last_previewed = SubResource("Resource_xenv0")
+animation = &"idle"
+metadata/last_previewed = SubResource("Resource_676rb")
 
 [node name="FluddInfront" type="AnimatedSprite2D" parent="." unique_id=1928286412]
+visible = false
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_1i10v")
-offset = Vector2(12, -11)
 
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=76578262]
 position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_u4b58")
 
 [node name="Areas" type="Node2D" parent="." unique_id=987704991]
+modulate = Color(1, 1, 1, 0.5)
 
 [node name="ClimbCheck" type="Area2D" parent="Areas" unique_id=1757972148]
 position = Vector2(0, -14)
@@ -4675,6 +4674,7 @@ script = ExtResource("73_acu3g")
 
 [node name="GroundPound" type="Node" parent="StateManager/Dry/Airborne/GroundPoundStates" unique_id=82336971]
 script = ExtResource("107_us6gm")
+gp_offset = 0.0
 linger_time = 5.0
 animation_data = SubResource("Resource_bsr1j")
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_7r27p"), SubResource("Resource_rgxnc")])
