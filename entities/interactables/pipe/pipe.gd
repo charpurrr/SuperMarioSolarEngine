@@ -36,7 +36,8 @@ const opposite_direction: Dictionary = {
 @export var end_exit := false:
 	set(val):
 		end_exit = val
-		_build_pipe()
+		if is_node_ready():
+			_build_pipe()
 
 ## The segments that define the pipe's shape.
 ## Adding or removing segments updates the pipe layout automatically.[br][br]
@@ -59,17 +60,16 @@ const opposite_direction: Dictionary = {
 
 			segments = [first_segment]
 
-			if not build_lock:
-				_build_pipe(old, 1)
-
+			if is_node_ready():
+				_build_pipe()
 			return
 
-		for i in new:
+		for i: int in new:
 			if not val[i]:
 				val[i] = PipeSegment.new()
 
 			if i > 0:
-				var dir = val[i-1].direction
+				var dir: String = val[i - 1].direction
 				val[i].available_directions = available_direction_map[dir]
 
 			val[i].is_connector = i != 0
@@ -81,13 +81,16 @@ const opposite_direction: Dictionary = {
 				val[i].direction_updated.connect(_segment_direction_changed.bind(i))
 
 		segments = val
-		_build_pipe(old, new)
+
+		if is_node_ready():
+			_build_pipe()
 
 ## If true, renders debug markers on each segment showing its index and entry point.
 @export var debug := false:
 	set(val):
 		debug = val
-		_build_pipe()
+		if is_node_ready():
+			_build_pipe()
 
 @export_category("References")
 ## The scene for pipe entrances. Used for the first segment and optionally the exit.
@@ -105,17 +108,8 @@ const opposite_direction: Dictionary = {
 ## or a [PipeEntrance] node for the end exit (the last element).
 var segment_inst: Array = []
 
-## Prevents [method _build_pipe] from running before [method _ready],
-## or from being re-entered while a build is already in progress.
-var build_lock: bool = true
-
-## Prevents [method _notify_segment_direction_changed] from re-entering itself
-## while propagating direction changes across segments.
-var direction_changed_lock = false
-
 
 func _ready() -> void:
-	build_lock = false
 	_build_pipe()
 
 
@@ -137,7 +131,7 @@ func get_direction_steps_with_end(start: String, end: String) -> int:
 func get_direction_end_with_steps(start: String, steps: int) -> String:
 	var cur_step := start
 
-	for i in steps:
+	for i: int in steps:
 		cur_step = clockwise_direction[cur_step]
 
 	return cur_step
@@ -154,23 +148,15 @@ func get_end_point() -> Vector2:
 ## Rebuilds the pipe's scene nodes to match the current [member segments] data.
 ## Diffs [member old_segment_length] against [member new_segment_length] to add or
 ## remove connector slots, then repositions and reconfigures all nodes in order.
-func _build_pipe(old: int = segments.size(), new: int = segments.size()) -> void:
-	if build_lock: return
-	build_lock = true
-
+func _build_pipe() -> void:
 	if segments.is_empty():
-		build_lock = false
 		return
 
 	# Bootstrap segment_inst if this is the first build.
 	if segment_inst.is_empty():
 		segment_inst = [[pipe_entrance.instantiate(), pipe_extension.instantiate(), null], null]
 
-		# Force diff to 0 since bootstrap already created the first slot.
-		old = 1
-		new = 1
-
-	var freed_nodes = []
+	var freed_nodes: Array = []
 
 	# Add or remove the end exit node based on the end_exit flag.
 	if end_exit and not segment_inst[-1]:
@@ -182,40 +168,41 @@ func _build_pipe(old: int = segments.size(), new: int = segments.size()) -> void
 		segment_inst[-1] = null
 
 	# Diff segment count and insert/remove connector slots accordingly.
-	var diff := new - old
+	var diff: int = segments.size() - (segment_inst.size() - 1)
 
 	if diff < 0:
-		for i in -diff:
-			var deleted = segment_inst.pop_at(-2)
+		for i: int in -diff:
+			var deleted: Array = segment_inst.pop_at(-2)
 			freed_nodes.append_array(deleted)
 	elif diff > 0:
-		for i in diff:
+		for i: int in diff:
 			var connector: PipeConnector = pipe_connector.instantiate()
 			var connector_ext: PipeExtension = pipe_extension.instantiate()
-
 			segment_inst.insert(-1, [connector, connector_ext, null])
 
 	# Add or remove debug marker nodes based on the debug flag.
 	# Done before add_child pass so new debug nodes are parented in the same pass.
-	for i in segments.size():
-		var slot = segment_inst[i]
+	for i: int in segments.size():
+		var slot: Variant = segment_inst[i]
 
-		if not slot is Array: continue
+		if not slot is Array:
+			continue
 
 		if debug and not slot[2]:
-			var dbg = pipe_debug.instantiate()
+			var dbg: Node = pipe_debug.instantiate()
 			slot[2] = dbg
 		elif not debug and slot[2]:
 			freed_nodes.append(slot[2])
 			slot[2] = null
 
-	for x in freed_nodes:
-		if x: x.queue_free()
+	for x: Variant in freed_nodes:
+		if x:
+			x.queue_free()
 
 	# Ensure all live nodes are in the scene tree.
-	for x in segment_inst:
+	for x: Variant in segment_inst:
 		if x is Array:
-			for y in x:
+			for y: Variant in x:
 				if y and not y.is_inside_tree():
 					add_child(y)
 		elif x and not x.is_inside_tree():
@@ -229,31 +216,32 @@ func _build_pipe(old: int = segments.size(), new: int = segments.size()) -> void
 	entrance_ext.direction = segments[0].direction
 	entrance_ext.size.y = segments[0].length
 
-	var entrance_dbg = segment_inst[0][2]
+	var entrance_dbg: Node = segment_inst[0][2]
 
 	if entrance_dbg:
 		entrance_dbg.get_node("Index").text = "0"
-		entrance_dbg.get_node("ConnectorEndPoint").position = entrance.get_end_point() - 2*Vector2.ONE
+		entrance_dbg.get_node("ConnectorEndPoint").position = entrance.get_end_point() - 2 * Vector2.ONE
 		entrance_dbg.get_node("ExtensionEndPoint").position = entrance_ext.get_end_point() - Vector2.ONE
 
-	var last_piece = entrance_ext
+	var last_piece: Variant = entrance_ext
 
-	for i in range(1, segments.size()):
-		var segment = segment_inst[i]
+	for i: int in range(1, segments.size()):
+		var segment: Variant = segment_inst[i]
 
 		# Stop if we've reached the trailing exit slot (a PipeEntrance, not an Array).
-		if not segment is Array: break
+		if not segment is Array:
+			break
 
-		var segment_start = segment[0]
+		var segment_start: PipeConnector = segment[0]
 
+		segment_start.entry_dir = segments[i - 1].direction
 		segment_start.exit_dir = segments[i].direction
-		segment_start.entry_dir = segments[i-1].direction
 		segment_start.type = "Block" if segments[i].is_block else "Corner"
 		segment_start.position = last_piece.get_end_point()
 
 		last_piece = segment_start
 
-		var segment_ext = segment[1] as PipeExtension
+		var segment_ext: PipeExtension = segment[1]
 
 		segment_ext.direction = segments[i].direction
 		segment_ext.size.y = segments[i].length
@@ -261,79 +249,53 @@ func _build_pipe(old: int = segments.size(), new: int = segments.size()) -> void
 
 		last_piece = segment_ext
 
-		var dbg = segment[2]
+		var dbg: Node = segment[2]
 
 		if dbg:
 			dbg.position = segment_start.position + segment_start.offset
-
 			dbg.get_node("Index").text = str(i)
 			dbg.get_node("ConnectorEndPoint").position = \
-			segment_start.get_end_point() - 2 * Vector2.ONE - dbg.position
+				segment_start.get_end_point() - 2 * Vector2.ONE - dbg.position
 			dbg.get_node("ExtensionEndPoint").position = \
-			segment_ext.get_end_point() - Vector2.ONE - dbg.position
+				segment_ext.get_end_point() - Vector2.ONE - dbg.position
 
 	# Position the end exit at the tip of the last extension.
-	var pipe_exit = segment_inst[-1]
+	var pipe_exit: Variant = segment_inst[-1]
 
 	if pipe_exit and last_piece:
 		pipe_exit.direction = segments[-1].direction
 		pipe_exit.position = last_piece.get_end_point()
 
-	build_lock = false
-
 
 ## When a segment's direction changes, rotates all subsequent segments by the same
 ## clockwise delta to preserve the overall pipe shape.
-#func _notify_segment_direction_changed(idx: int) -> void:
-	#if direction_changed_lock: return
-	#direction_changed_lock = true
-#
-	#if idx + 1 < segments.size():
-		#var main_segment := segments[idx]
-		#var steps := get_direction_steps_with_end(main_segment.old_direction, main_segment.direction)
-#
-		#for i in range(idx + 1, segments.size()):
-			#segments[i].direction = get_direction_end_with_steps(segments[i].direction, steps)
-#
-			#for available_directions in [["Left", "Right"], ["Up", "Down"]]:
-				#if segments[i].direction in available_directions:
-					#segments[i].available_directions = available_directions
-#
-	#direction_changed_lock = false
-#
-	#call_deferred("_build_pipe")
-
-
 func _segment_direction_changed(idx: int) -> void:
-	if direction_changed_lock: return
-	direction_changed_lock = true
+	var main_segment: PipeSegment = segments[idx]
 
-	var main_segment := segments[idx]
+	for i: int in range(idx + 1, segments.size()):
+		segments[i].direction_updated.disconnect(_segment_direction_changed)
 
 	if idx == 0:
-		var steps := get_direction_steps_with_end(main_segment.old_direction, main_segment.direction)
+		var steps: int = get_direction_steps_with_end(main_segment.old_direction, main_segment.direction)
 
-		for i in range(idx + 1, segments.size()):
+		for i: int in range(idx + 1, segments.size()):
 			segments[i].direction = get_direction_end_with_steps(segments[i].direction, steps)
 
-			for available_directions in [["Left", "Right"], ["Up", "Down"]]:
+			for available_directions: Array in [["Left", "Right"], ["Up", "Down"]]:
 				if segments[i].direction in available_directions:
 					segments[i].available_directions = available_directions
-	elif + 1 < segments.size():
-		for i in range(idx + 1, segments.size()):
-			if (
-				(
-					main_segment.direction in ["Left", "Right"] and
-					segments[i].direction in ["Left", "Right"]
-				) or
-				(
-					main_segment.direction in ["Up", "Down"] and
-					segments[i].direction in ["Up", "Down"]
-				)
-			):
-				segments[i].direction = opposite_direction.get(segments[i].direction)
+	elif idx + 1 < segments.size():
+		for i: int in range(idx + 1, segments.size()):
+			if ((
+				main_segment.direction in ["Left", "Right"] and 
+				segments[i].direction in ["Left", "Right"]) or (
 
-	direction_changed_lock = false
+				main_segment.direction in ["Up", "Down"] and 
+				segments[i].direction in ["Up", "Down"]
+				)):
+					segments[i].direction = opposite_direction.get(segments[i].direction)
 
-	for i in 2:
-		call_deferred(&"_build_pipe")
+	for i: int in range(idx + 1, segments.size()):
+		segments[i].direction_updated.connect(_segment_direction_changed.bind(i))
+
+	_build_pipe()
