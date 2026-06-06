@@ -17,7 +17,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("1_1un8b")
-preview_start = 3
 type_associated_nodes = Dictionary[int, NodePath]({
 0: NodePath("PlainOverlay"),
 1: NodePath("CircleOverlay"),

@@ -9,15 +9,15 @@ script = ExtResource("1_uyoy3")
 scene_transition = NodePath("SceneTransition")
 
 [node name="SceneTransition" parent="." unique_id=1482962676 instance=ExtResource("2_v0gsh")]
+visible = false
 
-[node name="PlainOverlay" parent="SceneTransition" index="0"]
-self_modulate = Color(1, 1, 1, 0)
+[node name="PlainOverlay" parent="SceneTransition" index="0" unique_id=1645560297]
 mouse_filter = 2
 
-[node name="CircleOverlay" parent="SceneTransition" index="1"]
+[node name="CircleOverlay" parent="SceneTransition" index="1" unique_id=2043567110]
 mouse_filter = 2
 
-[node name="InvertedCircleOverlay" parent="SceneTransition" index="2"]
+[node name="InvertedCircleOverlay" parent="SceneTransition" index="2" unique_id=1610023305]
 mouse_filter = 2
 
 [editable path="SceneTransition"]

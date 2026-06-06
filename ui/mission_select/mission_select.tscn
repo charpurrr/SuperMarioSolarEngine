@@ -24,6 +24,7 @@ audio_bus = &"Music"
 volume = 0.0
 pitch = 1.0
 overwrite_other_in_bus = false
+overwrite_other_in_source = false
 is_2d = false
 metadata/_custom_type_script = "uid://b262pbs7y0djt"
 
@@ -34,12 +35,13 @@ audio_bus = &"UI"
 volume = 0.0
 pitch = 1.0
 overwrite_other_in_bus = false
+overwrite_other_in_source = false
 is_2d = false
 metadata/_custom_type_script = "uid://b262pbs7y0djt"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_72b7y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8wnh"]
 atlas = ExtResource("4_vmnes")
-region = Rect2(352, 0, 32, 32)
+region = Rect2(288, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8tod2"]
 atlas = ExtResource("4_vmnes")
@@ -77,13 +79,13 @@ region = Rect2(224, 0, 32, 32)
 atlas = ExtResource("4_vmnes")
 region = Rect2(256, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m8wnh"]
-atlas = ExtResource("4_vmnes")
-region = Rect2(288, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_83blr"]
 atlas = ExtResource("4_vmnes")
 region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72b7y"]
+atlas = ExtResource("4_vmnes")
+region = Rect2(352, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qse4l"]
 atlas = ExtResource("4_vmnes")
@@ -242,13 +244,13 @@ opacity_strength = 0.5
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 focus_mode = 2
-texture = SubResource("AtlasTexture_72b7y")
+texture = SubResource("AtlasTexture_m8wnh")
 expand_mode = 3
 stretch_mode = 5
 script = ExtResource("5_htlb4")
 sprites = SubResource("SpriteFrames_rs1nv")
 animation = &"normal"
-frame = 11
+frame = 9
 playing = true
 metadata/_custom_type_script = "uid://bya6u8daue8n2"
 

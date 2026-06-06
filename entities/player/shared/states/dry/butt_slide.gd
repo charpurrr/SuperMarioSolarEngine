@@ -21,6 +21,8 @@ extends PlayerState
 ## How much speed the [Player] needs to remain in a sliding state.
 @export var min_remain_speed: float
 
+@export var slide_sfx: SoundEffect
+
 @export_category(&"Animation (Unique to State)")
 ## Animation used by default.
 @export var default_animation_data: PStateAnimData
@@ -35,6 +37,8 @@ extends PlayerState
 
 func _on_enter(handover_speed):
 	actor.set_floor_snap_length(floor_snap_length)
+
+	slide_sfx.play(actor)
 
 	# Convert vertical speed from ground pounding into sliding speed
 	if handover_speed is float:
@@ -56,11 +60,6 @@ func _subsequent_ticks(_delta: float):
 	# Emit particles and play sound effects
 	if actor.is_on_floor():
 		particles[0].emit_at(actor)
-
-		if not get_tree().has_group(name + "/sfx"):
-			play_sounds()
-	else:
-		get_tree().call_group(name + "/sfx", &"queue_free")
 
 
 ## Buttsliding on the ground / slope.

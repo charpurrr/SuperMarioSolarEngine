@@ -80,6 +80,8 @@ func emit_particles() -> void:
 
 
 func _set_hitbox() -> void:
+	actor.hitbox.disabled = false
+
 	match hitbox_type:
 		"Normal":
 			actor.hitbox.position = actor.movement.hitbox_normal_size.position
@@ -90,6 +92,8 @@ func _set_hitbox() -> void:
 		"Dive":
 			actor.hitbox.position = actor.movement.hitbox_dive_size.position
 			actor.hitbox.shape.size = actor.movement.hitbox_dive_size.size
+		"None":
+			actor.hitbox.disabled = true
 
 
 func _set_modules(enable: bool) -> void:
