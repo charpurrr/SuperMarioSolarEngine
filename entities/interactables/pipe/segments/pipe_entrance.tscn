@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://chxwdg3axgi6"]
+
+[ext_resource type="Texture2D" uid="uid://bqba7pf54i7rl" path="res://entities/interactables/pipe/assets/pipe_entrance.png" id="1_0p2u2"]
+[ext_resource type="Script" uid="uid://ct555gd4ot23x" path="res://entities/interactables/pipe/segments/pipe_entrance.gd" id="2_0p2u2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygsn3"]
+size = Vector2(16, 16)
+
+[node name="Entrance" type="Sprite2D" unique_id=1435683433]
+texture = ExtResource("1_0p2u2")
+offset = Vector2(0, -16)
+script = ExtResource("2_0p2u2")
+
+[node name="PlayerDetector" type="Area2D" parent="." unique_id=1585604522]
+position = Vector2(0, -16)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" unique_id=121457682]
+position = Vector2(-3.496911e-06, -24)
+shape = SubResource("RectangleShape2D_ygsn3")

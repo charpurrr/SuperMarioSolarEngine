@@ -38,6 +38,8 @@
 [ext_resource type="PackedScene" uid="uid://ddtpa42oyu7fe" path="res://entities/breakables/crate/crate.tscn" id="34_l20wn"]
 [ext_resource type="PackedScene" uid="uid://ct32lhgrs787t" path="res://entities/platforms/moving/moving_platform.tscn" id="35_1nvlm"]
 [ext_resource type="PackedScene" uid="uid://b0ojpnfyepmw6" path="res://entities/interactables/pole/pole.tscn" id="36_fwr2a"]
+[ext_resource type="PackedScene" uid="uid://dvmlgiiihnw3d" path="res://entities/interactables/pipe/pipe.tscn" id="36_rnb4s"]
+[ext_resource type="Script" uid="uid://dbtqct7ie3dl5" path="res://entities/interactables/pipe/segments/pipe_segment.gd" id="37_rnb4s"]
 
 [sub_resource type="Resource" id="Resource_80yte"]
 script = ExtResource("3_rtnqg")
@@ -3945,6 +3947,17 @@ script = ExtResource("16_l20wn")
 texture = ExtResource("19_37d1f")
 mesh = SubResource("ArrayMesh_ie2xe")
 
+[sub_resource type="Resource" id="Resource_rnb4s"]
+script = ExtResource("37_rnb4s")
+direction = "Down"
+length = 9.405
+
+[sub_resource type="Resource" id="Resource_dvxun"]
+script = ExtResource("37_rnb4s")
+direction = "Right"
+length = 12.085
+is_block = true
+
 [node name="SynthStratum" type="Node2D" unique_id=482401929 node_paths=PackedStringArray("player", "camera")]
 script = ExtResource("1_v54hh")
 level_name = &"Synth Stratum"
@@ -4324,3 +4337,8 @@ height = 291
 [node name="Pole" parent="." unique_id=458990368 instance=ExtResource("36_fwr2a")]
 position = Vector2(-1189, 144)
 height = 800
+
+[node name="WarpPipe" parent="." unique_id=544277668 instance=ExtResource("36_rnb4s")]
+position = Vector2(4, -42)
+segments = Array[ExtResource("37_rnb4s")]([SubResource("Resource_rnb4s"), SubResource("Resource_dvxun")])
+debug = true

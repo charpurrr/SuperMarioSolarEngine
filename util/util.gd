@@ -3,7 +3,7 @@ class_name Util
 
 
 ## Resets the mouse cursor graphic to that defined in the project settings.
-static func set_cursor_to_default():
+static func set_cursor_to_default() -> void:
 	var default_cursor_image: Resource = load(
 		ProjectSettings.get_setting("display/mouse_cursor/custom_image")
 		)

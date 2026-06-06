@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bfb4xq874buf6"]
+[gd_scene format=3 uid="uid://bfb4xq874buf6"]
 
 [ext_resource type="Script" uid="uid://d7edjnk21ad3" path="res://props/level_environments/synth/synth_floor.gd" id="1_dubgv"]
 [ext_resource type="Script" uid="uid://ccysh3ski6mvh" path="res://props/level_environments/environment.gd" id="1_xeoqd"]
@@ -71,21 +71,21 @@ width = 1
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
 
-[node name="Environment" type="CanvasLayer"]
+[node name="Environment" type="CanvasLayer" unique_id=842960909]
 layer = -3
 script = ExtResource("1_xeoqd")
 pause_gradient_map = ExtResource("2_vugs5")
 metadata/_edit_use_anchors_ = true
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=1292911547]
 scroll_ignore_camera_zoom = true
 
-[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1695804096]
 texture_repeat = 2
 motion_scale = Vector2(0, 0)
 motion_mirroring = Vector2(512, 0)
 
-[node name="Sky" type="TextureRect" parent="ParallaxBackground/Sky"]
+[node name="Sky" type="TextureRect" parent="ParallaxBackground/Sky" unique_id=1094013124]
 modulate = Color(1.353256, 1.353256, 1.353256, 1)
 offset_right = 2048.0
 offset_bottom = 512.0
@@ -93,7 +93,7 @@ texture = ExtResource("2_oiv80")
 stretch_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Stars" type="GPUParticles2D" parent="ParallaxBackground/Sky"]
+[node name="Stars" type="GPUParticles2D" parent="ParallaxBackground/Sky" unique_id=156492907]
 material = SubResource("CanvasItemMaterial_47xr2")
 position = Vector2(1024, 256)
 amount = 3000
@@ -103,7 +103,7 @@ visibility_rect = Rect2(-512, -128, 1024, 256)
 draw_order = 0
 process_material = SubResource("ParticleProcessMaterial_8i7lr")
 
-[node name="Sun" type="TextureRect" parent="ParallaxBackground"]
+[node name="Sun" type="TextureRect" parent="ParallaxBackground" unique_id=499579161]
 modulate = Color(1.7269721, 1.7269721, 1.7269721, 1)
 anchors_preset = 15
 anchor_right = 1.0
@@ -113,10 +113,10 @@ grow_vertical = 2
 texture = ExtResource("5_mb8pf")
 stretch_mode = 3
 
-[node name="BackBufferCopy" type="BackBufferCopy" parent="ParallaxBackground"]
+[node name="BackBufferCopy" type="BackBufferCopy" parent="ParallaxBackground" unique_id=1887783441]
 copy_mode = 2
 
-[node name="CRT" type="ColorRect" parent="ParallaxBackground"]
+[node name="CRT" type="ColorRect" parent="ParallaxBackground" unique_id=1994033916]
 material = SubResource("ShaderMaterial_e8pha")
 anchors_preset = 15
 anchor_right = 1.0
@@ -124,22 +124,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="QualityToggle" parent="ParallaxBackground/CRT" instance=ExtResource("7_vugs5")]
+[node name="QualityToggle" parent="ParallaxBackground/CRT" unique_id=1720074275 instance=ExtResource("7_vugs5")]
 
-[node name="Mountains" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="Mountains" type="ParallaxLayer" parent="ParallaxBackground" unique_id=368735325]
 texture_repeat = 2
 motion_scale = Vector2(0.04, 0)
 motion_offset = Vector2(0, -100)
 motion_mirroring = Vector2(1024, 0)
 
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/Mountains"]
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/Mountains" unique_id=1508329011]
 offset_right = 2048.0
 offset_bottom = 540.0
 texture = ExtResource("8_mdcif")
 stretch_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Glow" type="TextureRect" parent="ParallaxBackground/Mountains"]
+[node name="Glow" type="TextureRect" parent="ParallaxBackground/Mountains" unique_id=2081075253]
 modulate = Color(2.844042, 2.844042, 2.844042, 1)
 offset_right = 2048.0
 offset_bottom = 540.0
@@ -147,7 +147,7 @@ texture = ExtResource("9_brsgk")
 stretch_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="BGFloor" type="TextureRect" parent="ParallaxBackground"]
+[node name="BGFloor" type="TextureRect" parent="ParallaxBackground" unique_id=1233667127]
 anchors_preset = -1
 anchor_top = 0.7
 anchor_right = 1.0
@@ -159,12 +159,12 @@ script = ExtResource("1_dubgv")
 line_color = Color(2.454227, 1.1857394, 2.454227, 1)
 scroll_divisor = 20.0
 
-[node name="Parallax2D" type="Parallax2D" parent="ParallaxBackground"]
+[node name="Parallax2D" type="Parallax2D" parent="ParallaxBackground" unique_id=581785642]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=102817984]
 environment = SubResource("Environment_vugs5")
 
-[node name="Gradient" type="TextureRect" parent="."]
+[node name="Gradient" type="TextureRect" parent="." unique_id=1338469365]
 modulate = Color(1.0309138, 1.0309138, 1.0309138, 1)
 texture_filter = 2
 material = SubResource("CanvasItemMaterial_oe8qa")
