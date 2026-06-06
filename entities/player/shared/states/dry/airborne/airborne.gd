@@ -4,8 +4,6 @@ extends PlayerState
 
 
 func _physics_tick(_delta: float):
-	actor.set_floor_snap_length(0.0)
-
 	actor.stomp_hurtbox.monitoring = actor.velocity.y > 0
 
 	if actor.is_on_ceiling() and actor.velocity.y < 0 and not live_substate is GroundPound:

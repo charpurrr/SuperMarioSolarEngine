@@ -19,9 +19,9 @@
 
 [sub_resource type="InputEventJoypadMotion" id="InputEventJoypadMotion_jr8fm"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gfk4v"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_54cbc"]
 atlas = ExtResource("2_kcias")
-region = Rect2(144, 0, 48, 48)
+region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xxirp"]
 atlas = ExtResource("4_jr8fm")
@@ -143,9 +143,9 @@ region = Rect2(0, 0, 48, 48)
 atlas = ExtResource("2_kcias")
 region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_54cbc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfk4v"]
 atlas = ExtResource("2_kcias")
-region = Rect2(96, 0, 48, 48)
+region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pvnyr"]
 atlas = ExtResource("2_kcias")
@@ -325,13 +325,13 @@ bind_button = NodePath("BindButton")
 
 [node name="Icon" type="TextureRect" parent="." unique_id=1870414046]
 layout_mode = 2
-texture = SubResource("AtlasTexture_gfk4v")
+texture = SubResource("AtlasTexture_54cbc")
 expand_mode = 3
 stretch_mode = 5
 script = ExtResource("3_2oskj")
 sprites = SubResource("SpriteFrames_gtldd")
 animation = &"walk"
-frame = 3
+frame = 2
 autoplay = true
 playing = true
 

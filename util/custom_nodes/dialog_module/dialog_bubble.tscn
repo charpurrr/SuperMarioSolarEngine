@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://dne14etc5yw2n"]
+
+[ext_resource type="Script" uid="uid://boi13vti8kdfr" path="res://util/custom_nodes/dialog_module/dialog_bubble.gd" id="1_nd31e"]
+[ext_resource type="FontFile" uid="uid://bbuo41ab8iqsa" path="res://ui/fonts/superstar_saga.ttf" id="2_4b1h3"]
+[ext_resource type="Texture2D" uid="uid://hc4smmjt3dbs" path="res://util/custom_nodes/dialog_module/dialog_bubble_tail.png" id="3_4b1h3"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gj5j8"]
+load_path = "res://.godot/imported/dialog_bubble.png-14ce9e9afaed9781a08c0eed59165885.ctex"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4b1h3"]
+radius = 200.0
+
+[node name="DialogBubble" type="Node2D" unique_id=694843590 node_paths=PackedStringArray("detection_area", "detection_area_shape", "bubble_transform", "container", "label", "tail")]
+script = ExtResource("1_nd31e")
+appear_time = 0.15
+tail_cut_into_sprite = 2.0
+detection_area = NodePath("DetectionArea")
+detection_area_shape = NodePath("DetectionArea/CollisionShape2D")
+bubble_transform = NodePath("BubbleTransorm")
+container = NodePath("BubbleTransorm/MarginContainer")
+label = NodePath("BubbleTransorm/MarginContainer/MarginContainer/CenterContainer/Label")
+tail = NodePath("BubbleTransorm/Tail")
+
+[node name="BubbleTransorm" type="Node2D" parent="." unique_id=391922703]
+position = Vector2(0, -18.5)
+
+[node name="MarginContainer" type="MarginContainer" parent="BubbleTransorm" unique_id=318705371]
+anchors_preset = -1
+offset_left = -9.0
+offset_top = -11.5
+offset_right = 9.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(9, 11.5)
+
+[node name="Body" type="NinePatchRect" parent="BubbleTransorm/MarginContainer" unique_id=443163708]
+show_behind_parent = true
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_gj5j8")
+region_rect = Rect2(0, 0, 13, 13)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="BubbleTransorm/MarginContainer" unique_id=1013608904]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="CenterContainer" type="CenterContainer" parent="BubbleTransorm/MarginContainer/MarginContainer" unique_id=320922308]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="BubbleTransorm/MarginContainer/MarginContainer/CenterContainer" unique_id=706498218]
+clip_contents = false
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_4b1h3")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "Something went wrong!"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tail" type="Sprite2D" parent="BubbleTransorm" unique_id=850123822]
+position = Vector2(0, 9.5)
+texture = ExtResource("3_4b1h3")
+offset = Vector2(0, 4.5)
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=2067984351]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=804583346]
+shape = SubResource("CircleShape2D_4b1h3")
+debug_color = Color(1, 1, 1, 0.039215688)
+
+[connection signal="resized" from="BubbleTransorm/MarginContainer" to="." method="_update_positions"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

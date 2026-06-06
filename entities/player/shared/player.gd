@@ -16,8 +16,6 @@ extends CharacterBody2D
 @export var push_rays: Node2D
 
 @export var hitbox: CollisionShape2D
-@export var dive_hitbox: CollisionShape2D
-@export var small_hitbox: CollisionShape2D
 
 @export var water_check: Area2D
 @export var climb_check: Area2D

@@ -28,6 +28,8 @@ var climb_down_speed := 150.0
 ## How quickly the [Player]'s [member position.x] lerps to the [Pole]'s [member position.x].
 @export_range(0.0, 1.0, 0.01) var lineup_lerp_speed: float
 
+@export var climb_sfx: SoundEffect
+
 ## The animation data for climbing [constant LEFT] or [constant RIGHT].
 @export var climb_side_anim_data: PStateAnimData
 ## The animation data for climbing [constant BEHIND].
@@ -77,8 +79,10 @@ func _physics_tick(_delta: float) -> void:
 	# Left & Right
 	if Input.is_action_just_pressed(&"right"):
 		current_dir = wrapi(current_dir - 1, 1, 5) as Direction
+		climb_sfx.play(actor)
 	elif Input.is_action_just_pressed(&"left"):
 		current_dir = wrapi(current_dir + 1, 1, 5) as Direction
+		climb_sfx.play(actor)
 
 	match current_dir:
 		Direction.LEFT:
@@ -99,6 +103,8 @@ func _physics_tick(_delta: float) -> void:
 	climb_cooldown_timer = max(climb_cooldown_timer - 1, 0)
 
 	if _can_climb():
+		climb_sfx.play(actor)
+
 		climbing = true
 		climb_cooldown_timer = climb_up_cooldown
 

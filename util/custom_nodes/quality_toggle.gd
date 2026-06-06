@@ -5,7 +5,7 @@ extends Node
 ## On what quality (or lower) the parent should stop being processed.
 ## For example, if [code]Medium[/code] is set as the value, the parent
 ## will also stop processing on [code]Low[/code] quality.
-@export var stop_parent_on: GameState.Qualities = GameState.Qualities.LOW
+@export var stop_parent_on: GameState.Quality = GameState.Quality.LOW
 
 @onready var parent: Node = get_parent()
 
@@ -30,7 +30,7 @@ func _setting_changed(key: String, _value: Variant) -> void:
 
 
 func _toggle_parent() -> void:
-	var current_quality: GameState.Qualities = GameState.quality
+	var current_quality: GameState.Quality = GameState.current_quality
 
 	if current_quality <= stop_parent_on:
 		stored_mode = parent.process_mode

@@ -80,21 +80,20 @@ func emit_particles() -> void:
 
 
 func _set_hitbox() -> void:
-	var was_diving = not actor.dive_hitbox.disabled
-
-	actor.hitbox.disabled = true
-	actor.small_hitbox.disabled = true
-	actor.dive_hitbox.disabled = true
+	actor.hitbox.disabled = false
 
 	match hitbox_type:
 		"Normal":
-			_snap_dive_to_ground(was_diving)
-			actor.hitbox.disabled = false
+			actor.hitbox.position = actor.movement.hitbox_normal_size.position
+			actor.hitbox.shape.size = actor.movement.hitbox_normal_size.size
 		"Small":
-			_snap_dive_to_ground(was_diving)
-			actor.small_hitbox.disabled = false
+			actor.hitbox.position = actor.movement.hitbox_small_size.position
+			actor.hitbox.shape.size = actor.movement.hitbox_small_size.size
 		"Dive":
-			actor.dive_hitbox.disabled = false
+			actor.hitbox.position = actor.movement.hitbox_dive_size.position
+			actor.hitbox.shape.size = actor.movement.hitbox_dive_size.size
+		"None":
+			actor.hitbox.disabled = true
 
 
 func _set_modules(enable: bool) -> void:
@@ -102,12 +101,6 @@ func _set_modules(enable: bool) -> void:
 		# ADD NEW MODULES UNDERNEATH HERE
 		if child is AfterimageModule:
 			child.enabled = enable
-
-
-## Snap back to the ground if you exit from a dive hitbox to a non-dive hitbox.
-func _snap_dive_to_ground(was_diving: bool) -> void:
-	if was_diving:
-		actor.global_position.y -= actor.dive_hitbox.get_shape().get_rect().size.y / 2
 
 
 func _set_animation() -> void:

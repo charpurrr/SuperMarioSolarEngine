@@ -64,7 +64,9 @@ func switch_screen(from: Screen = null, to: Screen = null) -> void:
 	anime_player.play(to.open_anim)
 
 	to.visible = true
-	to.focus_grabber.grab_focus()
+
+	if to.focus_grabber:
+		to.focus_grabber.grab_focus()
 
 	to.on_load()
 

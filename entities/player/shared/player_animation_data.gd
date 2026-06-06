@@ -181,7 +181,7 @@ var preview: bool = false:
 
 		if doll.has_meta(&"last_previewed"):
 			var last = doll.get_meta(&"last_previewed")
-			if is_instance_valid(last):
+			if is_instance_valid(last) and last is PStateAnimData:
 				last.preview_private = false
 				last.preview_fludd = false
 

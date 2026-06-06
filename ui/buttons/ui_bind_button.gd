@@ -28,7 +28,7 @@ var timeout_timer: SceneTreeTimer
 ## (I.e. [InputEventKey], [InputEventJoypadButton], ...)
 var filtered_events: Array[InputEvent]
 
-## 
+## Prevents (method _setting_changed) from firing to avoid recursive behaviour.
 var _suppress_setting_change: bool = false
 
 
@@ -66,7 +66,11 @@ func _input(event: InputEvent) -> void:
 			_clear()
 			avfx()
 
-	if event is InputEventMouseMotion or not awaiting_input:
+	if (
+		event is InputEventMouseMotion or
+		(event is InputEventJoypadMotion and not event.is_pressed()) or
+		not awaiting_input
+	):
 		return
 
 	_return_to_idle()
@@ -86,8 +90,8 @@ func _input(event: InputEvent) -> void:
 
 
 func _focus_changed() -> void:
-	## Makes the icons appear as white (the default color) when focused,
-	## similar to other instances of icons in UIButtons.
+	# Makes the icons appear as white (the default color) when focused,
+	# similar to other instances of icons in UIButtons.
 	icons.material.set_shader_parameter(&"enabled", !has_focus())
 
 
@@ -196,8 +200,6 @@ func _is_valid_event(event: InputEvent) -> bool:
 func _on_pressed() -> void:
 	awaiting_input = true
 	icons.visible = false
-
-	focus_mode = Control.FOCUS_NONE
 
 	timer.start()
 

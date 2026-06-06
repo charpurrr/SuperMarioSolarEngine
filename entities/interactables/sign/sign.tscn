@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3vng5ftys6bt"]
+[gd_scene format=3 uid="uid://c3vng5ftys6bt"]
 
 [ext_resource type="Texture2D" uid="uid://cgxyyk3aawibv" path="res://entities/interactables/sign/sign.png" id="1_ollt3"]
 [ext_resource type="Script" uid="uid://dhw1eqsx6virl" path="res://entities/interactables/sign/sign.gd" id="2_rmaqx"]
+[ext_resource type="PackedScene" uid="uid://bg5v15jjdrvkm" path="res://util/custom_nodes/dialog_module/dialog_module.tscn" id="3_6kum1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rmaqx"]
 animations = [{
@@ -17,17 +18,22 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ollt3"]
 size = Vector2(32, 16)
 
-[node name="Sign" type="AnimatedSprite2D" node_paths=PackedStringArray("area")]
+[node name="Sign" type="AnimatedSprite2D" unique_id=814910606 node_paths=PackedStringArray("area")]
 z_index = -1
 sprite_frames = SubResource("SpriteFrames_rmaqx")
 offset = Vector2(0, -16)
 script = ExtResource("2_rmaqx")
 area = NodePath("Area2D")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=346155557]
 collision_layer = 64
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2054943140]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_ollt3")
+
+[node name="DialogModule" parent="." unique_id=1927175566 instance=ExtResource("3_6kum1")]
+position = Vector2(0, -41)
+bubble_dialog = PackedStringArray("1", "2", "3")
+bubble_dialog_randomized = true

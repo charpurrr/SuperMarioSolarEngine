@@ -11,6 +11,7 @@ audio_bus = &"UI"
 volume = 0.0
 pitch = 1.0
 overwrite_other_in_bus = false
+overwrite_other_in_source = false
 is_2d = false
 metadata/_custom_type_script = "uid://b262pbs7y0djt"
 
@@ -89,33 +90,14 @@ corner_radius_bottom_left = 7
 corner_detail = 1
 anti_aliasing = false
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6wxxs"]
-size = Vector2(0, 0)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_t7s5i"]
-size = Vector2(0, 0)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8qcs8"]
-size = Vector2(0, 0)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_cwd4y"]
-size = Vector2(0, 0)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6wxxs"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t7s5i"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8qcs8"]
-
 [node name="PresetSlider" type="Control" unique_id=341717682 node_paths=PackedStringArray("slider", "grabber", "outline", "progress_bar")]
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 200.0
 offset_bottom = 33.0
-focus_mode = 2
 script = ExtResource("1_skftf")
-slider = NodePath("ProgressBarBackground/GrabberBounds/HSlider")
+slider = NodePath("ProgressBarBackground/HSlider")
 grabber = NodePath("ProgressBarBackground/GrabberBounds/Grabber")
 outline = NodePath("OutlineBounds/GrabberOuterline")
 progress_bar = NodePath("ProgressBarBackground/GrabberBounds/ProgressBar")
@@ -168,8 +150,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 6.0
-offset_top = 7.0
-offset_right = -2.99999
+offset_top = 6.0
+offset_right = -2.9999905
 offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -203,6 +185,17 @@ step = 0.0
 value = 50.0
 show_percentage = false
 
+[node name="HSlider" type="HSlider" parent="ProgressBarBackground" unique_id=1627547083]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_behavior_recursive = 2
+value = 50.0
+
 [node name="GrabberBounds" type="Control" parent="ProgressBarBackground" unique_id=774622897]
 editor_description = "Resize this control to modify where the grabber is positioned, based on the slider value. 
 Left edge: position when value = 0, right edge: position when value = 100"
@@ -214,6 +207,7 @@ offset_left = 10.0
 offset_right = -10.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="ProgressBarBackground/GrabberBounds" unique_id=1434943596]
 layout_mode = 1
@@ -223,6 +217,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.00113, 1)
+mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_cwd4y")
 theme_override_styles/fill = SubResource("StyleBoxFlat_dxsau")
 value = 50.0
@@ -238,6 +233,7 @@ offset_left = -10.0
 offset_top = -4.0
 offset_right = 10.0
 offset_bottom = 4.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8qcs8")
 
 [node name="ColorRect" type="ColorRect" parent="ProgressBarBackground/GrabberBounds/Grabber" unique_id=2121179815]
@@ -249,24 +245,7 @@ offset_left = 7.00003
 offset_top = 9.0
 offset_right = -7.0
 offset_bottom = -10.0
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="HSlider" type="HSlider" parent="ProgressBarBackground/GrabberBounds" unique_id=1627547083]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/center_grabber = 1
-theme_override_icons/grabber = SubResource("PlaceholderTexture2D_6wxxs")
-theme_override_icons/grabber_highlight = SubResource("PlaceholderTexture2D_t7s5i")
-theme_override_icons/grabber_disabled = SubResource("PlaceholderTexture2D_8qcs8")
-theme_override_icons/tick = SubResource("PlaceholderTexture2D_cwd4y")
-theme_override_styles/slider = SubResource("StyleBoxEmpty_6wxxs")
-theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_t7s5i")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_8qcs8")
-value = 50.0
-ticks_on_borders = true
-
-[connection signal="value_changed" from="ProgressBarBackground/GrabberBounds/HSlider" to="." method="_update_slider" binds= [true]]
+[connection signal="value_changed" from="ProgressBarBackground/HSlider" to="." method="_update_slider" binds= [true]]
