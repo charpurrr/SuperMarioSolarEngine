@@ -6,20 +6,23 @@ extends PlayerState
 @export var term_vel: float = 1.10
 ## How fast you accelerate to the terminal velocity.
 @export var gravity_friction: float = 8.0
+@export var slide_sfx: SoundEffect
 
 
-func _on_enter(_param):
+func _on_enter(_param) -> void:
 	movement.consume_coyote_timer()
 	movement.consec_jumps = 0
 
+	slide_sfx.play(actor)
 
-func _physics_tick(_delta: float):
+
+func _physics_tick(_delta: float) -> void:
 	actor.velocity.y = min(actor.velocity.y, term_vel)
 	# Vertical push force so the player stays on the wall.
 	actor.velocity.x = movement.facing_direction
 
 
-func _subsequent_ticks(delta: float):
+func _subsequent_ticks(delta: float) -> void:
 	movement.apply_gravity(delta, 1, gravity_friction)
 
 	var offset_hand := Vector2(
@@ -34,12 +37,17 @@ func _subsequent_ticks(delta: float):
 	)
 	particles[1].emit_at(actor, offset_foot)
 
-func _trans_rules():
+
+func _on_exit() -> void:
+	slide_sfx.stop()
+
+
+func _trans_rules() -> Variant:
 	if input.buffered_input(&"spin"):
 		return &"SpinWallbonk"
 
 	if input.buffered_input(&"jump"):
-		return [&"Walljump", -movement.facing_direction]
+		return &"Walljump"
 
 	if movement.should_end_wallslide():
 		return &"Fall"

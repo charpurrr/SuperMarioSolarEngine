@@ -4,9 +4,9 @@ extends Control
 ## Abstract class for a screen that gets handled by a screen manager.
 
 ## The sound effect that plays when this screen is transitioned to.
-@export var open_sfx: AudioStream
+@export var open_sfx: SoundEffect
 ## The sound effect that plays when this screen is transitioned to.
-@export var close_sfx: AudioStream
+@export var close_sfx: SoundEffect
 ## The name of the menu opening animation as seen in the screen manager's AnimationPlayer.
 @export var open_anim: StringName
 ## The name of the menu opening animation as seen in the screen manager's AnimationPlayer. [br][br]

@@ -33,29 +33,32 @@ Most classes contain documentation that you can find using the Help menu in the 
 
 ## Credits
 
-Charlotte "Charpurrr" Fox - Lead director and programmer <br /><br />
+Charlotte "Charpurrr" Fox - Lead director and programmer <br />
 
 Davin Christino - Additional programming <br />
 CardboardCarl - Additional programming <br />
 aloelucidity - Additional programming <br />
 SilvererCoin - Additional programming <br />
 Unequipped - Additional programming <br />
+axelorca - Additional programming <br />
 Cruglet - Additional programming <br />
 
-Brian "Linktober" - Level design <br /><br />
+Brian "Linktober" - Level design <br />
 
-femtanyl - ATTACKING VERTICAL song <br /><br >
+Mack "masterminer176" - Miscellaneous sprites <br />
+KrystalPhantasm - Miscellaneous sprites <br />
+
+KenneyNL - UI Input Icons <br />
+
+boggio & Crablooshi - different self & waittawhile / teka breather songs <br />
+femtanyl - ATTACKING VERTICAL song <br />
 Gale Sosa - Synth Stratnum song <br />
 Frums - Credits & Options songs <br />
 LSPLASH - Chillwave song <br />
-
-Mack "masterminer176" - Miscellaneous sprites <br />
-KrystalPhantasm - Miscellaneous sprites <br /><br >
-
-KenneyNL - UI Input Icons <br /><br >
+Daft Punk - Voyager song <br />
 
 KingAsylus91 - Mario & Luigi sprites <br />
 TuffTony - Mario & Luigi sprites <br />
-NineBit - Mario & Luigi sprites <br /><br />
+NineBit - Mario & Luigi sprites <br />
 
-Robert & Steven "runouw" Hewitt - Main inspiration <br />
+Robert & Steven "runouw" Hewitt - Main inspiration

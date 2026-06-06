@@ -58,7 +58,7 @@ func _trans_rules():
 		return &"GroundPound"
 
 	if actor.push_rays.is_colliding() and input.buffered_input(&"jump"):
-		return [&"Walljump", -movement.facing_direction]
+		return &"Walljump"
 
 	if movement.can_init_wallslide():
 		return &"Wallslide"

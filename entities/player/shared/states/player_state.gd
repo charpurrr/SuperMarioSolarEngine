@@ -5,24 +5,28 @@ extends State
 @export_enum("Normal", "Small", "Dive", "None") var hitbox_type: String = "Normal"
 
 @export_category(&"Visual")
+## The associated animation data with this state.
 @export var animation_data: PStateAnimData
+## Whether or not the particle effect(s) should play as soon as the state starts.
+@export var on_enter_pfx: bool = true
 ## The associated particles that should emit when the state is activated.
 @export var particles: Array[ParticleEffect]
 
 @export_category(&"Sound")
 ## Whether or not the sound effect(s) should play as soon as the state starts.
-@export var on_enter: bool = true
+@export var on_enter_sfx: bool = true
 ## sfx_layers is a list of the possible sound effects that can play at once.
 ## [br][br]This is useful if you want a state to play more than one sound on entry.
 ## [br][br]Every array inside of the sfx_layers array is said list of possible
 ## sound effects it can cycle through.
 @export var sfx_layers: Array[SFXLayer]
 
+## A reference to the [InputManager], passed down from the [PlayerStateManager].
 var input: InputManager = null
+## A reference to the [FluddManager], passed down from the [PlayerStateManager].
 var fludd: FluddManager = null
+## A reference to the [PMovement] node, passed down from the [PlayerStateManager].
 var movement: PMovement = null
-
-var overwrite_setup_finished: bool
 
 
 func trigger_enter(handover) -> void:
@@ -35,15 +39,13 @@ func trigger_enter(handover) -> void:
 		# for for the first frame of the new animation.
 		_set_frame_specs()
 
-	overwrite_setup_finished = false
-
 	_set_hitbox()
+	_set_modules(true)
 
-	set_modules(true)
-	emit_particles()
-
-	if on_enter:
+	if on_enter_sfx:
 		play_sounds()
+	if on_enter_pfx:
+		emit_particles()
 
 	super(handover)
 
@@ -51,18 +53,10 @@ func trigger_enter(handover) -> void:
 func trigger_exit() -> void:
 	super()
 
-	set_modules(false)
+	_set_modules(false)
 
 	if actor.doll.frame_changed.is_connected(_set_frame_specs):
 		actor.doll.frame_changed.disconnect(_set_frame_specs)
-
-	for layer in sfx_layers:
-		if not layer.cutoff_sfx:
-			continue
-
-		for child in get_children():
-			if child is AudioStreamPlayer and child.stream in layer.sfx_list:
-				child.queue_free()
 
 
 ## Uses [parameter new_data] as the state's animation data.[br]
@@ -70,25 +64,14 @@ func trigger_exit() -> void:
 ## [i]Note: the default [member animation_data] variable should be left empty
 ## to avoid issues while using this.
 func overwrite_animation(new_data: PStateAnimData) -> void:
-	if not overwrite_setup_finished:
-		actor.doll.frame_changed.connect(_set_frame_specs.bind(new_data))
-		_set_frame_specs(new_data)
-		overwrite_setup_finished = true
-
+	_set_frame_specs(new_data)
 	actor.doll.play(new_data.animation)
-
-
-func set_modules(enable: bool) -> void:
-	for child in get_children():
-		## ADD NEW MODULES UNDERNEATH HERE
-		if child is AfterimageModule:
-			child.enabled = enable
 
 
 func play_sounds() -> void:
 	if not sfx_layers.is_empty():
 		for sfx_list in sfx_layers:
-			sfx_list.play_sfx_at(self)
+			sfx_list.play_sfx_at(actor)
 
 
 func emit_particles() -> void:
@@ -97,27 +80,23 @@ func emit_particles() -> void:
 
 
 func _set_hitbox() -> void:
-	var was_diving = not actor.dive_hitbox.disabled
-
-	actor.hitbox.disabled = true
-	actor.small_hitbox.disabled = true
-	actor.dive_hitbox.disabled = true
-
 	match hitbox_type:
 		"Normal":
-			_snap_dive_to_ground(was_diving)
-			actor.hitbox.disabled = false
+			actor.hitbox.position = actor.movement.hitbox_normal_size.position
+			actor.hitbox.shape.size = actor.movement.hitbox_normal_size.size
 		"Small":
-			_snap_dive_to_ground(was_diving)
-			actor.small_hitbox.disabled = false
+			actor.hitbox.position = actor.movement.hitbox_small_size.position
+			actor.hitbox.shape.size = actor.movement.hitbox_small_size.size
 		"Dive":
-			actor.dive_hitbox.disabled = false
+			actor.hitbox.position = actor.movement.hitbox_dive_size.position
+			actor.hitbox.shape.size = actor.movement.hitbox_dive_size.size
 
 
-## Snap back to the ground if you exit from a dive hitbox to a non-dive hitbox.
-func _snap_dive_to_ground(was_diving: bool) -> void:
-	if was_diving:
-		actor.global_position.y -= actor.dive_hitbox.get_shape().get_rect().size.y / 2
+func _set_modules(enable: bool) -> void:
+	for child in get_children():
+		# ADD NEW MODULES UNDERNEATH HERE
+		if child is AfterimageModule:
+			child.enabled = enable
 
 
 func _set_animation() -> void:

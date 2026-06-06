@@ -4,7 +4,7 @@ extends EnemyState
 
 
 func _trans_rules() -> Variant:
-	if actor.spotted_player != null:
+	if actor.spotted_player != null and not actor.stationary:
 		return &"Aggroed"
 
 	return &""

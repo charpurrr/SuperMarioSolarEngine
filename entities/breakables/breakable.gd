@@ -3,7 +3,7 @@ extends Node2D
 ## An entity that can be broken in various ways.
 
 ## What sound effect plays when broken.
-@export var break_sound: AudioStreamWAV
+@export var break_sound: SoundEffect
 ## What particle effect plays when broken.
 @export var break_particles: ParticleEffect
 ## How many coins are in this container.
@@ -17,7 +17,7 @@ var finished_calls: int = 0
 
 ## Break the object.
 func shatter() -> void:
-	var sfx: AudioStreamPlayer = SFX.play_sfx(break_sound, &"SFX", self)
+	var sfx: AudioStreamPlayer2D = break_sound.play(self)
 	sfx.finished.connect(_count_finished)
 
 	sprite.visible = false

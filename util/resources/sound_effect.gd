@@ -17,6 +17,12 @@ var audio_bus: StringName = &"Master"
 var volume: float = 0.0
 ## At what pitch the sound effect plays.
 var pitch: float = 1.0
+## Whether or not playing this sound effect should end
+## all the other sound effects in the same [member audio_bus].
+var overwrite_other_in_bus: bool = false
+## Whether or not playing this sound effect should end
+## all the other sound effects played at [method play]'s [code]source[/code] node.
+var overwrite_other_in_source: bool = false
 
 ## Whether or not the sound effect is 2 dimensional.
 ## (Played at a position in the world.)
@@ -25,7 +31,7 @@ var is_2d: bool = true:
 		is_2d = val
 		notify_property_list_changed()
 ## Whether or not the position at which the sound effect plays
-## is the same as [method play]'s [code]from[/code] node's position.
+## is the same as [method play]'s [code]source[/code] node's position.
 var inherit_position: bool = true:
 	set(val):
 		inherit_position = val
@@ -38,22 +44,36 @@ var attenuation: float = 1.0
 ## Maximum distance from which audio is still hearable.
 var max_distance: float = 2000.0
 
+var current_player: Node
+
 
 ## Creates an [AudioStreamPlayer] or [AudioStreamPlayer2D] depending on [member is_2d],
-## adds it to [param from], then destroys it when the sound effect finishes.[br]
+## adds it to [param source], then destroys it when the sound effect finishes.[br]
 ## Returns an optionally usable reference to the assigned [AudioStreamPlayer] or [AudioStreamPlayer2D].
-func play(from: Node) -> Variant:
-	if not is_instance_valid(from):
-		push_error("Cannot fetch node %s." % from.name)
+func play(source: Node) -> Variant:
+	if not is_instance_valid(source):
+		push_error("Cannot fetch node %s." % source.name)
 		return
 
 	if stream == null:
 		push_error("SoundEffect has no AudioStream value.")
 		return
 
+	if overwrite_other_in_bus:
+		source.get_tree().call_group(audio_bus, &"queue_free")
+	if overwrite_other_in_source:
+		source.get_tree().call_group(source.name + "/sfx", &"queue_free")
+
 	var player = null
 
 	if is_2d:
+		if source is not Node2D:
+			push_warning(
+				"SoundEffect is set to be 2 dimensional, but %s is of type %s.
+				The SoundEffect will play at world coordinates (0, 0)." % [
+					source.name, source.get_class()
+				]
+			) 
 		player = AudioStreamPlayer2D.new()
 
 		player.attenuation = attenuation
@@ -69,16 +89,38 @@ func play(from: Node) -> Variant:
 	# For referencing all sfx in the bus.
 	player.add_to_group(audio_bus)
 	# For referencing all sfx in the parent. (For example, all sfx from a [State].)
-	player.add_to_group(from.name + "/sfx")
+	player.add_to_group(source.name + "/sfx")
 	player.set_volume_db(volume)
 	player.set_pitch_scale(pitch)
 
-	from.add_child(player)
+	source.add_child(player)
 
 	player.connect(&"finished", player.queue_free)
 	player.play()
 
+	current_player = player
+
 	return player
+
+
+func stop():
+	if current_player:
+		current_player.queue_free()
+
+
+func toggle_pause():
+	if current_player:
+		current_player.set_stream_paused(!current_player.stream_paused)
+
+
+func pause():
+	if current_player:
+		current_player.set_stream_paused(true)
+
+
+func unpause():
+	if current_player:
+		current_player.set_stream_paused(false)
 
 
 func _get_property_list() -> Array[Dictionary]:
@@ -115,6 +157,16 @@ func _get_property_list() -> Array[Dictionary]:
 			"usage": PROPERTY_USAGE_DEFAULT,
 		},
 		{
+			"name": "overwrite_other_in_bus",
+			"type": TYPE_BOOL,
+			"usage": PROPERTY_USAGE_DEFAULT,
+		},
+		{
+			"name": "overwrite_other_in_source",
+			"type": TYPE_BOOL,
+			"usage": PROPERTY_USAGE_DEFAULT,
+		},
+		{
 			"name": "2 Dimensional",
 			"type": TYPE_NIL,
 			"usage": PROPERTY_USAGE_GROUP
@@ -123,7 +175,6 @@ func _get_property_list() -> Array[Dictionary]:
 			"name": "is_2d",
 			"type": TYPE_BOOL,
 			"hint": PROPERTY_HINT_GROUP_ENABLE,
-			#"hint_string": "checkbox_only",
 			"usage": PROPERTY_USAGE_DEFAULT,
 		}
 	]
@@ -160,13 +211,8 @@ func _get_property_list() -> Array[Dictionary]:
 	return properties
 
 
-func _property_can_revert(property: StringName) -> bool:
-	match property:
-		&"stream", &"audio_bus", &"play_at", &"volume", &"pitch", &"is_2d", \
-		&"attenuation", &"max_distance", &"inherit_position", &"position":
-			return true
-
-	return false
+func _property_can_revert(_property: StringName) -> bool:
+	return true
 
 
 func _property_get_revert(property: StringName) -> Variant:
@@ -177,7 +223,7 @@ func _property_get_revert(property: StringName) -> Variant:
 			return &"Master"
 		&"play_at":
 			return ""
-		&"volume":
+		&"volume", &"start_delay":
 			return 0.0
 		&"pitch", &"attenuation":
 			return 1.0
@@ -185,6 +231,8 @@ func _property_get_revert(property: StringName) -> Variant:
 			return 2000.0
 		&"is_2d", &"inherit_position":
 			return true
+		&"overwrite_other_in_bus", &"overwrite_other_in_source":
+			return false
 		&"position":
 			return Vector2.ZERO
 

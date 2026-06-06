@@ -2,12 +2,13 @@ extends Node
 
 signal paused
 
-enum Qualities {
+enum Quality {
 		LOW = 0, ## Optimised for performance. Enables viewport stretching and disables most shaders.
 		MEDIUM = 1, ## Balanced performance. Enables viewport stretching but keeps most shaders enabled.
 		HIGH = 2, ## Best visuals experience. Enables canvas item stretching and keeps most shaders enabled.
 	}
-var quality: Qualities
+
+var current_quality: Quality
 
 var debug_toggle: bool = false
 var debug_toggle_collision_shapes: bool = false
@@ -85,13 +86,13 @@ func _setting_changed(key: String, value: Variant):
 		"quality":
 			match value:
 				0: # HIGH
-					quality = Qualities.HIGH
+					current_quality = Quality.HIGH
 					get_tree().root.content_scale_mode = Window.CONTENT_SCALE_MODE_CANVAS_ITEMS
 				1: # LOW
-					quality = Qualities.LOW
+					current_quality = Quality.LOW
 					get_tree().root.content_scale_mode = Window.CONTENT_SCALE_MODE_VIEWPORT
 				2: # MEDIUM
-					quality = Qualities.MEDIUM
+					current_quality = Quality.MEDIUM
 					get_tree().root.content_scale_mode = Window.CONTENT_SCALE_MODE_VIEWPORT
 		# AUDIO
 		"music_muted":

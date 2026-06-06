@@ -34,6 +34,13 @@ func _on_crouch_spin_hurt_box_body_entered(body: Node2D) -> void:
 		return
 
 	if body is Enemy:
+		enemy_strike_sfx.play(actor)
+		enemy_strike_pfx.emit_at(body)
 		body.health_module.damage(actor, HealthModule.DamageType.STRIKE, 1)
+
+		Engine.time_scale = enemy_strike_slow_factor
+		var slow_duration := enemy_strike_slow_time / Engine.get_frames_per_second()
+		await get_tree().create_timer(slow_duration, true, false, true).timeout
+		Engine.time_scale = 1.0
 	elif body is Breakable:
 		body.shatter()

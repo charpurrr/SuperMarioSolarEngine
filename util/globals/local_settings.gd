@@ -52,7 +52,7 @@ var defaults: Dictionary[String, Variant] = {
 	# General
 	"scale": 1,
 	"v_sync": true,
-	"quality": GameState.Qualities.HIGH,
+	"quality": GameState.Quality.HIGH,
 	"rich_presence": true,
 	"motion_controls": false,
 	"rumble_strength": 2,

@@ -1,10 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddtpa42oyu7fe"]
+[gd_scene format=3 uid="uid://ddtpa42oyu7fe"]
 
 [ext_resource type="Texture2D" uid="uid://b77euxkqpro1q" path="res://entities/breakables/crate/crate.png" id="1_bjqni"]
 [ext_resource type="Script" uid="uid://c4m18iuc2ek6l" path="res://entities/breakables/breakable.gd" id="1_qecqc"]
-[ext_resource type="AudioStream" uid="uid://dx75622pudrjr" path="res://entities/breakables/breakable_box/shatter.wav" id="2_1y4qc"]
+[ext_resource type="Script" uid="uid://b262pbs7y0djt" path="res://util/resources/sound_effect.gd" id="2_uif4k"]
+[ext_resource type="AudioStream" uid="uid://dx75622pudrjr" path="res://entities/breakables/breakable_box/shatter.wav" id="3_1y4qc"]
 [ext_resource type="PackedScene" uid="uid://bcmtpr7mp1onv" path="res://entities/breakables/breakable_box/particles.tscn" id="3_uif4k"]
 [ext_resource type="Script" uid="uid://dd8oyhd4nllix" path="res://util/resources/particle_effect.gd" id="4_foqs1"]
+
+[sub_resource type="Resource" id="Resource_qecqc"]
+script = ExtResource("2_uif4k")
+stream = ExtResource("3_1y4qc")
+audio_bus = &"SFX"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+is_2d = true
+attenuation = 1.0
+max_distance = 2000.0
+inherit_position = true
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
 
 [sub_resource type="Resource" id="Resource_txow0"]
 script = ExtResource("4_foqs1")
@@ -15,19 +29,19 @@ metadata/_custom_type_script = "uid://dd8oyhd4nllix"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjqni"]
 size = Vector2(32, 32)
 
-[node name="Crate" type="RigidBody2D" node_paths=PackedStringArray("sprite", "collision")]
+[node name="Crate" type="RigidBody2D" unique_id=347533683 node_paths=PackedStringArray("sprite", "collision")]
 collision_layer = 137
 collision_mask = 7
 script = ExtResource("1_qecqc")
-break_sound = ExtResource("2_1y4qc")
+break_sound = SubResource("Resource_qecqc")
 break_particles = SubResource("Resource_txow0")
 sprite = NodePath("Sprite2D")
 collision = NodePath("CollisionShape2D")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1415602101]
 texture = ExtResource("1_bjqni")
 offset = Vector2(0, -16)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2044117172]
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_bjqni")

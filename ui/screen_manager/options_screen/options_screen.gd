@@ -6,18 +6,29 @@ extends Screen
 ## If you're looking for the different settings stored on the user's
 ## system, consider looking in the LocalSettings global. 
 
+@export var tabs: TabContainer
 @export var clear_controls: HBoxContainer
+@export var reset_controls: HBoxContainer
 
 
 func _ready() -> void:
 	get_viewport().gui_focus_changed.connect(_gui_focus_changed)
 	clear_controls.hide()
+	reset_controls.hide()
 
 
 func _gui_focus_changed(node: Control) -> void:
-	if node is UIBindButton:
-		clear_controls.show()
-		node.focus_exited.connect(func(): clear_controls.hide())
+	clear_controls.visible = node is UIBindButton
+	reset_controls.visible = (
+		node is OptionBase or
+		node is HSlider or
+		node is UIBindButton or
+		node is UISelector
+	)
+
+
+func on_load() -> void:
+	tabs.grab_focus_for_tab(tabs.current_tab)
 
 
 func _on_reset_data_pressed() -> void:

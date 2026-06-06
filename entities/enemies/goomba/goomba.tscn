@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://cjeme0ny363gg" path="res://entities/enemies/goomba/states/dry/aggroed/jump.gd" id="13_2rnn8"]
 [ext_resource type="Script" uid="uid://dvlt5sb8enmu8" path="res://util/resources/sfx_layer.gd" id="13_5dppb"]
 [ext_resource type="AudioStream" uid="uid://bbxq15u5b6bka" path="res://entities/enemies/goomba/sfx/step_1.wav" id="14_cmvqd"]
+[ext_resource type="Script" uid="uid://b262pbs7y0djt" path="res://util/resources/sound_effect.gd" id="14_um0uc"]
 [ext_resource type="AudioStream" uid="uid://dy3c5tcmneu06" path="res://entities/enemies/goomba/sfx/step_2.wav" id="15_wnwc8"]
 [ext_resource type="AudioStream" uid="uid://7n4a0mwhu08y" path="res://entities/enemies/goomba/sfx/notice.wav" id="18_0ngrs"]
 [ext_resource type="Script" uid="uid://dd8oyhd4nllix" path="res://util/resources/particle_effect.gd" id="20_u3i55"]
@@ -214,7 +215,7 @@ animations = [{
 size = Vector2(14, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qtetb"]
-size = Vector2(25, 8)
+size = Vector2(14, 7)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jor08"]
 radius = 256.0
@@ -288,30 +289,91 @@ _data = {
 &"die_strike": SubResource("Animation_kc47k")
 }
 
+[sub_resource type="Resource" id="Resource_yd6gl"]
+script = ExtResource("14_um0uc")
+stream = ExtResource("14_cmvqd")
+audio_bus = &"Motion"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = true
+attenuation = 1.0
+max_distance = 2000.0
+inherit_position = true
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
+
+[sub_resource type="Resource" id="Resource_uav1b"]
+script = ExtResource("14_um0uc")
+stream = ExtResource("15_wnwc8")
+audio_bus = &"Motion"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = true
+attenuation = 1.0
+max_distance = 2000.0
+inherit_position = true
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
+
 [sub_resource type="Resource" id="Resource_0ngrs"]
 script = ExtResource("13_5dppb")
-sfx_list = [ExtResource("14_cmvqd"), ExtResource("15_wnwc8")]
-bus = &"Motion"
+sfx_list = Array[ExtResource("14_um0uc")]([SubResource("Resource_yd6gl"), SubResource("Resource_uav1b")])
 force_new = true
-overwrite_other = false
-cutoff_sfx = false
 metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
+
+[sub_resource type="Resource" id="Resource_bgjxe"]
+script = ExtResource("14_um0uc")
+stream = ExtResource("18_0ngrs")
+audio_bus = &"Motion"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = true
+attenuation = 1.0
+max_distance = 2000.0
+inherit_position = true
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
 
 [sub_resource type="Resource" id="Resource_um0uc"]
 script = ExtResource("13_5dppb")
-sfx_list = [ExtResource("18_0ngrs")]
-bus = &"Motion"
-overwrite_other = false
-cutoff_sfx = false
+sfx_list = Array[ExtResource("14_um0uc")]([SubResource("Resource_bgjxe")])
 metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
+
+[sub_resource type="Resource" id="Resource_hnrth"]
+script = ExtResource("14_um0uc")
+stream = ExtResource("14_cmvqd")
+audio_bus = &"Motion"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = true
+attenuation = 1.0
+max_distance = 2000.0
+inherit_position = true
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
+
+[sub_resource type="Resource" id="Resource_bjkc0"]
+script = ExtResource("14_um0uc")
+stream = ExtResource("15_wnwc8")
+audio_bus = &"Motion"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = true
+attenuation = 1.0
+max_distance = 2000.0
+inherit_position = true
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
 
 [sub_resource type="Resource" id="Resource_a562u"]
 script = ExtResource("13_5dppb")
-sfx_list = [ExtResource("14_cmvqd"), ExtResource("15_wnwc8")]
-bus = &"Motion"
+sfx_list = Array[ExtResource("14_um0uc")]([SubResource("Resource_hnrth"), SubResource("Resource_bjkc0")])
 force_new = true
-overwrite_other = false
-cutoff_sfx = false
 metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ivan8"]
@@ -339,14 +401,69 @@ _bundled = {
 script = ExtResource("20_u3i55")
 particle_scene = SubResource("PackedScene_a562u")
 
+[sub_resource type="Resource" id="Resource_uf2ur"]
+script = ExtResource("14_um0uc")
+stream = ExtResource("22_u3i55")
+audio_bus = &"Motion"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = true
+attenuation = 1.0
+max_distance = 2000.0
+inherit_position = true
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
+
+[sub_resource type="Resource" id="Resource_61ela"]
+script = ExtResource("14_um0uc")
+stream = ExtResource("21_t3ksn")
+audio_bus = &"Motion"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = true
+attenuation = 1.0
+max_distance = 2000.0
+inherit_position = true
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
+
+[sub_resource type="Resource" id="Resource_x2sdh"]
+script = ExtResource("14_um0uc")
+stream = ExtResource("26_rr0dy")
+audio_bus = &"Motion"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = true
+is_2d = true
+attenuation = 1.0
+max_distance = 2000.0
+inherit_position = true
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
+
 [sub_resource type="Resource" id="Resource_rr0dy"]
 script = ExtResource("20_u3i55")
 particle_scene = ExtResource("26_um0uc")
 metadata/_custom_type_script = "uid://dd8oyhd4nllix"
 
+[sub_resource type="Resource" id="Resource_i6fsg"]
+script = ExtResource("14_um0uc")
+stream = ExtResource("28_i1yyq")
+audio_bus = &"Motion"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = true
+attenuation = 1.0
+max_distance = 2000.0
+inherit_position = true
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
+
 [node name="Goomba" type="CharacterBody2D" unique_id=1024455853 node_paths=PackedStringArray("hurtbox", "ledge_ray_l", "ledge_ray_r", "wall_ray_l", "wall_ray_r", "hitbox", "state_manager", "anime", "doll")]
 collision_layer = 4
-collision_mask = 5
 script = ExtResource("1_hhlu2")
 gravity = 774.0
 hurtbox = NodePath("Areas/Hurtbox")
@@ -380,7 +497,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Hurtbox" unique_id=1687356690]
-position = Vector2(0.5, -4)
+position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_qtetb")
 debug_color = Color(1, 0, 0.14509805, 0.14117648)
 
@@ -465,8 +582,8 @@ particles = Array[ExtResource("20_u3i55")]([SubResource("Resource_i1yyq")])
 
 [node name="Jump" type="Node" parent="StateManager/Dry/Aggroed" unique_id=69935508]
 script = ExtResource("13_2rnn8")
-jump_sfx = ExtResource("22_u3i55")
-land_sfx = ExtResource("21_t3ksn")
+jump_sfx = SubResource("Resource_uf2ur")
+land_sfx = SubResource("Resource_61ela")
 jump_power = 240.0
 jump_decel = 12.0
 jump_animation = &"jump"
@@ -476,9 +593,9 @@ fall_animation = &"fall"
 script = ExtResource("10_b0ahg")
 strike_x_power = 120.0
 strike_y_power = 240.0
-stomp_sfx = ExtResource("26_rr0dy")
+stomp_sfx = SubResource("Resource_x2sdh")
 explode_pfx = SubResource("Resource_rr0dy")
-explode_sfx = ExtResource("28_i1yyq")
+explode_sfx = SubResource("Resource_i6fsg")
 animation = &"hurt"
 
 [connection signal="body_entered" from="Areas/Hurtbox" to="." method="_on_hurtbox_body_entered"]

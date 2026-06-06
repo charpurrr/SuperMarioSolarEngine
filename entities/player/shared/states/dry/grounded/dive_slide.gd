@@ -2,10 +2,14 @@ class_name DiveSlide
 extends PlayerState
 ## Sliding on the ground after a dive.
 
+@export var slide_sfx: SoundEffect
+
 
 func _on_enter(_param):
 	actor.floor_stop_on_slope = false
 	actor.doll.rotation = movement.body_rotation
+
+	slide_sfx.play(actor)
 
 
 func _physics_tick(_delta: float):
@@ -23,6 +27,8 @@ func _subsequent_ticks(_delta: float):
 func _on_exit():
 	actor.floor_stop_on_slope = true
 	actor.doll.rotation = 0
+
+	slide_sfx.stop()
 
 
 func _trans_rules():

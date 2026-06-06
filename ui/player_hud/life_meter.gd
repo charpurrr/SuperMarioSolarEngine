@@ -29,7 +29,7 @@ var preview_action = take_hit.bind(0)
 
 var is_shaking: bool = false
 
-@export var low_health_sfx: AudioStream
+@export var low_health_sfx: SoundEffect
 @export var low_health_pulse_speed: float = 2.0
 @export var low_health_pulse_amount: float = 0.2
 @export var low_health_preview: bool = false:
@@ -109,7 +109,7 @@ func take_hit(amt: int, _type: HealthModule.DamageType = HealthModule.DamageType
 	hp -= amt
 
 	if hp == 1:
-		SFX.play_sfx(low_health_sfx, &"UI", self)
+		low_health_sfx.play(self)
 		is_pulsing = true
 	else:
 		is_pulsing = false

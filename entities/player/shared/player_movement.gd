@@ -32,6 +32,13 @@ extends Node
 ## How many frames have to progress before you can accelerate forward again.
 @export var return_time: int = 15
 var return_timer: float
+
+## Which direction the player is facing.
+## [code]1[/code] corresponds to facing right,
+## [code]-1[/code] corresponds to facing left.
+var facing_direction: int = 1
+## facing_direction on the previous frame.
+var prev_facing_direction: int
 #endregion
 
 #region Y Variables
@@ -97,9 +104,9 @@ var freefall_timer: int = -1
 ## Steep slopes automatically make you slide off.
 @export_range(0.0, 1.0) var min_steep_incline: float = 0.8
 
-var facing_direction: int = 1
-## facing_direction on the previous frame.
-var prev_facing_direction: int
+@export var hitbox_normal_size := Rect2(0.0, -15.0, 16.0, 30.0)
+@export var hitbox_small_size := Rect2(0.0, -8.0, 16.0, 16.0)
+@export var hitbox_dive_size := Rect2(0.0, -16.0, 16.0, 16.0)
 
 ## Whether or not you've performed an airborne spin.
 var air_spun: bool = false

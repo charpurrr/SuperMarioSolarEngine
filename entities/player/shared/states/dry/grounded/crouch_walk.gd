@@ -32,7 +32,7 @@ func _play_footstep_sfx():
 	for frame in footstep_frames:
 		if frame == current_frame:
 			for sfx_list in sfx_layers:
-				sfx_list.play_sfx_at(self)
+				sfx_list.play_sfx_at(actor)
 
 
 func _on_exit():
@@ -56,7 +56,7 @@ func _trans_rules():
 		elif sign(actor.velocity.x) == movement.facing_direction:
 			return &"Longjump"
 
-	if not Input.is_action_pressed(&"down") and not actor.auto_crouch_check.enabled:
+	if not Input.is_action_pressed(&"crouch") and not actor.auto_crouch_check.enabled:
 		return &"Idle"
 
 	return &""

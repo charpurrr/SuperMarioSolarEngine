@@ -1,6 +1,8 @@
 @tool
 extends UISlider
 
+@export var press_sfx: SoundEffect
+
 ## Set in [VolumeSetting].
 @onready var bus: AudioBus
 
@@ -17,11 +19,18 @@ func _ready() -> void:
 		super()
 
 
+func _input(_event: InputEvent) -> void:
+	if slider.has_focus() and Input.is_action_just_pressed(&"setting_reset"):
+		slider.value = 100
+		press_sfx.play(self)
+
+
 func _try_sfx():
 	# If not playing on ready, and no sound effects are 
 	# playing in the UI audio bus:
 	if get_tree().get_nodes_in_group(&"UI").is_empty():
-		SFX.play_sfx(tick_sound, &"UI", self, linear_to_db(value / 100))
+		tick_sound.volume = linear_to_db(value / 100)
+		tick_sound.play(self)
 
 
 func _bus_updated(val):

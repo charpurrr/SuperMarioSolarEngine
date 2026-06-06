@@ -28,10 +28,13 @@ func _physics_tick(_delta: float) -> void:
 
 
 func _trans_rules() -> Variant:
+	if actor.stationary:
+		return &""
+
 	if actor.is_on_wall():
 		return [&"Walk", actor.get_wall_normal().x]
 
-	if not actor.stationary and wait_timer == 0:
+	if actor.roam and wait_timer == 0:
 		return &"Walk"
 
 	return &""

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://brof7wb075ont" path="res://ui/ui.gd" id="1_75fsn"]
 [ext_resource type="AudioStream" uid="uid://b58aveo75onan" path="res://ui/sfx/pause.wav" id="2_1xskv"]
+[ext_resource type="Script" uid="uid://b262pbs7y0djt" path="res://util/resources/sound_effect.gd" id="2_y28h8"]
 [ext_resource type="AudioStream" uid="uid://cmr5pcu7wv31v" path="res://ui/sfx/submenu_close.wav" id="3_cb22p"]
 [ext_resource type="PackedScene" uid="uid://b41sl5v4p501f" path="res://ui/notification/notification.tscn" id="4_oqxfb"]
 [ext_resource type="Shader" uid="uid://cgcjxa2rl4edn" path="res://util/shaders/smw_mozaic.gdshader" id="5_yrl65"]
@@ -36,7 +37,10 @@
 [ext_resource type="Texture2D" uid="uid://cc5yq8axs2y02" path="res://ui/screen_manager/pause_screen/textures/turbo_icon.png" id="39_8iv75"]
 [ext_resource type="Script" uid="uid://bx0armu50awrf" path="res://ui/screen_manager/warning_screen/warning_screen.gd" id="40_cynfm"]
 [ext_resource type="AudioStream" uid="uid://pbdklvoviaxp" path="res://ui/sfx/warning.wav" id="41_r4q0q"]
+[ext_resource type="Script" uid="uid://dvca417ad8kmq" path="res://ui/tab_controller.gd" id="41_y28h8"]
 [ext_resource type="Script" uid="uid://d251mwxo8lxbl" path="res://ui/screen_manager/options_screen/options_screen.gd" id="42_emp4r"]
+[ext_resource type="AudioStream" uid="uid://cit45yv71vt35" path="res://ui/sfx/tab_l.wav" id="42_vqsyl"]
+[ext_resource type="AudioStream" uid="uid://egw1cy6ntywl" path="res://ui/sfx/tab_r.wav" id="43_504o4"]
 [ext_resource type="AudioStream" uid="uid://bsui5m0n5a7a7" path="res://ui/sfx/submenu_open.wav" id="43_votwh"]
 [ext_resource type="Texture2D" uid="uid://cf78bvynxea03" path="res://ui/input_icons/nintendo_switch/switch_button_l.svg" id="44_axwwv"]
 [ext_resource type="Script" uid="uid://uwn7phrht0a8" path="res://ui/buttons/option_enum.gd" id="45_23m8v"]
@@ -48,7 +52,6 @@
 [ext_resource type="PackedScene" uid="uid://q67oo8p20ee4" path="res://ui/screen_manager/options_screen/controls/bind_setting.tscn" id="49_svocp"]
 [ext_resource type="Theme" uid="uid://blj83dty2taxs" path="res://ui/buttons/scrollbar.tres" id="50_5i7o0"]
 [ext_resource type="SyntaxHighlighter" uid="uid://caviijwsp8wjw" path="res://ui/screen_manager/options_screen/data/settings_highlighter.tres" id="51_q1vx3"]
-[ext_resource type="Script" uid="uid://omsf7uvmpj3q" path="res://ui/screen_manager/options_screen/data/data_peek.gd" id="52_q1vx3"]
 [ext_resource type="PackedScene" uid="uid://b08q042unmcxf" path="res://ui/buttons/ui_selector.tscn" id="52_sk6td"]
 [ext_resource type="PackedScene" uid="uid://puhluie3m3cp" path="res://ui/screen_manager/options_screen/sound/volume_setting.tscn" id="53_i1icy"]
 [ext_resource type="Texture2D" uid="uid://c125fwk30fu0" path="res://ui/input_icons/keyboard_mouse/keyboard_escape.svg" id="54_6apma"]
@@ -61,6 +64,28 @@
 [ext_resource type="Texture2D" uid="uid://duwkwt771mmf3" path="res://ui/input_icons/keyboard_mouse/keyboard_backspace_icon.svg" id="58_m3cpd"]
 [ext_resource type="Texture2D" uid="uid://40c63r8ke4mj" path="res://ui/input_icons/keyboard_mouse/keyboard_delete.svg" id="58_mvot7"]
 [ext_resource type="Texture2D" uid="uid://c0y7k7pos5e3e" path="res://ui/input_icons/nintendo_switch/switch_button_y.svg" id="59_y28h8"]
+
+[sub_resource type="Resource" id="Resource_aeygf"]
+script = ExtResource("2_y28h8")
+stream = ExtResource("2_1xskv")
+audio_bus = &"UI"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = false
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
+
+[sub_resource type="Resource" id="Resource_gbf2f"]
+script = ExtResource("2_y28h8")
+stream = ExtResource("3_cb22p")
+audio_bus = &"UI"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = false
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j6vdi"]
 shader = ExtResource("5_yrl65")
@@ -420,6 +445,50 @@ shader_parameter/spike_scroll_speed = 0.05
 shader_parameter/spike_dimensions = Vector2(0, 0)
 shader_parameter/spike_texture = ExtResource("23_3jqvb")
 
+[sub_resource type="Resource" id="Resource_y28h8"]
+script = ExtResource("2_y28h8")
+stream = ExtResource("41_r4q0q")
+audio_bus = &"UI"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = false
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
+
+[sub_resource type="Resource" id="Resource_vqsyl"]
+script = ExtResource("2_y28h8")
+stream = ExtResource("3_cb22p")
+audio_bus = &"UI"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = false
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
+
+[sub_resource type="Resource" id="Resource_504o4"]
+script = ExtResource("2_y28h8")
+stream = ExtResource("43_votwh")
+audio_bus = &"UI"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = false
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
+
+[sub_resource type="Resource" id="Resource_r5lpl"]
+script = ExtResource("2_y28h8")
+stream = ExtResource("3_cb22p")
+audio_bus = &"UI"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = false
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ev48a"]
 bg_color = Color(0, 0, 0, 1)
 
@@ -440,24 +509,72 @@ load_path = "res://.godot/imported/pattern_solar.png-7851dba46d4d0fd594dcc5410d5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q1vx3"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y28h8"]
+content_margin_left = 10.0
+content_margin_top = 4.0
+content_margin_right = 10.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aeygf"]
+content_margin_left = 10.0
+content_margin_top = 4.0
+content_margin_right = 10.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+border_width_left = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.175, 0.175, 0.175, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 1
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3cpd"]
 content_margin_left = 10.0
 content_margin_top = 4.0
 content_margin_right = 10.0
 content_margin_bottom = 4.0
-bg_color = Color(0.1, 0.1, 0.1, 0.6)
-border_width_top = 2
+bg_color = Color(0.1897483, 0.1897483, 0.1897483, 0.6)
+border_width_top = 3
 border_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 corner_detail = 1
+
+[sub_resource type="Resource" id="Resource_er6et"]
+script = ExtResource("2_y28h8")
+stream = ExtResource("42_vqsyl")
+audio_bus = &"UI"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = false
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
+
+[sub_resource type="Resource" id="Resource_3jvq5"]
+script = ExtResource("2_y28h8")
+stream = ExtResource("43_504o4")
+audio_bus = &"UI"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = false
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
 
 [sub_resource type="LabelSettings" id="LabelSettings_xphw0"]
 font = ExtResource("34_jyo83")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvot7"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gbf2f"]
 bg_color = Color(1, 1, 1, 1)
-border_width_top = 20
-border_width_bottom = 20
-border_color = Color(1, 1, 1, 0)
+border_width_top = 10
+border_width_bottom = 10
+border_color = Color(0.8001019, 0.8001019, 0.8001019, 0)
 border_blend = true
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n7xk5"]
@@ -467,8 +584,6 @@ content_margin_left = 3.0
 script/source = "extends UISelector
 
 signal audio_output_list_changed()
-
-@export var speaker_label: Label
 
 var audio_device_list: PackedStringArray
 
@@ -482,7 +597,6 @@ func _ready() -> void:
 	audio_output_list_changed.connect(_update_list)
 	audio_device_list = AudioServer.get_output_device_list()
 
-	_update_speaker_label()
 	_update_list()
 
 	var saved_device: String = LocalSettings.load_setting(\"Audio\", \"device\")
@@ -515,23 +629,6 @@ func _unhandled_input(_event: InputEvent) -> void:
 		avfx()
 
 
-func _update_speaker_label():
-	var speaker_mode_text: String
-	var speaker_mode = AudioServer.get_speaker_mode()
-
-	match speaker_mode:
-		AudioServer.SPEAKER_MODE_STEREO:
-			speaker_mode_text = \"Stereo\"
-		AudioServer.SPEAKER_SURROUND_31:
-			speaker_mode_text = \"Surround 3.1\"
-		AudioServer.SPEAKER_SURROUND_51:
-			speaker_mode_text = \"Surround 5.1\"
-		AudioServer.SPEAKER_SURROUND_71:
-			speaker_mode_text = \"Surround 7.1\"
-
-	speaker_label.text = \"Speaker Mode: %s\" % speaker_mode_text
-
-
 func _update_list():
 	var current_items: Dictionary[String, int] = {}
 	for item_number in range(item_count):
@@ -549,8 +646,6 @@ func _update_list():
 func _on_item_selected(index):
 	var device_name: String = audio_device_list[index]
 
-	_update_speaker_label()
-
 	AudioServer.output_device = device_name
 
 	LocalSettings.change_setting(\"Audio\", \"device\", device_name)
@@ -560,6 +655,15 @@ func _setting_updated(key: String, new_value: Variant = null):
 	if key != \"device\": return
 
 	selected = get_item_index(audio_device_list.find(new_value))
+"
+
+[sub_resource type="GDScript" id="GDScript_mvot7"]
+script/source = "class_name DataPeek
+extends CodeEdit
+## The DataPeek node allows you to view and edit your [LocalSettings]
+## config file from within the game. This is useful for debugging purposes.
+
+
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7xk5"]
@@ -584,8 +688,8 @@ script = ExtResource("1_75fsn")
 life_meter = NodePath("LifeMeter")
 screen_manager = NodePath("ScreenManager")
 color_blur = NodePath("ScreenManager/ColorBlurEffect")
-game_pause_sfx = ExtResource("2_1xskv")
-game_unpause_sfx = ExtResource("3_cb22p")
+game_pause_sfx = SubResource("Resource_aeygf")
+game_unpause_sfx = SubResource("Resource_gbf2f")
 zoom_blur_player = NodePath("CameraZoomMosaic/AnimationPlayer")
 notif_scene = ExtResource("4_oqxfb")
 notif_list = NodePath("Notifications")
@@ -1055,8 +1159,8 @@ flip_h = true
 script = ExtResource("40_cynfm")
 warning_text = NodePath("Spacing/Main/WarningText")
 title_screen = "uid://cthxoel5sus6v"
-open_sfx = ExtResource("41_r4q0q")
-close_sfx = ExtResource("3_cb22p")
+open_sfx = SubResource("Resource_y28h8")
+close_sfx = SubResource("Resource_vqsyl")
 open_anim = &"warning_peek"
 close_anim = &"BACKWARDS"
 focus_grabber = NodePath("Spacing/Main/Buttons/Cancel")
@@ -1119,7 +1223,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.2
 
-[node name="OptionsScreen" type="VBoxContainer" parent="ScreenManager" unique_id=1039564080 node_paths=PackedStringArray("clear_controls", "focus_grabber")]
+[node name="OptionsScreen" type="VBoxContainer" parent="ScreenManager" unique_id=1039564080 node_paths=PackedStringArray("tabs", "clear_controls", "reset_controls")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -1131,12 +1235,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 script = ExtResource("42_emp4r")
+tabs = NodePath("TextureRect/Content/TabControls/Tabs")
 clear_controls = NodePath("Footer/Content/ClearControls")
-open_sfx = ExtResource("43_votwh")
-close_sfx = ExtResource("3_cb22p")
+reset_controls = NodePath("Footer/Content/ResetControls")
+open_sfx = SubResource("Resource_504o4")
+close_sfx = SubResource("Resource_r5lpl")
 open_anim = &"options_peek"
 close_anim = &"BACKWARDS"
-focus_grabber = NodePath("TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/VSync/ToggleButton")
 
 [node name="Header" type="Panel" parent="ScreenManager/OptionsScreen" unique_id=1231787544]
 layout_mode = 2
@@ -1193,7 +1298,7 @@ icon_alignment = 2
 vertical_icon_alignment = 0
 expand_icon = true
 
-[node name="Tabs" type="TabContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls" unique_id=1512779639]
+[node name="Tabs" type="TabContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls" unique_id=1512779639 node_paths=PackedStringArray("focus_grabbers")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -1201,15 +1306,24 @@ theme_override_colors/font_unselected_color = Color(0.494118, 0.494118, 0.494118
 theme_override_fonts/font = ExtResource("34_jyo83")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/panel = SubResource("StyleBoxEmpty_q1vx3")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_y28h8")
+theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_aeygf")
 theme_override_styles/tab_selected = SubResource("StyleBoxFlat_m3cpd")
 tab_alignment = 1
-current_tab = 0
+current_tab = 2
 tab_focus_mode = 0
+script = ExtResource("41_y28h8")
+tab_left_sfx = SubResource("Resource_er6et")
+tab_right_sfx = SubResource("Resource_3jvq5")
+focus_grabbers = [NodePath("General/ScrollContainer/Content/TopButtons/VSync/ToggleButton"), NodePath("Controls/FadeEffect/ScrollContainer/HBoxContainer/Actions/BindSetting"), NodePath("Sound/FadeEffect/ScrollContainer/HBoxContainer/Content/AudioDevice/PresetSelector"), null, NodePath("Data/TopButtons/OpenData")]
 
-[node name="General" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs" unique_id=1400883172 node_paths=PackedStringArray("fps_cap_button")]
+[node name="General" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs" unique_id=1400883172 node_paths=PackedStringArray("vsync_button", "fps_cap_button", "quality_button")]
+visible = false
 layout_mode = 2
 script = ExtResource("47_mvot7")
+vsync_button = NodePath("ScrollContainer/Content/TopButtons/VSync/ToggleButton")
 fps_cap_button = NodePath("ScrollContainer/Content/TopButtons/FPS/SelectorButton")
+quality_button = NodePath("ScrollContainer/Content/TopButtons/Quality/SelectorButton")
 metadata/_tab_index = 0
 
 [node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General" unique_id=1897692378]
@@ -1431,15 +1545,19 @@ layout_mode = 2
 theme_override_constants/separation = 16
 metadata/_tab_index = 1
 
-[node name="Control" type="Panel" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls" unique_id=1255462569]
+[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls" unique_id=411208790]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.05
+
+[node name="FadeEffect" type="Panel" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls" unique_id=1255462569]
 clip_children = 1
-clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_mvot7")
+theme_override_styles/panel = SubResource("StyleBoxFlat_gbf2f")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control" unique_id=205027965]
+[node name="ScrollContainer" type="ScrollContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/FadeEffect" unique_id=205027965]
 z_index = 1
 clip_contents = false
 custom_minimum_size = Vector2(1, 1)
@@ -1456,39 +1574,36 @@ follow_focus = true
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer" unique_id=2064359824]
+[node name="HBoxContainer" type="HBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/FadeEffect/ScrollContainer" unique_id=2064359824]
 z_index = -1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Actions" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer" unique_id=184316159]
+[node name="Actions" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/FadeEffect/ScrollContainer/HBoxContainer" unique_id=184316159]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 17
 
-[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" unique_id=645589936]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.1
-
-[node name="BindSetting" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" unique_id=754586437 instance=ExtResource("49_svocp")]
+[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/FadeEffect/ScrollContainer/HBoxContainer/Actions" unique_id=645589936]
 layout_mode = 2
 
-[node name="BindSetting2" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" unique_id=754599030 instance=ExtResource("49_svocp")]
+[node name="BindSetting" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/FadeEffect/ScrollContainer/HBoxContainer/Actions" unique_id=754586437 instance=ExtResource("49_svocp")]
+layout_mode = 2
+
+[node name="BindSetting2" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/FadeEffect/ScrollContainer/HBoxContainer/Actions" unique_id=754599030 instance=ExtResource("49_svocp")]
 layout_mode = 2
 p_action_name = &"left"
 vis_title = &"Move Left"
 vis_icon_flip_h = true
 
-[node name="BindSetting3" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" unique_id=2071984428 instance=ExtResource("49_svocp")]
+[node name="BindSetting3" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/FadeEffect/ScrollContainer/HBoxContainer/Actions" unique_id=2071984428 instance=ExtResource("49_svocp")]
 layout_mode = 2
 p_action_name = &"up"
 vis_title = &"Move Up"
 vis_animation = &"swim"
 
-[node name="BindSetting4" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" unique_id=1447932515 instance=ExtResource("49_svocp")]
+[node name="BindSetting4" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/FadeEffect/ScrollContainer/HBoxContainer/Actions" unique_id=1447932515 instance=ExtResource("49_svocp")]
 layout_mode = 2
 p_action_name = &"down"
 vis_title = &"Move Down"
@@ -1496,37 +1611,34 @@ vis_animation = &"swim"
 vis_icon_flip_h = true
 vis_icon_flip_v = true
 
-[node name="BindSetting5" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" unique_id=1864629858 instance=ExtResource("49_svocp")]
+[node name="BindSetting5" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/FadeEffect/ScrollContainer/HBoxContainer/Actions" unique_id=1864629858 instance=ExtResource("49_svocp")]
 layout_mode = 2
 p_action_name = &"jump"
 vis_title = &"Jump"
 vis_animation = &"jump"
 
-[node name="BindSetting6" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" unique_id=1750075054 instance=ExtResource("49_svocp")]
+[node name="BindSetting6" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/FadeEffect/ScrollContainer/HBoxContainer/Actions" unique_id=1750075054 instance=ExtResource("49_svocp")]
 layout_mode = 2
 p_action_name = &"spin"
 vis_title = &"Spin"
 vis_animation = &"spin_attack"
 
-[node name="BindSetting7" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" unique_id=1282184756 instance=ExtResource("49_svocp")]
+[node name="BindSetting7" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/FadeEffect/ScrollContainer/HBoxContainer/Actions" unique_id=1282184756 instance=ExtResource("49_svocp")]
 layout_mode = 2
 p_action_name = &"dive"
 vis_title = &"Dive"
 vis_animation = &"dive"
 
-[node name="BindSetting8" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" unique_id=881960758 instance=ExtResource("49_svocp")]
+[node name="BindSetting8" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/FadeEffect/ScrollContainer/HBoxContainer/Actions" unique_id=881960758 instance=ExtResource("49_svocp")]
 layout_mode = 2
 p_action_name = &"groundpound"
 vis_title = &"Ground-Pound"
 vis_animation = &"gp"
 
-[node name="Space2" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" unique_id=1769740541]
-custom_minimum_size = Vector2(0, 3)
+[node name="Space2" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/FadeEffect/ScrollContainer/HBoxContainer/Actions" unique_id=321491429]
 layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.1
 
-[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer" unique_id=698466511]
+[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/FadeEffect/ScrollContainer/HBoxContainer" unique_id=698466511]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.03
@@ -1537,19 +1649,18 @@ layout_mode = 2
 size_flags_stretch_ratio = 0.1
 
 [node name="Sound" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs" unique_id=2093018172]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="Control" type="Panel" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound" unique_id=451832648]
+[node name="FadeEffect" type="Panel" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound" unique_id=451832648]
 clip_children = 1
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_mvot7")
+theme_override_styles/panel = SubResource("StyleBoxFlat_gbf2f")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control" unique_id=1730002083]
+[node name="ScrollContainer" type="ScrollContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect" unique_id=1730002083]
 z_index = 1
 clip_contents = false
 custom_minimum_size = Vector2(1, 1)
@@ -1566,80 +1677,70 @@ follow_focus = true
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer" unique_id=722725613]
+[node name="HBoxContainer" type="HBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer" unique_id=722725613]
 z_index = -1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Content" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer" unique_id=1405240327]
+[node name="Content" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer/HBoxContainer" unique_id=1405240327]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 24
 
-[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content" unique_id=1400789438]
-custom_minimum_size = Vector2(0, 3)
+[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer/HBoxContainer/Content" unique_id=1400789438]
 layout_mode = 2
-size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 
-[node name="AudioDevice" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content" unique_id=1690681885]
+[node name="AudioDevice" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer/HBoxContainer/Content" unique_id=1690681885]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Header" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice" unique_id=1216870003]
+[node name="Header" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer/HBoxContainer/Content/AudioDevice" unique_id=1216870003]
 layout_mode = 2
 text = "Audio Device"
 label_settings = SubResource("LabelSettings_xphw0")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice" unique_id=987160702]
+[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer/HBoxContainer/Content/AudioDevice" unique_id=987160702]
 layout_mode = 2
 
-[node name="PresetSelector" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice" unique_id=1652699040 node_paths=PackedStringArray("speaker_label") instance=ExtResource("52_sk6td")]
+[node name="PresetSelector" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer/HBoxContainer/Content/AudioDevice" unique_id=1652699040 instance=ExtResource("52_sk6td")]
 custom_minimum_size = Vector2(0, 27)
 layout_mode = 2
 script = SubResource("GDScript_vgfim")
-speaker_label = NodePath("../SpeakerMode")
 
-[node name="Space2" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice" unique_id=323102323]
+[node name="Space2" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer/HBoxContainer/Content/AudioDevice" unique_id=323102323]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
-[node name="SpeakerMode" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice" unique_id=1244611670]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("34_jyo83")
-theme_override_font_sizes/font_size = 15
-text = "Speaker Mode:"
-horizontal_alignment = 1
-
-[node name="MasterVolume" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content" unique_id=1816654138 instance=ExtResource("53_i1icy")]
+[node name="MasterVolume" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer/HBoxContainer/Content" unique_id=1816654138 instance=ExtResource("53_i1icy")]
 layout_mode = 2
 
-[node name="MusicVolume2" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content" unique_id=1140861298 instance=ExtResource("53_i1icy")]
+[node name="MusicVolume" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer/HBoxContainer/Content" unique_id=1140861298 instance=ExtResource("53_i1icy")]
 layout_mode = 2
 header_text = "Music Volume"
 bus_name = &"Music"
 
-[node name="SFXVolume" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content" unique_id=528485732 instance=ExtResource("53_i1icy")]
+[node name="SFXVolume" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer/HBoxContainer/Content" unique_id=528485732 instance=ExtResource("53_i1icy")]
 layout_mode = 2
 header_text = "Sound Effects Volume"
 bus_name = &"SFX"
 
-[node name="VoiceVolume2" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content" unique_id=613767193 instance=ExtResource("53_i1icy")]
+[node name="VoiceVolume" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer/HBoxContainer/Content" unique_id=613767193 instance=ExtResource("53_i1icy")]
 layout_mode = 2
 header_text = "Voices Volume"
 bus_name = &"Voice"
 
-[node name="Space2" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content" unique_id=859588523]
+[node name="Space2" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer/HBoxContainer/Content" unique_id=859588523]
 custom_minimum_size = Vector2(0, 3)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 
-[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer" unique_id=837090760]
+[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer/HBoxContainer" unique_id=837090760]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.03
@@ -1654,10 +1755,11 @@ visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
-[node name="Data" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs" unique_id=844587460]
+[node name="Data" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs" unique_id=844587460 node_paths=PackedStringArray("data_peek")]
 visible = false
 layout_mode = 2
 script = ExtResource("57_y28h8")
+data_peek = NodePath("DataPeek")
 metadata/_tab_index = 4
 
 [node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data" unique_id=190457657]
@@ -1671,10 +1773,12 @@ theme_override_constants/separation = 32
 
 [node name="OpenData" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data/TopButtons" unique_id=2105952765 instance=ExtResource("25_dlkvg")]
 layout_mode = 2
+focus_neighbor_right = NodePath("../ResetData")
 text = "OPEN FOLDER"
 
 [node name="ResetData" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data/TopButtons" unique_id=2131401660 instance=ExtResource("25_dlkvg")]
 layout_mode = 2
+focus_neighbor_left = NodePath("../OpenData")
 text = "RESET DATA"
 
 [node name="Space2" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data" unique_id=1006247793]
@@ -1682,9 +1786,10 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 
-[node name="DataPeek" type="CodeEdit" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data" unique_id=1588917684 node_paths=PackedStringArray("data_debugger")]
+[node name="DataPeek" type="CodeEdit" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data" unique_id=1588917684]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_readonly_color = Color(0.875, 0.875, 0.875, 0.5)
 theme_override_fonts/font = ExtResource("34_jyo83")
 theme_override_font_sizes/font_size = 16
 text = "[Section]
@@ -1692,19 +1797,8 @@ text = "[Section]
 setting_3=1.0
 setting_4=\"string\"
 setting_5=true
-setting_2=PackedStringArray(\"A\", \"B\", \"C\")
-
-[Section 2]
-d
-d
-d
-d
-d
-d
-d
-d
-d
-d"
+setting_2=PackedStringArray(\"A\", \"B\", \"C\")"
+editable = false
 scroll_smooth = true
 minimap_draw = true
 syntax_highlighter = ExtResource("51_q1vx3")
@@ -1717,17 +1811,7 @@ gutters_zero_pad_line_numbers = true
 gutters_line_numbers_min_digits = 1
 auto_brace_completion_enabled = true
 auto_brace_completion_highlight_matching = true
-script = ExtResource("52_q1vx3")
-data_debugger = NodePath("../DataDebugger")
-
-[node name="DataDebugger" type="CodeEdit" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data" unique_id=849706609]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-theme_override_colors/font_readonly_color = Color(0.76862746, 0.34901962, 0.34901962, 1)
-theme_override_fonts/font = ExtResource("34_jyo83")
-theme_override_font_sizes/font_size = 16
-placeholder_text = "No issues found."
-editable = false
+script = SubResource("GDScript_mvot7")
 
 [node name="Panel" type="Panel" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data" unique_id=1269393658]
 visible = false
@@ -1900,6 +1984,5 @@ label_settings = SubResource("LabelSettings_n7xk5")
 [connection signal="pressed" from="ScreenManager/WarningScreen/Spacing/Main/Buttons/Confirm" to="ScreenManager/WarningScreen" method="_on_confirm_pressed"]
 [connection signal="pressed" from="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data/TopButtons/OpenData" to="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data" method="_on_open_data_pressed"]
 [connection signal="pressed" from="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data/TopButtons/ResetData" to="ScreenManager/OptionsScreen" method="_on_reset_data_pressed"]
-[connection signal="lines_edited_from" from="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data/DataPeek" to="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data/DataPeek" method="_on_lines_edited_from"]
 
 [editable path="RedCoinCounter"]

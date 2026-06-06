@@ -99,10 +99,14 @@ func _grounded(delta: float):
 		actor.velocity = actor.velocity.move_toward(actor.velocity.limit_length(speed_limit), 
 			overspeed_friction * normal_accel * delta)
 
+	slide_sfx.unpause()
+
 
 ## Buttsliding in the air.
 func _airborne(delta: float):
 	movement.apply_gravity(delta)
+
+	slide_sfx.pause()
 
 
 ## Set the animation based on how you're moving on a slope.
@@ -123,6 +127,10 @@ func _set_appropriate_anim():
 	# Play normal slide animation
 	else:
 		overwrite_animation(default_animation_data)
+
+
+func _on_exit() -> void:
+	slide_sfx.stop()
 
 
 func _trans_rules():

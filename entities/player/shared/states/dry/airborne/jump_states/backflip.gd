@@ -33,7 +33,7 @@ func _subsequent_ticks(delta: float):
 
 func _trans_rules():
 	if actor.push_rays.is_colliding(false, true) and input.buffered_input(&"jump"):
-		return [&"Walljump", -actor.push_rays.get_collide_side()]
+		return [&"Walljump", [-actor.push_rays.get_collide_side(), true]]
 
 	if movement.can_init_wallslide(true):
 		movement.facing_direction = actor.push_rays.get_collide_side()

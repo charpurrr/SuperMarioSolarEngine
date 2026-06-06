@@ -15,29 +15,36 @@ var current_frame: int
 var last_frame: int
 
 
-func _physics_tick(_delta: float):
+func _on_enter(_param: Variant) -> void:
+	if actor.get_platform_velocity() != Vector2.ZERO:
+		actor.velocity.x = 0
+
+
+func _physics_tick(_delta: float) -> void:
 	movement.update_prev_direction()
 	movement.decelerate(movement.ground_decel_step * Vector2.RIGHT)
 
-	current_frame = actor.doll.get_frame()
 
 	if Input.is_action_pressed(&"up"):
 		overwrite_animation(lookup_animation_data)
 	elif actor.health_module.hp == 1:
 		overwrite_animation(low_health_animation_data)
-
-		if current_frame != last_frame:
-			for frame in low_health_frames:
-				if frame == current_frame:
-					low_health_sfx.play_sfx_at(self)
-
 	else:
 		overwrite_animation(idle_animation_data)
+
+
+func _subsequent_ticks(_delta: float) -> void:
+	current_frame = actor.doll.get_frame()
+
+	if actor.health_module.hp == 1 and current_frame != last_frame:
+		for frame in low_health_frames:
+			if frame == current_frame:
+				low_health_sfx.play_sfx_at(actor)
 
 	last_frame = current_frame
 
 
-func _trans_rules():
+func _trans_rules() -> Variant:
 	if actor.velocity.x != 0 and input.buffered_input(&"dive"):
 		return &"Dive"
 

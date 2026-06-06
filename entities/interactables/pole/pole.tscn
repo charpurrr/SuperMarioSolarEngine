@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://b0ojpnfyepmw6"]
+
+[ext_resource type="Texture2D" uid="uid://bbl8j106dcvll" path="res://entities/interactables/pole/pole.png" id="1_mtc41"]
+[ext_resource type="Script" uid="uid://crhnxvmsxehei" path="res://entities/interactables/pole/pole.gd" id="1_rvjy0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtc41"]
+resource_local_to_scene = true
+size = Vector2(8, 32)
+
+[node name="Pole" type="Node2D" unique_id=1712398917 node_paths=PackedStringArray("texture", "area", "collision_shape")]
+z_index = -1
+script = ExtResource("1_rvjy0")
+texture = NodePath("Texture")
+area = NodePath("Area2D")
+collision_shape = NodePath("Area2D/CollisionShape2D")
+
+[node name="Texture" type="NinePatchRect" parent="." unique_id=661649600]
+custom_minimum_size = Vector2(0, 32)
+offset_left = -4.0
+offset_top = -32.0
+offset_right = 4.0
+grow_vertical = 0
+pivot_offset = Vector2(4, 32)
+texture = ExtResource("1_mtc41")
+patch_margin_top = 16
+patch_margin_bottom = 16
+axis_stretch_vertical = 1
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1322177054]
+position = Vector2(0, -16)
+collision_layer = 8192
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=645032129]
+shape = SubResource("RectangleShape2D_mtc41")

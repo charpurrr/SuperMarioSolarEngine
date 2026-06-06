@@ -1,20 +1,38 @@
 [gd_scene format=3 uid="uid://cnd277snrwca5"]
 
 [ext_resource type="Script" uid="uid://b8xq8roo5asyr" path="res://entities/player/shared/camera/player_camera.gd" id="1_8exb6"]
-[ext_resource type="Script" uid="uid://dvlt5sb8enmu8" path="res://util/resources/sfx_layer.gd" id="2_hvhmj"]
+[ext_resource type="Script" uid="uid://b262pbs7y0djt" path="res://util/resources/sound_effect.gd" id="3_csr5w"]
 [ext_resource type="AudioStream" uid="uid://dakcghvbe6vva" path="res://entities/player/shared/camera/camera_in.wav" id="3_tywbp"]
 [ext_resource type="AudioStream" uid="uid://c66je7k6yx3c7" path="res://entities/player/shared/camera/camera_out.wav" id="4_bl75n"]
 [ext_resource type="Script" uid="uid://b53d42qg4e27d" path="res://util/custom_nodes/damped_oscillator.gd" id="5_qicgx"]
 
-[sub_resource type="Resource" id="Resource_dq0cd"]
-script = ExtResource("2_hvhmj")
-sfx_list = [ExtResource("3_tywbp")]
-bus = &"UI"
+[sub_resource type="Resource" id="Resource_n1ri4"]
+script = ExtResource("3_csr5w")
+stream = ExtResource("3_tywbp")
+audio_bus = &"UI"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = true
+attenuation = 1.0
+max_distance = 2000.0
+inherit_position = true
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
 
-[sub_resource type="Resource" id="Resource_rtieh"]
-script = ExtResource("2_hvhmj")
-sfx_list = [ExtResource("4_bl75n")]
-bus = &"UI"
+[sub_resource type="Resource" id="Resource_ar1yo"]
+script = ExtResource("3_csr5w")
+stream = ExtResource("4_bl75n")
+audio_bus = &"UI"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = true
+attenuation = 1.0
+max_distance = 2000.0
+inherit_position = true
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
 
 [node name="PlayerCamera" type="Camera2D" unique_id=1824461476 node_paths=PackedStringArray("shake_x_spring", "shake_y_spring")]
 offset = Vector2(0, -50)
@@ -25,8 +43,8 @@ drag_vertical_enabled = true
 drag_top_margin = 0.3
 editor_draw_drag_margin = true
 script = ExtResource("1_8exb6")
-zoom_in_sfx = SubResource("Resource_dq0cd")
-zoom_out_sfx = SubResource("Resource_rtieh")
+zoom_in_sfx = SubResource("Resource_n1ri4")
+zoom_out_sfx = SubResource("Resource_ar1yo")
 shake_x_spring = NodePath("ShakeXSpring")
 shake_y_spring = NodePath("ShakeYSpring")
 

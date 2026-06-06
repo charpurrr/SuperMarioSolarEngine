@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bg5v15jjdrvkm"]
+
+[ext_resource type="Script" uid="uid://2vrbduiiocfd" path="res://util/custom_nodes/dialog_module/dialog_module.gd" id="1_l7igi"]
+[ext_resource type="PackedScene" uid="uid://bppnjg356bdsp" path="res://util/custom_nodes/dialog_module/dialog_ui.tscn" id="3_m5i4o"]
+[ext_resource type="PackedScene" uid="uid://dne14etc5yw2n" path="res://util/custom_nodes/dialog_module/dialog_bubble.tscn" id="4_6h4ul"]
+
+[node name="DialogModule" type="Node2D" unique_id=1927175566 node_paths=PackedStringArray("bubble_cycle_timer")]
+script = ExtResource("1_l7igi")
+bubble_show = true
+dialog_ui = ExtResource("3_m5i4o")
+dialog_bubble = ExtResource("4_6h4ul")
+bubble_cycle_timer = NodePath("BubbleCycleTimer")
+
+[node name="BubbleCycleTimer" type="Timer" parent="." unique_id=939409393]
+wait_time = 3.0
+one_shot = true

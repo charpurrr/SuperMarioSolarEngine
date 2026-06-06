@@ -13,7 +13,7 @@ extends UIButton
 ## Maximum amount of binds this action can have at once.
 @export_range(0, 100, 1,"hide_slider") var max_binds: int
 ## Sound effect that plays when an input gets denied.
-@export var deny_sfx: AudioStreamWAV
+@export var deny_sfx: SoundEffect
 
 @export_category("References")
 @export var timer: Timer
@@ -28,7 +28,7 @@ var timeout_timer: SceneTreeTimer
 ## (I.e. [InputEventKey], [InputEventJoypadButton], ...)
 var filtered_events: Array[InputEvent]
 
-## 
+## Prevents (method _setting_changed) from firing to avoid recursive behaviour.
 var _suppress_setting_change: bool = false
 
 
@@ -66,7 +66,11 @@ func _input(event: InputEvent) -> void:
 			_clear()
 			avfx()
 
-	if event is InputEventMouseMotion or not awaiting_input:
+	if (
+		event is InputEventMouseMotion or
+		(event is InputEventJoypadMotion and not event.is_pressed()) or
+		not awaiting_input
+	):
 		return
 
 	_return_to_idle()
@@ -86,8 +90,8 @@ func _input(event: InputEvent) -> void:
 
 
 func _focus_changed() -> void:
-	## Makes the icons appear as white (the default color) when focused,
-	## similar to other instances of icons in UIButtons.
+	# Makes the icons appear as white (the default color) when focused,
+	# similar to other instances of icons in UIButtons.
 	icons.material.set_shader_parameter(&"enabled", !has_focus())
 
 
@@ -163,7 +167,7 @@ func _reset_to_default() -> void:
 
 
 func _reject() -> void:
-	SFX.play_sfx(deny_sfx, &"UI", self)
+	deny_sfx.play(self)
 	modulate = Color.RED
 
 	var tween := self.create_tween()
@@ -196,8 +200,6 @@ func _is_valid_event(event: InputEvent) -> bool:
 func _on_pressed() -> void:
 	awaiting_input = true
 	icons.visible = false
-
-	focus_mode = Control.FOCUS_NONE
 
 	timer.start()
 

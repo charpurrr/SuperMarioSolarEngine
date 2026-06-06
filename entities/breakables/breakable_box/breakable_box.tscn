@@ -1,10 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://d1qpcty7kyi5p"]
+[gd_scene format=3 uid="uid://d1qpcty7kyi5p"]
 
 [ext_resource type="Texture2D" uid="uid://bgv5gb66vjjqd" path="res://entities/breakables/breakable_box/breakable_box.png" id="1_7wqyk"]
 [ext_resource type="Script" uid="uid://c4m18iuc2ek6l" path="res://entities/breakables/breakable.gd" id="1_i4c0n"]
+[ext_resource type="Script" uid="uid://b262pbs7y0djt" path="res://util/resources/sound_effect.gd" id="2_ejekk"]
 [ext_resource type="AudioStream" uid="uid://dx75622pudrjr" path="res://entities/breakables/breakable_box/shatter.wav" id="2_m8kgu"]
 [ext_resource type="PackedScene" uid="uid://bcmtpr7mp1onv" path="res://entities/breakables/breakable_box/particles.tscn" id="3_hed0p"]
 [ext_resource type="Script" uid="uid://dd8oyhd4nllix" path="res://util/resources/particle_effect.gd" id="4_ejekk"]
+
+[sub_resource type="Resource" id="Resource_waqgj"]
+script = ExtResource("2_ejekk")
+stream = ExtResource("2_m8kgu")
+audio_bus = &"SFX"
+volume = 0.0
+pitch = 1.0
+is_2d = true
+attenuation = 1.0
+max_distance = 2000.0
+inherit_position = true
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
 
 [sub_resource type="Resource" id="Resource_vc3p1"]
 script = ExtResource("4_ejekk")
@@ -15,19 +28,19 @@ metadata/_custom_type_script = "uid://dd8oyhd4nllix"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wqyk"]
 size = Vector2(32, 32)
 
-[node name="BreakableBox" type="StaticBody2D" node_paths=PackedStringArray("sprite", "collision")]
+[node name="BreakableBox" type="StaticBody2D" unique_id=1774644562 node_paths=PackedStringArray("sprite", "collision")]
 collision_layer = 129
 collision_mask = 6
 script = ExtResource("1_i4c0n")
-break_sound = ExtResource("2_m8kgu")
+break_sound = SubResource("Resource_waqgj")
 break_particles = SubResource("Resource_vc3p1")
 sprite = NodePath("Sprite2D")
 collision = NodePath("CollisionShape2D")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=293685344]
 texture = ExtResource("1_7wqyk")
 offset = Vector2(0, -16)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=390745528]
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_7wqyk")

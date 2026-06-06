@@ -31,15 +31,15 @@ func _ready() -> void:
 	init_pos_y = label.position.y
 
 
-func _increment(type: Coin.TYPE):
+func _increment(type: Coin.Type):
 	match type:
-		Coin.TYPE.YELLOW:
+		Coin.Type.YELLOW:
 			bounce_color = 0xffc800ff
 			coin_count += 1
-		Coin.TYPE.BLUE:
+		Coin.Type.BLUE:
 			bounce_color = 0x0034ffff
 			coin_count += 5
-		Coin.TYPE.RED:
+		Coin.Type.RED:
 			bounce_color = 0xff0000ff
 			coin_count += 2
 

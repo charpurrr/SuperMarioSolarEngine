@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dk2cdc5aktq22"]
+
+[ext_resource type="Texture2D" uid="uid://daaypoi0828b6" path="res://entities/platforms/semi_solid/semi_solid_platform_synth.png" id="1_rbgee"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_mn5ia"]
+a = Vector2(16, 0)
+b = Vector2(-16, 0)
+
+[node name="SemiSolidPlatform" type="Sprite2D" unique_id=2076014878]
+texture = ExtResource("1_rbgee")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=238099241]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=143393566]
+position = Vector2(0, -16)
+shape = SubResource("SegmentShape2D_mn5ia")
+one_way_collision = true
+one_way_collision_margin = 3.0

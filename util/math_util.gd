@@ -44,7 +44,7 @@ static func lerp_vecr(vec_start: Variant, vec_end: Variant, incr: float, diff: f
 	return vec_start + (vec_end - vec_start) * incr
 
 
-## Lerp function for colors, includes the functionality of [method lerpfr].
+## Lerp function for colors, includes the functionality of [method lerp_fr].
 static func lerp_colr(col_start: Color, col_end: Color, incr: float, diff: float):
 	if _dist_color(col_start, col_end) < diff:
 		if incr >= 0: return col_end
@@ -67,6 +67,14 @@ static func moveto_vec(vec_start: Variant, vec_end: Variant, incr: float):
 	var direction = (vec_end - vec_start).normalized()
 	var dist = vec_start.distance_to(vec_end)
 	return vec_start + direction*incr if dist > incr else vec_end
+
+
+static func ease_out(progress: float) -> float:
+	return 1.0 - pow(1.0 - progress, 3.0)
+
+
+static func ease_in_out(progress: float):
+	return pow(progress, 2.0) * (3.0 - 2.0 * progress)
 
 
 static func _vector_type_check(vec_start: Variant, vec_end: Variant) -> bool:

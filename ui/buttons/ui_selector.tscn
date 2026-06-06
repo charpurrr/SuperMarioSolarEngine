@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b08q042unmcxf"]
+[gd_scene format=3 uid="uid://b08q042unmcxf"]
 
 [ext_resource type="Texture2D" uid="uid://cjfsg2gooi5oh" path="res://ui/buttons/radio_button_pressed.svg" id="1_kboga"]
 [ext_resource type="Texture2D" uid="uid://gawkicpwx8b6" path="res://ui/buttons/radio_button.svg" id="2_7d16n"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://c4ui7ftfypsg0" path="res://ui/sfx/decide_small.wav" id="5_c7x3e"]
 [ext_resource type="AudioStream" uid="uid://dsokoktxblw41" path="res://ui/sfx/cursor.wav" id="6_urjt7"]
 [ext_resource type="Script" uid="uid://dbt74wkarggux" path="res://ui/buttons/ui_selector.gd" id="8_8waww"]
+[ext_resource type="Script" uid="uid://b262pbs7y0djt" path="res://util/resources/sound_effect.gd" id="8_kboga"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xffh"]
 bg_color = Color(0.486275, 0, 0.4, 1)
@@ -35,6 +36,26 @@ PopupMenu/styles/hover = SubResource("StyleBoxFlat_3xffh")
 PopupMenu/styles/panel = ExtResource("2_nkxgv")
 PopupMenu/styles/separator = SubResource("StyleBoxLine_6w1vu")
 
+[sub_resource type="Resource" id="Resource_7d16n"]
+script = ExtResource("8_kboga")
+stream = ExtResource("5_c7x3e")
+audio_bus = &"UI"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+is_2d = false
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
+
+[sub_resource type="Resource" id="Resource_qeanb"]
+script = ExtResource("8_kboga")
+stream = ExtResource("6_urjt7")
+audio_bus = &"UI"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+is_2d = false
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkxgv"]
 bg_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 7
@@ -53,7 +74,7 @@ corner_radius_bottom_left = 12
 corner_detail = 1
 anti_aliasing = false
 
-[node name="PresetSelector" type="OptionButton"]
+[node name="PresetSelector" type="OptionButton" unique_id=569071244]
 offset_right = 100.0
 offset_bottom = 27.0
 size_flags_horizontal = 3
@@ -83,10 +104,10 @@ alignment = 1
 text_overrun_behavior = 3
 fit_to_longest_item = false
 script = ExtResource("8_8waww")
-press_sfx = ExtResource("5_c7x3e")
-cursor_sfx = ExtResource("6_urjt7")
+press_sfx = SubResource("Resource_7d16n")
+cursor_sfx = SubResource("Resource_qeanb")
 
-[node name="Dropshadow" type="Panel" parent="."]
+[node name="Dropshadow" type="Panel" parent="." unique_id=111838981]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -102,7 +123,7 @@ size_flags_vertical = 3
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_nkxgv")
 
-[node name="Outerline" type="Panel" parent="Dropshadow"]
+[node name="Outerline" type="Panel" parent="Dropshadow" unique_id=1705111263]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15

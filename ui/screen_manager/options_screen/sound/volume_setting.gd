@@ -8,7 +8,6 @@ extends Control
 
 @export_category("References")
 @export var header: Label
-@export var reset: UIButton
 @export var slider: UISlider
 @export var mute_tell: Label
 @export var percentage: Label
@@ -28,15 +27,9 @@ func _ready():
 
 func _slider_updated(slider_val: float):
 	percentage.text = "%d%%" % (slider_val)
-	bus.update_volume(slider_val / 100)
-
-
-func _on_reset_button_pressed() -> void:
-	slider.slider.value = slider.default_value
+	LocalSettings.change_setting("Audio", bus.setting_name, slider_val / 100)
 
 
 func _update_mute(muted: bool):
 	slider.disabled = muted
-	reset.toggle_disable(muted)
-
 	mute_tell.visible = muted

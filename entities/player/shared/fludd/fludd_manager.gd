@@ -44,10 +44,10 @@ var stamina: float = 100:
 @export var spray_player: AudioStreamPlayer
 
 @export_category("Audio")
-@export var toggle_sfx: AudioStream
-@export var switch_sfx: AudioStream
+@export var toggle_sfx: SoundEffect
+@export var switch_sfx: SoundEffect
 
-enum Nozzle{
+enum Nozzle {
 	NONE,
 	HOVER,
 	ROCKET,
@@ -96,7 +96,7 @@ func switch_nozzle() -> void:
 	get_tree().call_group("%s/sfx" % name, &"queue_free")
 
 	if active_nozzle != Nozzle.NONE:
-		SFX.play_sfx(switch_sfx, &"SFX", self)
+		switch_sfx.play(actor)
 		fludd_b.visible = true
 		fludd_f.visible = true
 
@@ -105,7 +105,7 @@ func switch_nozzle() -> void:
 			Nozzle.HOVER:
 				spray_player.set_stream(hover_spray_sfx)
 	else:
-		SFX.play_sfx(toggle_sfx, &"SFX", self)
+		toggle_sfx.play(actor)
 		fludd_b.visible = false
 		fludd_f.visible = false
 
