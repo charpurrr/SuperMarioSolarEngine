@@ -4,7 +4,7 @@ extends PlayerState
 
 ## See [member CharacterBody2D.floor_snap_length].
 @export var floor_snap_length: float = 32.0
-## The default frictional coefficient
+## The default frictional coefficient.
 @export var friction_coefficient_default: float
 ## The frictional coefficient when over the maximum speed.
 @export var friction_coefficient_overspeed: float
@@ -47,7 +47,7 @@ func _physics_tick(delta: float):
 		_grounded(delta)
 	else:
 		_airborne(delta)
-	
+
 	# Set animations
 	_set_appropriate_anim()
 
@@ -67,11 +67,12 @@ func _subsequent_ticks(_delta: float):
 func _grounded(delta: float):
 	# Equal to 1 if accelerating, -1 if decelerating, 0 otherwise.
 	var accel_dir: int = InputManager.get_x_dir() * sign(actor.velocity.x)
-	
+
 	var slide_accel: float
 	var speed_limit: float
 	var friction: float = friction_coefficient_default
 	var overspeed_friction: float = friction_coefficient_overspeed
+
 	match accel_dir:
 		-1: # decelerating
 			slide_accel = movement.max_grav
