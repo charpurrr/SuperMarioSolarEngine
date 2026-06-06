@@ -9,8 +9,6 @@ func _on_enter(play_land_sfx):
 	movement.air_spun = false
 	movement.dived = false
 
-	actor.set_floor_snap_length(movement.snap_length)
-
 	if play_land_sfx:
 		# Normal footsteps
 		sfx_layers[0].play_sfx_at(actor)

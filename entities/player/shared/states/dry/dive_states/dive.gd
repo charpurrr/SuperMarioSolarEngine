@@ -25,7 +25,6 @@ func _on_enter(dive_direction):
 	movement.consec_jumps = 0
 	movement.dived = true
 
-	actor.set_floor_snap_length(movement.snap_length)
 	actor.dive_hurtbox.monitoring = true
 
 	if actor.is_on_floor():

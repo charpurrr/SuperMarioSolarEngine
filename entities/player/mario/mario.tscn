@@ -448,7 +448,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Resource" id="Resource_676rb"]
+[sub_resource type="Resource" id="Resource_kuq6s"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
 doll_path = NodePath("Doll")
@@ -458,23 +458,18 @@ frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
 frame_fludd = Dictionary[int, String]({
-0: "default",
-1: "default"
+0: "default"
 })
 frame_fludd_offsets = Dictionary[int, Vector2i]({
-0: Vector2i(0, 0),
-1: Vector2i(0, 0),
-3: Vector2i(0, 1),
-4: Vector2i(0, 2),
-5: Vector2i(0, 2),
-6: Vector2i(0, 1)
+0: Vector2i(0, 6),
+1: Vector2i(0, 7)
 })
-animation = "idle"
+animation = "butt_slide_forwards"
 frame = 0
 preview = false
 frame_offset = Vector2i(0, 0)
 fludd_animation = "default"
-fludd_offset = Vector2i(0, 0)
+fludd_offset = Vector2i(0, 6)
 metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f3xbj"]
@@ -2633,15 +2628,15 @@ frame_fludd = Dictionary[int, String]({
 0: "default"
 })
 frame_fludd_offsets = Dictionary[int, Vector2i]({
-0: Vector2i(0, 5),
-1: Vector2i(0, 6)
+0: Vector2i(0, 6),
+1: Vector2i(0, 7)
 })
 animation = "butt_slide_jump"
 frame = 0
 preview = false
 frame_offset = Vector2i(0, 3)
 fludd_animation = "default"
-fludd_offset = Vector2i(0, 5)
+fludd_offset = Vector2i(0, 6)
 metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_mc0fc"]
@@ -3846,19 +3841,99 @@ script = ExtResource("49_apkmk")
 sfx_list = Array[ExtResource("26_ta4lc")]([SubResource("Resource_28mu6")])
 metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
 
-[sub_resource type="Resource" id="Resource_u00po"]
-script = ExtResource("26_ta4lc")
-stream = ExtResource("130_sxalk")
-audio_bus = &"Motion"
-volume = 0.0
-pitch = 1.0
-overwrite_other_in_bus = false
-overwrite_other_in_source = false
-is_2d = true
-attenuation = 1.0
-max_distance = 2000.0
-inherit_position = true
-metadata/_custom_type_script = "uid://b262pbs7y0djt"
+[sub_resource type="Resource" id="Resource_msjg8"]
+resource_local_to_scene = true
+script = ExtResource("23_bbld7")
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
+frame_fludd_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 6),
+1: Vector2i(0, 7)
+})
+animation = "butt_slide"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 6)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
+[sub_resource type="Resource" id="Resource_b6vio"]
+resource_local_to_scene = true
+script = ExtResource("23_bbld7")
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
+frame_fludd = Dictionary[int, String]({
+0: "default"
+})
+frame_fludd_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 6),
+1: Vector2i(0, 7)
+})
+animation = "butt_slide_forwards"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 6)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
+[sub_resource type="Resource" id="Resource_rev7q"]
+resource_local_to_scene = true
+script = ExtResource("23_bbld7")
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
+frame_fludd = Dictionary[int, String]({
+0: "default"
+})
+frame_fludd_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 6),
+1: Vector2i(0, 7)
+})
+animation = "butt_slide_backwards"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 6)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
+[sub_resource type="Resource" id="Resource_ddfva"]
+resource_local_to_scene = true
+script = ExtResource("23_bbld7")
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 3),
+1: Vector2i(0, 3)
+})
+frame_fludd = Dictionary[int, String]({
+0: "default"
+})
+frame_fludd_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 6),
+1: Vector2i(0, 7)
+})
+animation = "butt_slide_jump"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 3)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 6)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_ifrah"]
 resource_local_to_scene = true
@@ -4029,20 +4104,6 @@ frame_offset = Vector2i(0, 0)
 fludd_animation = "rot_y090"
 fludd_offset = Vector2i(1, 1)
 metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
-
-[sub_resource type="Resource" id="Resource_3fi8i"]
-script = ExtResource("26_ta4lc")
-stream = ExtResource("152_2h0ab")
-audio_bus = &"Music"
-volume = 0.0
-pitch = 1.0
-overwrite_other_in_bus = false
-overwrite_other_in_source = false
-is_2d = true
-attenuation = 1.0
-max_distance = 2000.0
-inherit_position = true
-metadata/_custom_type_script = "uid://b262pbs7y0djt"
 
 [sub_resource type="Resource" id="Resource_cux1t"]
 script = ExtResource("49_apkmk")
@@ -4224,8 +4285,8 @@ sprite_frames = SubResource("SpriteFrames_e1ut2")
 [node name="Doll" type="AnimatedSprite2D" parent="." unique_id=1876045562]
 position = Vector2(0, -24)
 sprite_frames = ExtResource("4_xenv0")
-animation = &"idle"
-metadata/last_previewed = SubResource("Resource_676rb")
+animation = &"butt_slide_forwards"
+metadata/last_previewed = SubResource("Resource_kuq6s")
 
 [node name="FluddInfront" type="AnimatedSprite2D" parent="." unique_id=1928286412]
 visible = false
@@ -4386,7 +4447,6 @@ max_speed = 180.0
 term_vel = 480.0
 min_grav = 774.0
 max_grav = 792.0
-snap_length = 8.0
 swim_speed = 180.0
 min_slide_incline = 0.4
 
@@ -4775,19 +4835,17 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ujdp5"), SubR
 
 [node name="ButtSlide" type="Node" parent="StateManager/Dry" unique_id=720337721]
 script = ExtResource("140_lfmwr")
-slide_sfx = SubResource("Resource_u00po")
-speed = 750.0
-min_speed = 300.0
-max_speed = 1200.0
+friction_coefficient_default = 0.3
+friction_coefficient_overspeed = 1.4
+accel_gravity_multiplier = 1.5
+max_speed_decel = 150.0
+max_speed = 300.0
+max_speed_accel = 500.0
 min_remain_speed = 6.0
-friction = 7.5
-max_accel = 13.2
-turn_forgiveness = 1.5
-shallow_penalty = 0.25
-incline_friction = 90.0
-animation_forward = &"butt_slide_forwards"
-animation_backward = &"butt_slide_backwards"
-animation_airborne = &"butt_slide_jump"
+default_animation_data = SubResource("Resource_msjg8")
+forward_animation_data = SubResource("Resource_b6vio")
+backward_animation_data = SubResource("Resource_rev7q")
+airborne_animation_data = SubResource("Resource_ddfva")
 hitbox_type = "Small"
 animation_data = SubResource("Resource_ifrah")
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_d3rr6")])

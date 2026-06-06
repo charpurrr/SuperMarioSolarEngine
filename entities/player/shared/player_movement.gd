@@ -55,8 +55,6 @@ var prev_facing_direction: int
 ## Amount of units the player needs to be above the ground to perform an airborne action.
 @export var air_margin: int = 10
 
-## Sets the floor_snap_length of the actor.
-@export var snap_length: float = 16
 
 ## The y position of the point you walljumped from.
 ## Used to avoid being able to scale a wall infinitely.
