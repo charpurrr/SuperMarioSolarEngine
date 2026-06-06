@@ -234,8 +234,8 @@ func _build_pipe() -> void:
 		
 		var segment_start: PipeConnector = segment[0]
 		
-		segment_start.exit_dir = segments[i].direction
 		segment_start.entry_dir = segments[i - 1].direction
+		segment_start.exit_dir = segments[i].direction
 		segment_start.type = "Block" if segments[i].is_block else "Corner"
 		segment_start.position = last_piece.get_end_point()
 		
