@@ -11,23 +11,11 @@
 script = ExtResource("6_d3h6k")
 direction = "Down"
 
-[sub_resource type="Resource" id="Resource_xuo72"]
-script = ExtResource("6_d3h6k")
-direction = "Left"
-
-[sub_resource type="Resource" id="Resource_o1kix"]
-script = ExtResource("6_d3h6k")
-direction = "Up"
-
-[sub_resource type="Resource" id="Resource_bhjno"]
-script = ExtResource("6_d3h6k")
-direction = "Left"
-
 [node name="WarpPipe" type="Node2D" unique_id=544277668]
 z_index = 11
 script = ExtResource("1_0w4a1")
 end_exit = true
-segments = Array[ExtResource("6_d3h6k")]([SubResource("Resource_d3h6k"), SubResource("Resource_xuo72"), SubResource("Resource_o1kix"), SubResource("Resource_bhjno")])
+segments = Array[ExtResource("6_d3h6k")]([SubResource("Resource_d3h6k")])
 debug = true
 pipe_entrance = ExtResource("2_kc8f5")
 pipe_extension = ExtResource("3_v7tjq")
