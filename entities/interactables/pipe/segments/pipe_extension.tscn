@@ -4,8 +4,9 @@
 [ext_resource type="Script" uid="uid://by1hkf572ddj0" path="res://entities/interactables/pipe/segments/pipe_extension.gd" id="2_qhdu1"]
 
 [node name="PipeExtension" type="TextureRect" unique_id=303450757]
+physics_interpolation_mode = 1
 offset_left = -15.999997
-offset_right = 15.999997
+offset_right = 16.000004
 offset_bottom = 32.0
 pivot_offset_ratio = Vector2(0.5, 0)
 texture = ExtResource("1_osb6h")

@@ -12,9 +12,7 @@ extends Sprite2D
 	set(val):
 		type = val
 
-		_update_available_exit_dirs()
-		_update_visual()
-
+		_updates()
 		notify_property_list_changed()
 
 ## The direction this connector is entered from.[br]
@@ -24,9 +22,7 @@ extends Sprite2D
 	set(val):
 		entry_dir = val
 
-		_update_available_exit_dirs()
-		_update_visual()
-
+		_updates()
 		notify_property_list_changed()
 
 ## The direction this connector exits toward.[br]
@@ -36,8 +32,7 @@ extends Sprite2D
 @export var exit_dir: String:
 	set(val):
 		exit_dir = val
-		_update_available_exit_dirs()
-		_update_visual()
+		_updates()
 
 @export_group("Textures", "texture_")
 ## Texture used when [member type] is [code]"Block"[/code].
@@ -65,9 +60,11 @@ func get_end_point() -> Vector2:
 	return position + _get_half_size(exit_dir) + offset
 
 
-## Returns the world-space point used to position this connector's debug marker.
-func get_debug_point() -> Vector2:
-	return position + _get_half_size(entry_dir)
+## Performs all update functions.
+## Updates the available exit directions, and the appropriate visuals.
+func _updates() -> void:
+	_update_available_exit_dirs()
+	_update_visual()
 
 
 ## Updates [member texture] and [member offset] to match the current
@@ -80,7 +77,6 @@ func _update_visual() -> void:
 		texture = _get_corner_text()
 	else:
 		texture = texture_block
-
 
 ## Ensures [member exit_dir] is perpendicular to [member entry_dir],
 ## correcting it to a valid default if not.

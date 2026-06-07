@@ -35,8 +35,3 @@ extends Sprite2D
 ## For [PipeEntrance], this is always its own position since it is a terminal piece.
 func get_end_point():
 	return position
-
-
-## Returns the world-space point used to position this entrance's debug marker.
-func get_debug_point():
-	return position

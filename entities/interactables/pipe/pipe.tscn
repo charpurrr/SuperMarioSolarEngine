@@ -11,13 +11,18 @@
 script = ExtResource("6_d3h6k")
 direction = "Down"
 
-[node name="WarpPipe" type="Node2D" unique_id=544277668]
+[node name="WarpPipe" type="Node2D" unique_id=544277668 node_paths=PackedStringArray("poly_collision")]
 z_index = 11
 script = ExtResource("1_0w4a1")
 end_exit = true
 segments = Array[ExtResource("6_d3h6k")]([SubResource("Resource_d3h6k")])
 debug = true
+poly_collision = NodePath("StaticBody2D/CollisionPolygon2D")
 pipe_entrance = ExtResource("2_kc8f5")
 pipe_extension = ExtResource("3_v7tjq")
 pipe_connector = ExtResource("4_d3h6k")
 pipe_debug = ExtResource("5_v7tjq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2078284273]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1612158168]

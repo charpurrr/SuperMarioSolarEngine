@@ -7,7 +7,7 @@ extends Node2D
 ## The pipe is rebuilt automatically whenever segments or properties change.
 
 ## Maps a direction to the two perpendicular directions available for the next segment.
-const available_direction_map: Dictionary = {
+const AVAILABLE_DIRECTION_MAP: Dictionary = {
 	"Left": ["Up", "Down"],
 	"Right": ["Up", "Down"],
 	"Up": ["Left", "Right"],
@@ -16,7 +16,7 @@ const available_direction_map: Dictionary = {
 
 ## Maps a direction to its next clockwise-ordered direction.
 ## Up -> Right -> Down -> Left -> Up
-const clockwise_direction: Dictionary = {
+const CLOCKWISE_DIRECTION: Dictionary = {
 	"Up": "Right",
 	"Right": "Down",
 	"Down": "Left",
@@ -24,12 +24,26 @@ const clockwise_direction: Dictionary = {
 }
 
 ## Maps a direction to its opposite.
-const opposite_direction: Dictionary = {
+const OPPOSITE_DIRECTION: Dictionary = {
 	"Up": "Down",
 	"Left": "Right",
 	"Down": "Up",
 	"Right": "Left"
 }
+
+const DIRECTION_VEC: Dictionary = {
+	"Up": Vector2.UP,
+	"Down": Vector2.DOWN,
+	"Left": Vector2.LEFT,
+	"Right": Vector2.RIGHT
+}
+
+## Reduces a set unit of pixels from the collision generated
+## for the pipe. If set to zero, the collision shape will hug
+## the texture size.[br][br]
+## [b]Note[b]: The collision will always hug the top and bottom of
+## the segments. This reduction only applies to sides.
+const COLLISION_SIDE_REDUCTION = 2
 
 ## Whether the pipe has a capped exit at its ending.
 ## If false, the pipe is open-ended.
@@ -70,7 +84,7 @@ const opposite_direction: Dictionary = {
 
 			if i > 0:
 				var dir: String = val[i - 1].direction
-				val[i].available_directions = available_direction_map[dir]
+				val[i].available_directions = AVAILABLE_DIRECTION_MAP[dir]
 
 			val[i].is_connector = i != 0
 			val[i].idx = i
@@ -91,6 +105,8 @@ const opposite_direction: Dictionary = {
 		debug = val
 		if is_node_ready():
 			_build_pipe()
+
+@export var poly_collision: CollisionPolygon2D
 
 @export_category("References")
 ## The scene for pipe entrances. Used for the first segment and optionally the exit.
@@ -120,7 +136,7 @@ func get_direction_steps_with_end(start: String, end: String) -> int:
 	var steps := 0
 
 	while cur_step != end:
-		cur_step = clockwise_direction[cur_step]
+		cur_step = CLOCKWISE_DIRECTION[cur_step]
 		steps += 1
 
 	return steps
@@ -132,7 +148,7 @@ func get_direction_end_with_steps(start: String, steps: int) -> String:
 	var cur_step := start
 
 	for i: int in steps:
-		cur_step = clockwise_direction[cur_step]
+		cur_step = CLOCKWISE_DIRECTION[cur_step]
 
 	return cur_step
 
@@ -148,6 +164,7 @@ func get_end_point() -> Vector2:
 ## Rebuilds the pipe's scene nodes to match the current [member segments] data.
 ## Diffs [member old_segment_length] against [member new_segment_length] to add or
 ## remove connector slots, then repositions and reconfigures all nodes in order.
+## Adds collision to the pipe using [method _build_collision] after the visual building process.
 func _build_pipe() -> void:
 	if segments.is_empty():
 		return
@@ -188,7 +205,7 @@ func _build_pipe() -> void:
 		if not slot is Array:
 			continue
 
-		if debug and not slot[2]:
+		if debug and not slot[2] and Engine.is_editor_hint():
 			var dbg: Node = pipe_debug.instantiate()
 			slot[2] = dbg
 		elif not debug and slot[2]:
@@ -210,7 +227,7 @@ func _build_pipe() -> void:
 
 	# Update and seed the entrance before processing connectors.
 	var entrance: PipeEntrance = segment_inst[0][0]
-	entrance.direction = opposite_direction[segments[0].direction]
+	entrance.direction = OPPOSITE_DIRECTION[segments[0].direction]
 
 	var entrance_ext: PipeExtension = segment_inst[0][1]
 	entrance_ext.direction = segments[0].direction
@@ -266,6 +283,33 @@ func _build_pipe() -> void:
 		pipe_exit.direction = segments[-1].direction
 		pipe_exit.position = last_piece.get_end_point()
 
+	_build_collision()
+
+
+func _build_collision() -> void:
+	if not is_instance_valid(poly_collision):
+		return
+
+	var left_pts := PackedVector2Array()
+	var right_pts := PackedVector2Array()
+
+	# some shit for loop
+
+	right_pts.reverse()
+
+	var poly := PackedVector2Array()
+
+	poly.append_array(left_pts)
+	poly.append_array(right_pts)
+
+	poly_collision.polygon = poly
+
+
+## Returns a perpendicular left/right offset vector for a given direction.
+## [param side] should be 1 (left of travel) or -1 (right of travel).
+func _side_offset(direction: String, side: float) -> Vector2:
+	return DIRECTION_VEC[direction].rotated(PI / 2.0) * side * 16
+
 
 ## When a segment's direction changes, rotates all subsequent segments by the same
 ## clockwise delta to preserve the overall pipe shape.
@@ -293,7 +337,7 @@ func _segment_direction_changed(idx: int) -> void:
 				main_segment.direction in ["Up", "Down"] and 
 				segments[i].direction in ["Up", "Down"]
 				)):
-					segments[i].direction = opposite_direction.get(segments[i].direction)
+					segments[i].direction = OPPOSITE_DIRECTION.get(segments[i].direction)
 
 	for i: int in range(idx + 1, segments.size()):
 		segments[i].direction_updated.connect(_segment_direction_changed.bind(i))

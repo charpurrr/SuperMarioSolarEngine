@@ -9,7 +9,6 @@ script = ExtResource("1_uyoy3")
 scene_transition = NodePath("SceneTransition")
 
 [node name="SceneTransition" parent="." unique_id=1482962676 instance=ExtResource("2_v0gsh")]
-visible = false
 
 [node name="PlainOverlay" parent="SceneTransition" index="0" unique_id=1645560297]
 mouse_filter = 2

@@ -8,10 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://bnmrmsscxjsu" path="res://entities/interactables/pipe/assets/pipe_corner_br.png" id="6_vpl7f"]
 
 [node name="Node2D" type="Sprite2D" unique_id=122318992]
-texture = ExtResource("2_bss3w")
 script = ExtResource("1_86ouj")
 type = "Block"
-entry_dir = "Right"
+entry_dir = "Left"
 exit_dir = "Up"
 texture_block = ExtResource("2_bss3w")
 texture_corner_top_left = ExtResource("3_2xg5i")
