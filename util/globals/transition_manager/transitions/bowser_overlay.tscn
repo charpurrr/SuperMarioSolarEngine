@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cwngbvsc4rv6p"]
 
-[ext_resource type="Shader" uid="uid://thviyd31javx" path="res://ui/transitions/bowser_overlay.gdshader" id="1_3kne0"]
-[ext_resource type="Script" uid="uid://dr18ye8epeqdh" path="res://ui/transitions/transition_overlay.gd" id="1_hhyu7"]
-[ext_resource type="Texture2D" uid="uid://svkb40d05e3t" path="res://ui/transitions/bowser_overlay_cutout.png" id="2_3kne0"]
+[ext_resource type="Shader" uid="uid://thviyd31javx" path="res://util/globals/transition_manager/transitions/bowser_overlay.gdshader" id="1_3kne0"]
+[ext_resource type="Script" uid="uid://dr18ye8epeqdh" path="res://util/globals/transition_manager/transitions/transition_overlay.gd" id="1_hhyu7"]
+[ext_resource type="Texture2D" uid="uid://svkb40d05e3t" path="res://util/globals/transition_manager/transitions/bowser_overlay_cutout.png" id="2_3kne0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a57jg"]
 shader = ExtResource("1_3kne0")

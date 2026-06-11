@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://svkb40d05e3t"
-path="res://.godot/imported/bowser_overlay_cutout.png-dda18afe3235bb0861316d462dda55de.ctex"
+path="res://.godot/imported/bowser_overlay_cutout.png-15e04623963bca3e15c599a9270ac289.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/transitions/bowser_overlay_cutout.png"
-dest_files=["res://.godot/imported/bowser_overlay_cutout.png-dda18afe3235bb0861316d462dda55de.ctex"]
+source_file="res://util/globals/transition_manager/transitions/bowser_overlay_cutout.png"
+dest_files=["res://.godot/imported/bowser_overlay_cutout.png-15e04623963bca3e15c599a9270ac289.ctex"]
 
 [params]
 

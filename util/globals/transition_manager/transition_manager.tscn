@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://dgolkub8ev6ve"]
+
+[ext_resource type="Script" uid="uid://v0hjytrph83k" path="res://util/globals/transition_manager/transition_manager.gd" id="1_uyoy3"]
+[ext_resource type="Script" uid="uid://ce73oybox6fuf" path="res://util/globals/transition_manager/scene_transition.gd" id="2_vjpuy"]
+[ext_resource type="PackedScene" uid="uid://1s44kbytdqux" path="res://util/globals/transition_manager/transitions/plain_overlay.tscn" id="3_kaj34"]
+[ext_resource type="PackedScene" uid="uid://dy3n52xoj3cu8" path="res://util/globals/transition_manager/transitions/circle_overlay.tscn" id="4_mf51q"]
+[ext_resource type="PackedScene" uid="uid://ta0eilpcncdp" path="res://util/globals/transition_manager/transitions/inverted_circle_overlay.tscn" id="5_d8q1q"]
+[ext_resource type="PackedScene" uid="uid://cwngbvsc4rv6p" path="res://util/globals/transition_manager/transitions/bowser_overlay.tscn" id="6_l85o3"]
+
+[node name="TransitionManager" type="CanvasLayer" unique_id=1407911283 node_paths=PackedStringArray("scene_transition")]
+process_mode = 3
+script = ExtResource("1_uyoy3")
+scene_transition = NodePath("SceneTransition")
+
+[node name="SceneTransition" type="Control" parent="." unique_id=1482962676]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("2_vjpuy")
+type_associated_nodes = Dictionary[int, NodePath]({
+0: NodePath("PlainOverlay"),
+1: NodePath("CircleOverlay"),
+2: NodePath("InvertedCircleOverlay"),
+3: NodePath("BowserOverlay")
+})
+
+[node name="PlainOverlay" parent="SceneTransition" unique_id=1645560297 instance=ExtResource("3_kaj34")]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+mouse_filter = 2
+color = Color(1, 1, 1, 1)
+
+[node name="CircleOverlay" parent="SceneTransition" unique_id=2043567110 instance=ExtResource("4_mf51q")]
+visible = false
+layout_mode = 1
+mouse_filter = 2
+
+[node name="InvertedCircleOverlay" parent="SceneTransition" unique_id=1610023305 instance=ExtResource("5_d8q1q")]
+visible = false
+layout_mode = 1
+mouse_filter = 2
+
+[node name="BowserOverlay" parent="SceneTransition" unique_id=1023907164 instance=ExtResource("6_l85o3")]
+visible = false
+layout_mode = 1
