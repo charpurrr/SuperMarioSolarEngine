@@ -94,9 +94,15 @@ func reload_level(
 		to_overlay: SceneTransition.Type = SceneTransition.Type.CIRCLE,
 		from_overlay: SceneTransition.Type = SceneTransition.Type.CIRCLE
 	) -> void:
+	if TransitionManager.transitioning: return
+
 	TransitionManager.transition_local(to_overlay, from_overlay)
 
-	await TransitionManager.scene_transition.to_trans_finished
+	TransitionManager.scene_transition.out_trans_finished.connect(_on_out_trans_finished)
+
+
+func _on_out_trans_finished() -> void:
+	TransitionManager.scene_transition.out_trans_finished.disconnect(_on_out_trans_finished)
 
 	var new_level: Node2D = level_scene.instantiate()
 	deload_level()

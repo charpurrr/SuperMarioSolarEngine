@@ -7,10 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://ta0eilpcncdp" path="res://util/globals/transition_manager/transitions/inverted_circle_overlay.tscn" id="5_d8q1q"]
 [ext_resource type="PackedScene" uid="uid://cwngbvsc4rv6p" path="res://util/globals/transition_manager/transitions/bowser_overlay.tscn" id="6_l85o3"]
 
-[node name="TransitionManager" type="CanvasLayer" unique_id=1407911283 node_paths=PackedStringArray("scene_transition")]
+[node name="TransitionManager" type="CanvasLayer" unique_id=1407911283]
 process_mode = 3
 script = ExtResource("1_uyoy3")
-scene_transition = NodePath("SceneTransition")
 
 [node name="SceneTransition" type="Control" parent="." unique_id=1482962676]
 layout_mode = 3

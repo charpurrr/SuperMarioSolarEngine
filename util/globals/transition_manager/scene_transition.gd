@@ -108,7 +108,12 @@ func _start_trans_out() -> void:
 ## Signals the end of the "out" transition.
 func _end_trans_out(finished_anim: StringName) -> void:
 	if finished_anim != &"transition": return
+
 	_out_node.animation.animation_finished.disconnect(_end_trans_out)
+
+	# Wait one extra frame to avoid scene transitioning
+	# on the frame the animation is supposed to end.
+	await get_tree().process_frame
 
 	out_trans_finished.emit()
 

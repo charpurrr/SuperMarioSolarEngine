@@ -20,7 +20,7 @@ func _on_play_pressed() -> void:
 	TransitionManager.transition_scene(
 		mission_selece_scene,
 		SceneTransition.Type.CIRCLE,
-		SceneTransition.Type.CIRCLE
+		SceneTransition.Type.CIRCLE,
 	)
 
 
@@ -32,12 +32,14 @@ func _on_edit_pressed() -> void:
 	)
 
 
+func _on_in_trans_finished() -> void:
+	anime.play(&"start")
+
+
 func _on_transition_to(_handover: Variant = null) -> void:
 	TransitionManager.greenlight_load_in()
 
-	await TransitionManager.scene_transition.from_trans_finished
-
-	anime.play(&"start")
+	TransitionManager.scene_transition.in_trans_finished.connect(_on_in_trans_finished)
 
 
 func _on_transition_from() -> void:
