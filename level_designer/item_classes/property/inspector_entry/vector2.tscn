@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bndies3b0h6ch"]
-
-[ext_resource type="PackedScene" uid="uid://dilv41k2cq47l" path="res://level_designer/item_classes/property/inspector_entry/vector.tscn" id="1_dpdy8"]
-
-[node name="Vector2" instance=ExtResource("1_dpdy8")]
-components = Array[String](["x", "y"])

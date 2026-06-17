@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://c537c7fubd6rx"]
+
+[ext_resource type="Script" uid="uid://s4l8kca746du" path="res://level_designer_old/item_classes/hotbar_item/hotbar_item.gd" id="1_rngah"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_1mgp8"]
+size = Vector2(12, 12)
+
+[node name="HotbarItem" type="Button" node_paths=PackedStringArray("item_icon", "pin_progress", "pin_icon")]
+custom_minimum_size = Vector2(40, 40)
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_rngah")
+pin_hold_time = 0.7
+item_icon = NodePath("Icon")
+pin_progress = NodePath("PinProgress")
+pin_icon = NodePath("PinIcon")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 3
+
+[node name="PinProgress" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+fill_mode = 3
+show_percentage = false
+
+[node name="PinIcon" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(28, 0)
+texture = SubResource("PlaceholderTexture2D_1mgp8")
+centered = false
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

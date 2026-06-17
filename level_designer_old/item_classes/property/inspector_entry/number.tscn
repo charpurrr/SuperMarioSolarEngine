@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://do12mx6u2asa0"]
+
+[ext_resource type="Theme" uid="uid://c53wuaais37yi" path="res://level_designer_old/ui/editor_theme.tres" id="1_n5omg"]
+[ext_resource type="Script" uid="uid://bnw5kbxklry5w" path="res://level_designer_old/item_classes/property/inspector_entry/inspector_entry.gd" id="2_00suo"]
+
+[node name="Number" type="HBoxContainer" node_paths=PackedStringArray("label")]
+size_flags_horizontal = 3
+theme = ExtResource("1_n5omg")
+script = ExtResource("2_00suo")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Number"
+
+[node name="SpinBox" type="SpinBox" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="value_changed" from="SpinBox" to="." method="_on_value_changed"]

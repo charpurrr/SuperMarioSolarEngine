@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://cn7kvuvr72qyy"]
+
+[ext_resource type="Script" uid="uid://d3dmcw2t2cd25" path="res://level_designer_old/widgets/draggable_button/widget_button.gd" id="1_wk6ee"]
+[ext_resource type="Script" uid="uid://c0gisqkikjjsm" path="res://level_designer_old/widgets/draggable_button/button_costume.gd" id="2_0yngx"]
+[ext_resource type="Texture2D" uid="uid://ddvcsxt11opfw" path="res://level_designer_old/widgets/draggable_button/y_normal.png" id="2_cbsq1"]
+[ext_resource type="Texture2D" uid="uid://8qjus12880vy" path="res://level_designer_old/widgets/draggable_button/y_hovered.png" id="2_j2nsu"]
+[ext_resource type="Texture2D" uid="uid://bqiuykwf761oc" path="res://level_designer_old/widgets/draggable_button/hologram.png" id="2_ws1ys"]
+[ext_resource type="Texture2D" uid="uid://dauxpxx8xmqcg" path="res://level_designer_old/widgets/draggable_button/y_pressed.png" id="4_re7ps"]
+[ext_resource type="Texture2D" uid="uid://djfsyx5aeqsq3" path="res://level_designer_old/widgets/draggable_button/r_hovered.png" id="6_ccxnv"]
+[ext_resource type="Texture2D" uid="uid://cl2srjsg6gvtt" path="res://level_designer_old/widgets/draggable_button/r_normal.png" id="7_fk3ba"]
+[ext_resource type="Texture2D" uid="uid://b24nholvp11ak" path="res://level_designer_old/widgets/draggable_button/r_pressed.png" id="8_ws1ys"]
+[ext_resource type="Texture2D" uid="uid://ck8r42k21eoqj" path="res://level_designer_old/widgets/draggable_button/b_hovered.png" id="9_fk3ba"]
+[ext_resource type="Texture2D" uid="uid://cwvnysjvjmmla" path="res://level_designer_old/widgets/draggable_button/axis_lock_x.png" id="9_jew42"]
+[ext_resource type="Texture2D" uid="uid://ceo1xm64g7pe0" path="res://level_designer_old/widgets/draggable_button/axis_lock_y.png" id="10_rbsdj"]
+[ext_resource type="Texture2D" uid="uid://b20if4omfbe10" path="res://level_designer_old/widgets/draggable_button/b_normal.png" id="10_ws1ys"]
+[ext_resource type="Texture2D" uid="uid://bj4pjkxq6c6uy" path="res://level_designer_old/widgets/draggable_button/b_pressed.png" id="11_6xbvk"]
+
+[sub_resource type="Resource" id="Resource_6xbvk"]
+script = ExtResource("2_0yngx")
+normal_graphic = ExtResource("2_ws1ys")
+hover_graphic = ExtResource("2_ws1ys")
+pressed_graphic = ExtResource("4_re7ps")
+metadata/_custom_type_script = "uid://c0gisqkikjjsm"
+
+[sub_resource type="Resource" id="Resource_ang8w"]
+script = ExtResource("2_0yngx")
+normal_graphic = ExtResource("2_cbsq1")
+hover_graphic = ExtResource("2_j2nsu")
+pressed_graphic = ExtResource("4_re7ps")
+metadata/_custom_type_script = "uid://c0gisqkikjjsm"
+
+[sub_resource type="Resource" id="Resource_re7ps"]
+script = ExtResource("2_0yngx")
+normal_graphic = ExtResource("7_fk3ba")
+hover_graphic = ExtResource("6_ccxnv")
+pressed_graphic = ExtResource("8_ws1ys")
+metadata/_custom_type_script = "uid://c0gisqkikjjsm"
+
+[sub_resource type="Resource" id="Resource_dyyae"]
+script = ExtResource("2_0yngx")
+normal_graphic = ExtResource("10_ws1ys")
+hover_graphic = ExtResource("9_fk3ba")
+pressed_graphic = ExtResource("11_6xbvk")
+metadata/_custom_type_script = "uid://c0gisqkikjjsm"
+
+[node name="WidgetButton" type="Control" node_paths=PackedStringArray("button", "x_lock", "y_lock")]
+layout_mode = 3
+anchors_preset = 0
+focus_mode = 1
+script = ExtResource("1_wk6ee")
+button = NodePath("Button")
+x_lock = NodePath("LockX")
+y_lock = NodePath("LockY")
+hologram_costume_data = SubResource("Resource_6xbvk")
+yellow_costume_data = SubResource("Resource_ang8w")
+red_costume_data = SubResource("Resource_re7ps")
+blue_costume_data = SubResource("Resource_dyyae")
+
+[node name="Button" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+pivot_offset = Vector2(5, 5)
+focus_mode = 0
+keep_pressed_outside = true
+texture_normal = ExtResource("2_cbsq1")
+texture_pressed = ExtResource("4_re7ps")
+texture_hover = ExtResource("2_j2nsu")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="LockX" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -23.0
+offset_top = -1.0
+offset_right = 23.0
+offset_bottom = 1.0
+texture = ExtResource("9_jew42")
+
+[node name="LockY" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -1.0
+offset_top = -23.0
+offset_right = 1.0
+offset_bottom = 23.0
+texture = ExtResource("10_rbsdj")
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]

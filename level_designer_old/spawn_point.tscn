@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dbt3exrjb6tdc"]
+
+[ext_resource type="Texture2D" uid="uid://drwjjljkub2l5" path="res://level_designer_old/spawn_point_p1.png" id="1_tjm6n"]
+[ext_resource type="Texture2D" uid="uid://ce7qubdmxitgt" path="res://level_designer_old/spawn_point_p2.png" id="2_b5gcd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j8q0q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tjm6n")
+}],
+"loop": true,
+"name": &"p1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b5gcd")
+}],
+"loop": true,
+"name": &"p2",
+"speed": 5.0
+}]
+
+[node name="SpawnPoint" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_j8q0q")
+animation = &"p1"
+offset = Vector2(0, -24)

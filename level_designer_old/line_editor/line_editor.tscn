@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://b6d0a158by2pt"]
+
+[ext_resource type="Script" uid="uid://cn7lcacvnydhk" path="res://level_designer_old/line_editor/line_editor.gd" id="1_v6ycl"]
+[ext_resource type="PackedScene" uid="uid://cn7kvuvr72qyy" path="res://level_designer_old/widgets/draggable_button/widget_button.tscn" id="2_gasgg"]
+[ext_resource type="PackedScene" uid="uid://dx6tgmtc3smjp" path="res://level_designer_old/widgets/curve_button/curve_button.tscn" id="3_gasgg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gasgg"]
+font_size = 6
+
+[node name="LineEditor" type="Line2D" node_paths=PackedStringArray("add_hologram")]
+width = 3.0
+default_color = Color(0.27451, 0.160784, 0.168627, 1)
+script = ExtResource("1_v6ycl")
+button_widget = ExtResource("2_gasgg")
+curve_button_widget = ExtResource("3_gasgg")
+add_hologram = NodePath("AddHologram")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_gasgg")
+
+[node name="AddHologram" parent="." instance=ExtResource("2_gasgg")]
+visible = false
+costume = "Hologram"
+draggable = false

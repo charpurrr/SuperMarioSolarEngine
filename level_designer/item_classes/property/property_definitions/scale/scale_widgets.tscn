@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://t1487ntavp0t"]
-
-[ext_resource type="Script" uid="uid://b072ubrxdhp5l" path="res://level_designer/item_classes/property/property_definitions/scale/scale.gd" id="1_cqqt8"]
-
-[node name="ScaleWidgets" type="Node2D"]
-script = ExtResource("1_cqqt8")

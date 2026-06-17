@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cuq7xbwsyn77f"]
 
-[ext_resource type="Theme" uid="uid://c53wuaais37yi" path="res://level_designer/ui/editor_theme.tres" id="1_mj086"]
+[ext_resource type="Theme" uid="uid://c53wuaais37yi" path="res://level_designer_old/ui/editor_theme.tres" id="1_mj086"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_npfny"]
 bg_color = Color(0, 1, 0.89063114, 1)

@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="EditorItemDataActor" load_steps=10 format=3 uid="uid://5t8dv0lk7haj"]
+[gd_resource type="Resource" script_class="EditorItemDataActor" format=3 uid="uid://5t8dv0lk7haj"]
 
 [ext_resource type="PackedScene" uid="uid://cvbbpn56rtjwd" path="res://entities/enemies/goomba/goomba.tscn" id="1_3uc5t"]
 [ext_resource type="Texture2D" uid="uid://x2edebevq3c7" path="res://entities/enemies/goomba/anime/idle.png" id="1_p27l3"]
-[ext_resource type="Script" uid="uid://c82ssdt7gjgcj" path="res://level_designer/item_classes/editor_item/editor_item_data_actor.gd" id="3_hivxg"]
-[ext_resource type="Script" uid="uid://dkqgmio1ndy5s" path="res://level_designer/item_classes/preview_item/preview_display/static_preview_display_data.gd" id="3_huwe6"]
-[ext_resource type="Resource" uid="uid://dgoo836b0wfb1" path="res://level_designer/item_classes/property/property_definitions/scale/scale.tres" id="4_kg3ba"]
-[ext_resource type="Script" uid="uid://c2we3wi3ofoau" path="res://level_designer/item_classes/property/property.gd" id="5_tc57b"]
+[ext_resource type="Script" uid="uid://c82ssdt7gjgcj" path="res://level_designer_old/item_classes/editor_item/editor_item_data_actor.gd" id="3_hivxg"]
+[ext_resource type="Script" uid="uid://dkqgmio1ndy5s" path="res://level_designer_old/item_classes/preview_item/preview_display/static_preview_display_data.gd" id="3_huwe6"]
+[ext_resource type="Resource" uid="uid://dgoo836b0wfb1" path="res://level_designer_old/item_classes/property/property_definitions/scale/scale.tres" id="4_kg3ba"]
+[ext_resource type="Script" uid="uid://c2we3wi3ofoau" path="res://level_designer_old/item_classes/property/property.gd" id="5_tc57b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0exjl"]
 atlas = ExtResource("1_p27l3")

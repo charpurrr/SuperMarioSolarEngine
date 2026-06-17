@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2tl586r4yape"]
-
-[ext_resource type="Script" uid="uid://cfsb3csa4iseb" path="res://level_designer/item_classes/item_list_generator.gd" id="1_yxf8y"]
-
-[node name="Generator" type="Node"]
-script = ExtResource("1_yxf8y")
-item_list_path = "res://level_designer/item_classes/editor_item/editor_item_list.tres"

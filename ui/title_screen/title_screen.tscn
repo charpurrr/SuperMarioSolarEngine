@@ -139,7 +139,7 @@ script = ExtResource("1_n6pnn")
 anime = NodePath("AnimationPlayer")
 focus_grabber = NodePath("Contents/Choices/Play")
 mission_selece_scene = "uid://hott1qcj6hk"
-editor_scene = "uid://bfrw3lh0b17ri"
+editor_scene = "uid://btdogrkxirtdi"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=713801301]
 libraries/ = SubResource("AnimationLibrary_nb7wo")

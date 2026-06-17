@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://dpgxxjf6ip6lp"]
+
+[ext_resource type="Script" uid="uid://dml7jrpcv5k8m" path="res://level_designer_old/ui/item_search_menu.gd" id="1_84b0m"]
+[ext_resource type="Resource" uid="uid://dcalwyn0qfk5j" path="res://level_designer_old/item_classes/editor_item/editor_item_list.tres" id="2_sah4e"]
+[ext_resource type="PackedScene" uid="uid://cwwikuogin26x" path="res://level_designer_old/item_classes/search_item/search_item.tscn" id="3_3cmik"]
+
+[node name="SearchMenu" type="Panel" node_paths=PackedStringArray("catg_terrain", "catg_object", "catg_decoration", "catg_entity", "catg_npc", "catg_utility")]
+custom_minimum_size = Vector2(110, 155)
+offset_right = 1080.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_84b0m")
+item_list = ExtResource("2_sah4e")
+item_slot = ExtResource("3_3cmik")
+catg_terrain = NodePath("ScrollContainer/VBoxContainer/TerrainItems")
+catg_object = NodePath("ScrollContainer/VBoxContainer/ObjectItems")
+catg_decoration = NodePath("ScrollContainer/VBoxContainer/DecorationItems")
+catg_entity = NodePath("ScrollContainer/VBoxContainer/EntityItems")
+catg_npc = NodePath("ScrollContainer/VBoxContainer/NPCItems")
+catg_utility = NodePath("ScrollContainer/VBoxContainer/UtilityItems")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TerrainCategory" type="Panel" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/TerrainCategory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "- TERRAIN -"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TerrainItems" type="HFlowContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ObjectCategory" type="Panel" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ObjectCategory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "- OBJECT -"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ObjectItems" type="HFlowContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="DecorationCategory" type="Panel" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/DecorationCategory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "- DECORATION -"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DecorationItems" type="HFlowContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="EntityCategory" type="Panel" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/EntityCategory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "- ENTITY -"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EntityItems" type="HFlowContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="NPCCategory" type="Panel" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/NPCCategory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "- NPC -"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NPCItems" type="HFlowContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="UtilityCategory" type="Panel" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/UtilityCategory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "- UTILITY -"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UtilityItems" type="HFlowContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cayyv83u7yeh2"]
+
+[ext_resource type="Theme" uid="uid://c53wuaais37yi" path="res://level_designer_old/ui/editor_theme.tres" id="1_ox1hr"]
+[ext_resource type="Script" uid="uid://bnw5kbxklry5w" path="res://level_designer_old/item_classes/property/inspector_entry/inspector_entry.gd" id="2_xf8s2"]
+
+[node name="Bool" type="HBoxContainer" node_paths=PackedStringArray("label")]
+size_flags_horizontal = 3
+theme = ExtResource("1_ox1hr")
+script = ExtResource("2_xf8s2")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Bool"
+
+[node name="SpinBox" type="CheckBox" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "On"

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Property" format=3 uid="uid://dgoo836b0wfb1"]
+
+[ext_resource type="PackedScene" uid="uid://t1487ntavp0t" path="res://level_designer_old/item_classes/property/property_definitions/scale/scale_widgets.tscn" id="1_mkxin"]
+[ext_resource type="Script" uid="uid://c2we3wi3ofoau" path="res://level_designer_old/item_classes/property/property.gd" id="1_ni3jq"]
+[ext_resource type="Script" uid="uid://bm5luildavvo8" path="res://level_designer_old/item_classes/property/complex_property_display_data.gd" id="2_ilebm"]
+[ext_resource type="PackedScene" uid="uid://bndies3b0h6ch" path="res://level_designer_old/item_classes/property/inspector_entry/vector2.tscn" id="3_r4ngu"]
+
+[sub_resource type="Resource" id="Resource_wi72o"]
+script = ExtResource("2_ilebm")
+scene = ExtResource("1_mkxin")
+
+[resource]
+script = ExtResource("1_ni3jq")
+name = &"scale"
+show_in_properties = true
+data_type = 5
+display_data = SubResource("Resource_wi72o")
+inspector_entry = ExtResource("3_r4ngu")
+default = [Vector2(1, 1)]

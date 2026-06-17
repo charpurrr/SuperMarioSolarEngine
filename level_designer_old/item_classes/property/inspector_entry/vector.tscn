@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dilv41k2cq47l"]
+
+[ext_resource type="PackedScene" uid="uid://bmfuohwnjoej0" path="res://level_designer_old/item_classes/property/inspector_entry/labelled_number.tscn" id="1_seoho"]
+[ext_resource type="Theme" uid="uid://c53wuaais37yi" path="res://level_designer_old/ui/editor_theme.tres" id="1_sypsi"]
+[ext_resource type="Script" uid="uid://cx0u5ffewbyo" path="res://level_designer_old/item_classes/property/inspector_entry/vector.gd" id="2_vfs33"]
+
+[node name="Vector" type="HBoxContainer" node_paths=PackedStringArray("component_list", "label")]
+size_flags_horizontal = 3
+theme = ExtResource("1_sypsi")
+script = ExtResource("2_vfs33")
+component_list = NodePath("ComponentList")
+component_scene = ExtResource("1_seoho")
+components = Array[String](["x"])
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 17)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Vector"
+vertical_alignment = 1
+
+[node name="ComponentList" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
