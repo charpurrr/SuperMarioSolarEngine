@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://ob44gpnyj5ja"]
+
+[ext_resource type="Script" uid="uid://bhcjxobw61v12" path="res://level_designer/viewport/ld_camera.gd" id="2_3d3a7"]
+[ext_resource type="Script" uid="uid://dr0whgpqeups4" path="res://level_designer/viewport/grid.gd" id="3_2bfex"]
+
+[node name="Viewport" type="Node" unique_id=2037857990]
+
+[node name="Grid" type="CanvasLayer" parent="." unique_id=604122270]
+layer = -1
+
+[node name="GridDraw" type="Node2D" parent="Grid" unique_id=1048861861]
+script = ExtResource("3_2bfex")
+grid_color = Color(0, 0, 0, 1)
+
+[node name="LDCamera" type="Camera2D" parent="Grid" unique_id=611689935]
+physics_interpolation_mode = 2
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("2_3d3a7")

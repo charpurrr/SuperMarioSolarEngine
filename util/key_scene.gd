@@ -1,6 +1,6 @@
 @abstract
 class_name KeyScene
-extends Control
+extends Node
 ## Class for key scenes, such as the Title Screen, Mission Select,
 ## Game World, or others that the TransitionManager can transition to.
 
