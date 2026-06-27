@@ -1,74 +1,83 @@
 @tool
 class_name FluddTank
 extends Control
-## Small utility script that draws the proper visuals for
-## the Fludd Tank based on the amount of fuel the player has.
+## Small utility script that draws the proper visuals for the Fludd Tank
+## based on the amount of fuel the player has, and the container shape.
 
-## Temporary max HP export variable for testing,
+## Temporary max fuel export variable for testing,
 ## realistically this is set within the Player scene.
-@export var max_fuel: float = 100:
+@export_range(0, 100, 0.01, "or_greater", "suffix:%")
+var max_fuel: float = 100:
 	set(val):
-		max_fuel = clamp(val, 0, INF)
+		max_fuel = val
 		fuel = clamp(fuel, 0, max_fuel)
-@export var fuel: float = max_fuel:
+@export var fuel: float = 0:
 	set(val):
 		fuel = clamp(val, 0, max_fuel)
 
 		if is_instance_valid(label):
 			label.text = "%d%%" % fuel
 
-		# FuelTop node is last in the scene tree,
-		# so checking for it is most reliable.
-		if is_instance_valid(fuel_t):
-			_update_fuel(fuel)
+		queue_redraw()
 
+@export var fuel_t_color: Color
+@export var fuel_l_color: Color
+@export var fuel_r_color: Color
 
 @export_category("References")
 @export var label: Label
 @export var container_l: Polygon2D
 @export var container_r: Polygon2D
-@export var fuel_l: Polygon2D
-@export var fuel_r: Polygon2D
-@export var fuel_t: Polygon2D
+@export var container_t: Polygon2D
+@export var container_b: Polygon2D
 
-var poly_l_default: PackedVector2Array
-var poly_r_default: PackedVector2Array
-
+## Height of the container calculated by the difference between
+## the bottom container polygon and the top container polygon
 var container_height: float
-var l_p2p_difference: float
-var r_p2p_difference: float
 
 
 func _ready() -> void:
-	poly_l_default = container_l.polygon
-	poly_r_default = container_r.polygon
-
-	# These operations rely on the size of the panels from the container.
-
-	# Subtracts the Y point in the 3rd quad. [2] by the Y point in the 2nd quad. [1]
-	# Basically giving you the length of a vector leading from the top left to the bottom left.
-	container_height = poly_l_default[2].y - poly_l_default[1].y
-	# Subtracts the Y point in the 2nd quad. [1] by the Y point in the 1st quad. [0]
-	# Giving you the difference between the top left and the top right.
-	l_p2p_difference = poly_l_default[1].y - poly_l_default[0].y
-	r_p2p_difference = poly_r_default[1].y - poly_r_default[0].y
+	container_height = container_t.polygon[2].y - container_b.polygon[2].y
 
 	fuel = FluddManager.fuel
 
 
-func _update_fuel(new_fuel: float) -> void:
-	var y_offset: float = container_height * (1 - (new_fuel / max_fuel))
+func _draw() -> void:
+	# ORDER OF CONTAINER PANEL POLYGON POINTS MATTER!
+	# These calculations ASSUME the following:
+	# - Point 0 is always the top left point of the side panel container polygons.
+	# - Point 1 is always the top right point of the side panel container polygons.
+	# - Point 2 is always the bottom right point of the side panel container polygons.
+	# - Point 3 is always the bottom left point of the side panel container polygons.
 
-	fuel_t.visible = new_fuel != 0
-	fuel_t.position.y = y_offset
+	if fuel == 0:
+		return
 
-	# 1st quad:[0] | 2nd quad:[1]
+	var top_poly: PackedVector2Array
+	var left_poly: PackedVector2Array
+	var right_poly: PackedVector2Array
 
-	fuel_l.polygon[0].y = y_offset - l_p2p_difference
-	fuel_l.polygon[1].y = y_offset
+	var y_offset: Vector2 = Vector2(0, container_height * (1 - (fuel / max_fuel)))
 
-	fuel_r.polygon[0].y = y_offset - r_p2p_difference
-	fuel_r.polygon[1].y = y_offset
+	for point: Vector2 in container_t.polygon:
+		top_poly.append(point - y_offset)
+
+	left_poly.append(container_l.polygon[0] - y_offset)
+	left_poly.append(container_l.polygon[1] - y_offset)
+	left_poly.append(container_l.polygon[2])
+	left_poly.append(container_l.polygon[3])
+
+	right_poly.append(container_r.polygon[0] - y_offset)
+	right_poly.append(container_r.polygon[1] - y_offset)
+	right_poly.append(container_r.polygon[2])
+	right_poly.append(container_r.polygon[3])
+
+	draw_colored_polygon(top_poly, fuel_t_color)
+	draw_colored_polygon(left_poly, fuel_l_color)
+	draw_colored_polygon(right_poly, fuel_r_color)
+
+#func _update_fuel(new_fuel: float) -> void:
+	#var y_offset: float = container_height * (1 - (new_fuel / max_fuel))
 
 
 func _process(_delta: float) -> void:
