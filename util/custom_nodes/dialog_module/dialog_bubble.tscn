@@ -2,10 +2,8 @@
 
 [ext_resource type="Script" uid="uid://boi13vti8kdfr" path="res://util/custom_nodes/dialog_module/dialog_bubble.gd" id="1_nd31e"]
 [ext_resource type="FontFile" uid="uid://bbuo41ab8iqsa" path="res://ui/fonts/superstar_saga.ttf" id="2_4b1h3"]
+[ext_resource type="Texture2D" uid="uid://dw73y38l5gfob" path="res://util/custom_nodes/dialog_module/dialog_bubble_body.png" id="2_wyt3e"]
 [ext_resource type="Texture2D" uid="uid://hc4smmjt3dbs" path="res://util/custom_nodes/dialog_module/dialog_bubble_tail.png" id="3_4b1h3"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gj5j8"]
-load_path = "res://.godot/imported/dialog_bubble.png-14ce9e9afaed9781a08c0eed59165885.ctex"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4b1h3"]
 radius = 200.0
@@ -37,7 +35,7 @@ pivot_offset = Vector2(9, 11.5)
 [node name="Body" type="NinePatchRect" parent="BubbleTransorm/MarginContainer" unique_id=443163708]
 show_behind_parent = true
 layout_mode = 2
-texture = SubResource("CompressedTexture2D_gj5j8")
+texture = ExtResource("2_wyt3e")
 region_rect = Rect2(0, 0, 13, 13)
 patch_margin_left = 6
 patch_margin_top = 6
