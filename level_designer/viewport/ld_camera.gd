@@ -5,7 +5,8 @@ extends Camera2D
 ## The travelling speed of the camera. This is dynamic based on the [member zoom].
 @export var cam_speed: float = 10
 ## How much [member cam_speed] gets multiplied when holding the [code]e_speed[/code] input.
-@export var cam_s_multiplier: float = 2.0
+@export var fast_cam_multiplier: float = 2.0
+#@export var zoom_cam_speed_ratio: float = 
 
 @export_range(100, 100, 1.0, "or_greater", "hide_control", "suffix:%")
 var zoom_max: int = 1000
@@ -39,10 +40,12 @@ func _handle_move(_delta: float) -> void:
 ## [member cam_speed] multiplied by [member cam_s_multiplier].
 ## Otherwise, simply returns [member cam_speed].
 func _get_cam_speed() -> float:
-	if Input.is_action_pressed("e_speed"):
-		return roundi(cam_speed * cam_s_multiplier)
+	var speed_zoom_ratio = cam_speed * (1 / zoom.x)
 
-	return cam_speed
+	if Input.is_action_pressed("e_speed"):
+		return roundi(speed_zoom_ratio * fast_cam_multiplier)
+
+	return speed_zoom_ratio
 
 
 func _handle_zoom(_delta: float) -> void:

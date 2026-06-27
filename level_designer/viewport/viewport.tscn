@@ -17,3 +17,4 @@ physics_interpolation_mode = 2
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 script = ExtResource("2_3d3a7")
+cam_speed = 6.0
