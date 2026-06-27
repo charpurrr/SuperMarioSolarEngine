@@ -59,25 +59,23 @@ func _draw() -> void:
 
 	var y_offset: Vector2 = Vector2(0, container_height * (1 - (fuel / max_fuel)))
 
+	# Offset all points by y-offset for the top polygon.
 	for point: Vector2 in container_t.polygon:
 		top_poly.append(point - y_offset)
 
-	left_poly.append(container_l.polygon[0] - y_offset)
-	left_poly.append(container_l.polygon[1] - y_offset)
-	left_poly.append(container_l.polygon[2])
-	left_poly.append(container_l.polygon[3])
+	left_poly.append(container_l.polygon[0] - y_offset) # TOP-LEFT
+	left_poly.append(container_l.polygon[1] - y_offset) # TOP-RIGHT
+	left_poly.append(container_l.polygon[2]) # BOTTOM-LEFT
+	left_poly.append(container_l.polygon[3]) # BOTTOM-RIGHT
 
-	right_poly.append(container_r.polygon[0] - y_offset)
-	right_poly.append(container_r.polygon[1] - y_offset)
-	right_poly.append(container_r.polygon[2])
-	right_poly.append(container_r.polygon[3])
+	right_poly.append(container_r.polygon[0] - y_offset) # TOP-LEFT
+	right_poly.append(container_r.polygon[1] - y_offset) # TOP-RIGHT
+	right_poly.append(container_r.polygon[2]) # BOTTOM-LEFT
+	right_poly.append(container_r.polygon[3]) # BOTTOM-RIGHT
 
 	draw_colored_polygon(top_poly, fuel_t_color)
 	draw_colored_polygon(left_poly, fuel_l_color)
 	draw_colored_polygon(right_poly, fuel_r_color)
-
-#func _update_fuel(new_fuel: float) -> void:
-	#var y_offset: float = container_height * (1 - (new_fuel / max_fuel))
 
 
 func _process(_delta: float) -> void:
