@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=16 format=3 uid="uid://bwgv1hs13248d"]
+[gd_resource type="VisualShader" format=3 uid="uid://bwgv1hs13248d"]
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_78yi2"]
 linked_parent_graph_frame = 2
@@ -37,7 +37,7 @@ op_type = 0
 operator = 2
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_lp2us"]
-size = Vector2(684, 455)
+size = Vector2(721, 543)
 title = "Scrolling Functionality"
 attached_nodes = PackedInt32Array(6, 10, 9, 8)
 
@@ -66,60 +66,23 @@ linked_parent_graph_frame = 11
 input_name = "time"
 
 [resource]
-code = "shader_type canvas_item;
-render_mode blend_mix;
-
-uniform sampler2D Texture2DParameter3 : repeat_disable;
-uniform sampler2D Texture2DParameter;
-
-
-
-void vertex() {
-	vec4 n_out4p0;
-// Texture2D:4
-	n_out4p0 = texture(Texture2DParameter3, UV);
-
-
-// VectorOp:5
-	vec3 n_in5p1 = vec3(0.50000, 0.50000, 0.50000);
-	vec3 n_out5p0 = vec3(n_out4p0.xyz) + n_in5p1;
-
-
-// Output:0
-	COLOR.rgb = n_out5p0;
-
-
-}
-
-void fragment() {
-	vec4 n_out15p0;
-// Texture2D:15
-	n_out15p0 = texture(Texture2DParameter, UV);
-
-
-// Output:0
-	COLOR.rgb = vec3(n_out15p0.xyz);
-
-
-}
-"
 mode = 1
 flags/light_only = false
-nodes/vertex/0/position = Vector2(600, 140)
+nodes/vertex/0/position = Vector2(860, 160)
 nodes/vertex/3/node = SubResource("VisualShaderNodeTexture2DParameter_5htvn")
 nodes/vertex/3/position = Vector2(-200, 80)
 nodes/vertex/4/node = SubResource("VisualShaderNodeTexture_ydp5t")
-nodes/vertex/4/position = Vector2(120, 140)
+nodes/vertex/4/position = Vector2(260, 200)
 nodes/vertex/5/node = SubResource("VisualShaderNodeVectorOp_cnkfp")
-nodes/vertex/5/position = Vector2(400, 140)
+nodes/vertex/5/position = Vector2(580, 180)
 nodes/vertex/6/node = SubResource("VisualShaderNodeInput_ihkpu")
-nodes/vertex/6/position = Vector2(-160, -400)
+nodes/vertex/6/position = Vector2(-200, 560)
 nodes/vertex/8/node = SubResource("VisualShaderNodeVectorOp_8861b")
-nodes/vertex/8/position = Vector2(80, -200)
+nodes/vertex/8/position = Vector2(260, 780)
 nodes/vertex/9/node = SubResource("VisualShaderNodeInput_ow3xn")
-nodes/vertex/9/position = Vector2(-160, -280)
+nodes/vertex/9/position = Vector2(-200, 840)
 nodes/vertex/10/node = SubResource("VisualShaderNodeVectorOp_ap8oj")
-nodes/vertex/10/position = Vector2(280, -400)
+nodes/vertex/10/position = Vector2(260, 500)
 nodes/vertex/11/node = SubResource("VisualShaderNodeFrame_lp2us")
 nodes/vertex/11/position = Vector2(-200, -440)
 nodes/vertex/connections = PackedInt32Array(3, 0, 4, 2, 4, 0, 5, 0, 9, 0, 8, 0, 6, 0, 10, 0, 5, 0, 0, 2)
