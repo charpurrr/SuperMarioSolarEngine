@@ -2,7 +2,7 @@ class_name WindowSizer
 
 const MAX_SCALE: int = 3
 
-static var default_size = Vector2(
+static var default_size: Vector2i = Vector2i(
 	ProjectSettings.get_setting("display/window/size/viewport_width"),
 	ProjectSettings.get_setting("display/window/size/viewport_height")
 )
