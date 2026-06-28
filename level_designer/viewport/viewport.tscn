@@ -1,20 +1,43 @@
 [gd_scene format=3 uid="uid://ob44gpnyj5ja"]
 
+[ext_resource type="Shader" uid="uid://sxvlfpblfmai" path="res://level_designer/viewport/grid.gdshader" id="1_2bfex"]
+[ext_resource type="Texture2D" uid="uid://5d1xg84rwu1k" path="res://level_designer/viewport/grid.png" id="1_3d3a7"]
 [ext_resource type="Script" uid="uid://bhcjxobw61v12" path="res://level_designer/viewport/ld_camera.gd" id="2_3d3a7"]
-[ext_resource type="Script" uid="uid://dr0whgpqeups4" path="res://level_designer/viewport/grid.gd" id="3_2bfex"]
+[ext_resource type="Script" uid="uid://dnq5lwh60selk" path="res://level_designer/viewport/grid.gd" id="3_2bfex"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bu805"]
+shader = ExtResource("1_2bfex")
+shader_parameter/grid_bg_texture = ExtResource("1_3d3a7")
+shader_parameter/grid_origin_texture = ExtResource("1_3d3a7")
+shader_parameter/grid_bg_modulate = Color(0, 0, 0, 0.2)
+shader_parameter/grid_origin_modulate = Color(0, 0, 0, 1)
+shader_parameter/grid_offset = Vector2(0, 0)
+shader_parameter/grid_fade_threshold = 1.0000000475
+shader_parameter/camera_position = Vector2(0, 0)
+shader_parameter/camera_zoom = Vector2(1, 1)
 
 [node name="Viewport" type="Node" unique_id=2037857990]
 
 [node name="Grid" type="CanvasLayer" parent="." unique_id=604122270]
 layer = -1
 
-[node name="GridDraw" type="Node2D" parent="Grid" unique_id=1048861861]
+[node name="GridDraw" type="ColorRect" parent="Grid" unique_id=1497565857]
+material = SubResource("ShaderMaterial_bu805")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("3_2bfex")
-grid_color = Color(0, 0, 0, 1)
 
 [node name="LDCamera" type="Camera2D" parent="Grid" unique_id=611689935]
 physics_interpolation_mode = 2
-position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 script = ExtResource("2_3d3a7")
 cam_speed = 6.0
+
+[node name="Label" type="Label" parent="Grid" unique_id=915172951]
+unique_name_in_owner = true
+offset_right = 63.0
+offset_bottom = 23.0
+text = "position"

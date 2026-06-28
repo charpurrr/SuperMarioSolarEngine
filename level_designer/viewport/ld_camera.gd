@@ -11,25 +11,24 @@ extends Camera2D
 var zoom_max: int = 1000
 @export_range(0, 100, 1.0, "hide_control", "suffix:%")
 var zoom_min: int = 10
-@export_range(0, 100, 1.0, "or_greater", "hide_control", "suffix:%/s")
+@export_range(0, 100, 1.0, "or_greater", "hide_control", "suffix:%")
 var zoom_diff: float = 5.0
-@export_range(0, 1, 0.01)
-var zoom_interp_weight: float = 0.2
 
 ## The current camera zoom in percentage.[br]
 ## [b]Note[/b]: higher zoom percentage means you can see more level.
-var zoom_percentage: float = 100.0
-
-## The zoom value the camera gets tweened to.
-var target_zoom: float = 100.0
-
-
-func _physics_process(delta: float) -> void:
-	_handle_move(delta)
-	_handle_zoom(delta)
+var zoom_percentage: float = 100.0:
+	set(value):
+		zoom_percentage = clamp(value, zoom_min, zoom_max)
 
 
-func _handle_move(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
+	_handle_move()
+	_handle_zoom()
+
+	%Label.text = "position:%s \t zoom:%s" % [position, zoom]
+
+
+func _handle_move() -> void:
 	var input_vector: Vector2 = Input.get_vector(&"e_left", &"e_right", &"e_up", &"e_down")
 	position += input_vector * _get_cam_speed()
 
@@ -47,15 +46,31 @@ func _get_cam_speed() -> float:
 	return speed_zoom_ratio
 
 
-func _handle_zoom(_delta: float) -> void:
+func _handle_zoom() -> void:
 	if Input.is_action_pressed(&"camera_zoom_in"):
-		target_zoom -= zoom_diff
+		_zoom(-zoom_diff)
 
 	if Input.is_action_pressed(&"camera_zoom_out"):
-		target_zoom += zoom_diff
+		_zoom(zoom_diff)
 
-	target_zoom = clamp(target_zoom, zoom_min, zoom_max)
-	zoom_percentage = lerpf(zoom_percentage, target_zoom, zoom_interp_weight)
+	if Input.is_action_just_pressed(&"e_camera_zoom_in"):
+		_zoom_at(-zoom_diff, get_global_mouse_position())
+
+	if Input.is_action_just_pressed(&"e_camera_zoom_out"):
+		_zoom_at(zoom_diff, get_global_mouse_position())
+
+
+func _zoom(diff: float) -> void:
+	zoom_percentage += diff
 
 	var zoom_factor: float = 1 / (zoom_percentage / 100)
-	zoom = Vector2(zoom_factor, zoom_factor)
+	zoom = Vector2.ONE * zoom_factor
+
+
+func _zoom_at(diff: float, mouse_world_pos: Vector2) -> void:
+	var screen_pos = get_viewport().get_mouse_position()
+	var viewport_center = get_viewport_rect().size / 2.0
+
+	_zoom(diff)
+
+	position = mouse_world_pos - (screen_pos - viewport_center) / zoom
