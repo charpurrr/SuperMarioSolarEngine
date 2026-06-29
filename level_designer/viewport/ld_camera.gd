@@ -67,10 +67,18 @@ func _zoom(diff: float) -> void:
 	zoom = Vector2.ONE * zoom_factor
 
 
-func _zoom_at(diff: float, mouse_world_pos: Vector2) -> void:
-	var screen_pos = get_viewport().get_mouse_position()
-	var viewport_center = get_viewport_rect().size / 2.0
+## Zoom while keeping the world point currently under the cursor fixed on screen.
+## [member position] and [member zoom] are derived from the camera itself rather
+## than [method get_global_mouse_position], because this camera lives inside
+## the grid canvaslayer and so its global mouse position is not affected by its 
+## own zoom/pan.
+func _zoom_at(diff: float, zoom_pos: Vector2) -> void:
+	var viewport_center: Vector2 = get_viewport_rect().get_center()
+	var cam_offset: Vector2 = zoom_pos - viewport_center
 
+	# World pos under the cursor before zooming
+	var world_pos: Vector2 = position + cam_offset / zoom
 	_zoom(diff)
 
-	position = mouse_world_pos - (screen_pos - viewport_center) / zoom
+	# Re-anchor so that same world point stays under the cursor
+	position = world_pos - cam_offset / zoom
