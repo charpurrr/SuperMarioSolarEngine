@@ -2,16 +2,11 @@
 
 [ext_resource type="Script" uid="uid://c0n4102fcu5k7" path="res://level_designer/level_designer.gd" id="1_n6dip"]
 [ext_resource type="PackedScene" uid="uid://ob44gpnyj5ja" path="res://level_designer/viewport/viewport.tscn" id="2_1dicv"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bu805"]
-size = Vector2(32, 32)
+[ext_resource type="PackedScene" uid="uid://dg8ls610xhdbf" path="res://level_designer/ui/ui.tscn" id="3_4fa5m"]
 
 [node name="LevelDesigner" type="Node" unique_id=336056720]
 script = ExtResource("1_n6dip")
 
 [node name="Viewport" parent="." unique_id=2037857990 instance=ExtResource("2_1dicv")]
 
-[node name="ColorRect" type="Sprite2D" parent="." unique_id=467099445]
-texture_repeat = 2
-position = Vector2(317, 186)
-texture = SubResource("PlaceholderTexture2D_bu805")
+[node name="UserInterface" parent="." unique_id=1211354066 instance=ExtResource("3_4fa5m")]

@@ -740,6 +740,7 @@ speed_scale = 1.5
 [node name="LifeMeter" parent="." unique_id=174602201 groups=["HUD"] instance=ExtResource("7_m3cpd")]
 
 [node name="FluddTank" parent="." unique_id=756701723 groups=["HUD"] instance=ExtResource("8_n7xk5")]
+fuel = 0.0
 
 [node name="Debug" type="Control" parent="." unique_id=1835258959]
 layout_mode = 3
@@ -1301,7 +1302,7 @@ theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_y28h8")
 theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_aeygf")
 theme_override_styles/tab_selected = SubResource("StyleBoxFlat_m3cpd")
 tab_alignment = 1
-current_tab = 4
+current_tab = 0
 tab_focus_mode = 0
 script = ExtResource("41_y28h8")
 tab_left_sfx = SubResource("Resource_er6et")
@@ -1309,7 +1310,6 @@ tab_right_sfx = SubResource("Resource_3jvq5")
 focus_grabbers = [NodePath("General/ScrollContainer/Content/TopButtons/VSync/ToggleButton"), NodePath("Controls/FadeEffect/ScrollContainer/HBoxContainer/Actions/BindSetting"), NodePath("Sound/FadeEffect/ScrollContainer/HBoxContainer/Content/AudioDevice/PresetSelector"), null, NodePath("Data/TopButtons/OpenData")]
 
 [node name="General" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs" unique_id=1400883172 node_paths=PackedStringArray("vsync_button", "fps_cap_button", "quality_button")]
-visible = false
 layout_mode = 2
 script = ExtResource("47_mvot7")
 vsync_button = NodePath("ScrollContainer/Content/TopButtons/VSync/ToggleButton")
@@ -1748,6 +1748,7 @@ layout_mode = 2
 metadata/_tab_index = 3
 
 [node name="Data" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs" unique_id=844587460 node_paths=PackedStringArray("data_peek")]
+visible = false
 layout_mode = 2
 script = ExtResource("57_y28h8")
 data_peek = NodePath("DataPeek")
