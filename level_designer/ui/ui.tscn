@@ -30,6 +30,17 @@
 [ext_resource type="Texture2D" uid="uid://coc420hje0vfd" path="res://level_designer/ui/assets/parallax.svg" id="28_q1jjm"]
 [ext_resource type="Texture2D" uid="uid://c2k54gnb8xv3s" path="res://level_designer/ui/assets/camera.svg" id="29_7kk5c"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nytnj"]
+bg_color = Color(0.08627451, 0.08627451, 0.08627451, 0.19607843)
+corner_radius_top_left = 4
+corner_radius_bottom_left = 4
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v3alk"]
+bg_color = Color(0.08627451, 0.08627451, 0.08627451, 0.19607843)
+corner_radius_top_right = 8
+corner_detail = 1
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ghq2f"]
 content_margin_left = 6.0
 content_margin_top = 6.0
@@ -42,77 +53,15 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 corner_detail = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nytnj"]
-bg_color = Color(0.08627451, 0.08627451, 0.08627451, 0.19607843)
-corner_radius_top_left = 4
-corner_radius_bottom_left = 4
-corner_detail = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v454s"]
-bg_color = Color(0.08627451, 0.08627451, 0.08627451, 0.19607843)
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_detail = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v3alk"]
-bg_color = Color(0.08627451, 0.08627451, 0.08627451, 0.19607843)
-corner_radius_top_right = 8
-corner_detail = 1
-
 [node name="UserInterface" type="Node" unique_id=1211354066]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1018497805]
-
-[node name="ViewingOptions" type="MarginContainer" parent="CanvasLayer" unique_id=1650238077]
-anchors_preset = -1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -148.0
-offset_top = 96.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ViewingOptions" unique_id=1861201612]
-layout_mode = 2
-theme = ExtResource("1_aux32")
-alignment = 1
-
-[node name="Ghosting" type="Button" parent="CanvasLayer/ViewingOptions/HBoxContainer" unique_id=165325251]
-custom_minimum_size = Vector2(32, 24)
-layout_mode = 2
-icon = ExtResource("26_v3hgq")
-icon_alignment = 1
-expand_icon = true
-
-[node name="Modulate" type="Button" parent="CanvasLayer/ViewingOptions/HBoxContainer" unique_id=481122708]
-custom_minimum_size = Vector2(32, 24)
-layout_mode = 2
-icon = ExtResource("27_v454s")
-icon_alignment = 1
-expand_icon = true
-
-[node name="Parallax" type="Button" parent="CanvasLayer/ViewingOptions/HBoxContainer" unique_id=551282609]
-custom_minimum_size = Vector2(32, 24)
-layout_mode = 2
-icon = ExtResource("28_q1jjm")
-icon_alignment = 1
-expand_icon = true
-
-[node name="ResetCamera" type="Button" parent="CanvasLayer/ViewingOptions/HBoxContainer" unique_id=1098662742]
-custom_minimum_size = Vector2(32, 24)
-layout_mode = 2
-icon = ExtResource("29_7kk5c")
-icon_alignment = 1
-expand_icon = true
 
 [node name="TopBar" type="Panel" parent="CanvasLayer" unique_id=917391517]
 custom_minimum_size = Vector2(0, 32)
 anchors_preset = 10
 anchor_right = 1.0
+offset_bottom = 32.0
 grow_horizontal = 2
 theme = ExtResource("1_aux32")
 
@@ -249,30 +198,108 @@ icon = ExtResource("10_xsjit")
 icon_alignment = 1
 expand_icon = true
 
-[node name="PlayContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1766162739]
-anchors_preset = 3
+[node name="ViewingOptions" type="MarginContainer" parent="CanvasLayer" unique_id=1650238077]
+anchors_preset = -1
 anchor_left = 1.0
-anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -69.0
-offset_top = -48.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+offset_left = -148.0
+offset_top = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
 
-[node name="PlayButton" type="Button" parent="CanvasLayer/PlayContainer" unique_id=1245337377]
-custom_minimum_size = Vector2(64, 32)
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ViewingOptions" unique_id=1861201612]
 layout_mode = 2
 theme = ExtResource("1_aux32")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("12_xsjit")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxFlat_ghq2f")
-text = "PLAY"
+alignment = 1
+
+[node name="Ghosting" type="Button" parent="CanvasLayer/ViewingOptions/HBoxContainer" unique_id=165325251]
+custom_minimum_size = Vector2(32, 24)
+layout_mode = 2
+icon = ExtResource("26_v3hgq")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Modulate" type="Button" parent="CanvasLayer/ViewingOptions/HBoxContainer" unique_id=481122708]
+custom_minimum_size = Vector2(32, 24)
+layout_mode = 2
+icon = ExtResource("27_v454s")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Parallax" type="Button" parent="CanvasLayer/ViewingOptions/HBoxContainer" unique_id=551282609]
+custom_minimum_size = Vector2(32, 24)
+layout_mode = 2
+icon = ExtResource("28_q1jjm")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ResetCamera" type="Button" parent="CanvasLayer/ViewingOptions/HBoxContainer" unique_id=1098662742]
+custom_minimum_size = Vector2(32, 24)
+layout_mode = 2
+icon = ExtResource("29_7kk5c")
+icon_alignment = 1
+expand_icon = true
+
+[node name="LeftBar" type="PanelContainer" parent="CanvasLayer" unique_id=1600695400]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -72.0
+offset_right = 40.0
+offset_bottom = 72.0
+grow_vertical = 2
+theme = ExtResource("1_aux32")
+theme_override_styles/panel = SubResource("StyleBoxFlat_nytnj")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/LeftBar" unique_id=438062947]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/LeftBar/MarginContainer" unique_id=316133689]
+layout_mode = 2
+alignment = 1
+
+[node name="Select" type="Button" parent="CanvasLayer/LeftBar/MarginContainer/VBoxContainer" unique_id=323126230]
+custom_minimum_size = Vector2(32, 24)
+layout_mode = 2
+icon = ExtResource("19_uhndl")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Move" type="Button" parent="CanvasLayer/LeftBar/MarginContainer/VBoxContainer" unique_id=362087443]
+custom_minimum_size = Vector2(32, 24)
+layout_mode = 2
+icon = ExtResource("20_0qanw")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Rotate" type="Button" parent="CanvasLayer/LeftBar/MarginContainer/VBoxContainer" unique_id=981594378]
+custom_minimum_size = Vector2(32, 24)
+layout_mode = 2
+icon = ExtResource("21_0qanw")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Scale" type="Button" parent="CanvasLayer/LeftBar/MarginContainer/VBoxContainer" unique_id=1634104682]
+custom_minimum_size = Vector2(32, 24)
+layout_mode = 2
+icon = ExtResource("23_v3hgq")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Properties" type="Button" parent="CanvasLayer/LeftBar/MarginContainer/VBoxContainer" unique_id=1755249283]
+custom_minimum_size = Vector2(32, 24)
+layout_mode = 2
+icon = ExtResource("22_4k3rk")
+icon_alignment = 1
+expand_icon = true
 
 [node name="RightBar" type="PanelContainer" parent="CanvasLayer" unique_id=1127496221]
 anchors_preset = 6
@@ -331,63 +358,6 @@ expand_icon = true
 custom_minimum_size = Vector2(32, 24)
 layout_mode = 2
 icon = ExtResource("13_lr2ky")
-icon_alignment = 1
-expand_icon = true
-
-[node name="ToolBar" type="PanelContainer" parent="CanvasLayer" unique_id=1055659414]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -20.0
-offset_right = 40.0
-offset_bottom = 20.0
-grow_vertical = 2
-theme = ExtResource("1_aux32")
-theme_override_styles/panel = SubResource("StyleBoxFlat_v454s")
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/ToolBar" unique_id=1036178498]
-layout_mode = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ToolBar/MarginContainer" unique_id=628443448]
-layout_mode = 2
-alignment = 1
-
-[node name="Select" type="Button" parent="CanvasLayer/ToolBar/MarginContainer/VBoxContainer" unique_id=1298642722]
-custom_minimum_size = Vector2(24, 24)
-layout_mode = 2
-icon = ExtResource("19_uhndl")
-icon_alignment = 1
-expand_icon = true
-
-[node name="Move" type="Button" parent="CanvasLayer/ToolBar/MarginContainer/VBoxContainer" unique_id=1890615387]
-custom_minimum_size = Vector2(24, 24)
-layout_mode = 2
-icon = ExtResource("20_0qanw")
-icon_alignment = 1
-expand_icon = true
-
-[node name="Rotate" type="Button" parent="CanvasLayer/ToolBar/MarginContainer/VBoxContainer" unique_id=1117609694]
-custom_minimum_size = Vector2(24, 24)
-layout_mode = 2
-icon = ExtResource("21_0qanw")
-icon_alignment = 1
-expand_icon = true
-
-[node name="Scale" type="Button" parent="CanvasLayer/ToolBar/MarginContainer/VBoxContainer" unique_id=1247161885]
-custom_minimum_size = Vector2(24, 24)
-layout_mode = 2
-icon = ExtResource("23_v3hgq")
-icon_alignment = 1
-expand_icon = true
-
-[node name="Properties" type="Button" parent="CanvasLayer/ToolBar/MarginContainer/VBoxContainer" unique_id=1697501720]
-custom_minimum_size = Vector2(24, 24)
-layout_mode = 2
-icon = ExtResource("22_4k3rk")
 icon_alignment = 1
 expand_icon = true
 
@@ -472,3 +442,28 @@ layout_mode = 2
 icon = ExtResource("12_nytnj")
 icon_alignment = 1
 expand_icon = true
+
+[node name="PlayContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1766162739]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -48.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/PlayContainer" unique_id=1245337377]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+theme = ExtResource("1_aux32")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_xsjit")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_ghq2f")
+text = "PLAY"
