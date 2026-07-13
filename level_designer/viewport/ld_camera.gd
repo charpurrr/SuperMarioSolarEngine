@@ -3,16 +3,22 @@ extends Camera2D
 ## Camera used in the Level Designer.
 
 ## The travelling speed of the camera. This is dynamic based on the [member zoom].
-@export var cam_speed: float = 10
+@export var cam_speed: float = 6.0
 ## How much [member cam_speed] gets multiplied when holding the [code]e_speed[/code] input.
 @export var fast_cam_multiplier: float = 2.0
 
+## The maximum zoom level.
 @export_range(100, 100, 1.0, "or_greater", "hide_control", "suffix:%")
-var zoom_max: int = 1000
+var zoom_max: int = 500
+## The minimum zoom level.
 @export_range(0, 100, 1.0, "hide_control", "suffix:%")
 var zoom_min: int = 10
+## The amount the zoom changes when pressing the zoom keys.
 @export_range(0, 100, 1.0, "or_greater", "hide_control", "suffix:%")
-var zoom_diff: float = 5.0
+var zoom_diff_keys: float = 5.0
+## The amount the zoom changes when using the scrollwheel.
+@export_range(0, 100, 1.0, "or_greater", "hide_control", "suffix:%")
+var zoom_diff_scroll: float = 10.0
 
 ## The current camera zoom in percentage.[br]
 ## [b]Note[/b]: higher zoom percentage means you can see more level.
@@ -48,16 +54,16 @@ func _get_cam_speed() -> float:
 
 func _handle_zoom() -> void:
 	if Input.is_action_pressed(&"camera_zoom_in"):
-		_zoom(-zoom_diff)
+		_zoom(-zoom_diff_keys)
 
 	if Input.is_action_pressed(&"camera_zoom_out"):
-		_zoom(zoom_diff)
+		_zoom(zoom_diff_keys)
 
 	if Input.is_action_just_pressed(&"e_camera_zoom_in"):
-		_zoom_at(-zoom_diff, get_global_mouse_position())
+		_zoom_at(-zoom_diff_scroll, get_global_mouse_position())
 
 	if Input.is_action_just_pressed(&"e_camera_zoom_out"):
-		_zoom_at(zoom_diff, get_global_mouse_position())
+		_zoom_at(zoom_diff_scroll, get_global_mouse_position())
 
 
 func _zoom(diff: float) -> void:

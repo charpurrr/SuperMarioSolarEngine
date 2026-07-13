@@ -34,7 +34,6 @@ script = ExtResource("3_2bfex")
 physics_interpolation_mode = 2
 position_smoothing_speed = 10.0
 script = ExtResource("2_3d3a7")
-cam_speed = 6.0
 
 [node name="Label" type="Label" parent="Grid" unique_id=915172951]
 unique_name_in_owner = true
