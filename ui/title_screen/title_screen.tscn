@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bb6wf0meej6ox" path="res://ui/buttons/ui_button.tscn" id="7_rdlol"]
 [ext_resource type="Texture2D" uid="uid://c4gj6thqblgog" path="res://ui/title_screen/title.png" id="8_w16se"]
 [ext_resource type="Script" uid="uid://dg4a6r83hm158" path="res://util/commit_label.gd" id="9_1djn3"]
+[ext_resource type="Texture2D" uid="uid://dndte3r46435n" path="res://ui/title_screen/online_icon.png" id="9_dk1uc"]
 [ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="9_gwpbi"]
 [ext_resource type="Texture2D" uid="uid://tbn433hx7em2" path="res://ui/title_screen/play_icon.png" id="10_108is"]
 [ext_resource type="Texture2D" uid="uid://dga26k832tjwx" path="res://ui/title_screen/edit_icon.png" id="11_k4tpe"]
@@ -137,9 +138,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n6pnn")
 anime = NodePath("AnimationPlayer")
-focus_grabber = NodePath("Contents/Choices/Play")
-mission_selece_scene = "uid://hott1qcj6hk"
+focus_grabber = NodePath("Contents/Choices/ChoicesTop/Play")
+mission_select_scene = "uid://hott1qcj6hk"
 editor_scene = "uid://btdogrkxirtdi"
+lobby_scene = "uid://bwglu3fo6o5b7"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=713801301]
 libraries/ = SubResource("AnimationLibrary_nb7wo")
@@ -162,6 +164,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -70.0
+offset_bottom = -70.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -182,44 +186,70 @@ grow_vertical = 2
 [node name="SpaceTop" type="Control" parent="Contents" unique_id=792012999]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 1.3
+size_flags_stretch_ratio = 2.0
 
-[node name="Choices" type="HBoxContainer" parent="Contents" unique_id=1884986318]
+[node name="Choices" type="VBoxContainer" parent="Contents" unique_id=1913630199]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 32
+
+[node name="ChoicesTop" type="HBoxContainer" parent="Contents/Choices" unique_id=1884986318]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
 
-[node name="SpaceLeft" type="Control" parent="Contents/Choices" unique_id=118975128]
+[node name="SpaceLeft" type="Control" parent="Contents/Choices/ChoicesTop" unique_id=118975128]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
 
-[node name="Play" parent="Contents/Choices" unique_id=1097239016 instance=ExtResource("7_rdlol")]
+[node name="Play" parent="Contents/Choices/ChoicesTop" unique_id=1097239016 instance=ExtResource("7_rdlol")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "PLAY"
 icon = ExtResource("10_108is")
 
-[node name="SpaceMiddle" type="Control" parent="Contents/Choices" unique_id=1459160608]
+[node name="SpaceMiddle" type="Control" parent="Contents/Choices/ChoicesTop" unique_id=1459160608]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.1
 
-[node name="Edit" parent="Contents/Choices" unique_id=60847240 instance=ExtResource("7_rdlol")]
+[node name="Edit" parent="Contents/Choices/ChoicesTop" unique_id=60847240 instance=ExtResource("7_rdlol")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "EDIT"
 icon = ExtResource("11_k4tpe")
 
-[node name="SpaceRight" type="Control" parent="Contents/Choices" unique_id=1835675600]
+[node name="SpaceRight" type="Control" parent="Contents/Choices/ChoicesTop" unique_id=1835675600]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
 
-[node name="SpaceBottom" type="Control" parent="Contents" unique_id=18305528]
+[node name="ChoicesBottom" type="HBoxContainer" parent="Contents/Choices" unique_id=215569511]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
+
+[node name="SpaceLeft" type="Control" parent="Contents/Choices/ChoicesBottom" unique_id=645738992]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Online" parent="Contents/Choices/ChoicesBottom" unique_id=130832260 instance=ExtResource("7_rdlol")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "ONLINE"
+icon = ExtResource("9_dk1uc")
+
+[node name="SpaceRight" type="Control" parent="Contents/Choices/ChoicesBottom" unique_id=1354546810]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="SpaceBottom" type="Control" parent="Contents" unique_id=18305528]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
 
 [node name="Label" type="Label" parent="Contents" unique_id=660920871]
 custom_minimum_size = Vector2(0, 23)
@@ -231,5 +261,6 @@ vertical_alignment = 1
 script = ExtResource("9_1djn3")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="pressed" from="Contents/Choices/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Contents/Choices/Edit" to="." method="_on_edit_pressed"]
+[connection signal="pressed" from="Contents/Choices/ChoicesTop/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Contents/Choices/ChoicesTop/Edit" to="." method="_on_edit_pressed"]
+[connection signal="pressed" from="Contents/Choices/ChoicesBottom/Online" to="." method="_on_online_pressed"]

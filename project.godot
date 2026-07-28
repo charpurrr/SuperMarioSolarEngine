@@ -35,6 +35,8 @@ LocalSettings="*res://util/globals/local_settings.gd"
 GameState="*res://util/globals/game_state.gd"
 MusicManager="*res://util/globals/music_manager.tscn"
 TransitionManager="*res://util/globals/transition_manager/transition_manager.tscn"
+NetworkManager="*uid://dbip18dbw1qbj"
+LobbyDiscovery="*uid://cd2i78c1smb3c"
 
 [display]
 

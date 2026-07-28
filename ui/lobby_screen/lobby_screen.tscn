@@ -1,0 +1,303 @@
+[gd_scene format=3 uid="uid://bwglu3fo6o5b7"]
+
+[ext_resource type="Script" uid="uid://jmrxyqyhjpda" path="res://ui/lobby_screen/lobby_screen.gd" id="1_0ikud"]
+[ext_resource type="Shader" uid="uid://byfa3t51pf655" path="res://ui/screen_manager/pause_screen/pause_panel.tres" id="1_h5bq5"]
+[ext_resource type="Texture2D" uid="uid://knkg28xlj4h8" path="res://ui/screen_manager/pause_screen/textures/spike.png" id="2_0ikud"]
+[ext_resource type="Texture2D" uid="uid://qslbjwvvnw28" path="res://ui/pattern_solar.png" id="3_ecyo4"]
+[ext_resource type="FontFile" uid="uid://rhrmsvahgm3h" path="res://ui/fonts/mario_wonder.ttf" id="5_ecyo4"]
+[ext_resource type="PackedScene" uid="uid://bb6wf0meej6ox" path="res://ui/buttons/ui_button.tscn" id="6_bnm73"]
+[ext_resource type="Theme" uid="uid://blj83dty2taxs" path="res://ui/buttons/scrollbar.tres" id="6_imdrh"]
+[ext_resource type="PackedScene" uid="uid://cerimggbnf7r8" path="res://ui/lobby_screen/lobby_entry.tscn" id="7_usop2"]
+[ext_resource type="PackedScene" uid="uid://c01v6nch7j2je" path="res://ui/lobby_screen/player_entry.tscn" id="8_najfo"]
+[ext_resource type="Theme" uid="uid://ch5g7os32rra0" path="res://ui/window/window.tres" id="9_eboti"]
+[ext_resource type="Script" uid="uid://bk0i8iq453eh7" path="res://ui/lobby_screen/create_window.gd" id="10_7gtw4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bnm73"]
+shader = ExtResource("1_h5bq5")
+shader_parameter/background_scroll = Vector2(0.05, 0.05)
+shader_parameter/modulate_alpha = 1.0
+shader_parameter/spike_scroll_speed = 0.05
+shader_parameter/spike_dimensions = Vector2(0, 0)
+shader_parameter/spike_texture = ExtResource("2_0ikud")
+
+[sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
+font = ExtResource("5_ecyo4")
+font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
+bg_color = Color(0.19434926, 0.19434929, 0.1943492, 0.5882353)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0.19607843, 0.19607843, 0.19607843, 0.5882353)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7gtw4"]
+bg_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 1
+
+[sub_resource type="Theme" id="Theme_dms18"]
+LineEdit/styles/normal = SubResource("StyleBoxFlat_7gtw4")
+
+[node name="LobbyScreen" type="Control" unique_id=1750896755 node_paths=PackedStringArray("lobby_list", "join_button", "create_window", "defocus")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0ikud")
+lobby_entry = ExtResource("7_usop2")
+lobby_list = NodePath("LobbyList/Panel/MarginContainer/LobbyList/LobbyList")
+join_button = NodePath("Choices/Join")
+create_window = NodePath("CreateWindow")
+defocus = NodePath("Defocus")
+
+[node name="Backdrop" type="TextureRect" parent="." unique_id=1717201530]
+material = SubResource("ShaderMaterial_bnm73")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ecyo4")
+stretch_mode = 1
+flip_h = true
+
+[node name="Title" type="Label" parent="." unique_id=1888856952]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -70.0
+offset_top = 20.0
+offset_right = 70.0
+offset_bottom = 61.0
+grow_horizontal = 2
+text = "Online Lobbies"
+label_settings = SubResource("LabelSettings_g4v7s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LobbyList" type="MarginContainer" parent="." unique_id=702240957]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 80
+
+[node name="Panel" type="Panel" parent="LobbyList" unique_id=1618931198]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g4v7s")
+
+[node name="MarginContainer" type="MarginContainer" parent="LobbyList/Panel" unique_id=842269471]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="LobbyList" type="ScrollContainer" parent="LobbyList/Panel/MarginContainer" unique_id=304166031 groups=["lobby_selection_nodes"]]
+layout_mode = 2
+theme = ExtResource("6_imdrh")
+theme_override_constants/scrollbar_h_separation = 8
+vertical_scroll_mode = 2
+
+[node name="LobbyList" type="VBoxContainer" parent="LobbyList/Panel/MarginContainer/LobbyList" unique_id=81785329]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LobbyEntry" parent="LobbyList/Panel/MarginContainer/LobbyList/LobbyList" unique_id=199893096 instance=ExtResource("7_usop2")]
+layout_mode = 2
+
+[node name="LobbyEntry2" parent="LobbyList/Panel/MarginContainer/LobbyList/LobbyList" unique_id=1785763479 instance=ExtResource("7_usop2")]
+layout_mode = 2
+
+[node name="LobbyEntry3" parent="LobbyList/Panel/MarginContainer/LobbyList/LobbyList" unique_id=484270822 instance=ExtResource("7_usop2")]
+layout_mode = 2
+text = "Bobby"
+
+[node name="LobbyEntry4" parent="LobbyList/Panel/MarginContainer/LobbyList/LobbyList" unique_id=871095203 instance=ExtResource("7_usop2")]
+layout_mode = 2
+
+[node name="LobbyEntry5" parent="LobbyList/Panel/MarginContainer/LobbyList/LobbyList" unique_id=2134095075 instance=ExtResource("7_usop2")]
+layout_mode = 2
+
+[node name="LobbyEntry6" parent="LobbyList/Panel/MarginContainer/LobbyList/LobbyList" unique_id=960215111 instance=ExtResource("7_usop2")]
+layout_mode = 2
+
+[node name="HostMenu" type="VBoxContainer" parent="LobbyList/Panel/MarginContainer" unique_id=1489523665 groups=["lobby_host_nodes"]]
+visible = false
+layout_mode = 2
+
+[node name="HostList" type="ScrollContainer" parent="LobbyList/Panel/MarginContainer/HostMenu" unique_id=68882860]
+layout_mode = 2
+theme = ExtResource("6_imdrh")
+theme_override_constants/scrollbar_h_separation = 8
+vertical_scroll_mode = 2
+
+[node name="PlayerList" type="VBoxContainer" parent="LobbyList/Panel/MarginContainer/HostMenu/HostList" unique_id=1093554250]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlayerEntry" parent="LobbyList/Panel/MarginContainer/HostMenu/HostList/PlayerList" unique_id=2012738530 instance=ExtResource("8_najfo")]
+layout_mode = 2
+
+[node name="PlayerEntry2" parent="LobbyList/Panel/MarginContainer/HostMenu/HostList/PlayerList" unique_id=1767043978 instance=ExtResource("8_najfo")]
+layout_mode = 2
+
+[node name="PlayerEntry3" parent="LobbyList/Panel/MarginContainer/HostMenu/HostList/PlayerList" unique_id=1417891955 instance=ExtResource("8_najfo")]
+layout_mode = 2
+
+[node name="PlayerEntry4" parent="LobbyList/Panel/MarginContainer/HostMenu/HostList/PlayerList" unique_id=1564062701 instance=ExtResource("8_najfo")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LobbyList/Panel/MarginContainer/HostMenu" unique_id=1698033305]
+layout_mode = 2
+
+[node name="Choices" type="HBoxContainer" parent="." unique_id=781152573]
+custom_maximum_size = Vector2(-1, 32)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -210.0
+offset_top = -72.0
+offset_right = 210.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 32
+
+[node name="Create" parent="Choices" unique_id=130832260 groups=["lobby_selection_nodes"] instance=ExtResource("6_bnm73")]
+custom_minimum_size = Vector2(208, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Create Lobby"
+
+[node name="Join" parent="Choices" unique_id=1688636005 groups=["lobby_selection_nodes"] instance=ExtResource("6_bnm73")]
+custom_minimum_size = Vector2(208, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Join Lobby"
+
+[node name="Start" parent="Choices" unique_id=468565624 groups=["lobby_host_nodes"] instance=ExtResource("6_bnm73")]
+visible = false
+custom_minimum_size = Vector2(208, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Start Game"
+
+[node name="Close" parent="Choices" unique_id=1471757764 groups=["lobby_host_nodes"] instance=ExtResource("6_bnm73")]
+visible = false
+custom_minimum_size = Vector2(208, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Close Lobby"
+
+[node name="Defocus" type="ColorRect" parent="." unique_id=119030912]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.8235294)
+metadata/_edit_lock_ = true
+
+[node name="CreateWindow" type="Window" parent="." unique_id=53038828 node_paths=PackedStringArray("name_input", "player_count", "host_button", "title_label")]
+transparent_bg = true
+oversampling_override = 1.0
+title = "Lobby Creation"
+initial_position = 4
+size = Vector2i(384, 112)
+visible = false
+transient = true
+exclusive = true
+unresizable = true
+always_on_top = true
+transparent = true
+minimize_disabled = true
+maximize_disabled = true
+theme = ExtResource("9_eboti")
+script = ExtResource("10_7gtw4")
+name_input = NodePath("HBoxContainer/Name")
+player_count = NodePath("HBoxContainer/Players")
+host_button = NodePath("Host")
+title_label = NodePath("../Title")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CreateWindow" unique_id=810908501]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -187.0
+offset_top = 8.0
+offset_right = 187.0
+offset_bottom = 48.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+
+[node name="Name" type="LineEdit" parent="CreateWindow/HBoxContainer" unique_id=1202351480]
+custom_minimum_size = Vector2(160, 32)
+layout_mode = 2
+theme = ExtResource("9_eboti")
+placeholder_text = "Name"
+
+[node name="Control" type="Control" parent="CreateWindow/HBoxContainer" unique_id=132299175]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="MaxPlayers" type="Label" parent="CreateWindow/HBoxContainer" unique_id=956641268]
+layout_mode = 2
+text = "Max Players:"
+
+[node name="Players" type="SpinBox" parent="CreateWindow/HBoxContainer" unique_id=181422052]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme = SubResource("Theme_dms18")
+min_value = 2.0
+max_value = 8.0
+value = 2.0
+alignment = 1
+select_all_on_focus = true
+
+[node name="Host" parent="CreateWindow" unique_id=472024713 instance=ExtResource("6_bnm73")]
+custom_minimum_size = Vector2(208, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -104.0
+offset_top = -41.0
+offset_right = 104.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "Start Hosting"
+
+[connection signal="pressed" from="Choices/Create" to="." method="_on_create_pressed"]
+[connection signal="pressed" from="Choices/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="CreateWindow/Host" to="CreateWindow" method="_on_host_pressed"]

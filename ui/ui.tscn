@@ -1302,7 +1302,7 @@ theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_y28h8")
 theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_aeygf")
 theme_override_styles/tab_selected = SubResource("StyleBoxFlat_m3cpd")
 tab_alignment = 1
-current_tab = 0
+current_tab = 2
 tab_focus_mode = 0
 script = ExtResource("41_y28h8")
 tab_left_sfx = SubResource("Resource_er6et")
@@ -1310,6 +1310,7 @@ tab_right_sfx = SubResource("Resource_3jvq5")
 focus_grabbers = [NodePath("General/ScrollContainer/Content/TopButtons/VSync/ToggleButton"), NodePath("Controls/FadeEffect/ScrollContainer/HBoxContainer/Actions/BindSetting"), NodePath("Sound/FadeEffect/ScrollContainer/HBoxContainer/Content/AudioDevice/PresetSelector"), null, NodePath("Data/TopButtons/OpenData")]
 
 [node name="General" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs" unique_id=1400883172 node_paths=PackedStringArray("vsync_button", "fps_cap_button", "quality_button")]
+visible = false
 layout_mode = 2
 script = ExtResource("47_mvot7")
 vsync_button = NodePath("ScrollContainer/Content/TopButtons/VSync/ToggleButton")
@@ -1640,7 +1641,6 @@ layout_mode = 2
 size_flags_stretch_ratio = 0.1
 
 [node name="Sound" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs" unique_id=2093018172]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 

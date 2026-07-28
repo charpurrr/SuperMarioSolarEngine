@@ -1,0 +1,43 @@
+[gd_resource type="Theme" format=3 uid="uid://ch5g7os32rra0"]
+
+[ext_resource type="FontFile" uid="uid://botwmfvh5qcq6" path="res://ui/fonts/mario_wonder_generic.ttf" id="1_dms18"]
+[ext_resource type="Texture2D" uid="uid://4mbwu1vt0t8j" path="res://ui/window/close.png" id="2_418fr"]
+[ext_resource type="Texture2D" uid="uid://cc6cwlhx0bq8b" path="res://ui/window/close_pressed.png" id="3_yey4n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7gtw4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_418fr"]
+content_margin_left = 6.0
+content_margin_right = 6.0
+bg_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7gtw4"]
+bg_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+corner_radius_top_left = 32
+corner_radius_bottom_right = 32
+expand_margin_left = 8.0
+expand_margin_top = 34.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[resource]
+default_font = ExtResource("1_dms18")
+LineEdit/colors/font_color = Color(1, 1, 1, 1)
+LineEdit/fonts/font = ExtResource("1_dms18")
+LineEdit/styles/focus = SubResource("StyleBoxEmpty_7gtw4")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_418fr")
+Window/colors/title_color = Color(1, 1, 1, 1)
+Window/fonts/title_font = ExtResource("1_dms18")
+Window/icons/close = ExtResource("2_418fr")
+Window/icons/close_pressed = ExtResource("3_yey4n")
+Window/styles/embedded_border = SubResource("StyleBoxFlat_7gtw4")

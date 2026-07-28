@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://c01v6nch7j2je"]
+
+[ext_resource type="FontFile" uid="uid://botwmfvh5qcq6" path="res://ui/fonts/mario_wonder_generic.ttf" id="1_yskh3"]
+[ext_resource type="Texture2D" uid="uid://c85m1fkjdslu3" path="res://ui/window/close.svg" id="2_yskh3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x502g"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.225, 0.225, 0.225, 0.6)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
+font = ExtResource("1_yskh3")
+
+[node name="PlayerEntry" type="Panel" unique_id=2012738530]
+custom_minimum_size = Vector2(200, 32)
+offset_right = 200.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_x502g")
+
+[node name="Label" type="Label" parent="." unique_id=719402139]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -11.5
+offset_right = 40.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "charpurrr"
+label_settings = SubResource("LabelSettings_g4v7s")
+vertical_alignment = 1
+
+[node name="KickButton" type="Button" parent="." unique_id=1874391181]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -4.0
+offset_right = -8.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 2
+icon = ExtResource("2_yskh3")
+icon_alignment = 1
+expand_icon = true

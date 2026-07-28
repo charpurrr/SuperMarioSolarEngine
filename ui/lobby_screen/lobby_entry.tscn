@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://cerimggbnf7r8"]
+
+[ext_resource type="FontFile" uid="uid://botwmfvh5qcq6" path="res://ui/fonts/mario_wonder_generic.ttf" id="1_x502g"]
+[ext_resource type="Texture2D" uid="uid://bfty6m3drawmu" path="res://ui/lobby_screen/signal-svgrepo-com.svg" id="2_x502g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u43gb"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iwprr"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.41215247, 0.41215247, 0.41215247, 0.6)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x502g"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.225, 0.225, 0.225, 0.6)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
+font = ExtResource("1_x502g")
+
+[node name="LobbyEntry" type="Button" unique_id=199893096]
+custom_minimum_size = Vector2(200, 32)
+offset_right = 200.0
+offset_bottom = 32.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/h_separation = 16
+theme_override_constants/icon_max_width = 16
+theme_override_fonts/font = ExtResource("1_x502g")
+theme_override_styles/normal = SubResource("StyleBoxFlat_u43gb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_iwprr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x502g")
+toggle_mode = true
+text = "Lobby"
+icon = ExtResource("2_x502g")
+alignment = 0
+text_overrun_behavior = 3
+expand_icon = true
+
+[node name="Label" type="Label" parent="." unique_id=719402139]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "1/16"
+label_settings = SubResource("LabelSettings_g4v7s")
+horizontal_alignment = 2
+vertical_alignment = 1
