@@ -1,18 +1,17 @@
 [gd_scene format=3 uid="uid://ob44gpnyj5ja"]
 
 [ext_resource type="Shader" uid="uid://sxvlfpblfmai" path="res://level_designer/viewport/grid.gdshader" id="1_2bfex"]
-[ext_resource type="Texture2D" uid="uid://5d1xg84rwu1k" path="res://level_designer/viewport/grid.png" id="1_3d3a7"]
 [ext_resource type="Script" uid="uid://bhcjxobw61v12" path="res://level_designer/viewport/ld_camera.gd" id="2_3d3a7"]
 [ext_resource type="Script" uid="uid://dnq5lwh60selk" path="res://level_designer/viewport/grid.gd" id="3_2bfex"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bu805"]
 shader = ExtResource("1_2bfex")
-shader_parameter/grid_bg_texture = ExtResource("1_3d3a7")
-shader_parameter/grid_origin_texture = ExtResource("1_3d3a7")
-shader_parameter/grid_bg_modulate = Color(0, 0, 0, 0.2)
-shader_parameter/grid_origin_modulate = Color(0, 0, 0, 1)
-shader_parameter/grid_offset = Vector2(0, 0)
+shader_parameter/cell_size = Vector2(32, 32)
+shader_parameter/line_thickness = Vector2(2, 2)
+shader_parameter/line_color = Color(0.5, 0.5, 0.5, 0.5)
+shader_parameter/bg_color = Color(0, 0, 0, 0)
 shader_parameter/grid_fade_threshold = 1.0000000475
+shader_parameter/grid_offset = Vector2(0, 0)
 shader_parameter/camera_position = Vector2(0, 0)
 shader_parameter/camera_zoom = Vector2(1, 1)
 
