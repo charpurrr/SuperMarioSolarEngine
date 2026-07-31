@@ -1,6 +1,6 @@
 class_name StageManager
 extends KeyScene
-
+## Handles the instantiation of the current [Stage].
 
 @export var current_stage: Stage
 

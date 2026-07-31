@@ -1,6 +1,6 @@
 class_name MissionInfo
 extends SerializedResource
-## Provides information about a [Stage]'s mission.
+## Provides information about a mission within a [Stage].
 
 
 func serialize() -> String:
