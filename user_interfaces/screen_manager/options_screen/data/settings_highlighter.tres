@@ -1,0 +1,16 @@
+[gd_resource type="SyntaxHighlighter" script_class="SettingsHighlighter" format=3 uid="uid://caviijwsp8wjw"]
+
+[ext_resource type="Script" uid="uid://chowmypbcyrmx" path="res://user_interfaces/screen_manager/options_screen/data/settings_highlighter.gd" id="1_m4aam"]
+
+[resource]
+script = ExtResource("1_m4aam")
+category_color = Color(0.56078434, 1, 0.85882354, 1)
+setting_color = Color(1, 1, 1, 1)
+symbol_color = Color(0.7372549, 0.8784314, 1, 1)
+function_color = Color(0.34117648, 0.69803923, 1, 1)
+number_color = Color(0.25882354, 1, 0.7607843, 1)
+boolean_color = Color(1, 0.4392157, 0.5176471, 1)
+string_color = Color(1, 0.92941177, 0.6313726, 1)
+string_name_color = Color(1, 0.7607843, 0.6509804, 1)
+critical_error_color = Color(0.76862746, 0.34901962, 0.34901962, 1)
+metadata/_custom_type_script = "uid://chowmypbcyrmx"

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b32weux06innj"]
+
+[ext_resource type="Script" uid="uid://cjkpygln3ltuw" path="res://stage_core/stage_manager.gd" id="1_08yp5"]
+
+[node name="StageManager" type="Node2D" unique_id=489353589]
+script = ExtResource("1_08yp5")

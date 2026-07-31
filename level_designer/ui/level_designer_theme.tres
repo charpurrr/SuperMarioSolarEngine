@@ -1,7 +1,7 @@
 [gd_resource type="Theme" format=4 uid="uid://b1jtayqxtmfxb"]
 
-[ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="1_2dvn4"]
-[ext_resource type="FontFile" uid="uid://dwjboqsj8b8xd" path="res://ui/fonts/super_mario.ttf" id="2_uu161"]
+[ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://user_interfaces/fonts/paper_mario.ttf" id="1_2dvn4"]
+[ext_resource type="FontFile" uid="uid://dwjboqsj8b8xd" path="res://user_interfaces/fonts/super_mario.ttf" id="2_uu161"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57qmd"]
 content_margin_left = 6.0

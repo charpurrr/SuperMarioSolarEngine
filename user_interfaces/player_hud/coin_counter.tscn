@@ -1,0 +1,222 @@
+[gd_scene format=3 uid="uid://blb650dgb5q1i"]
+
+[ext_resource type="FontFile" uid="uid://rhrmsvahgm3h" path="res://user_interfaces/fonts/mario_wonder.ttf" id="1_m4vfq"]
+[ext_resource type="Script" uid="uid://cwggfgnu1xr2t" path="res://user_interfaces/player_hud/coin_counter.gd" id="1_w7o62"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w7o62"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6apma"]
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+anti_aliasing = false
+
+[sub_resource type="Gradient" id="Gradient_m4vfq"]
+offsets = PackedFloat32Array(0, 0.734884)
+colors = PackedColorArray(1, 0.784314, 0, 1, 0.984314, 0.396078, 0.0156863, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n7xk5"]
+gradient = SubResource("Gradient_m4vfq")
+fill_from = Vector2(0, 0.504274)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y28h8"]
+draw_center = false
+border_width_left = 2
+border_width_top = 1
+border_width_right = 2
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aeygf"]
+draw_center = false
+border_width_left = 2
+border_width_top = 1
+border_width_right = 2
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gbf2f"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 1
+border_width_right = 2
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqsyl"]
+bg_color = Color(0, 0, 0, 1)
+draw_center = false
+border_width_left = 3
+border_width_top = 1
+border_width_right = 3
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oqxfb"]
+content_margin_top = 7.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_01jq4"]
+font = ExtResource("1_m4vfq")
+font_size = 20
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+
+[node name="CoinCounter" type="Control" node_paths=PackedStringArray("label")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 21.0
+offset_top = 10.0
+offset_right = 68.0
+offset_bottom = 39.0
+script = ExtResource("1_w7o62")
+bounce_color = Color(1, 0.784314, 0, 1)
+label = NodePath("Count")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -13.0
+offset_top = -2.0
+offset_right = 14.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w7o62")
+
+[node name="CoinIcon" type="Control" parent="."]
+custom_minimum_size = Vector2(18, 0)
+anchors_preset = 0
+offset_right = 18.0
+offset_bottom = 29.0
+scale = Vector2(0.8, 0.8)
+
+[node name="Gradient" type="Button" parent="CoinIcon"]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 7.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.7)
+size_flags_horizontal = 3
+theme_override_styles/disabled = SubResource("StyleBoxFlat_6apma")
+disabled = true
+
+[node name="TextureRect" type="TextureRect" parent="CoinIcon/Gradient"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_n7xk5")
+expand_mode = 1
+
+[node name="Outline" type="Button" parent="CoinIcon"]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.7)
+size_flags_horizontal = 3
+theme_override_styles/disabled = SubResource("StyleBoxFlat_y28h8")
+disabled = true
+
+[node name="Outline2" type="Button" parent="CoinIcon"]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 8.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.7)
+size_flags_horizontal = 3
+theme_override_styles/disabled = SubResource("StyleBoxFlat_aeygf")
+disabled = true
+
+[node name="CenterBlack" type="Button" parent="CoinIcon"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -4.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.7)
+size_flags_horizontal = 3
+theme_override_styles/disabled = SubResource("StyleBoxFlat_gbf2f")
+disabled = true
+
+[node name="Clip" type="Button" parent="CoinIcon/CenterBlack"]
+clip_children = 2
+layout_mode = 0
+offset_right = 9.0
+offset_bottom = 6.5
+scale = Vector2(1, 1.7)
+size_flags_horizontal = 3
+theme_override_styles/disabled = SubResource("StyleBoxFlat_vqsyl")
+disabled = true
+
+[node name="Count" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_oqxfb")
+text = "000"
+label_settings = SubResource("LabelSettings_01jq4")
+horizontal_alignment = 2
+vertical_alignment = 1

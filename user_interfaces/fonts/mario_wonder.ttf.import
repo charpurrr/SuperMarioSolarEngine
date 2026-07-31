@@ -1,0 +1,41 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://rhrmsvahgm3h"
+path="res://.godot/imported/mario_wonder.ttf-e8989fecd799177b7b53f603c07e7b94.fontdata"
+
+[deps]
+
+source_file="res://user_interfaces/fonts/mario_wonder.ttf"
+dest_files=["res://.godot/imported/mario_wonder.ttf-e8989fecd799177b7b53f603c07e7b94.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=0
+generate_mipmaps=false
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+modulate_color_glyphs=false
+hinting=1
+subpixel_positioning=4
+keep_rounding_remainders=true
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "New Configuration",
+"size": Vector2i(16, 0)
+}]
+language_support={}
+script_support={}
+opentype_features={}

@@ -1,0 +1,284 @@
+[gd_scene format=3 uid="uid://bgl7f8thu2y4"]
+
+[ext_resource type="Script" uid="uid://c1xcar4l5tqv7" path="res://user_interfaces/player_hud/life_meter.gd" id="1_rqs60"]
+[ext_resource type="AudioStream" uid="uid://jogpycjpxk85" path="res://user_interfaces/player_hud/low_health.wav" id="2_0p7qp"]
+[ext_resource type="FontFile" uid="uid://e821cxxeybxh" path="res://user_interfaces/fonts/mario_sunshine.ttf" id="2_66wu2"]
+[ext_resource type="Script" uid="uid://b262pbs7y0djt" path="res://util/resources/sound_effect.gd" id="2_sslfq"]
+[ext_resource type="Script" uid="uid://b53d42qg4e27d" path="res://util/custom_nodes/damped_oscillator.gd" id="3_35xan"]
+
+[sub_resource type="Resource" id="Resource_nmlpw"]
+script = ExtResource("2_sslfq")
+stream = ExtResource("2_0p7qp")
+audio_bus = &"UI"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+is_2d = false
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hgbqu"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+anti_aliasing = false
+
+[sub_resource type="Gradient" id="Gradient_egs2b"]
+offsets = PackedFloat32Array(0, 0.767442)
+colors = PackedColorArray(1, 1, 1, 1, 0.461513, 0.461513, 0.461513, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s7xgs"]
+gradient = SubResource("Gradient_egs2b")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dkpll"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+anti_aliasing = false
+
+[sub_resource type="Gradient" id="Gradient_gf8x3"]
+offsets = PackedFloat32Array(0, 0.767442)
+colors = PackedColorArray(0.219608, 0.141176, 0.137255, 1, 0.220436, 0.0450544, 0.0523444, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ohmsp"]
+gradient = SubResource("Gradient_gf8x3")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rpg4r"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+expand_margin_right = 1.0
+anti_aliasing = false
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_66wu2"]
+light_mode = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_0p7qp"]
+font = ExtResource("2_66wu2")
+font_size = 40
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_sslfq"]
+offsets = PackedFloat32Array(0, 0.734884)
+colors = PackedColorArray(1, 0.784314, 0, 1, 0.984314, 0.396078, 0.0156863, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nmlpw"]
+gradient = SubResource("Gradient_sslfq")
+fill_from = Vector2(0.0136752, 0.42906)
+fill_to = Vector2(0, 0.791453)
+
+[sub_resource type="LabelSettings" id="LabelSettings_66wu2"]
+font = ExtResource("2_66wu2")
+font_color = Color(0.896656, 0.896656, 0.896656, 1)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[node name="LifeMeter" type="Control" unique_id=1176880236 node_paths=PackedStringArray("graphics", "text", "outline", "label", "graphics_x_spring", "graphics_y_spring", "text_x_spring", "text_y_spring")]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -75.0
+offset_top = 15.0
+offset_right = -15.0
+offset_bottom = 75.0
+grow_horizontal = 0
+pivot_offset = Vector2(30, 30)
+script = ExtResource("1_rqs60")
+hp = 4
+hit_shake_power = 2.0
+low_health_sfx = SubResource("Resource_nmlpw")
+low_health_pulse_speed = 15.0
+low_health_pulse_amount = 0.02
+graphics = NodePath("Graphics")
+text = NodePath("Text")
+outline = NodePath("Graphics/OutlineInside")
+label = NodePath("Text/HP")
+graphics_x_spring = NodePath("GraphicsShakeXSpring")
+graphics_y_spring = NodePath("GraphicsShakeYSpring")
+text_x_spring = NodePath("TextShakeXSpring")
+text_y_spring = NodePath("TextShakeYSpring")
+
+[node name="Graphics" type="Control" parent="." unique_id=1791304968]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 6.1035156e-05
+offset_bottom = -3.8146973e-05
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BorderGradient" type="Button" parent="Graphics" unique_id=1754785759]
+show_behind_parent = true
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hgbqu")
+disabled = true
+
+[node name="TextureRect" type="TextureRect" parent="Graphics/BorderGradient" unique_id=477723936]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_s7xgs")
+
+[node name="Outline" type="Button" parent="Graphics" unique_id=134984817]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_dkpll")
+disabled = true
+
+[node name="InsideGradient" type="Button" parent="Graphics" unique_id=10176580]
+show_behind_parent = true
+clip_children = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hgbqu")
+disabled = true
+
+[node name="TextureRect" type="TextureRect" parent="Graphics/InsideGradient" unique_id=1145852261]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ohmsp")
+
+[node name="OutlineInside" type="Button" parent="Graphics" unique_id=1202507504]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -6.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_rpg4r")
+disabled = true
+
+[node name="Text" type="Control" parent="." unique_id=1657678159]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -5.340576e-05
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HP" type="Label" parent="Text" unique_id=1880902906]
+light_mask = 524288
+material = SubResource("CanvasItemMaterial_66wu2")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -32.5
+offset_right = 33.0
+offset_bottom = 32.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "4"
+label_settings = SubResource("LabelSettings_0p7qp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="Text/HP" unique_id=1732533067]
+light_mask = 0
+blend_mode = 2
+range_layer_max = 1
+range_item_cull_mask = 524288
+texture = SubResource("GradientTexture2D_nmlpw")
+offset = Vector2(33, 32.5)
+
+[node name="Title" type="Label" parent="Text" unique_id=1511089894]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -19.0
+offset_top = -9.0
+offset_right = 19.0
+offset_bottom = 8.0
+grow_horizontal = 2
+text = "LIFE"
+label_settings = SubResource("LabelSettings_66wu2")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="GraphicsShakeXSpring" type="Node2D" parent="." unique_id=922704305]
+script = ExtResource("3_35xan")
+jiggle = 0.3
+damping = 0.2
+process_in_physics = true
+metadata/_custom_type_script = "uid://b53d42qg4e27d"
+
+[node name="GraphicsShakeYSpring" type="Node2D" parent="." unique_id=224116314]
+script = ExtResource("3_35xan")
+jiggle = 0.3
+damping = 0.2
+process_in_physics = true
+metadata/_custom_type_script = "uid://b53d42qg4e27d"
+
+[node name="TextShakeXSpring" type="Node2D" parent="." unique_id=1748169713]
+script = ExtResource("3_35xan")
+jiggle = 0.3
+damping = 0.2
+process_in_physics = true
+metadata/_custom_type_script = "uid://b53d42qg4e27d"
+
+[node name="TextShakeYSpring" type="Node2D" parent="." unique_id=379192801]
+script = ExtResource("3_35xan")
+jiggle = 0.3
+damping = 0.2
+process_in_physics = true
+metadata/_custom_type_script = "uid://b53d42qg4e27d"

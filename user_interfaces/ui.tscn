@@ -1,0 +1,1979 @@
+[gd_scene format=3 uid="uid://csf56lkxqqb12"]
+
+[ext_resource type="Script" uid="uid://brof7wb075ont" path="res://user_interfaces/ui.gd" id="1_75fsn"]
+[ext_resource type="AudioStream" uid="uid://b58aveo75onan" path="res://user_interfaces/sfx/pause.wav" id="2_1xskv"]
+[ext_resource type="Script" uid="uid://b262pbs7y0djt" path="res://util/resources/sound_effect.gd" id="2_y28h8"]
+[ext_resource type="AudioStream" uid="uid://cmr5pcu7wv31v" path="res://user_interfaces/sfx/submenu_close.wav" id="3_cb22p"]
+[ext_resource type="PackedScene" uid="uid://b41sl5v4p501f" path="res://user_interfaces/notification/notification.tscn" id="4_oqxfb"]
+[ext_resource type="Shader" uid="uid://cgcjxa2rl4edn" path="res://util/shaders/smw_mozaic.gdshader" id="5_yrl65"]
+[ext_resource type="PackedScene" uid="uid://blb650dgb5q1i" path="res://user_interfaces/player_hud/coin_counter.tscn" id="6_6apma"]
+[ext_resource type="PackedScene" uid="uid://bq6hfndw3jm4e" path="res://util/custom_nodes/quality_toggle.tscn" id="6_q1vx3"]
+[ext_resource type="Script" uid="uid://blkgg52gdx748" path="res://user_interfaces/player_hud/red_coin_counter.gd" id="7_aeygf"]
+[ext_resource type="FontFile" uid="uid://e821cxxeybxh" path="res://user_interfaces/fonts/mario_sunshine.ttf" id="7_ctsqr"]
+[ext_resource type="PackedScene" uid="uid://bgl7f8thu2y4" path="res://user_interfaces/player_hud/life_meter.tscn" id="7_m3cpd"]
+[ext_resource type="Script" uid="uid://dgat047njqsvp" path="res://user_interfaces/debug/debug_label.gd" id="8_2m7jo"]
+[ext_resource type="PackedScene" uid="uid://cjavjeke51epr" path="res://user_interfaces/player_hud/fludd_tank.tscn" id="8_n7xk5"]
+[ext_resource type="Script" uid="uid://c40eo5tkjri5l" path="res://user_interfaces/player_hud/music_label.gd" id="9_gbf2f"]
+[ext_resource type="Script" uid="uid://trfav0yjiqxm" path="res://user_interfaces/screen_manager/pause_screen/pause_screen.gd" id="17_q1vx3"]
+[ext_resource type="Script" uid="uid://cnhr5du0ap6ki" path="res://user_interfaces/screen_manager/screen_manager.gd" id="18_ro5vq"]
+[ext_resource type="Shader" uid="uid://c8kax0imw2g1t" path="res://util/shaders/map_gradient.gdshader" id="19_uav4i"]
+[ext_resource type="Shader" uid="uid://byfa3t51pf655" path="res://user_interfaces/screen_manager/pause_screen/pause_panel.tres" id="22_4tc6v"]
+[ext_resource type="Texture2D" uid="uid://knkg28xlj4h8" path="res://user_interfaces/screen_manager/pause_screen/textures/spike.png" id="23_3jqvb"]
+[ext_resource type="Texture2D" uid="uid://qslbjwvvnw28" path="res://user_interfaces/pattern_solar.png" id="24_3rbo7"]
+[ext_resource type="PackedScene" uid="uid://bb6wf0meej6ox" path="res://user_interfaces/buttons/ui_button.tscn" id="25_dlkvg"]
+[ext_resource type="Texture2D" uid="uid://dej5d4fiilqup" path="res://user_interfaces/screen_manager/pause_screen/textures/resume.png" id="26_ky4o2"]
+[ext_resource type="AudioStream" uid="uid://b3ltff8ees3d4" path="res://user_interfaces/sfx/decide.wav" id="27_fmjlm"]
+[ext_resource type="Texture2D" uid="uid://b0l7xch1esfvg" path="res://user_interfaces/screen_manager/pause_screen/textures/retry.png" id="28_if46j"]
+[ext_resource type="Texture2D" uid="uid://c8kahcqao7t20" path="res://user_interfaces/screen_manager/pause_screen/textures/reset.png" id="29_51b3m"]
+[ext_resource type="Texture2D" uid="uid://c4gag5pm74v3l" path="res://user_interfaces/screen_manager/pause_screen/textures/action_guide.png" id="30_pgukk"]
+[ext_resource type="Texture2D" uid="uid://bw18e3jvu7l70" path="res://user_interfaces/screen_manager/pause_screen/textures/options.png" id="31_k6s1b"]
+[ext_resource type="Texture2D" uid="uid://rps7nhfiherr" path="res://user_interfaces/screen_manager/pause_screen/textures/quit.png" id="32_hgt1t"]
+[ext_resource type="Texture2D" uid="uid://b203e7fny4xhg" path="res://user_interfaces/screen_manager/pause_screen/textures/coin_bag.png" id="33_f4mau"]
+[ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://user_interfaces/fonts/paper_mario.ttf" id="34_jyo83"]
+[ext_resource type="Script" uid="uid://3awpmtapljco" path="res://user_interfaces/screen_manager/pause_screen/level_info.gd" id="35_knc46"]
+[ext_resource type="FontFile" uid="uid://dwjboqsj8b8xd" path="res://user_interfaces/fonts/super_mario.ttf" id="36_i8qiy"]
+[ext_resource type="Texture2D" uid="uid://dictabwcprtsa" path="res://user_interfaces/screen_manager/pause_screen/textures/hover_icon.png" id="37_08cx6"]
+[ext_resource type="Texture2D" uid="uid://c84gehfwldto" path="res://user_interfaces/screen_manager/pause_screen/textures/rocket_icon.png" id="38_sw3u4"]
+[ext_resource type="Texture2D" uid="uid://cc5yq8axs2y02" path="res://user_interfaces/screen_manager/pause_screen/textures/turbo_icon.png" id="39_8iv75"]
+[ext_resource type="Script" uid="uid://bx0armu50awrf" path="res://user_interfaces/screen_manager/warning_screen/warning_screen.gd" id="40_cynfm"]
+[ext_resource type="AudioStream" uid="uid://pbdklvoviaxp" path="res://user_interfaces/sfx/warning.wav" id="41_r4q0q"]
+[ext_resource type="Script" uid="uid://dvca417ad8kmq" path="res://user_interfaces/tab_controller.gd" id="41_y28h8"]
+[ext_resource type="Script" uid="uid://d251mwxo8lxbl" path="res://user_interfaces/screen_manager/options_screen/options_screen.gd" id="42_emp4r"]
+[ext_resource type="AudioStream" uid="uid://cit45yv71vt35" path="res://user_interfaces/sfx/tab_l.wav" id="42_vqsyl"]
+[ext_resource type="AudioStream" uid="uid://egw1cy6ntywl" path="res://user_interfaces/sfx/tab_r.wav" id="43_504o4"]
+[ext_resource type="AudioStream" uid="uid://bsui5m0n5a7a7" path="res://user_interfaces/sfx/submenu_open.wav" id="43_votwh"]
+[ext_resource type="Texture2D" uid="uid://cf78bvynxea03" path="res://user_interfaces/input_icons/nintendo_switch/switch_button_l.svg" id="44_axwwv"]
+[ext_resource type="Script" uid="uid://uwn7phrht0a8" path="res://user_interfaces/buttons/option_enum.gd" id="45_23m8v"]
+[ext_resource type="Texture2D" uid="uid://deall6ilfyenc" path="res://user_interfaces/screen_manager/options_screen/general/textures/discord_logo.png" id="46_afcad"]
+[ext_resource type="Script" uid="uid://dh60w4m18afby" path="res://user_interfaces/screen_manager/options_screen/general/general_tab.gd" id="47_mvot7"]
+[ext_resource type="Script" uid="uid://djnqumhmtso2y" path="res://user_interfaces/buttons/option_bool.gd" id="47_t7euy"]
+[ext_resource type="Texture2D" uid="uid://dkjx263nlcra" path="res://user_interfaces/input_icons/nintendo_switch/controller_switch_motion.svg" id="48_1v6c2"]
+[ext_resource type="Texture2D" uid="uid://bhvukbqm4v5f3" path="res://user_interfaces/input_icons/nintendo_switch/controller_switch_rumble.svg" id="49_lol4u"]
+[ext_resource type="PackedScene" uid="uid://q67oo8p20ee4" path="res://user_interfaces/screen_manager/options_screen/controls/bind_setting.tscn" id="49_svocp"]
+[ext_resource type="Theme" uid="uid://blj83dty2taxs" path="res://user_interfaces/buttons/scrollbar.tres" id="50_5i7o0"]
+[ext_resource type="SyntaxHighlighter" uid="uid://caviijwsp8wjw" path="res://user_interfaces/screen_manager/options_screen/data/settings_highlighter.tres" id="51_q1vx3"]
+[ext_resource type="PackedScene" uid="uid://b08q042unmcxf" path="res://user_interfaces/buttons/ui_selector.tscn" id="52_sk6td"]
+[ext_resource type="PackedScene" uid="uid://puhluie3m3cp" path="res://user_interfaces/screen_manager/options_screen/sound/volume_setting.tscn" id="53_i1icy"]
+[ext_resource type="Texture2D" uid="uid://c125fwk30fu0" path="res://user_interfaces/input_icons/keyboard_mouse/keyboard_escape.svg" id="54_6apma"]
+[ext_resource type="Texture2D" uid="uid://356g6gk2u4lq" path="res://user_interfaces/input_icons/nintendo_switch/switch_button_r.svg" id="54_lxqsa"]
+[ext_resource type="Texture2D" uid="uid://y343nq5v4ud5" path="res://user_interfaces/input_icons/nintendo_switch/switch_button_b.svg" id="55_qillv"]
+[ext_resource type="Texture2D" uid="uid://bqjtwa8tc2b0h" path="res://user_interfaces/input_icons/keyboard_mouse/keyboard_enter.svg" id="56_mvot7"]
+[ext_resource type="Texture2D" uid="uid://dq5pu8koelu4u" path="res://user_interfaces/input_icons/nintendo_switch/switch_button_a.svg" id="57_aeygf"]
+[ext_resource type="Texture2D" uid="uid://c8t2udtmy6oac" path="res://user_interfaces/input_icons/nintendo_switch/switch_button_x.svg" id="57_h5v5y"]
+[ext_resource type="Script" uid="uid://bwn84qudsrcg4" path="res://user_interfaces/screen_manager/options_screen/data/data_tab.gd" id="57_y28h8"]
+[ext_resource type="Texture2D" uid="uid://duwkwt771mmf3" path="res://user_interfaces/input_icons/keyboard_mouse/keyboard_backspace_icon.svg" id="58_m3cpd"]
+[ext_resource type="Texture2D" uid="uid://40c63r8ke4mj" path="res://user_interfaces/input_icons/keyboard_mouse/keyboard_delete.svg" id="58_mvot7"]
+[ext_resource type="Texture2D" uid="uid://c0y7k7pos5e3e" path="res://user_interfaces/input_icons/nintendo_switch/switch_button_y.svg" id="59_y28h8"]
+
+[sub_resource type="Resource" id="Resource_aeygf"]
+script = ExtResource("2_y28h8")
+stream = ExtResource("2_1xskv")
+audio_bus = &"UI"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = false
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
+
+[sub_resource type="Resource" id="Resource_gbf2f"]
+script = ExtResource("2_y28h8")
+stream = ExtResource("3_cb22p")
+audio_bus = &"UI"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = false
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j6vdi"]
+shader = ExtResource("5_yrl65")
+shader_parameter/cell_size = 1
+
+[sub_resource type="Animation" id="Animation_lfi41"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/blur_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/cell_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_mnpvh"]
+resource_name = "camera_focus"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/blur_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(-0.615572, 1),
+"update": 0,
+"values": [2.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/cell_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(-0.615572, 1),
+"update": 0,
+"values": [32, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_01nno"]
+_data = {
+&"RESET": SubResource("Animation_lfi41"),
+&"camera_focus": SubResource("Animation_mnpvh")
+}
+
+[sub_resource type="Gradient" id="Gradient_6apma"]
+offsets = PackedFloat32Array(0, 0.734884)
+colors = PackedColorArray(0.862745, 0.137255, 0.12549, 1, 0.676072, 0.0588219, 0.44751, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m3cpd"]
+gradient = SubResource("Gradient_6apma")
+fill_from = Vector2(0, 0.504274)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vqsyl"]
+font = ExtResource("34_jyo83")
+outline_size = 8
+outline_color = Color(1.44392e-07, 0.125759, 0.379117, 1)
+
+[sub_resource type="Animation" id="Animation_vqsyl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gbf2f"]
+resource_name = "fade_past"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 3, 4),
+"transitions": PackedFloat32Array(2, 2, 2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset_left")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8, 4),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [-320.0, 0.0, 30.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_504o4"]
+_data = {
+&"RESET": SubResource("Animation_vqsyl"),
+&"fade_past": SubResource("Animation_gbf2f")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_pm0uo"]
+font_size = 10
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_unrd8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScreenManager/PauseScreen:theme_override_constants/separation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [832]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ScreenManager/WarningScreen:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 360)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ScreenManager/WarningScreen:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ScreenManager/OptionsScreen:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -360)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ScreenManager/OptionsScreen:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ScreenManager/PauseScreen:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_jg56u"]
+resource_name = "options_peek"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScreenManager/OptionsScreen:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -360), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3o3ms"]
+resource_name = "pause_peek"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScreenManager/PauseScreen:theme_override_constants/separation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [832, 0]
+}
+
+[sub_resource type="Animation" id="Animation_snnpc"]
+resource_name = "warning_peek"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScreenManager/WarningScreen:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, 360), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fpb10"]
+_data = {
+&"RESET": SubResource("Animation_unrd8"),
+&"options_peek": SubResource("Animation_jg56u"),
+&"pause_peek": SubResource("Animation_3o3ms"),
+&"warning_peek": SubResource("Animation_snnpc")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8xxao"]
+shader = ExtResource("19_uav4i")
+shader_parameter/blur_lod = 0.0
+shader_parameter/mix_amount = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_awrho"]
+shader = ExtResource("22_4tc6v")
+shader_parameter/background_scroll = Vector2(0.05, 0.05)
+shader_parameter/modulate_alpha = 1.0
+shader_parameter/spike_scroll_speed = 0.05
+shader_parameter/spike_dimensions = Vector2(16, 30)
+shader_parameter/spike_texture = ExtResource("23_3jqvb")
+
+[sub_resource type="LabelSettings" id="LabelSettings_20l3y"]
+font = ExtResource("7_ctsqr")
+font_size = 45
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 25
+shadow_color = Color(1, 1, 1, 1)
+shadow_offset = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_05wpc"]
+font = ExtResource("34_jyo83")
+font_size = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52uul"]
+bg_color = Color(0.103744, 0.103744, 0.103743, 0.768627)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+corner_detail = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_b067h"]
+font = ExtResource("36_i8qiy")
+font_size = 25
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vopc7"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_bottom_left = 8
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_p5bk4"]
+font = ExtResource("34_jyo83")
+font_size = 15
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l1ahm"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_70wox"]
+font = ExtResource("34_jyo83")
+font_size = 13
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_scrfv"]
+shader = ExtResource("22_4tc6v")
+shader_parameter/background_scroll = Vector2(0.05, 0.05)
+shader_parameter/modulate_alpha = 1.0
+shader_parameter/spike_scroll_speed = 0.05
+shader_parameter/spike_dimensions = Vector2(0, 0)
+shader_parameter/spike_texture = ExtResource("23_3jqvb")
+
+[sub_resource type="Resource" id="Resource_y28h8"]
+script = ExtResource("2_y28h8")
+stream = ExtResource("41_r4q0q")
+audio_bus = &"UI"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = false
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
+
+[sub_resource type="Resource" id="Resource_vqsyl"]
+script = ExtResource("2_y28h8")
+stream = ExtResource("3_cb22p")
+audio_bus = &"UI"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = false
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
+
+[sub_resource type="Resource" id="Resource_504o4"]
+script = ExtResource("2_y28h8")
+stream = ExtResource("43_votwh")
+audio_bus = &"UI"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = false
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
+
+[sub_resource type="Resource" id="Resource_r5lpl"]
+script = ExtResource("2_y28h8")
+stream = ExtResource("3_cb22p")
+audio_bus = &"UI"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = false
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ev48a"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_46i77"]
+font = ExtResource("7_ctsqr")
+font_size = 20
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_avox5"]
+shader = ExtResource("22_4tc6v")
+shader_parameter/background_scroll = Vector2(0.05, 0.05)
+shader_parameter/modulate_alpha = 1.0
+shader_parameter/spike_scroll_speed = 0.05
+shader_parameter/spike_dimensions = Vector2(0, 0)
+shader_parameter/spike_texture = ExtResource("23_3jqvb")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nte8f"]
+load_path = "res://.godot/imported/pattern_solar.png-7851dba46d4d0fd594dcc5410d56f26b.ctex"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q1vx3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y28h8"]
+content_margin_left = 10.0
+content_margin_top = 4.0
+content_margin_right = 10.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aeygf"]
+content_margin_left = 10.0
+content_margin_top = 4.0
+content_margin_right = 10.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+border_width_left = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.175, 0.175, 0.175, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3cpd"]
+content_margin_left = 10.0
+content_margin_top = 4.0
+content_margin_right = 10.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1897483, 0.1897483, 0.1897483, 0.6)
+border_width_top = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 1
+
+[sub_resource type="Resource" id="Resource_er6et"]
+script = ExtResource("2_y28h8")
+stream = ExtResource("42_vqsyl")
+audio_bus = &"UI"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = false
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
+
+[sub_resource type="Resource" id="Resource_3jvq5"]
+script = ExtResource("2_y28h8")
+stream = ExtResource("43_504o4")
+audio_bus = &"UI"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = false
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
+
+[sub_resource type="LabelSettings" id="LabelSettings_xphw0"]
+font = ExtResource("34_jyo83")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gbf2f"]
+bg_color = Color(1, 1, 1, 1)
+border_width_top = 10
+border_width_bottom = 10
+border_color = Color(0.8001019, 0.8001019, 0.8001019, 0)
+border_blend = true
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n7xk5"]
+content_margin_left = 3.0
+
+[sub_resource type="GDScript" id="GDScript_vgfim"]
+script/source = "extends UISelector
+
+signal audio_output_list_changed()
+
+var audio_device_list: PackedStringArray
+
+
+func _ready() -> void:
+	super()
+
+	LocalSettings.setting_changed.connect(_setting_updated)
+	item_selected.connect(_on_item_selected)
+
+	audio_output_list_changed.connect(_update_list)
+	audio_device_list = AudioServer.get_output_device_list()
+
+	_update_list()
+
+	var saved_device: String = LocalSettings.load_setting(\"Audio\", \"device\")
+	AudioServer.output_device = saved_device
+
+	for device in audio_device_list:
+		if saved_device == device:
+			selected = get_item_index(audio_device_list.find(device))
+
+
+func _process(_delta: float) -> void:
+	var new_device_list: PackedStringArray = AudioServer.get_output_device_list()
+
+	if new_device_list != audio_device_list:
+		var selected_device: String = get_item_text(selected)
+
+		# If the selected audio device is removed, reset it to \"Default\"
+		if not selected_device in new_device_list:
+			push_warning(\"Selected device removed. Resetting to Default.\")
+			AudioServer.output_device = \"Default\"
+			selected = 0
+
+		audio_device_list = new_device_list
+		audio_output_list_changed.emit()
+
+
+func _unhandled_input(_event: InputEvent) -> void:
+	if has_focus() and Input.is_action_just_pressed(\"setting_reset\"):
+		LocalSettings.change_setting(\"Audio\", \"device\", LocalSettings.defaults.get(\"device\"))
+		avfx()
+
+
+func _update_list():
+	var current_items: Dictionary[String, int] = {}
+	for item_number in range(item_count):
+		current_items[get_item_text(item_number)] = item_number
+
+	for device in audio_device_list:
+		if device not in current_items:
+			add_item(device)
+
+	for item in current_items.keys():
+		if item not in audio_device_list:
+			remove_item(current_items[item])
+
+
+func _on_item_selected(index):
+	var device_name: String = audio_device_list[index]
+
+	AudioServer.output_device = device_name
+
+	LocalSettings.change_setting(\"Audio\", \"device\", device_name)
+
+
+func _setting_updated(key: String, new_value: Variant = null):
+	if key != \"device\": return
+
+	selected = get_item_index(audio_device_list.find(new_value))
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7xk5"]
+bg_color = Color(0.0528422, 0.0528421, 0.0528421, 0.8)
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y28h8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gdkor"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_n7xk5"]
+font = ExtResource("34_jyo83")
+
+[node name="UI" type="CanvasLayer" unique_id=393817163 node_paths=PackedStringArray("life_meter", "screen_manager", "color_blur", "zoom_blur_player", "notif_list", "debug", "debug_label", "input_display")]
+process_mode = 3
+layer = 0
+script = ExtResource("1_75fsn")
+life_meter = NodePath("LifeMeter")
+screen_manager = NodePath("ScreenManager")
+color_blur = NodePath("ScreenManager/ColorBlurEffect")
+game_pause_sfx = SubResource("Resource_aeygf")
+game_unpause_sfx = SubResource("Resource_gbf2f")
+zoom_blur_player = NodePath("CameraZoomMosaic/AnimationPlayer")
+notif_scene = ExtResource("4_oqxfb")
+notif_list = NodePath("Notifications")
+debug = NodePath("Debug")
+debug_label = NodePath("Debug/DebugLabel")
+input_display = NodePath("Debug/InputDisplay")
+
+[node name="BackBufferFront" type="BackBufferCopy" parent="." unique_id=1979935432]
+copy_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="CameraZoomMosaic" type="ColorRect" parent="." unique_id=1015062048]
+material = SubResource("ShaderMaterial_j6vdi")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CameraZoomMosaic" unique_id=307473465]
+libraries/ = SubResource("AnimationLibrary_01nno")
+
+[node name="QualityToggle" parent="CameraZoomMosaic" unique_id=590450661 instance=ExtResource("6_q1vx3")]
+
+[node name="CoinCounter" parent="." unique_id=1409061938 groups=["HUD"] instance=ExtResource("6_6apma")]
+
+[node name="RedCoinCounter" parent="." unique_id=179507644 groups=["HUD"] instance=ExtResource("6_6apma")]
+anchors_preset = -1
+offset_top = 37.0
+offset_bottom = 66.0
+script = ExtResource("7_aeygf")
+max_count = 0
+bounce_color = Color(1, 0, 0, 1)
+
+[node name="TextureRect" parent="RedCoinCounter/CoinIcon/Gradient" index="0"]
+texture = SubResource("GradientTexture2D_m3cpd")
+
+[node name="Count" parent="RedCoinCounter" index="2"]
+modulate = Color(1, 0.98678994, 0.98678994, 1)
+text = "0/0"
+
+[node name="MusicLabel" type="Label" parent="." unique_id=1477756910 node_paths=PackedStringArray("anime")]
+modulate = Color(1, 1, 1, 0)
+offset_top = 80.0
+offset_right = 259.0
+offset_bottom = 143.0
+text = "♪ Synth Stratnum - goatsoup.mp3"
+label_settings = SubResource("LabelSettings_vqsyl")
+script = ExtResource("9_gbf2f")
+anime = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MusicLabel" unique_id=145971615]
+libraries/ = SubResource("AnimationLibrary_504o4")
+speed_scale = 1.5
+
+[node name="LifeMeter" parent="." unique_id=174602201 groups=["HUD"] instance=ExtResource("7_m3cpd")]
+
+[node name="FluddTank" parent="." unique_id=756701723 groups=["HUD"] instance=ExtResource("8_n7xk5")]
+fuel = 0.0
+
+[node name="Debug" type="Control" parent="." unique_id=1835258959]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DebugLabel" type="Label" parent="Debug" unique_id=1988126284]
+layout_mode = 0
+offset_right = 134.0
+offset_bottom = 218.0
+theme_override_font_sizes/font_size = 10
+text = "		FPS = %s \\n
+		is_on_floor() = %s
+		can_air_action() = %s
+		get_floor_angle / TAU = %.3f
+		floor_incline = %.3f \\n
+		position.x = %.3f
+		position.y = %.3f
+		velocity.x = %.3f
+		velocity.y = %.3f \\n
+		body_rotation = %.3f
+		doll.rotation = %.3f
+		facing = %d
+		state = %s"
+label_settings = SubResource("LabelSettings_pm0uo")
+script = ExtResource("8_2m7jo")
+
+[node name="InputDisplay" type="HBoxContainer" parent="Debug" unique_id=1768160601]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -30.0
+grow_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="ScreenManager" type="Control" parent="." unique_id=1634294683 node_paths=PackedStringArray("color_blur", "anime_player")]
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("18_ro5vq")
+color_blur = NodePath("ColorBlurEffect")
+anime_player = NodePath("AnimationPlayer")
+screens = Dictionary[StringName, NodePath]({
+&"OptionsScreen": NodePath("OptionsScreen"),
+&"PauseScreen": NodePath("PauseScreen"),
+&"WarningScreen": NodePath("WarningScreen")
+})
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ScreenManager" unique_id=910465069]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_fpb10")
+
+[node name="BackBufferBack" type="BackBufferCopy" parent="ScreenManager" unique_id=1850662597]
+copy_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="ColorBlurEffect" type="ColorRect" parent="ScreenManager" unique_id=717384485]
+visible = false
+material = SubResource("ShaderMaterial_8xxao")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="PauseScreen" type="HBoxContainer" parent="ScreenManager" unique_id=36372901 node_paths=PackedStringArray("retry", "reset", "focus_grabber")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 832
+script = ExtResource("17_q1vx3")
+retry = NodePath("LeftPanel/Content/MainButtons/Buttons/LevelStateChoices/Retry")
+reset = NodePath("LeftPanel/Content/MainButtons/Buttons/LevelStateChoices/Reset")
+open_anim = &"pause_peek"
+close_anim = &"BACKWARDS"
+focus_grabber = NodePath("LeftPanel/Content/MainButtons/Buttons/Resume")
+
+[node name="LeftPanel" type="TextureRect" parent="ScreenManager/PauseScreen" unique_id=614241888]
+material = SubResource("ShaderMaterial_awrho")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("24_3rbo7")
+stretch_mode = 1
+flip_h = true
+
+[node name="Content" type="VBoxContainer" parent="ScreenManager/PauseScreen/LeftPanel" unique_id=396736750]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_right = -40.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 13
+
+[node name="Paused" type="Label" parent="ScreenManager/PauseScreen/LeftPanel/Content" unique_id=387820568]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+text = "PUASED"
+label_settings = SubResource("LabelSettings_20l3y")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainButtons" type="HBoxContainer" parent="ScreenManager/PauseScreen/LeftPanel/Content" unique_id=1531912832]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SpaceLeft" type="Control" parent="ScreenManager/PauseScreen/LeftPanel/Content/MainButtons" unique_id=1857225873]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.05
+
+[node name="Buttons" type="VBoxContainer" parent="ScreenManager/PauseScreen/LeftPanel/Content/MainButtons" unique_id=115254720]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="Resume" parent="ScreenManager/PauseScreen/LeftPanel/Content/MainButtons/Buttons" unique_id=245643511 instance=ExtResource("25_dlkvg")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 27
+text = "RESUME"
+icon = ExtResource("26_ky4o2")
+press_sfx = ExtResource("27_fmjlm")
+
+[node name="LevelStateChoices" type="VBoxContainer" parent="ScreenManager/PauseScreen/LeftPanel/Content/MainButtons/Buttons" unique_id=59522378]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.8
+theme_override_constants/separation = 13
+
+[node name="Retry" parent="ScreenManager/PauseScreen/LeftPanel/Content/MainButtons/Buttons/LevelStateChoices" unique_id=273295125 instance=ExtResource("25_dlkvg")]
+layout_mode = 2
+size_flags_stretch_ratio = 1.0
+text = "RETRY"
+icon = ExtResource("28_if46j")
+
+[node name="Reset" parent="ScreenManager/PauseScreen/LeftPanel/Content/MainButtons/Buttons/LevelStateChoices" unique_id=509206397 instance=ExtResource("25_dlkvg")]
+layout_mode = 2
+size_flags_stretch_ratio = 1.0
+text = "RESET"
+icon = ExtResource("29_51b3m")
+
+[node name="SpaceRight" type="Control" parent="ScreenManager/PauseScreen/LeftPanel/Content/MainButtons" unique_id=771942424]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.05
+
+[node name="Space" type="Control" parent="ScreenManager/PauseScreen/LeftPanel/Content" unique_id=2100497991]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.05
+
+[node name="BottomButtons" type="HBoxContainer" parent="ScreenManager/PauseScreen/LeftPanel/Content" unique_id=53483820]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.27
+theme_override_constants/separation = 13
+
+[node name="SpaceLeft" type="Control" parent="ScreenManager/PauseScreen/LeftPanel/Content/BottomButtons" unique_id=512653263]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="ActionGuide" parent="ScreenManager/PauseScreen/LeftPanel/Content/BottomButtons" unique_id=1929345084 instance=ExtResource("25_dlkvg")]
+layout_mode = 2
+size_flags_stretch_ratio = 1.0
+text = ""
+icon = ExtResource("30_pgukk")
+icon_alignment = 1
+
+[node name="Options" parent="ScreenManager/PauseScreen/LeftPanel/Content/BottomButtons" unique_id=1302318553 instance=ExtResource("25_dlkvg")]
+layout_mode = 2
+size_flags_stretch_ratio = 1.0
+text = ""
+icon = ExtResource("31_k6s1b")
+icon_alignment = 1
+
+[node name="Quit" parent="ScreenManager/PauseScreen/LeftPanel/Content/BottomButtons" unique_id=913658792 instance=ExtResource("25_dlkvg")]
+layout_mode = 2
+size_flags_stretch_ratio = 1.0
+text = ""
+icon = ExtResource("32_hgt1t")
+icon_alignment = 1
+
+[node name="SpaceRight" type="Control" parent="ScreenManager/PauseScreen/LeftPanel/Content/BottomButtons" unique_id=1010383193]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="Space2" type="Control" parent="ScreenManager/PauseScreen/LeftPanel/Content" unique_id=1730523820]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.05
+
+[node name="GlobalCoins" type="HBoxContainer" parent="ScreenManager/PauseScreen/LeftPanel/Content" unique_id=965324965]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="ScreenManager/PauseScreen/LeftPanel/Content/GlobalCoins" unique_id=1078607864]
+layout_mode = 2
+texture = ExtResource("33_f4mau")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ScreenManager/PauseScreen/LeftPanel/Content/GlobalCoins" unique_id=2031319629]
+layout_mode = 2
+text = "x 0.000.000"
+label_settings = SubResource("LabelSettings_05wpc")
+horizontal_alignment = 2
+
+[node name="Info" type="Control" parent="ScreenManager/PauseScreen" unique_id=1333949420]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="Contents" type="VBoxContainer" parent="ScreenManager/PauseScreen/Info" unique_id=531846002]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.3
+
+[node name="ShineInfo" type="Control" parent="ScreenManager/PauseScreen/Info/Contents" unique_id=396497174]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScreenManager/PauseScreen/Info/Contents/ShineInfo" unique_id=452191231]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InfoPanel" type="Panel" parent="ScreenManager/PauseScreen/Info/Contents/ShineInfo/VBoxContainer" unique_id=720815084]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_52uul")
+
+[node name="TextContainer" type="VBoxContainer" parent="ScreenManager/PauseScreen/Info/Contents/ShineInfo/VBoxContainer/InfoPanel" unique_id=378452544]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelInfo" type="VBoxContainer" parent="ScreenManager/PauseScreen/Info/Contents/ShineInfo/VBoxContainer/InfoPanel/TextContainer" unique_id=324846530 node_paths=PackedStringArray("level_name", "mission_name", "mission_info")]
+layout_mode = 2
+script = ExtResource("35_knc46")
+level_name = NodePath("LevelName")
+mission_name = NodePath("MissionSelector/MissionName")
+mission_info = NodePath("../MissionInfo")
+
+[node name="LevelName" type="Label" parent="ScreenManager/PauseScreen/Info/Contents/ShineInfo/VBoxContainer/InfoPanel/TextContainer/LevelInfo" unique_id=705250168]
+layout_mode = 2
+text = "Super Mario Solar Engine"
+label_settings = SubResource("LabelSettings_b067h")
+horizontal_alignment = 1
+clip_text = true
+
+[node name="Seperator" type="ColorRect" parent="ScreenManager/PauseScreen/Info/Contents/ShineInfo/VBoxContainer/InfoPanel/TextContainer/LevelInfo" unique_id=1968326827]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="MissionSelector" type="HBoxContainer" parent="ScreenManager/PauseScreen/Info/Contents/ShineInfo/VBoxContainer/InfoPanel/TextContainer/LevelInfo" unique_id=952716938]
+layout_mode = 2
+
+[node name="MissionPrev" type="Panel" parent="ScreenManager/PauseScreen/Info/Contents/ShineInfo/VBoxContainer/InfoPanel/TextContainer/LevelInfo/MissionSelector" unique_id=745197743]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vopc7")
+
+[node name="MissionName" type="Label" parent="ScreenManager/PauseScreen/Info/Contents/ShineInfo/VBoxContainer/InfoPanel/TextContainer/LevelInfo/MissionSelector" unique_id=462079264]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "the secret of darius"
+label_settings = SubResource("LabelSettings_p5bk4")
+horizontal_alignment = 1
+autowrap_mode = 3
+clip_text = true
+uppercase = true
+
+[node name="MissionNext" type="Panel" parent="ScreenManager/PauseScreen/Info/Contents/ShineInfo/VBoxContainer/InfoPanel/TextContainer/LevelInfo/MissionSelector" unique_id=446672733]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l1ahm")
+
+[node name="Seperator" type="ColorRect" parent="ScreenManager/PauseScreen/Info/Contents/ShineInfo/VBoxContainer/InfoPanel/TextContainer" unique_id=461891809]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="MissionInfo" type="Label" parent="ScreenManager/PauseScreen/Info/Contents/ShineInfo/VBoxContainer/InfoPanel/TextContainer" unique_id=787066962]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+text = "If you're seeing this,
+something went wrong!
+"
+label_settings = SubResource("LabelSettings_70wox")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="ViewSpace" type="Control" parent="ScreenManager/PauseScreen/Info/Contents" unique_id=707206037]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="AvailableFludds" type="HBoxContainer" parent="ScreenManager/PauseScreen/Info/Contents" unique_id=661958245]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+alignment = 1
+
+[node name="SpaceLeft" type="Control" parent="ScreenManager/PauseScreen/Info/Contents/AvailableFludds" unique_id=1852152965]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.8
+
+[node name="Hover" type="TextureRect" parent="ScreenManager/PauseScreen/Info/Contents/AvailableFludds" unique_id=1361988444]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("37_08cx6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Rocket" type="TextureRect" parent="ScreenManager/PauseScreen/Info/Contents/AvailableFludds" unique_id=710777130]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("38_sw3u4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Turbo" type="TextureRect" parent="ScreenManager/PauseScreen/Info/Contents/AvailableFludds" unique_id=2011804045]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.7
+texture = ExtResource("39_8iv75")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SpaceRight" type="Control" parent="ScreenManager/PauseScreen/Info/Contents/AvailableFludds" unique_id=1451709537]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.8
+
+[node name="WarningScreen" type="TextureRect" parent="ScreenManager" unique_id=762927599 node_paths=PackedStringArray("warning_text", "focus_grabber")]
+visible = false
+z_index = 3
+material = SubResource("ShaderMaterial_scrfv")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 360.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("24_3rbo7")
+stretch_mode = 1
+flip_h = true
+script = ExtResource("40_cynfm")
+warning_text = NodePath("Spacing/Main/WarningText")
+title_screen = "uid://cthxoel5sus6v"
+open_sfx = SubResource("Resource_y28h8")
+close_sfx = SubResource("Resource_vqsyl")
+open_anim = &"warning_peek"
+close_anim = &"BACKWARDS"
+focus_grabber = NodePath("Spacing/Main/Buttons/Cancel")
+
+[node name="Spacing" type="HBoxContainer" parent="ScreenManager/WarningScreen" unique_id=31044262]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpaceLeft" type="Control" parent="ScreenManager/WarningScreen/Spacing" unique_id=713548364]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="Main" type="VBoxContainer" parent="ScreenManager/WarningScreen/Spacing" unique_id=760688868]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpaceTop" type="Control" parent="ScreenManager/WarningScreen/Spacing/Main" unique_id=751160419]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="WarningText" type="RichTextLabel" parent="ScreenManager/WarningScreen/Spacing/Main" unique_id=1163614215]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("34_jyo83")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[center]This is a placeholder text!
+Isn't it lovely?
+"
+scroll_active = false
+
+[node name="SpaceMiddle" type="Control" parent="ScreenManager/WarningScreen/Spacing/Main" unique_id=679480410]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Buttons" type="HBoxContainer" parent="ScreenManager/WarningScreen/Spacing/Main" unique_id=542979680]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Cancel" parent="ScreenManager/WarningScreen/Spacing/Main/Buttons" unique_id=344001515 instance=ExtResource("25_dlkvg")]
+layout_mode = 2
+text = "CANCEL"
+
+[node name="Confirm" parent="ScreenManager/WarningScreen/Spacing/Main/Buttons" unique_id=1919580498 instance=ExtResource("25_dlkvg")]
+layout_mode = 2
+text = "CONFIRM"
+
+[node name="SpaceBottom" type="Control" parent="ScreenManager/WarningScreen/Spacing/Main" unique_id=2031953459]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="SpaceRight" type="Control" parent="ScreenManager/WarningScreen/Spacing" unique_id=1734752078]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="OptionsScreen" type="VBoxContainer" parent="ScreenManager" unique_id=1039564080 node_paths=PackedStringArray("tabs", "clear_controls", "reset_controls")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -360.0
+offset_bottom = -360.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+script = ExtResource("42_emp4r")
+tabs = NodePath("TextureRect/Content/TabControls/Tabs")
+clear_controls = NodePath("Footer/Content/ClearControls")
+reset_controls = NodePath("Footer/Content/ResetControls")
+open_sfx = SubResource("Resource_504o4")
+close_sfx = SubResource("Resource_r5lpl")
+open_anim = &"options_peek"
+close_anim = &"BACKWARDS"
+
+[node name="Header" type="Panel" parent="ScreenManager/OptionsScreen" unique_id=1231787544]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.14
+theme_override_styles/panel = SubResource("StyleBoxFlat_ev48a")
+
+[node name="Label" type="Label" parent="ScreenManager/OptionsScreen/Header" unique_id=1567480581]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "OPTIONS"
+label_settings = SubResource("LabelSettings_46i77")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="ScreenManager/OptionsScreen" unique_id=1422089629]
+material = SubResource("ShaderMaterial_avox5")
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("CompressedTexture2D_nte8f")
+stretch_mode = 1
+flip_h = true
+
+[node name="Content" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect" unique_id=355959904]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_right = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabControls" type="HBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content" unique_id=2112826452]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="Left" type="Button" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls" unique_id=212968999]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.06
+focus_mode = 0
+theme_override_fonts/font = ExtResource("34_jyo83")
+theme_override_font_sizes/font_size = 0
+icon = ExtResource("44_axwwv")
+flat = true
+icon_alignment = 2
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Tabs" type="TabContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls" unique_id=1512779639 node_paths=PackedStringArray("focus_grabbers")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_unselected_color = Color(0.494118, 0.494118, 0.494118, 1)
+theme_override_fonts/font = ExtResource("34_jyo83")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/panel = SubResource("StyleBoxEmpty_q1vx3")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_y28h8")
+theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_aeygf")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_m3cpd")
+tab_alignment = 1
+current_tab = 0
+tab_focus_mode = 0
+script = ExtResource("41_y28h8")
+tab_left_sfx = SubResource("Resource_er6et")
+tab_right_sfx = SubResource("Resource_3jvq5")
+focus_grabbers = [NodePath("General/ScrollContainer/Content/TopButtons/VSync/ToggleButton"), NodePath("Controls/FadeEffect/ScrollContainer/HBoxContainer/Actions/BindSetting"), NodePath("Sound/FadeEffect/ScrollContainer/HBoxContainer/Content/AudioDevice/PresetSelector"), null, NodePath("Data/TopButtons/OpenData")]
+
+[node name="General" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs" unique_id=1400883172 node_paths=PackedStringArray("vsync_button", "fps_cap_button", "quality_button")]
+layout_mode = 2
+script = ExtResource("47_mvot7")
+vsync_button = NodePath("ScrollContainer/Content/TopButtons/VSync/ToggleButton")
+fps_cap_button = NodePath("ScrollContainer/Content/TopButtons/FPS/SelectorButton")
+quality_button = NodePath("ScrollContainer/Content/TopButtons/Quality/SelectorButton")
+metadata/_tab_index = 0
+
+[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General" unique_id=1897692378]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General" unique_id=647844723]
+custom_minimum_size = Vector2(1, 1)
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Content" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer" unique_id=1762748079]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 24
+
+[node name="TopButtons" type="HBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content" unique_id=1884362566]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="VSync" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons" unique_id=1032432614]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Header" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/VSync" unique_id=1515659694]
+layout_mode = 2
+text = "V Sync"
+label_settings = SubResource("LabelSettings_xphw0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/VSync" unique_id=2071080012]
+layout_mode = 2
+
+[node name="ToggleButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/VSync" unique_id=1503948673 instance=ExtResource("25_dlkvg")]
+layout_mode = 2
+text = "OFF"
+script = ExtResource("47_t7euy")
+setting = "General - v_sync"
+
+[node name="FPS" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons" unique_id=2093886096]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Header" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/FPS" unique_id=1890463754]
+layout_mode = 2
+text = "FPS Cap"
+label_settings = SubResource("LabelSettings_xphw0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/FPS" unique_id=978777899]
+layout_mode = 2
+
+[node name="SelectorButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/FPS" unique_id=1500226259 instance=ExtResource("25_dlkvg")]
+layout_mode = 2
+text = "60 FPS"
+script = ExtResource("45_23m8v")
+options = Array[StringName]([&"OFF", &"30 FPS", &"60 FPS", &"120 FPS"])
+setting = "General - fps_cap"
+
+[node name="Quality" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons" unique_id=236672133]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Header" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/Quality" unique_id=1190062268]
+layout_mode = 2
+text = "Visual Quality"
+label_settings = SubResource("LabelSettings_xphw0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/Quality" unique_id=410724891]
+layout_mode = 2
+
+[node name="SelectorButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/Quality" unique_id=2136263229 instance=ExtResource("25_dlkvg")]
+layout_mode = 2
+text = "HIGH"
+script = ExtResource("45_23m8v")
+options = Array[StringName]([&"HIGH", &"LOW", &"MEDIUM"])
+setting = "General - quality"
+
+[node name="MiddleButtons" type="HBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content" unique_id=871884779]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Discord" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/MiddleButtons" unique_id=623545587]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Header" type="HBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/MiddleButtons/Discord" unique_id=2032370803]
+layout_mode = 2
+theme_override_constants/separation = 7
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/MiddleButtons/Discord/Header" unique_id=833976351]
+layout_mode = 2
+texture = ExtResource("46_afcad")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Text" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/MiddleButtons/Discord/Header" unique_id=1407162431]
+layout_mode = 2
+text = "Rich Presence"
+label_settings = SubResource("LabelSettings_xphw0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/MiddleButtons/Discord" unique_id=1412029436]
+layout_mode = 2
+
+[node name="ToggleButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/MiddleButtons/Discord" unique_id=341642400 instance=ExtResource("25_dlkvg")]
+layout_mode = 2
+text = "ON"
+script = ExtResource("47_t7euy")
+setting = "General - rich_presence"
+
+[node name="Window" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/MiddleButtons" unique_id=1169009786]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Header" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/MiddleButtons/Window" unique_id=1535758116]
+layout_mode = 2
+text = "Window Scale"
+label_settings = SubResource("LabelSettings_xphw0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/MiddleButtons/Window" unique_id=1355921674]
+layout_mode = 2
+
+[node name="SelectorButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/MiddleButtons/Window" unique_id=291050295 instance=ExtResource("25_dlkvg")]
+layout_mode = 2
+text = "x1 SCALE"
+script = ExtResource("45_23m8v")
+options = Array[StringName]([&"x1 SCALE", &"x2 SCALE", &"x3 SCALE", &"FULLSCREEN"])
+setting = "General - scale"
+
+[node name="BottomButtons" type="HBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content" unique_id=431223058]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="MotionToggle" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/BottomButtons" unique_id=124868263]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Header" type="HBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/BottomButtons/MotionToggle" unique_id=829070946]
+layout_mode = 2
+theme_override_constants/separation = 7
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/BottomButtons/MotionToggle/Header" unique_id=1423701488]
+layout_mode = 2
+texture = ExtResource("48_1v6c2")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Text" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/BottomButtons/MotionToggle/Header" unique_id=1833746507]
+layout_mode = 2
+text = "Motion Controls"
+label_settings = SubResource("LabelSettings_xphw0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/BottomButtons/MotionToggle" unique_id=1892546863]
+layout_mode = 2
+
+[node name="ToggleButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/BottomButtons/MotionToggle" unique_id=759915542 instance=ExtResource("25_dlkvg")]
+layout_mode = 2
+text = "OFF"
+script = ExtResource("47_t7euy")
+setting = "General - motion_controls"
+
+[node name="RumbleStrength" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/BottomButtons" unique_id=1854420787]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Header" type="HBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/BottomButtons/RumbleStrength" unique_id=617540169]
+layout_mode = 2
+theme_override_constants/separation = 7
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/BottomButtons/RumbleStrength/Header" unique_id=1841832377]
+layout_mode = 2
+texture = ExtResource("49_lol4u")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Text" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/BottomButtons/RumbleStrength/Header" unique_id=124704267]
+layout_mode = 2
+text = "Rumble Strength"
+label_settings = SubResource("LabelSettings_xphw0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/BottomButtons/RumbleStrength" unique_id=1448761467]
+layout_mode = 2
+
+[node name="SelectorButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/BottomButtons/RumbleStrength" unique_id=1773441411 instance=ExtResource("25_dlkvg")]
+layout_mode = 2
+text = "HIGH"
+script = ExtResource("45_23m8v")
+options = Array[StringName]([&"OFF", &"LOW", &"MEDIUM", &"HIGH"])
+setting = "General - rumble_strength"
+
+[node name="Controls" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs" unique_id=1709646911]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 16
+metadata/_tab_index = 1
+
+[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls" unique_id=411208790]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.05
+
+[node name="FadeEffect" type="Panel" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls" unique_id=1255462569]
+clip_children = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_gbf2f")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/FadeEffect" unique_id=205027965]
+z_index = 1
+custom_minimum_size = Vector2(1, 1)
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("50_5i7o0")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_n7xk5")
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/FadeEffect/ScrollContainer" unique_id=2064359824]
+z_index = -1
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Actions" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/FadeEffect/ScrollContainer/HBoxContainer" unique_id=184316159]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 17
+
+[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/FadeEffect/ScrollContainer/HBoxContainer/Actions" unique_id=645589936]
+layout_mode = 2
+
+[node name="BindSetting" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/FadeEffect/ScrollContainer/HBoxContainer/Actions" unique_id=754586437 instance=ExtResource("49_svocp")]
+layout_mode = 2
+
+[node name="BindSetting2" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/FadeEffect/ScrollContainer/HBoxContainer/Actions" unique_id=754599030 instance=ExtResource("49_svocp")]
+layout_mode = 2
+p_action_name = &"left"
+vis_title = &"Move Left"
+vis_icon_flip_h = true
+
+[node name="BindSetting3" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/FadeEffect/ScrollContainer/HBoxContainer/Actions" unique_id=2071984428 instance=ExtResource("49_svocp")]
+layout_mode = 2
+p_action_name = &"up"
+vis_title = &"Move Up"
+vis_animation = &"swim"
+
+[node name="BindSetting4" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/FadeEffect/ScrollContainer/HBoxContainer/Actions" unique_id=1447932515 instance=ExtResource("49_svocp")]
+layout_mode = 2
+p_action_name = &"down"
+vis_title = &"Move Down"
+vis_animation = &"swim"
+vis_icon_flip_h = true
+vis_icon_flip_v = true
+
+[node name="BindSetting5" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/FadeEffect/ScrollContainer/HBoxContainer/Actions" unique_id=1864629858 instance=ExtResource("49_svocp")]
+layout_mode = 2
+p_action_name = &"jump"
+vis_title = &"Jump"
+vis_animation = &"jump"
+
+[node name="BindSetting6" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/FadeEffect/ScrollContainer/HBoxContainer/Actions" unique_id=1750075054 instance=ExtResource("49_svocp")]
+layout_mode = 2
+p_action_name = &"spin"
+vis_title = &"Spin"
+vis_animation = &"spin_attack"
+
+[node name="BindSetting7" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/FadeEffect/ScrollContainer/HBoxContainer/Actions" unique_id=1282184756 instance=ExtResource("49_svocp")]
+layout_mode = 2
+p_action_name = &"dive"
+vis_title = &"Dive"
+vis_animation = &"dive"
+
+[node name="BindSetting8" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/FadeEffect/ScrollContainer/HBoxContainer/Actions" unique_id=881960758 instance=ExtResource("49_svocp")]
+layout_mode = 2
+p_action_name = &"groundpound"
+vis_title = &"Ground-Pound"
+vis_animation = &"gp"
+
+[node name="Space2" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/FadeEffect/ScrollContainer/HBoxContainer/Actions" unique_id=321491429]
+layout_mode = 2
+
+[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/FadeEffect/ScrollContainer/HBoxContainer" unique_id=698466511]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.03
+
+[node name="Space2" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls" unique_id=1301529973]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+size_flags_stretch_ratio = 0.1
+
+[node name="Sound" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs" unique_id=2093018172]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="FadeEffect" type="Panel" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound" unique_id=451832648]
+clip_children = 1
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_gbf2f")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect" unique_id=1730002083]
+z_index = 1
+custom_minimum_size = Vector2(1, 1)
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("50_5i7o0")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_n7xk5")
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer" unique_id=722725613]
+z_index = -1
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Content" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer/HBoxContainer" unique_id=1405240327]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 24
+
+[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer/HBoxContainer/Content" unique_id=1400789438]
+layout_mode = 2
+size_flags_stretch_ratio = 0.1
+
+[node name="AudioDevice" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer/HBoxContainer/Content" unique_id=1690681885]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Header" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer/HBoxContainer/Content/AudioDevice" unique_id=1216870003]
+layout_mode = 2
+text = "Audio Device"
+label_settings = SubResource("LabelSettings_xphw0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer/HBoxContainer/Content/AudioDevice" unique_id=987160702]
+layout_mode = 2
+
+[node name="PresetSelector" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer/HBoxContainer/Content/AudioDevice" unique_id=1652699040 instance=ExtResource("52_sk6td")]
+custom_minimum_size = Vector2(0, 27)
+layout_mode = 2
+script = SubResource("GDScript_vgfim")
+
+[node name="Space2" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer/HBoxContainer/Content/AudioDevice" unique_id=323102323]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="MasterVolume" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer/HBoxContainer/Content" unique_id=1816654138 instance=ExtResource("53_i1icy")]
+layout_mode = 2
+
+[node name="MusicVolume" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer/HBoxContainer/Content" unique_id=1140861298 instance=ExtResource("53_i1icy")]
+layout_mode = 2
+header_text = "Music Volume"
+bus_name = &"Music"
+
+[node name="SFXVolume" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer/HBoxContainer/Content" unique_id=528485732 instance=ExtResource("53_i1icy")]
+layout_mode = 2
+header_text = "Sound Effects Volume"
+bus_name = &"SFX"
+
+[node name="VoiceVolume" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer/HBoxContainer/Content" unique_id=613767193 instance=ExtResource("53_i1icy")]
+layout_mode = 2
+header_text = "Voices Volume"
+bus_name = &"Voice"
+
+[node name="Space2" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer/HBoxContainer/Content" unique_id=859588523]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/FadeEffect/ScrollContainer/HBoxContainer" unique_id=837090760]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.03
+
+[node name="Space2" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound" unique_id=1821637957]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="Accessibility" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs" unique_id=462425151]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="Data" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs" unique_id=844587460 node_paths=PackedStringArray("data_peek")]
+visible = false
+layout_mode = 2
+script = ExtResource("57_y28h8")
+data_peek = NodePath("DataPeek")
+metadata/_tab_index = 4
+
+[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data" unique_id=190457657]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="TopButtons" type="HBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data" unique_id=1089830758]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="OpenData" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data/TopButtons" unique_id=2105952765 instance=ExtResource("25_dlkvg")]
+layout_mode = 2
+focus_neighbor_right = NodePath("../ResetData")
+text = "OPEN FOLDER"
+
+[node name="ResetData" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data/TopButtons" unique_id=2131401660 instance=ExtResource("25_dlkvg")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../OpenData")
+text = "RESET DATA"
+
+[node name="Space2" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data" unique_id=1006247793]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="DataPeek" type="CodeEdit" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data" unique_id=1588917684]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_readonly_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_fonts/font = ExtResource("34_jyo83")
+theme_override_font_sizes/font_size = 16
+text = "[Section]
+
+setting_3=1.0
+setting_4=\"string\"
+setting_5=true
+setting_2=PackedStringArray(\"A\", \"B\", \"C\")"
+editable = false
+scroll_smooth = true
+minimap_draw = true
+syntax_highlighter = ExtResource("51_q1vx3")
+highlight_all_occurrences = true
+highlight_current_line = true
+draw_tabs = true
+draw_spaces = true
+gutters_draw_line_numbers = true
+gutters_zero_pad_line_numbers = true
+gutters_line_numbers_min_digits = 1
+auto_brace_completion_enabled = true
+auto_brace_completion_highlight_matching = true
+
+[node name="Panel" type="Panel" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data" unique_id=1269393658]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_n7xk5")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data/Panel" unique_id=1758415192]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 2
+theme = ExtResource("50_5i7o0")
+theme_override_colors/default_color = Color(1, 0.69803923, 0.4509804, 1)
+theme_override_colors/selection_color = Color(0.44705883, 0.6784314, 1, 0.49411765)
+theme_override_fonts/normal_font = ExtResource("34_jyo83")
+theme_override_font_sizes/normal_font_size = 14
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y28h8")
+bbcode_enabled = true
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+context_menu_enabled = true
+selection_enabled = true
+
+[node name="Space3" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data" unique_id=1730608117]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="Right" type="Button" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls" unique_id=513512920]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.06
+focus_mode = 0
+theme_override_fonts/font = ExtResource("34_jyo83")
+theme_override_font_sizes/font_size = 0
+icon = ExtResource("54_lxqsa")
+flat = true
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Footer" type="Panel" parent="ScreenManager/OptionsScreen" unique_id=1990867750]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+theme_override_styles/panel = SubResource("StyleBoxFlat_gdkor")
+
+[node name="Content" type="HBoxContainer" parent="ScreenManager/OptionsScreen/Footer" unique_id=665913448]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 6.0
+offset_right = -4.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="ReturnControls" type="HBoxContainer" parent="ScreenManager/OptionsScreen/Footer/Content" unique_id=1810299968]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="ScreenManager/OptionsScreen/Footer/Content/ReturnControls" unique_id=101750792]
+layout_mode = 2
+texture = ExtResource("54_6apma")
+expand_mode = 3
+
+[node name="Label2" type="Label" parent="ScreenManager/OptionsScreen/Footer/Content/ReturnControls" unique_id=186374945]
+layout_mode = 2
+text = "/"
+label_settings = SubResource("LabelSettings_n7xk5")
+
+[node name="TextureRect" type="TextureRect" parent="ScreenManager/OptionsScreen/Footer/Content/ReturnControls" unique_id=1283061223]
+layout_mode = 2
+texture = ExtResource("55_qillv")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="ScreenManager/OptionsScreen/Footer/Content/ReturnControls" unique_id=26674880]
+layout_mode = 2
+text = "Return"
+label_settings = SubResource("LabelSettings_n7xk5")
+
+[node name="SelectControls" type="HBoxContainer" parent="ScreenManager/OptionsScreen/Footer/Content" unique_id=1913252415]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="ScreenManager/OptionsScreen/Footer/Content/SelectControls" unique_id=134152638]
+layout_mode = 2
+texture = ExtResource("56_mvot7")
+expand_mode = 3
+
+[node name="Label2" type="Label" parent="ScreenManager/OptionsScreen/Footer/Content/SelectControls" unique_id=1752400120]
+layout_mode = 2
+text = "/"
+label_settings = SubResource("LabelSettings_n7xk5")
+
+[node name="TextureRect" type="TextureRect" parent="ScreenManager/OptionsScreen/Footer/Content/SelectControls" unique_id=189225266]
+layout_mode = 2
+texture = ExtResource("57_aeygf")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="ScreenManager/OptionsScreen/Footer/Content/SelectControls" unique_id=69632103]
+layout_mode = 2
+text = "Select"
+label_settings = SubResource("LabelSettings_n7xk5")
+
+[node name="Control" type="Control" parent="ScreenManager/OptionsScreen/Footer/Content" unique_id=238163801]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ClearControls" type="HBoxContainer" parent="ScreenManager/OptionsScreen/Footer/Content" unique_id=1632523163]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="ScreenManager/OptionsScreen/Footer/Content/ClearControls" unique_id=1448375687]
+layout_mode = 2
+texture = ExtResource("58_mvot7")
+expand_mode = 3
+
+[node name="Label2" type="Label" parent="ScreenManager/OptionsScreen/Footer/Content/ClearControls" unique_id=617365953]
+layout_mode = 2
+text = "/"
+label_settings = SubResource("LabelSettings_n7xk5")
+
+[node name="TextureRect" type="TextureRect" parent="ScreenManager/OptionsScreen/Footer/Content/ClearControls" unique_id=279588054]
+layout_mode = 2
+texture = ExtResource("59_y28h8")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="ScreenManager/OptionsScreen/Footer/Content/ClearControls" unique_id=1691037991]
+layout_mode = 2
+text = "Clear"
+label_settings = SubResource("LabelSettings_n7xk5")
+
+[node name="ResetControls" type="HBoxContainer" parent="ScreenManager/OptionsScreen/Footer/Content" unique_id=1892145468]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="ScreenManager/OptionsScreen/Footer/Content/ResetControls" unique_id=11150088]
+layout_mode = 2
+texture = ExtResource("58_m3cpd")
+expand_mode = 3
+
+[node name="Label2" type="Label" parent="ScreenManager/OptionsScreen/Footer/Content/ResetControls" unique_id=892248310]
+layout_mode = 2
+text = "/"
+label_settings = SubResource("LabelSettings_n7xk5")
+
+[node name="TextureRect" type="TextureRect" parent="ScreenManager/OptionsScreen/Footer/Content/ResetControls" unique_id=1012970802]
+layout_mode = 2
+texture = ExtResource("57_h5v5y")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="ScreenManager/OptionsScreen/Footer/Content/ResetControls" unique_id=1959093361]
+layout_mode = 2
+text = "Reset"
+label_settings = SubResource("LabelSettings_n7xk5")
+
+[node name="Notifications" type="Node" parent="." unique_id=2060452021]
+
+[connection signal="pressed" from="ScreenManager/PauseScreen/LeftPanel/Content/MainButtons/Buttons/Resume" to="ScreenManager/PauseScreen" method="_on_resume_pressed"]
+[connection signal="pressed" from="ScreenManager/PauseScreen/LeftPanel/Content/MainButtons/Buttons/LevelStateChoices/Retry" to="ScreenManager/PauseScreen" method="_on_retry_pressed"]
+[connection signal="pressed" from="ScreenManager/PauseScreen/LeftPanel/Content/MainButtons/Buttons/LevelStateChoices/Reset" to="ScreenManager/PauseScreen" method="_on_reset_pressed"]
+[connection signal="pressed" from="ScreenManager/PauseScreen/LeftPanel/Content/BottomButtons/ActionGuide" to="ScreenManager/PauseScreen" method="_on_action_guide_pressed"]
+[connection signal="pressed" from="ScreenManager/PauseScreen/LeftPanel/Content/BottomButtons/Options" to="ScreenManager/PauseScreen" method="_on_options_pressed"]
+[connection signal="pressed" from="ScreenManager/PauseScreen/LeftPanel/Content/BottomButtons/Quit" to="ScreenManager/PauseScreen" method="_on_quit_pressed"]
+[connection signal="pressed" from="ScreenManager/WarningScreen/Spacing/Main/Buttons/Cancel" to="ScreenManager/WarningScreen" method="_on_cancel_pressed"]
+[connection signal="pressed" from="ScreenManager/WarningScreen/Spacing/Main/Buttons/Confirm" to="ScreenManager/WarningScreen" method="_on_confirm_pressed"]
+[connection signal="pressed" from="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data/TopButtons/OpenData" to="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data" method="_on_open_data_pressed"]
+[connection signal="pressed" from="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data/TopButtons/ResetData" to="ScreenManager/OptionsScreen" method="_on_reset_data_pressed"]
+
+[editable path="RedCoinCounter"]

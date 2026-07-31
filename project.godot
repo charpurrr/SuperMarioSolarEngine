@@ -21,7 +21,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="Solar Engine"
 config/version="0.1.x"
 config/tags=PackedStringArray("mario_fangames")
-run/main_scene="res://ui/title_screen/title_screen.tscn"
+run/main_scene="res://user_interfaces/title_screen/title_screen.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 run/max_fps=60
 boot_splash/bg_color=Color(0.0862745, 0.0862745, 0.0862745, 1)
@@ -63,8 +63,8 @@ folder_colors={
 "res://level_designer/": "yellow",
 "res://level_designer_old/": "teal",
 "res://props/": "pink",
-"res://stages/": "green",
-"res://ui/": "orange",
+"res://stage_core/": "green",
+"res://user_interfaces/": "orange",
 "res://util/": "purple"
 }
 

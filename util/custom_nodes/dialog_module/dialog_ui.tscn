@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bppnjg356bdsp"]
 
 [ext_resource type="Texture2D" uid="uid://bpd2tb3uscgtq" path="res://entities/interactables/sign/sign_overlay.png" id="1_xflr1"]
-[ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="3_d4hgk"]
+[ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://user_interfaces/fonts/paper_mario.ttf" id="3_d4hgk"]
 
 [node name="DialogUI" type="TextureRect" unique_id=1389229458]
 anchors_preset = 5

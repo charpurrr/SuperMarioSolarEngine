@@ -1,0 +1,251 @@
+[gd_scene format=3 uid="uid://nufgv8gspxs3"]
+
+[ext_resource type="Script" uid="uid://br0et54gkpwyq" path="res://user_interfaces/buttons/ui_slider.gd" id="1_skftf"]
+[ext_resource type="AudioStream" uid="uid://dsokoktxblw41" path="res://user_interfaces/sfx/cursor.wav" id="2_6wxxs"]
+[ext_resource type="Script" uid="uid://b262pbs7y0djt" path="res://util/resources/sound_effect.gd" id="2_t7s5i"]
+
+[sub_resource type="Resource" id="Resource_8qcs8"]
+script = ExtResource("2_t7s5i")
+stream = ExtResource("2_6wxxs")
+audio_bus = &"UI"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = false
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t7s5i"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 12
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 12
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wxxs"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_esd4p"]
+bg_color = Color(0.486275, 0, 0.4, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_skftf"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cwd4y"]
+bg_color = Color(0.486275, 0, 0.4, 1)
+border_width_top = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dxsau"]
+bg_color = Color(1, 1, 1, 1)
+border_width_top = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qcs8"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+corner_detail = 1
+anti_aliasing = false
+
+[node name="PresetSlider" type="Control" unique_id=341717682 node_paths=PackedStringArray("slider", "grabber", "outline", "progress_bar")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 200.0
+offset_bottom = 33.0
+script = ExtResource("1_skftf")
+slider = NodePath("ProgressBarBackground/HSlider")
+grabber = NodePath("ProgressBarBackground/GrabberBounds/Grabber")
+outline = NodePath("OutlineBounds/GrabberOuterline")
+progress_bar = NodePath("ProgressBarBackground/GrabberBounds/ProgressBar")
+tick_sound = SubResource("Resource_8qcs8")
+
+[node name="ProgressBarOuterline" type="Panel" parent="." unique_id=1740944173]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_t7s5i")
+
+[node name="OutlineBounds" type="Control" parent="." unique_id=1652747351]
+editor_description = "Resize this control to modify where the grabber is positioned, based on the slider value. 
+Left edge: position when value = 0, right edge: position when value = 100"
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GrabberOuterline" type="Panel" parent="OutlineBounds" unique_id=1970545077]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -13.0
+offset_top = -7.0
+offset_right = 16.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_t7s5i")
+
+[node name="GrabberDropshadow" type="Panel" parent="OutlineBounds/GrabberOuterline" unique_id=1861202264]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -2.9999905
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_6wxxs")
+
+[node name="ProgressBarDropshadow" type="Panel" parent="." unique_id=1473005970]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_6wxxs")
+
+[node name="ProgressBarBackground" type="ProgressBar" parent="." unique_id=568653563]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_esd4p")
+theme_override_styles/fill = SubResource("StyleBoxFlat_skftf")
+step = 0.0
+value = 50.0
+show_percentage = false
+
+[node name="HSlider" type="HSlider" parent="ProgressBarBackground" unique_id=1627547083]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_behavior_recursive = 2
+value = 50.0
+
+[node name="GrabberBounds" type="Control" parent="ProgressBarBackground" unique_id=774622897]
+editor_description = "Resize this control to modify where the grabber is positioned, based on the slider value. 
+Left edge: position when value = 0, right edge: position when value = 100"
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="ProgressBarBackground/GrabberBounds" unique_id=1434943596]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.00113, 1)
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_cwd4y")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dxsau")
+value = 50.0
+show_percentage = false
+
+[node name="Grabber" type="Panel" parent="ProgressBarBackground/GrabberBounds" unique_id=1490862400]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -4.0
+offset_right = 10.0
+offset_bottom = 4.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8qcs8")
+
+[node name="ColorRect" type="ColorRect" parent="ProgressBarBackground/GrabberBounds/Grabber" unique_id=2121179815]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.00003
+offset_top = 9.0
+offset_right = -7.0
+offset_bottom = -10.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="value_changed" from="ProgressBarBackground/HSlider" to="." method="_update_slider" binds= [true]]

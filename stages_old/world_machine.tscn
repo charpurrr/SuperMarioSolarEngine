@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bite6o37o0mpt"]
+
+[ext_resource type="Script" uid="uid://bt625ce03kjut" path="res://stages_old/world_machine.gd" id="1_gcjeb"]
+[ext_resource type="PackedScene" uid="uid://co7kk1h1rwbn6" path="res://stages_old/synth_stratum/synth_stratum.tscn" id="2_l4eid"]
+[ext_resource type="PackedScene" uid="uid://csf56lkxqqb12" path="res://user_interfaces/ui.tscn" id="3_pcjjq"]
+
+[node name="WorldMachine" type="Control" unique_id=1389998845]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_gcjeb")
+level_scene = ExtResource("2_l4eid")
+user_interface = ExtResource("3_pcjjq")

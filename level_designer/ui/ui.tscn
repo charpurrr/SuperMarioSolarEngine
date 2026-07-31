@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://c5gf6lm6h37vm" path="res://level_designer/ui/assets/delete.svg" id="10_xsjit"]
 [ext_resource type="Texture2D" uid="uid://b3cydgeiw2hd8" path="res://level_designer/ui/assets/move_to_front.svg" id="11_s3dab"]
 [ext_resource type="Texture2D" uid="uid://cmfmkbc7oharc" path="res://level_designer/ui/assets/search.svg" id="12_nytnj"]
-[ext_resource type="FontFile" uid="uid://dwjboqsj8b8xd" path="res://ui/fonts/super_mario.ttf" id="12_xsjit"]
+[ext_resource type="FontFile" uid="uid://dwjboqsj8b8xd" path="res://user_interfaces/fonts/super_mario.ttf" id="12_xsjit"]
 [ext_resource type="Texture2D" uid="uid://cl6q7yoim6gdr" path="res://level_designer/ui/assets/layers.svg" id="13_lr2ky"]
 [ext_resource type="Texture2D" uid="uid://mw12ktqpphm4" path="res://level_designer/ui/assets/scenarios.svg" id="13_p5aqg"]
 [ext_resource type="Texture2D" uid="uid://cwge72wfk2oe4" path="res://level_designer/ui/assets/areas.svg" id="13_qixus"]

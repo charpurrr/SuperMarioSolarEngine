@@ -1,6 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://c53wuaais37yi"]
 
-[ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="1_y7g8o"]
+[ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://user_interfaces/fonts/paper_mario.ttf" id="1_y7g8o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ge4lq"]
 bg_color = Color(0.1, 0.1, 0.1, 0.6)

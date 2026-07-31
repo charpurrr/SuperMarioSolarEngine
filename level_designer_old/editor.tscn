@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bwuodtones7dv" path="res://level_designer_old/tools/select_tool/selection_box.png" id="8_plyee"]
 [ext_resource type="Script" uid="uid://gjuxonob2pui" path="res://level_designer_old/tools/select_tool/select_box_animation.gd" id="9_qeiqb"]
 [ext_resource type="Script" uid="uid://dog5x15bugpyt" path="res://level_designer_old/level_preview.gd" id="11_rylk5"]
-[ext_resource type="PackedScene" uid="uid://bite6o37o0mpt" path="res://stages/world_machine.tscn" id="13_hxrm3"]
+[ext_resource type="PackedScene" uid="uid://bite6o37o0mpt" path="res://stages_old/world_machine.tscn" id="13_hxrm3"]
 [ext_resource type="PackedScene" uid="uid://dbt3exrjb6tdc" path="res://level_designer_old/spawn_point.tscn" id="13_s4nx5"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rcr4i"]
