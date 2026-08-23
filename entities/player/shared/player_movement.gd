@@ -118,6 +118,15 @@ var consec_jumps: int = 0
 
 ## The player body rotation in radians.
 var body_rotation: float = 0
+
+## Determines which dry states (non-submerged) are blacklisted from sprite squash/stretch visuals
+@export var squash_stretch_dry_blacklist: Array[PlayerState] = []
+## Multiplier for sprite squash/stretch visuals
+var squash_stretch_intensity            : float = 0.0005
+## Amount of time (in seconds) it takes for sprite squash/stretch visuals to reach its goal
+var squash_stretch_duration_seconds     : float = 0.015
+## The tween that will control the animation of the sprite squash/stretch visuals
+var squash_stretch_tween                : Tween
 #endregion
 
 
@@ -155,7 +164,7 @@ func accelerate(add_vel: Vector2, cap: float, angular_friction: float = 0) -> vo
 		return
 
 	var direction = add_vel.normalized()
-	
+
 	var speed = actor.velocity.dot(direction)
 	var speed_step = add_vel.length()
 
@@ -166,7 +175,7 @@ func accelerate(add_vel: Vector2, cap: float, angular_friction: float = 0) -> vo
 
 	# Break if less than zero to avoid deceleration
 	speed_step = max(speed_step, 0)
-	
+
 	# Apply the speed in the correct direction
 	var speed_step_vec: Vector2 = speed_step * direction
 
