@@ -946,9 +946,6 @@ fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
-frame_fludd = Dictionary[int, String]({
-0: "default"
-})
 frame_fludd_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -969,9 +966,6 @@ fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0),
 5: Vector2i(0, 0)
-})
-frame_fludd = Dictionary[int, String]({
-0: "default"
 })
 frame_fludd_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(2, 1),
@@ -1033,9 +1027,6 @@ fludd_f_path = NodePath("FluddInfront")
 fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
-})
-frame_fludd = Dictionary[int, String]({
-0: "default"
 })
 frame_fludd_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 3),
@@ -2856,8 +2847,7 @@ doll_path = NodePath("Doll")
 fludd_f_path = NodePath("FluddInfront")
 fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
-0: Vector2i(0, 0),
-4: Vector2i(0, 0)
+0: Vector2i(0, 0)
 })
 frame_fludd = Dictionary[int, String]({
 0: "rot_y090",
@@ -3790,9 +3780,6 @@ fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
-frame_fludd = Dictionary[int, String]({
-0: "default"
-})
 frame_fludd_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 6),
 1: Vector2i(0, 7)
@@ -4205,7 +4192,6 @@ frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
 frame_fludd = Dictionary[int, String]({
-0: "rot_y045",
 1: "rot_y045",
 2: "rot_y090"
 })
@@ -4425,18 +4411,11 @@ bus = &"Motion"
 [node name="Movement" type="Node" parent="." unique_id=1261744189 node_paths=PackedStringArray("actor")]
 script = ExtResource("37_quca3")
 actor = NodePath("..")
-<<<<<<< Updated upstream
 max_speed = 270.0
 ground_decel_time = 6.75
 term_vel = 720.0
 min_grav = 1161.0
 max_grav = 1161.0
-=======
-max_speed = 180.0
-term_vel = 720.0
-min_grav = 774.0
-max_grav = 792.0
->>>>>>> Stashed changes
 swim_speed = 180.0
 min_slide_incline = 0.4
 
@@ -4544,7 +4523,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_upqlf")])
 
 [node name="Waddle" type="Node" parent="StateManager/Dry/Grounded" unique_id=1080692194]
 script = ExtResource("53_blm5r")
-accel = 14.4
+accel = 7.2
 footstep_frames = Array[int]([1, 3])
 hitbox_type = "Small"
 animation_data = SubResource("Resource_f3xbj")
@@ -4864,10 +4843,6 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_cux1t"), SubR
 [node name="Climb" type="Node" parent="StateManager/Dry" unique_id=2107686327]
 script = ExtResource("156_wc0bq")
 climb_up_distance = 26.0
-<<<<<<< Updated upstream
-=======
-climb_up_speed = 150.0
->>>>>>> Stashed changes
 climb_up_cooldown = 17
 climb_down_speed = 170.0
 lineup_lerp_speed = 0.3
