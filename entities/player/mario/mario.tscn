@@ -4408,7 +4408,7 @@ switch_sfx = SubResource("Resource_a03wi")
 stream = ExtResource("10_8wyc1")
 bus = &"Motion"
 
-[node name="Movement" type="Node" parent="." unique_id=1261744189 node_paths=PackedStringArray("actor", "squash_stretch_dry_blacklist")]
+[node name="Movement" type="Node" parent="." unique_id=1261744189 node_paths=PackedStringArray("actor", "squash_stretch_states")]
 script = ExtResource("37_quca3")
 actor = NodePath("..")
 max_speed = 180.0
@@ -4417,7 +4417,7 @@ min_grav = 774.0
 max_grav = 792.0
 swim_speed = 180.0
 min_slide_incline = 0.4
-squash_stretch_dry_blacklist = [NodePath("../StateManager/Dry/DiveStates/Dive")]
+squash_stretch_states = [NodePath("../StateManager/Dry/Airborne/GroundPoundStates/GroundPoundFall")]
 
 [node name="StateManager" type="Node" parent="." unique_id=1337517111 node_paths=PackedStringArray("input", "fludd", "movement", "target_actor", "initial_state")]
 script = ExtResource("38_vxs65")

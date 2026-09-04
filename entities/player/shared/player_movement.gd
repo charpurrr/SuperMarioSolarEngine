@@ -119,14 +119,19 @@ var consec_jumps: int = 0
 ## The player body rotation in radians.
 var body_rotation: float = 0
 
-## Determines which dry states (non-submerged) are blacklisted from sprite squash/stretch visuals
-@export var squash_stretch_dry_blacklist: Array[PlayerState] = []
-## Multiplier for sprite squash/stretch visuals
-var squash_stretch_intensity            : float = 0.0005
-## Amount of time (in seconds) it takes for sprite squash/stretch visuals to reach its goal
-var squash_stretch_duration_seconds     : float = 0.015
-## The tween that will control the animation of the sprite squash/stretch visuals
-var squash_stretch_tween                : Tween
+## Determines which [PlayerState]s are squashed & stretched based on velocity.
+## Includes super-states.
+@export var squash_stretch_states: Array[PlayerState] = []
+## Determines which states in [member squash_stretch_states] use the
+## inverted axis for their velocity-based squash & stretch.
+@export var squash_stretch_invert: Array[PlayerState] = []
+## Multiplier for sprite squash & stretch visuals.
+@export var squash_stretch_intensity: float = 0.0005
+## Amount of time (in seconds) it takes for sprite squash & stretch visuals to reach the maximum value.
+@export_range(0.0, 1.0, 0.001, "hide_control", "or_greater", "suffix:sec")
+var squash_stretch_duration: float = 0.015
+## The [Tween] that controls the animation of the sprite squash & stretch visuals.
+var squash_stretch_tween: Tween
 #endregion
 
 
