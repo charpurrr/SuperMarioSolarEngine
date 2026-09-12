@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://blb650dgb5q1i"]
+
+[ext_resource type="FontFile" uid="uid://rhrmsvahgm3h" path="res://ui/fonts/mario_wonder.ttf" id="1_m4vfq"]
+[ext_resource type="Script" uid="uid://cwggfgnu1xr2t" path="res://ui/player_hud/coin_counter/coin_counter.gd" id="1_w7o62"]
+[ext_resource type="Texture2D" uid="uid://by5sk0dibpayx" path="res://ui/player_hud/coin_counter/coin.svg" id="2_uqx3u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w7o62"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oqxfb"]
+content_margin_top = 7.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_01jq4"]
+font = ExtResource("1_m4vfq")
+font_size = 20
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+
+[node name="CoinCounter" type="Control" unique_id=1265375159 node_paths=PackedStringArray("label")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 21.0
+offset_top = 10.0
+offset_right = 68.0
+offset_bottom = 39.0
+script = ExtResource("1_w7o62")
+bounce_color = Color(1, 0.784314, 0, 1)
+label = NodePath("Count")
+
+[node name="Panel" type="Panel" parent="." unique_id=1793591954]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -13.0
+offset_top = -2.0
+offset_right = 14.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w7o62")
+
+[node name="CoinIcon" type="TextureRect" parent="Panel" unique_id=111884767]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.5
+anchor_right = 0.3
+anchor_bottom = 0.5
+offset_left = -9.5
+offset_top = -10.0
+offset_right = 9.5
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_uqx3u")
+
+[node name="Count" type="Label" parent="." unique_id=1388909774]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_oqxfb")
+text = "000"
+label_settings = SubResource("LabelSettings_01jq4")
+horizontal_alignment = 2
+vertical_alignment = 1

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cjavjeke51epr"]
 
-[ext_resource type="Script" uid="uid://bc5dbcmd8n3na" path="res://ui/player_hud/fludd_tank.gd" id="1_qcg3d"]
+[ext_resource type="Script" uid="uid://bc5dbcmd8n3na" path="res://ui/player_hud/fludd_tank/fludd_tank.gd" id="1_qcg3d"]
 [ext_resource type="FontFile" uid="uid://e821cxxeybxh" path="res://ui/fonts/mario_sunshine.ttf" id="2_bklie"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_aqpuv"]

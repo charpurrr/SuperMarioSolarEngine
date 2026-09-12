@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bgl7f8thu2y4"]
 
-[ext_resource type="Script" uid="uid://c1xcar4l5tqv7" path="res://ui/player_hud/life_meter.gd" id="1_rqs60"]
-[ext_resource type="AudioStream" uid="uid://jogpycjpxk85" path="res://ui/player_hud/low_health.wav" id="2_0p7qp"]
+[ext_resource type="Script" uid="uid://c1xcar4l5tqv7" path="res://ui/player_hud/life_meter/life_meter.gd" id="1_rqs60"]
+[ext_resource type="AudioStream" uid="uid://jogpycjpxk85" path="res://ui/player_hud/life_meter/low_health.wav" id="2_0p7qp"]
 [ext_resource type="FontFile" uid="uid://e821cxxeybxh" path="res://ui/fonts/mario_sunshine.ttf" id="2_66wu2"]
 [ext_resource type="Script" uid="uid://b262pbs7y0djt" path="res://util/resources/sound_effect.gd" id="2_sslfq"]
 [ext_resource type="Script" uid="uid://b53d42qg4e27d" path="res://util/custom_nodes/damped_oscillator.gd" id="3_35xan"]

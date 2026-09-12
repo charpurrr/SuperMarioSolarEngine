@@ -6,13 +6,14 @@
 [ext_resource type="AudioStream" uid="uid://cmr5pcu7wv31v" path="res://ui/sfx/submenu_close.wav" id="3_cb22p"]
 [ext_resource type="PackedScene" uid="uid://b41sl5v4p501f" path="res://ui/notification/notification.tscn" id="4_oqxfb"]
 [ext_resource type="Shader" uid="uid://cgcjxa2rl4edn" path="res://util/shaders/smw_mozaic.gdshader" id="5_yrl65"]
-[ext_resource type="PackedScene" uid="uid://blb650dgb5q1i" path="res://ui/player_hud/coin_counter.tscn" id="6_6apma"]
+[ext_resource type="PackedScene" uid="uid://blb650dgb5q1i" path="res://ui/player_hud/coin_counter/coin_counter.tscn" id="6_6apma"]
 [ext_resource type="PackedScene" uid="uid://bq6hfndw3jm4e" path="res://util/custom_nodes/quality_toggle.tscn" id="6_q1vx3"]
-[ext_resource type="Script" uid="uid://blkgg52gdx748" path="res://ui/player_hud/red_coin_counter.gd" id="7_aeygf"]
+[ext_resource type="Script" uid="uid://blkgg52gdx748" path="res://ui/player_hud/coin_counter/red_coin_counter.gd" id="7_aeygf"]
 [ext_resource type="FontFile" uid="uid://e821cxxeybxh" path="res://ui/fonts/mario_sunshine.ttf" id="7_ctsqr"]
-[ext_resource type="PackedScene" uid="uid://bgl7f8thu2y4" path="res://ui/player_hud/life_meter.tscn" id="7_m3cpd"]
-[ext_resource type="PackedScene" uid="uid://cjavjeke51epr" path="res://ui/player_hud/fludd_tank.tscn" id="8_n7xk5"]
-[ext_resource type="Script" uid="uid://c40eo5tkjri5l" path="res://ui/player_hud/music_label.gd" id="9_gbf2f"]
+[ext_resource type="PackedScene" uid="uid://bgl7f8thu2y4" path="res://ui/player_hud/life_meter/life_meter.tscn" id="7_m3cpd"]
+[ext_resource type="PackedScene" uid="uid://cjavjeke51epr" path="res://ui/player_hud/fludd_tank/fludd_tank.tscn" id="8_n7xk5"]
+[ext_resource type="Script" uid="uid://c40eo5tkjri5l" path="res://ui/music_label.gd" id="9_gbf2f"]
+[ext_resource type="Texture2D" uid="uid://3uy03oy3oapn" path="res://ui/player_hud/coin_counter/coin_red.svg" id="10_vqsyl"]
 [ext_resource type="PackedScene" uid="uid://wiwa8qtme50h" path="res://ui/debug/debug_overlay.tscn" id="14_gbf2f"]
 [ext_resource type="Script" uid="uid://trfav0yjiqxm" path="res://ui/screen_manager/pause_screen/pause_screen.gd" id="17_q1vx3"]
 [ext_resource type="Script" uid="uid://cnhr5du0ap6ki" path="res://ui/screen_manager/screen_manager.gd" id="18_ro5vq"]
@@ -151,15 +152,6 @@ _data = {
 &"RESET": SubResource("Animation_lfi41"),
 &"camera_focus": SubResource("Animation_mnpvh")
 }
-
-[sub_resource type="Gradient" id="Gradient_6apma"]
-offsets = PackedFloat32Array(0, 0.734884)
-colors = PackedColorArray(0.862745, 0.137255, 0.12549, 1, 0.676072, 0.0588219, 0.44751, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_m3cpd"]
-gradient = SubResource("Gradient_6apma")
-fill_from = Vector2(0, 0.504274)
-fill_to = Vector2(0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_vqsyl"]
 font = ExtResource("34_jyo83")
@@ -709,10 +701,10 @@ script = ExtResource("7_aeygf")
 max_count = 0
 bounce_color = Color(1, 0, 0, 1)
 
-[node name="TextureRect" parent="RedCoinCounter/CoinIcon/Gradient" index="0"]
-texture = SubResource("GradientTexture2D_m3cpd")
+[node name="CoinIcon" parent="RedCoinCounter/Panel" parent_id_path=PackedInt32Array(179507644, 1793591954) index="0" unique_id=111884767]
+texture = ExtResource("10_vqsyl")
 
-[node name="Count" parent="RedCoinCounter" index="2"]
+[node name="Count" parent="RedCoinCounter" index="1" unique_id=1388909774]
 modulate = Color(1, 0.98678994, 0.98678994, 1)
 text = "0/0"
 

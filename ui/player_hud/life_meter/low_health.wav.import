@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://jogpycjpxk85"
-path="res://.godot/imported/low_health.wav-386196eaa9c4c478f3886ca9da6bc824.sample"
+path="res://.godot/imported/low_health.wav-3f797d2c97b7eebd909d90246e5ee74d.sample"
 
 [deps]
 
-source_file="res://ui/player_hud/low_health.wav"
-dest_files=["res://.godot/imported/low_health.wav-386196eaa9c4c478f3886ca9da6bc824.sample"]
+source_file="res://ui/player_hud/life_meter/low_health.wav"
+dest_files=["res://.godot/imported/low_health.wav-3f797d2c97b7eebd909d90246e5ee74d.sample"]
 
 [params]
 
