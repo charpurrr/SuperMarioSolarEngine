@@ -12,11 +12,18 @@ static var default_size: Vector2i = Vector2i(
 ## using the hotkey.
 static var last_none_fs: int = 1
 
+## The index of the screen on which the programs center is.
+static var screen: int
+## The screen size of [member screen].
+static var screen_size: Vector2i
+## The programs window size.
+static var window_size: Vector2i
+
 
 static func set_win_scale(new_scale):
-	var screen: int = DisplayServer.window_get_current_screen()
-	var screen_size: Vector2i = DisplayServer.screen_get_size(screen)
-	var window_size: Vector2i = default_size * (new_scale + 1)
+	screen = DisplayServer.window_get_current_screen()
+	screen_size = DisplayServer.screen_get_size(screen)
+	window_size = default_size * (new_scale + 1)
 
 	# Set fullscreen if a window scale exceeds the bounds of the screen.
 	if window_size > screen_size:

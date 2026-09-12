@@ -52,7 +52,6 @@ var is_pulsing: bool = false:
 			scale = Vector2.ONE
 
 @export_category("References")
-@export var graphics: Control
 @export var text: Control
 @export var outline: Button 
 @export var label: Label
@@ -91,7 +90,11 @@ func _process(_delta: float) -> void:
 
 	if not is_shaking: return
 
-	graphics.position = Vector2(graphics_x_spring.displacement, graphics_y_spring.displacement)
+	get_tree().call_group(
+		&"graphics",
+		&"set_offset_transform_position",
+		Vector2(graphics_x_spring.displacement, graphics_y_spring.displacement)
+	)
 	text.position = Vector2(text_x_spring.displacement, text_y_spring.displacement)
 	queue_redraw()
 
@@ -102,7 +105,11 @@ func _process(_delta: float) -> void:
 		is_zero_approx(text_y_spring.displacement)
 	):
 		is_shaking = false
-		graphics.position = Vector2.ZERO
+		get_tree().call_group(
+			&"graphics",
+			&"set_offset_transform_position",
+			Vector2.ZERO
+		)
 
 
 func take_hit(amt: int, _type: HealthModule.DamageType = HealthModule.DamageType.GENERIC):

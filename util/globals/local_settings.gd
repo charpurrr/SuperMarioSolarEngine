@@ -31,7 +31,7 @@ var settings: Dictionary[String, Variant] = {
 	"Developer":
 		[
 			"debug_toggle",
-			"debug_toggle_collision_shapes",
+			"debug_toggle_hitboxes",
 		],
 	# TODO: replace % 0 with whatever system we decide to to for multiplayer
 	"Bindings":
@@ -68,7 +68,7 @@ var defaults: Dictionary[String, Variant] = {
 
 	# Developer
 	"debug_toggle": false,
-	"debug_toggle_collision_shapes": false,
+	"debug_toggle_hitboxes": false,
 
 	# Bindings
 	"right": Util.get_default_events("right", true),

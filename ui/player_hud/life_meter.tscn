@@ -13,6 +13,7 @@ audio_bus = &"UI"
 volume = 0.0
 pitch = 1.0
 overwrite_other_in_bus = false
+overwrite_other_in_source = false
 is_2d = false
 metadata/_custom_type_script = "uid://b262pbs7y0djt"
 
@@ -94,7 +95,7 @@ font_color = Color(0.896656, 0.896656, 0.896656, 1)
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
-[node name="LifeMeter" type="Control" unique_id=1176880236 node_paths=PackedStringArray("graphics", "text", "outline", "label", "graphics_x_spring", "graphics_y_spring", "text_x_spring", "text_y_spring")]
+[node name="LifeMeter" type="Control" unique_id=1176880236 node_paths=PackedStringArray("text", "outline", "label", "graphics_x_spring", "graphics_y_spring", "text_x_spring", "text_y_spring")]
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
@@ -111,27 +112,15 @@ hit_shake_power = 2.0
 low_health_sfx = SubResource("Resource_nmlpw")
 low_health_pulse_speed = 15.0
 low_health_pulse_amount = 0.02
-graphics = NodePath("Graphics")
 text = NodePath("Text")
-outline = NodePath("Graphics/OutlineInside")
+outline = NodePath("OutlineInside")
 label = NodePath("Text/HP")
 graphics_x_spring = NodePath("GraphicsShakeXSpring")
 graphics_y_spring = NodePath("GraphicsShakeYSpring")
 text_x_spring = NodePath("TextShakeXSpring")
 text_y_spring = NodePath("TextShakeYSpring")
 
-[node name="Graphics" type="Control" parent="." unique_id=1791304968]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 6.1035156e-05
-offset_bottom = -3.8146973e-05
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="BorderGradient" type="Button" parent="Graphics" unique_id=1754785759]
+[node name="BorderGradient" type="Button" parent="." unique_id=1754785759 groups=["graphics"]]
 show_behind_parent = true
 clip_children = 1
 layout_mode = 1
@@ -143,7 +132,7 @@ grow_vertical = 2
 theme_override_styles/disabled = SubResource("StyleBoxFlat_hgbqu")
 disabled = true
 
-[node name="TextureRect" type="TextureRect" parent="Graphics/BorderGradient" unique_id=477723936]
+[node name="TextureRect" type="TextureRect" parent="BorderGradient" unique_id=477723936]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -152,7 +141,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_s7xgs")
 
-[node name="Outline" type="Button" parent="Graphics" unique_id=134984817]
+[node name="Outline" type="Button" parent="." unique_id=134984817 groups=["graphics"]]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -163,7 +152,7 @@ grow_vertical = 2
 theme_override_styles/disabled = SubResource("StyleBoxFlat_dkpll")
 disabled = true
 
-[node name="InsideGradient" type="Button" parent="Graphics" unique_id=10176580]
+[node name="InsideGradient" type="Button" parent="." unique_id=10176580 groups=["graphics"]]
 show_behind_parent = true
 clip_children = 1
 layout_mode = 1
@@ -179,7 +168,7 @@ grow_vertical = 2
 theme_override_styles/disabled = SubResource("StyleBoxFlat_hgbqu")
 disabled = true
 
-[node name="TextureRect" type="TextureRect" parent="Graphics/InsideGradient" unique_id=1145852261]
+[node name="TextureRect" type="TextureRect" parent="InsideGradient" unique_id=1145852261]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -188,8 +177,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_ohmsp")
 
-[node name="OutlineInside" type="Button" parent="Graphics" unique_id=1202507504]
-z_index = 1
+[node name="OutlineInside" type="Button" parent="." unique_id=1202507504 groups=["graphics"]]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -200,6 +188,7 @@ offset_right = -6.0
 offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
+offset_transform_enabled = true
 theme_override_styles/disabled = SubResource("StyleBoxFlat_rpg4r")
 disabled = true
 

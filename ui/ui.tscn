@@ -11,9 +11,9 @@
 [ext_resource type="Script" uid="uid://blkgg52gdx748" path="res://ui/player_hud/red_coin_counter.gd" id="7_aeygf"]
 [ext_resource type="FontFile" uid="uid://e821cxxeybxh" path="res://ui/fonts/mario_sunshine.ttf" id="7_ctsqr"]
 [ext_resource type="PackedScene" uid="uid://bgl7f8thu2y4" path="res://ui/player_hud/life_meter.tscn" id="7_m3cpd"]
-[ext_resource type="Script" uid="uid://dgat047njqsvp" path="res://ui/debug/debug_label.gd" id="8_2m7jo"]
 [ext_resource type="PackedScene" uid="uid://cjavjeke51epr" path="res://ui/player_hud/fludd_tank.tscn" id="8_n7xk5"]
 [ext_resource type="Script" uid="uid://c40eo5tkjri5l" path="res://ui/player_hud/music_label.gd" id="9_gbf2f"]
+[ext_resource type="PackedScene" uid="uid://wiwa8qtme50h" path="res://ui/debug/debug_overlay.tscn" id="14_gbf2f"]
 [ext_resource type="Script" uid="uid://trfav0yjiqxm" path="res://ui/screen_manager/pause_screen/pause_screen.gd" id="17_q1vx3"]
 [ext_resource type="Script" uid="uid://cnhr5du0ap6ki" path="res://ui/screen_manager/screen_manager.gd" id="18_ro5vq"]
 [ext_resource type="Shader" uid="uid://c8kax0imw2g1t" path="res://util/shaders/map_gradient.gdshader" id="19_uav4i"]
@@ -226,11 +226,6 @@ _data = {
 &"RESET": SubResource("Animation_vqsyl"),
 &"fade_past": SubResource("Animation_gbf2f")
 }
-
-[sub_resource type="LabelSettings" id="LabelSettings_pm0uo"]
-font_size = 10
-outline_size = 7
-outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_unrd8"]
 length = 0.001
@@ -672,11 +667,12 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_n7xk5"]
 font = ExtResource("34_jyo83")
 
-[node name="UI" type="CanvasLayer" unique_id=393817163 node_paths=PackedStringArray("life_meter", "screen_manager", "color_blur", "zoom_blur_player", "notif_list", "debug", "debug_label", "input_display")]
+[node name="UI" type="CanvasLayer" unique_id=393817163 node_paths=PackedStringArray("life_meter", "debug_overlay", "screen_manager", "color_blur", "zoom_blur_player", "notif_list")]
 process_mode = 3
 layer = 0
 script = ExtResource("1_75fsn")
 life_meter = NodePath("LifeMeter")
+debug_overlay = NodePath("DebugOverlay")
 screen_manager = NodePath("ScreenManager")
 color_blur = NodePath("ScreenManager/ColorBlurEffect")
 game_pause_sfx = SubResource("Resource_aeygf")
@@ -684,9 +680,6 @@ game_unpause_sfx = SubResource("Resource_gbf2f")
 zoom_blur_player = NodePath("CameraZoomMosaic/AnimationPlayer")
 notif_scene = ExtResource("4_oqxfb")
 notif_list = NodePath("Notifications")
-debug = NodePath("Debug")
-debug_label = NodePath("Debug/DebugLabel")
-input_display = NodePath("Debug/InputDisplay")
 
 [node name="BackBufferFront" type="BackBufferCopy" parent="." unique_id=1979935432]
 copy_mode = 2
@@ -742,44 +735,7 @@ speed_scale = 1.5
 [node name="FluddTank" parent="." unique_id=756701723 groups=["HUD"] instance=ExtResource("8_n7xk5")]
 fuel = 0.0
 
-[node name="Debug" type="Control" parent="." unique_id=1835258959]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="DebugLabel" type="Label" parent="Debug" unique_id=1988126284]
-layout_mode = 0
-offset_right = 134.0
-offset_bottom = 218.0
-theme_override_font_sizes/font_size = 10
-text = "		FPS = %s \\n
-		is_on_floor() = %s
-		can_air_action() = %s
-		get_floor_angle / TAU = %.3f
-		floor_incline = %.3f \\n
-		position.x = %.3f
-		position.y = %.3f
-		velocity.x = %.3f
-		velocity.y = %.3f \\n
-		body_rotation = %.3f
-		doll.rotation = %.3f
-		facing = %d
-		state = %s"
-label_settings = SubResource("LabelSettings_pm0uo")
-script = ExtResource("8_2m7jo")
-
-[node name="InputDisplay" type="HBoxContainer" parent="Debug" unique_id=1768160601]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -30.0
-grow_vertical = 0
-theme_override_constants/separation = 8
+[node name="DebugOverlay" parent="." unique_id=117615456 instance=ExtResource("14_gbf2f")]
 
 [node name="ScreenManager" type="Control" parent="." unique_id=1634294683 node_paths=PackedStringArray("color_blur", "anime_player")]
 z_index = 1

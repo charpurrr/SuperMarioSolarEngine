@@ -11,7 +11,7 @@ enum Quality {
 var current_quality: Quality
 
 var debug_toggle: bool = false
-var debug_toggle_collision_shapes: bool = false
+var debug_toggle_hitboxes: bool = false
 
 var fullscreened: bool = false
 
@@ -46,7 +46,7 @@ func _ready():
 
 	buses[&"Music"].update_mute(LocalSettings.load_setting("Audio", "music_muted"))
 	debug_toggle = LocalSettings.load_setting("Developer", "debug_toggle")
-	debug_toggle_collision_shapes = LocalSettings.load_setting("Developer", "debug_toggle_collision_shapes")
+	debug_toggle_hitboxes = LocalSettings.load_setting("Developer", "debug_toggle_hitboxes")
 
 
 func _unhandled_input(event):
@@ -69,9 +69,9 @@ func _unhandled_input(event):
 		debug_toggle = !debug_toggle
 		LocalSettings.change_setting("Developer", "debug_toggle", debug_toggle)
 	
-	if event.is_action_pressed(&"debug_toggle_collision_shapes"):
-		debug_toggle_collision_shapes = !debug_toggle_collision_shapes
-		LocalSettings.change_setting("Developer", "debug_toggle_collision_shapes", debug_toggle_collision_shapes)
+	if event.is_action_pressed(&"debug_toggle_hitboxes"):
+		debug_toggle_hitboxes = !debug_toggle_hitboxes
+		LocalSettings.change_setting("Developer", "debug_toggle_hitboxes", debug_toggle_hitboxes)
 
 
 func _setting_changed(key: String, value: Variant):

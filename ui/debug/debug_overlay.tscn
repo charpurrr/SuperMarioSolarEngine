@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://wiwa8qtme50h"]
+
+[ext_resource type="Script" uid="uid://b25jp3h6u8lsc" path="res://ui/debug/debug_overlay.gd" id="1_8v70k"]
+[ext_resource type="FontFile" uid="uid://bbuo41ab8iqsa" path="res://ui/fonts/superstar_saga.ttf" id="2_8v70k"]
+[ext_resource type="Texture2D" uid="uid://c18tj6qqypi4o" path="res://ui/debug/input_display/keyboard/keyboard.svg" id="3_tkeri"]
+[ext_resource type="Texture2D" uid="uid://dnhhw44bsmue2" path="res://ui/debug/input_display/mouse/mouse.svg" id="4_wfpet"]
+
+[node name="DebugOverlay" type="Control" unique_id=117615456 node_paths=PackedStringArray("label_l", "label_r", "input_keyboard_display", "input_mouse_display")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8v70k")
+label_l = NodePath("DebugLabelL")
+label_r = NodePath("DebugLabelR")
+input_keyboard_display = NodePath("InputKeyboardDisplay")
+input_mouse_display = NodePath("InputMouseDisplay")
+
+[node name="DebugLabelL" type="RichTextLabel" parent="." unique_id=2042254289]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -7.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/text_highlight_h_padding = 0
+theme_override_constants/text_highlight_v_padding = 0
+theme_override_fonts/normal_font = ExtResource("2_8v70k")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[bgcolor=#5a5a5ac8]
+1234567890
+
+HELLO WORLD!"
+
+[node name="DebugLabelR" type="RichTextLabel" parent="." unique_id=462109645]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -7.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/text_highlight_h_padding = 0
+theme_override_constants/text_highlight_v_padding = 0
+theme_override_fonts/normal_font = ExtResource("2_8v70k")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[bgcolor=#5a5a5ac8]
+1234567890
+
+HELLO WORLD!"
+horizontal_alignment = 2
+
+[node name="InputKeyboardDisplay" type="TextureRect" parent="." unique_id=1421962247]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -60.0
+offset_right = 187.65591
+offset_bottom = -4.0
+grow_vertical = 0
+texture = ExtResource("3_tkeri")
+
+[node name="InputMouseDisplay" type="TextureRect" parent="." unique_id=915683787]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 200.0
+offset_top = -44.0
+offset_right = 40.0
+offset_bottom = -10.0
+grow_vertical = 0
+texture = ExtResource("4_wfpet")

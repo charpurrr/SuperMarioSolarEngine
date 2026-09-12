@@ -2,7 +2,7 @@ extends Label
 
 @export var branch: String = "main"
 
-const REPO_OWNER: String = "Charpurrr"
+const REPO_OWNER: String = "charpurrr"
 const REPO_NAME: String = "SuperMarioSolarEngine"
 
 var http_request: HTTPRequest = HTTPRequest.new()
