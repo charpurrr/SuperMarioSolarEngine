@@ -12,7 +12,7 @@ var actor: Node = null
 ## The root of the state machine.
 var manager: StateManager = null
 
-## Cache of StateLinks to other states in the machine.
+## Cache of [StateLink]s to other states in the machine.
 var _link_cache: Dictionary[StringName, StateLink] = {}
 
 ## True when on the first cycle of the physics loop.
@@ -91,8 +91,8 @@ func reset_state(handover: Variant = null):
 	trigger_enter(handover)
 
 
-## Artificially set this actor's state through its name as seen in its [StateManager].
-func set_to_state(state: StringName, handover: Variant = null):
+## Artificially set the machine's leaf through its name as seen in the node tree.
+func set_leaf(state: StringName, handover: Variant = null):
 	call_deferred(&"_switch_leaf", _get_link(state), handover)
 
 
@@ -100,6 +100,7 @@ func set_to_state(state: StringName, handover: Variant = null):
 func get_leaf() -> State:
 	if live_substate == null:
 		return self
+
 	return live_substate.get_leaf()
 
 

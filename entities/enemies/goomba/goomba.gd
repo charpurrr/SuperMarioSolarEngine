@@ -36,7 +36,7 @@ func take_hit(_source: Node, _damage_type: HealthModule.DamageType):
 
 func die(source: Node, damage_type: HealthModule.DamageType):
 	hurtbox.monitoring = false
-	state_manager.set_to_state(&"Die", [source, damage_type])
+	state_manager.set_leaf(&"Die", [source, damage_type])
 
 
 func _on_hurtbox_body_entered(_body: Node2D) -> void:
