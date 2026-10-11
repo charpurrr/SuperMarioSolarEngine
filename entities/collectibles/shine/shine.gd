@@ -14,4 +14,4 @@ func _process(_delta: float) -> void:
 
 func _on_collect() -> void:
 	super()
-	player.state_manager.set_to_state(&"Fall")
+	player.state_manager.set_leaf(&"Fall")

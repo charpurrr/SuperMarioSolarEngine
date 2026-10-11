@@ -58,16 +58,16 @@ func _physics_process(_delta) -> void:
 		for area in climb_check.get_overlapping_areas():
 			var parent := area.get_parent()
 			if parent is Pole and not movement.is_submerged():
-				state_manager.set_to_state(&"Climb", [area.global_position, parent.height])
+				state_manager.set_leaf(&"Climb", [area.global_position, parent.height])
 				current_pole = parent
 
 
 func take_hit(source: Node, damage_type: HealthModule.DamageType) -> void:
-	state_manager.set_to_state(&"Hit", [source, damage_type, false])
+	state_manager.set_leaf(&"Hit", [source, damage_type, false])
 
 
 func die(source: Node, damage_type: HealthModule.DamageType) -> void:
-	state_manager.set_to_state(&"Hit", [source, damage_type, true])
+	state_manager.set_leaf(&"Hit", [source, damage_type, true])
 
 
 func is_overlapping_enemy() -> bool:
