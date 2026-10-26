@@ -21,9 +21,6 @@ extends Camera2D
 @export var shake_x_spring: DampedOscillator
 @export var shake_y_spring: DampedOscillator
 
-## This is set in [WorldMachine].
-@onready var player: Player
-
 ## The current camera zoom in percentage.
 ## (Note: higher zoom percentage means you can see more level.)
 var zoom_percentage: float = 100
@@ -42,7 +39,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if focus and focus is Player and player and player.health_module.hp == 0:
+	if focus == WorldMachine.player and WorldMachine.player.health_module.hp == 0:
 		focus = null
 
 	if not is_instance_valid(focus):

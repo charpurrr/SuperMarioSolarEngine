@@ -28,12 +28,7 @@ extends CharacterBody2D
 @export var stomp_hurtbox: Area2D
 @export var gp_hurtbox: Area2D
 
-@onready var health_module := HealthModule.new(hp, take_hit, die, is_overlapping_enemy)
-
-## This is set in [WorldMachine].
-@onready var world_machine: WorldMachine
-## This is set in [WorldMachine].
-@onready var camera: PlayerCamera
+@onready var health_module: HealthModule = HealthModule.new(hp, take_hit, die, is_overlapping_enemy)
 
 var current_pole: Pole = null
 

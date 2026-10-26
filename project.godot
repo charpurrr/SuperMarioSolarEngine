@@ -35,6 +35,7 @@ LocalSettings="*res://util/globals/local_settings.gd"
 GameState="*res://util/globals/game_state.gd"
 MusicManager="*res://util/globals/music_manager.tscn"
 TransitionManager="*res://util/globals/transition_manager/transition_manager.tscn"
+WorldMachine="*uid://bite6o37o0mpt"
 
 [display]
 

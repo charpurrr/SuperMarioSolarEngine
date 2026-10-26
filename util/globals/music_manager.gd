@@ -9,7 +9,6 @@ signal music_changed()
 		if not Engine.is_editor_hint() and is_instance_valid(music):
 			_play()
 
-
 var current_song: Song
 
 

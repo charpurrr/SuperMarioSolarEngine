@@ -33,7 +33,7 @@ func _physics_tick(delta: float) -> void:
 
 
 func _on_exit() -> void:
-	actor.world_machine.reload_level(SceneTransition.Type.BOWSER)
+	WorldMachine.reload_stage(SceneTransition.Type.BOWSER)
 
 
 func _trans_rules() -> Variant:

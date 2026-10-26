@@ -19,13 +19,13 @@ func on_load() -> void:
 
 
 func restart() -> void:
-	ui.world_machine.reload_level()
+	WorldMachine.reload_stage()
 	manager.switch_screen(self)
 
 
 func quit() -> void:
 	MusicManager.stop()
-	GameState.emit_signal(&"paused")
+	GameState.toggle_pause()
 
 	TransitionManager.transition_scene(
 		title_screen,

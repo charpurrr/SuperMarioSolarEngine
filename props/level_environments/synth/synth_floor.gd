@@ -1,9 +1,6 @@
 @tool
 extends TextureRect
 
-@export_color_no_alpha var line_color: Color
-@export var scroll_divisor: float = 8
-
 const LINE_H_COUNT: int = 16
 const LINE_V_COUNT: int = 25
 
@@ -11,16 +8,16 @@ const LINE_H_EXP: float = 1.5
 
 const LINE_WIDTH_PX: int = 2
 
+@export_color_no_alpha var line_color: Color
+@export var scroll_divisor: float = 8
 
 var cam_x: float
-
-@onready var environment: LevelEnvironment = owner
 
 
 func _physics_process(_delta):
 	if !Engine.is_editor_hint():
-		cam_x = -environment.camera.get_screen_center_position().x / scroll_divisor
-	
+		cam_x = -WorldMachine.camera.get_screen_center_position().x / scroll_divisor
+
 	queue_redraw()
 
 

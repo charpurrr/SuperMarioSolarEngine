@@ -47,13 +47,13 @@ func _on_enter(params: Variant) -> void:
 
 	actor.doll.self_modulate = freeze_flash_modulate
 
-	actor.camera.shake(Math.random_coord(camera_shake_power))
+	WorldMachine.camera.shake(Math.random_coord(camera_shake_power))
 	actor.health_module.enabled = false
 
 	Engine.time_scale = 0.0
 
-	var freeze_duration := freeze_timer / Engine.get_frames_per_second()
-	var flash_interval := freeze_duration / (freeze_flashes * 2.0)
+	var freeze_duration: float = freeze_timer / Engine.get_frames_per_second()
+	var flash_interval: float = freeze_duration / (freeze_flashes * 2.0)
 
 	_flash_loop(flash_interval)
 

@@ -7,18 +7,18 @@ extends Screen
 
 
 func _ready() -> void:
-	if owner.world_machine == null:
+	if WorldMachine.stage == null:
 		retry.toggle_disable(true)
 		reset.toggle_disable(true)
 
 
 func _on_resume_pressed() -> void:
-	GameState.paused.emit()
+	GameState.toggle_pause()
 	manager.switch_screen(self)
 
 
 func _on_retry_pressed() -> void:
-	ui.world_machine.reload_level()
+	WorldMachine.reload_stage()
 	manager.switch_screen(self)
 
 

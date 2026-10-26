@@ -1,7 +1,5 @@
 extends Node
 
-signal paused
-
 enum GraphicsMode {
 		LOW_RES,
 		HIGH_RES,
@@ -27,8 +25,6 @@ var buses: Dictionary[StringName, AudioBus] = {
 
 
 func _ready() -> void:
-	paused.connect(pause_toggle)
-
 	get_viewport().size_changed.connect(
 		func(): WindowSizer.set_global_shader_size(get_viewport().get_visible_rect().size)
 	)
@@ -95,8 +91,7 @@ func _setting_changed(key: String, value: Variant) -> void:
 			buses[&"Music"].update_mute(value)
 
 
-## Called with the paused signal.
-func pause_toggle() -> void:
+func toggle_pause() -> void:
 	get_tree().paused = !is_paused()
 
 

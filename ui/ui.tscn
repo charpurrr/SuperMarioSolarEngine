@@ -4,7 +4,6 @@
 [ext_resource type="AudioStream" uid="uid://b58aveo75onan" path="res://ui/sfx/pause.wav" id="2_1xskv"]
 [ext_resource type="Script" uid="uid://b262pbs7y0djt" path="res://util/resources/sound_effect.gd" id="2_y28h8"]
 [ext_resource type="AudioStream" uid="uid://cmr5pcu7wv31v" path="res://ui/sfx/submenu_close.wav" id="3_cb22p"]
-[ext_resource type="PackedScene" uid="uid://b41sl5v4p501f" path="res://ui/notification/notification.tscn" id="4_oqxfb"]
 [ext_resource type="Shader" uid="uid://cgcjxa2rl4edn" path="res://util/shaders/smw_mozaic.gdshader" id="5_yrl65"]
 [ext_resource type="PackedScene" uid="uid://blb650dgb5q1i" path="res://ui/player_hud/coin_counter/coin_counter.tscn" id="6_6apma"]
 [ext_resource type="PackedScene" uid="uid://bq6hfndw3jm4e" path="res://util/custom_nodes/shader_toggle/shader_toggle.tscn" id="6_q1vx3"]
@@ -428,7 +427,7 @@ overwrite_other_in_source = false
 is_2d = false
 metadata/_custom_type_script = "uid://b262pbs7y0djt"
 
-[node name="UI" type="CanvasLayer" unique_id=393817163 node_paths=PackedStringArray("life_meter", "debug_overlay", "screen_manager", "color_blur", "zoom_blur_player", "notif_list")]
+[node name="UI" type="CanvasLayer" unique_id=393817163 node_paths=PackedStringArray("life_meter", "debug_overlay", "screen_manager", "color_blur", "zoom_blur_player")]
 process_mode = 3
 layer = 0
 script = ExtResource("1_75fsn")
@@ -439,8 +438,6 @@ color_blur = NodePath("ScreenManager/ColorBlurEffect")
 game_pause_sfx = SubResource("Resource_aeygf")
 game_unpause_sfx = SubResource("Resource_gbf2f")
 zoom_blur_player = NodePath("CameraZoomMosaic/AnimationPlayer")
-notif_scene = ExtResource("4_oqxfb")
-notif_list = NodePath("Notifications")
 
 [node name="BackBufferFront" type="BackBufferCopy" parent="." unique_id=1979935432]
 copy_mode = 2
@@ -720,12 +717,9 @@ offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LevelInfo" type="VBoxContainer" parent="ScreenManager/PauseScreen/Info/Contents/ShineInfo/VBoxContainer/InfoPanel/TextContainer" unique_id=324846530 node_paths=PackedStringArray("level_name", "mission_name", "mission_info")]
+[node name="LevelInfo" type="VBoxContainer" parent="ScreenManager/PauseScreen/Info/Contents/ShineInfo/VBoxContainer/InfoPanel/TextContainer" unique_id=324846530]
 layout_mode = 2
 script = ExtResource("35_knc46")
-level_name = NodePath("LevelName")
-mission_name = NodePath("MissionSelector/MissionName")
-mission_info = NodePath("../MissionInfo")
 
 [node name="LevelName" type="Label" parent="ScreenManager/PauseScreen/Info/Contents/ShineInfo/VBoxContainer/InfoPanel/TextContainer/LevelInfo" unique_id=705250168]
 layout_mode = 2
@@ -915,7 +909,6 @@ size_flags_stretch_ratio = 0.2
 [node name="OptionsScreen" parent="ScreenManager" unique_id=121927984 instance=ExtResource("39_limpb")]
 visible = false
 layout_mode = 1
-anchors_preset = 15
 offset_top = -360.0
 offset_bottom = -360.0
 
