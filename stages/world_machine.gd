@@ -42,9 +42,6 @@ func deload_stage() -> void:
 	player = null
 	camera = null
 
-	# Reset static variables.
-	Coin.total_reds = 0
-
 
 ## Reloads the current level.
 func reload_stage(
@@ -97,7 +94,12 @@ func _bind_player():
 	if player_scene:
 		player = player_scene.instantiate()
 
+		var spawns: Array[Node] = get_tree().get_nodes_in_group(&"player_spawn_points")
+
 		stage.add_child(player)
+		player.global_position = spawns[0].global_position
+
+		get_tree().call_group(&"player_spawn_points", "queue_free")
 	else:
 		push_warning("No Player configured in the WorldMachine.")
 
