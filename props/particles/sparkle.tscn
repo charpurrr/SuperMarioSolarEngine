@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1wf1b4d4xfvf"]
+[gd_scene format=3 uid="uid://d1wf1b4d4xfvf"]
 
-[ext_resource type="Texture2D" uid="uid://biy1toqd5qyul" path="res://props/particles/stars.png" id="1_lvopr"]
+[ext_resource type="Texture2D" uid="uid://biy1toqd5qyul" path="res://props/particles/stars_yellow.png" id="1_lvopr"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lbx15"]
 particles_animation = true
@@ -12,7 +12,7 @@ particles_anim_loop = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.301829, 1), 0.0, 0.0, 0, 0, Vector2(0.710366, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[node name="Sparkle" type="CPUParticles2D"]
+[node name="Sparkle" type="CPUParticles2D" unique_id=1275298960]
 material = SubResource("CanvasItemMaterial_lbx15")
 emitting = false
 amount = 3

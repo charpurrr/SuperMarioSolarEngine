@@ -1,3 +1,4 @@
+@tool
 class_name PlayerSpawnPoint
 extends Node2D
 ## The initial spawn point for the [Player] in the [Stage].
@@ -6,16 +7,20 @@ extends Node2D
 ## If another [PlayerSpawnPoint] is found by the WorldMachine, it will be ignored.
 ## Only the first instance will be looked at.
 
-## The state in which the player should start when spawned here.
-## This name should correspond with the state's node name in the [Player] scene.
-@export var starting_state: StringName
-
-## The direction in which the player will face when spawned here.
-@export_enum("Left", "Right") var starting_direction: int
-
-## The player's starting velocity when spawned here.
-@export var starting_velocity: Vector2
+@export var spawn_data: PlayerSpawnData
+@export_group("Meta")
+@export var hologram: Sprite2D
 
 
 func _ready() -> void:
 	add_to_group(&"player_spawn_points")
+
+	spawn_data.changed.connect(_spawn_data_changed)
+
+	if not Engine.is_editor_hint():
+		hologram.hide()
+
+
+func _spawn_data_changed() -> void:
+	hologram.position = spawn_data.offset
+	hologram.flip_h = true if spawn_data.starting_direction == 0 else false

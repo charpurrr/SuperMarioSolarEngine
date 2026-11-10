@@ -37,6 +37,8 @@
 [ext_resource type="PackedScene" uid="uid://ct32lhgrs787t" path="res://entities/platforms/moving/moving_platform.tscn" id="35_1nvlm"]
 [ext_resource type="PackedScene" uid="uid://b0ojpnfyepmw6" path="res://entities/interactables/pole/pole.tscn" id="36_fwr2a"]
 [ext_resource type="PackedScene" uid="uid://w3fg3wqpk357" path="res://entities/player/shared/player_spawn_point.tscn" id="37_rnb4s"]
+[ext_resource type="Script" uid="uid://cx3grodcqtp35" path="res://util/resources/player_spawn_data.gd" id="38_dvxun"]
+[ext_resource type="PackedScene" uid="uid://07y08u5me74" path="res://entities/interactables/checkpoint/checkpoint.tscn" id="38_f78fx"]
 
 [sub_resource type="Resource" id="Resource_rnb4s"]
 script = ExtResource("3_rtnqg")
@@ -3944,6 +3946,22 @@ script = ExtResource("16_l20wn")
 texture = ExtResource("19_37d1f")
 mesh = SubResource("ArrayMesh_ie2xe")
 
+[sub_resource type="Resource" id="Resource_x6j5q"]
+script = ExtResource("38_dvxun")
+metadata/_custom_type_script = "uid://cx3grodcqtp35"
+
+[sub_resource type="Resource" id="Resource_dvxun"]
+resource_local_to_scene = true
+script = ExtResource("38_dvxun")
+offset = Vector2(0, 40)
+metadata/_custom_type_script = "uid://cx3grodcqtp35"
+
+[sub_resource type="Resource" id="Resource_061n5"]
+resource_local_to_scene = true
+script = ExtResource("38_dvxun")
+offset = Vector2(0, 40)
+metadata/_custom_type_script = "uid://cx3grodcqtp35"
+
 [node name="SynthStratum" type="Node2D" unique_id=482401929]
 script = ExtResource("1_v54hh")
 stage_name = &"Synth Stratum"
@@ -4016,223 +4034,227 @@ collision_mask = 0
 polygon = PackedVector2Array(0, 0, 400, 0, 400, 192, 0, 192)
 script = ExtResource("28_sii3m")
 
-[node name="SynthSemi2" parent="." unique_id=1119436948 instance=ExtResource("29_5ltkg")]
+[node name="Semisolids" type="Node" parent="." unique_id=101204706]
+
+[node name="SynthSemi2" parent="Semisolids" unique_id=1119436948 instance=ExtResource("29_5ltkg")]
 position = Vector2(376, 6)
 
-[node name="SynthSemi5" parent="." unique_id=160614789 instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi5" parent="Semisolids" unique_id=160614789 instance=ExtResource("29_5ltkg")]
 position = Vector2(-681, -117)
 
-[node name="SynthSemi7" parent="." unique_id=1893914281 instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi7" parent="Semisolids" unique_id=1893914281 instance=ExtResource("29_5ltkg")]
 position = Vector2(-467, -200)
 
-[node name="SynthSemi8" parent="." unique_id=1532963853 instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi8" parent="Semisolids" unique_id=1532963853 instance=ExtResource("29_5ltkg")]
 position = Vector2(-437, -200)
 
-[node name="SynthSemi9" parent="." unique_id=1558600325 instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi9" parent="Semisolids" unique_id=1558600325 instance=ExtResource("29_5ltkg")]
 position = Vector2(-179, -200)
 
-[node name="SynthSemi10" parent="." unique_id=2035202827 instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi10" parent="Semisolids" unique_id=2035202827 instance=ExtResource("29_5ltkg")]
 position = Vector2(-149, -200)
 
-[node name="SynthSemi15" parent="." unique_id=115681301 instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi15" parent="Semisolids" unique_id=115681301 instance=ExtResource("29_5ltkg")]
 position = Vector2(170, -625)
 
-[node name="SynthSemi16" parent="." unique_id=316069947 instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi16" parent="Semisolids" unique_id=316069947 instance=ExtResource("29_5ltkg")]
 position = Vector2(200, -625)
 
-[node name="SynthSemi21" parent="." unique_id=1193647225 instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi21" parent="Semisolids" unique_id=1193647225 instance=ExtResource("29_5ltkg")]
 position = Vector2(525, -395)
 
-[node name="SynthSemi22" parent="." unique_id=1084572496 instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi22" parent="Semisolids" unique_id=1084572496 instance=ExtResource("29_5ltkg")]
 position = Vector2(555, -395)
 
-[node name="SynthSemi23" parent="." unique_id=896020293 instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi23" parent="Semisolids" unique_id=896020293 instance=ExtResource("29_5ltkg")]
 position = Vector2(1193, -449.5)
 
-[node name="SynthSemi24" parent="." unique_id=764219359 instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi24" parent="Semisolids" unique_id=764219359 instance=ExtResource("29_5ltkg")]
 position = Vector2(1223, -449.5)
 
-[node name="SynthSemi27" parent="." unique_id=31552587 instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi27" parent="Semisolids" unique_id=31552587 instance=ExtResource("29_5ltkg")]
 position = Vector2(2240, -680)
 
-[node name="SynthSemi30" parent="." unique_id=512938086 instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi30" parent="Semisolids" unique_id=512938086 instance=ExtResource("29_5ltkg")]
 position = Vector2(2270, -680)
 
-[node name="SynthSemi31" parent="." unique_id=1123983741 instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi31" parent="Semisolids" unique_id=1123983741 instance=ExtResource("29_5ltkg")]
 position = Vector2(2314, -562)
 
-[node name="SynthSemi32" parent="." unique_id=89080067 instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi32" parent="Semisolids" unique_id=89080067 instance=ExtResource("29_5ltkg")]
 position = Vector2(2344, -562)
 
-[node name="SynthSemi28" parent="." unique_id=1996338518 instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi28" parent="Semisolids" unique_id=1996338518 instance=ExtResource("29_5ltkg")]
 position = Vector2(1416, -110)
 
-[node name="SynthSemi17" parent="." unique_id=165159708 instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi17" parent="Semisolids" unique_id=165159708 instance=ExtResource("29_5ltkg")]
 position = Vector2(12, -774)
 
-[node name="SynthSemi18" parent="." unique_id=121609506 instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi18" parent="Semisolids" unique_id=121609506 instance=ExtResource("29_5ltkg")]
 position = Vector2(42, -774)
 
-[node name="SynthSemi19" parent="." unique_id=1453793260 instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi19" parent="Semisolids" unique_id=1453793260 instance=ExtResource("29_5ltkg")]
 position = Vector2(1241, -1302)
 rotation = -0.523598
 
-[node name="SynthSemi13" parent="." unique_id=385206639 instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi13" parent="Semisolids" unique_id=385206639 instance=ExtResource("29_5ltkg")]
 position = Vector2(-159, -625)
 
-[node name="SynthSemi20" parent="." unique_id=1090093455 instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi20" parent="Semisolids" unique_id=1090093455 instance=ExtResource("29_5ltkg")]
 position = Vector2(1267, -1317)
 rotation = -0.523598
 
-[node name="SynthSemi14" parent="." unique_id=1303330812 instance=ExtResource("29_5ltkg")]
+[node name="SynthSemi14" parent="Semisolids" unique_id=1303330812 instance=ExtResource("29_5ltkg")]
 position = Vector2(-129, -625)
 
-[node name="Coin" parent="." unique_id=340800817 instance=ExtResource("30_ihghk")]
+[node name="Coins" type="Node" parent="." unique_id=1138138168]
+
+[node name="Coin" parent="Coins" unique_id=340800817 instance=ExtResource("30_ihghk")]
 position = Vector2(816, -56)
-frame_progress = 0.68909204
+frame_progress = 0.40797317
 
-[node name="Coin4" parent="." unique_id=277150002 instance=ExtResource("30_ihghk")]
+[node name="Coin4" parent="Coins" unique_id=277150002 instance=ExtResource("30_ihghk")]
 position = Vector2(840, -56)
-frame_progress = 0.68909204
+frame_progress = 0.40797317
 
-[node name="Coin5" parent="." unique_id=404130534 instance=ExtResource("30_ihghk")]
+[node name="Coin5" parent="Coins" unique_id=404130534 instance=ExtResource("30_ihghk")]
 position = Vector2(864, -56)
-frame_progress = 0.68909204
+frame_progress = 0.40797317
 
-[node name="Coin6" parent="." unique_id=1322689316 instance=ExtResource("30_ihghk")]
+[node name="Coin6" parent="Coins" unique_id=1322689316 instance=ExtResource("30_ihghk")]
 position = Vector2(888, -56)
-frame_progress = 0.68909204
+frame_progress = 0.40797317
 
-[node name="Coin7" parent="." unique_id=1378051243 instance=ExtResource("30_ihghk")]
+[node name="Coin7" parent="Coins" unique_id=1378051243 instance=ExtResource("30_ihghk")]
 position = Vector2(912, -56)
-frame_progress = 0.68909204
+frame_progress = 0.40797317
 
-[node name="Coin8" parent="." unique_id=17712182 instance=ExtResource("30_ihghk")]
+[node name="Coin8" parent="Coins" unique_id=17712182 instance=ExtResource("30_ihghk")]
 position = Vector2(816, -80)
-frame_progress = 0.68909204
+frame_progress = 0.40797317
 
-[node name="Coin9" parent="." unique_id=1470669526 instance=ExtResource("30_ihghk")]
+[node name="Coin9" parent="Coins" unique_id=1470669526 instance=ExtResource("30_ihghk")]
 position = Vector2(840, -80)
-frame_progress = 0.68909204
+frame_progress = 0.40797317
 
-[node name="Coin10" parent="." unique_id=713682470 instance=ExtResource("30_ihghk")]
+[node name="Coin10" parent="Coins" unique_id=713682470 instance=ExtResource("30_ihghk")]
 position = Vector2(864, -80)
-frame_progress = 0.68909204
+frame_progress = 0.40797317
 
-[node name="Coin11" parent="." unique_id=1622627861 instance=ExtResource("30_ihghk")]
+[node name="Coin11" parent="Coins" unique_id=1622627861 instance=ExtResource("30_ihghk")]
 position = Vector2(888, -80)
-frame_progress = 0.68909204
+frame_progress = 0.40797317
 
-[node name="Coin12" parent="." unique_id=208637934 instance=ExtResource("30_ihghk")]
+[node name="Coin12" parent="Coins" unique_id=208637934 instance=ExtResource("30_ihghk")]
 position = Vector2(912, -80)
-frame_progress = 0.68909204
+frame_progress = 0.40797317
 
-[node name="Coin13" parent="." unique_id=907856111 instance=ExtResource("30_ihghk")]
+[node name="Coin13" parent="Coins" unique_id=907856111 instance=ExtResource("30_ihghk")]
 position = Vector2(1352, -368)
 animation = &"1"
-frame_progress = 0.70332193
+frame_progress = 0.42219865
 type = 1
 
-[node name="Coin14" parent="." unique_id=511112308 instance=ExtResource("30_ihghk")]
+[node name="Coin14" parent="Coins" unique_id=511112308 instance=ExtResource("30_ihghk")]
 position = Vector2(1376, -368)
 animation = &"1"
-frame_progress = 0.70332193
+frame_progress = 0.42219865
 type = 1
 
-[node name="Coin15" parent="." unique_id=105276685 instance=ExtResource("30_ihghk")]
+[node name="Coin15" parent="Coins" unique_id=105276685 instance=ExtResource("30_ihghk")]
 position = Vector2(1400, -368)
 animation = &"1"
-frame_progress = 0.70332193
+frame_progress = 0.42219865
 type = 1
 
-[node name="Coin16" parent="." unique_id=1274666472 instance=ExtResource("30_ihghk")]
+[node name="Coin16" parent="Coins" unique_id=1274666472 instance=ExtResource("30_ihghk")]
 position = Vector2(1424, -368)
 animation = &"1"
-frame_progress = 0.70332193
+frame_progress = 0.42219865
 type = 1
 
-[node name="Coin17" parent="." unique_id=1786769016 instance=ExtResource("30_ihghk")]
+[node name="Coin17" parent="Coins" unique_id=1786769016 instance=ExtResource("30_ihghk")]
 position = Vector2(1448, -368)
 animation = &"1"
-frame_progress = 0.70332193
+frame_progress = 0.42219865
 type = 1
 
-[node name="Coin18" parent="." unique_id=939281997 instance=ExtResource("30_ihghk")]
+[node name="Coin18" parent="Coins" unique_id=939281997 instance=ExtResource("30_ihghk")]
 position = Vector2(1352, -392)
 animation = &"1"
-frame_progress = 0.70332193
+frame_progress = 0.42219865
 type = 1
 
-[node name="Coin19" parent="." unique_id=1871986574 instance=ExtResource("30_ihghk")]
+[node name="Coin19" parent="Coins" unique_id=1871986574 instance=ExtResource("30_ihghk")]
 position = Vector2(1376, -392)
 animation = &"1"
-frame_progress = 0.70332193
+frame_progress = 0.42219865
 type = 1
 
-[node name="Coin20" parent="." unique_id=1493925600 instance=ExtResource("30_ihghk")]
+[node name="Coin20" parent="Coins" unique_id=1493925600 instance=ExtResource("30_ihghk")]
 position = Vector2(1400, -392)
 animation = &"1"
-frame_progress = 0.70332193
+frame_progress = 0.42219865
 type = 1
 
-[node name="Coin21" parent="." unique_id=111746828 instance=ExtResource("30_ihghk")]
+[node name="Coin21" parent="Coins" unique_id=111746828 instance=ExtResource("30_ihghk")]
 position = Vector2(1424, -392)
 animation = &"1"
-frame_progress = 0.70332193
+frame_progress = 0.42219865
 type = 1
 
-[node name="Coin22" parent="." unique_id=1708821704 instance=ExtResource("30_ihghk")]
+[node name="Coin22" parent="Coins" unique_id=1708821704 instance=ExtResource("30_ihghk")]
 position = Vector2(1448, -392)
 animation = &"1"
-frame_progress = 0.70332193
+frame_progress = 0.42219865
 type = 1
 
-[node name="Coin3" parent="." unique_id=184724743 instance=ExtResource("30_ihghk")]
+[node name="Coin3" parent="Coins" unique_id=184724743 instance=ExtResource("30_ihghk")]
 position = Vector2(1416, -600)
 animation = &"2"
-frame_progress = 0.94915104
+frame_progress = 0.6680231
 type = 2
 
-[node name="Coin23" parent="." unique_id=1541214465 instance=ExtResource("30_ihghk")]
+[node name="Coin23" parent="Coins" unique_id=1541214465 instance=ExtResource("30_ihghk")]
 position = Vector2(1440, -600)
 animation = &"2"
-frame_progress = 0.94915104
+frame_progress = 0.6680231
 type = 2
 
-[node name="Coin24" parent="." unique_id=596649156 instance=ExtResource("30_ihghk")]
+[node name="Coin24" parent="Coins" unique_id=596649156 instance=ExtResource("30_ihghk")]
 position = Vector2(1464, -600)
 animation = &"2"
-frame_progress = 0.94915104
+frame_progress = 0.6680231
 type = 2
 
-[node name="Coin25" parent="." unique_id=289522181 instance=ExtResource("30_ihghk")]
+[node name="Coin25" parent="Coins" unique_id=289522181 instance=ExtResource("30_ihghk")]
 position = Vector2(1488, -600)
 animation = &"2"
-frame_progress = 0.94915104
+frame_progress = 0.6680231
 type = 2
 
-[node name="Coin26" parent="." unique_id=191404582 instance=ExtResource("30_ihghk")]
+[node name="Coin26" parent="Coins" unique_id=191404582 instance=ExtResource("30_ihghk")]
 position = Vector2(1512, -600)
 animation = &"2"
-frame_progress = 0.94915104
+frame_progress = 0.6680231
 type = 2
 
-[node name="Coin27" parent="." unique_id=622251736 instance=ExtResource("30_ihghk")]
+[node name="Coin27" parent="Coins" unique_id=622251736 instance=ExtResource("30_ihghk")]
 position = Vector2(1536, -600)
 animation = &"2"
-frame_progress = 0.94915104
+frame_progress = 0.6680231
 type = 2
 
-[node name="Coin28" parent="." unique_id=886201400 instance=ExtResource("30_ihghk")]
+[node name="Coin28" parent="Coins" unique_id=886201400 instance=ExtResource("30_ihghk")]
 position = Vector2(1560, -600)
 animation = &"2"
-frame_progress = 0.94915104
+frame_progress = 0.6680231
 type = 2
 
-[node name="Coin29" parent="." unique_id=810516682 instance=ExtResource("30_ihghk")]
+[node name="Coin29" parent="Coins" unique_id=810516682 instance=ExtResource("30_ihghk")]
 position = Vector2(1584, -600)
 animation = &"2"
-frame_progress = 0.94915104
+frame_progress = 0.6680231
 type = 2
 
 [node name="Shine" parent="." unique_id=1728559446 instance=ExtResource("31_nma4k")]
@@ -4257,4 +4279,15 @@ position = Vector2(-1189, 144)
 height = 800
 
 [node name="PlayerSpawnPoint" parent="." unique_id=1611156822 instance=ExtResource("37_rnb4s")]
-position = Vector2(79, 0)
+position = Vector2(103, 0)
+spawn_data = SubResource("Resource_x6j5q")
+
+[node name="Checkpoint" parent="." unique_id=2044422533 instance=ExtResource("38_f78fx")]
+position = Vector2(8, -59)
+spawn_data = SubResource("Resource_dvxun")
+uuid = "ac7c175b-3dd3-464d-aae7-5b013f561aa6"
+
+[node name="Checkpoint2" parent="." unique_id=1451069325 instance=ExtResource("38_f78fx")]
+position = Vector2(591, -54)
+spawn_data = SubResource("Resource_061n5")
+uuid = "2188453a-b3e1-400d-8f26-8d9bbb8520cb"

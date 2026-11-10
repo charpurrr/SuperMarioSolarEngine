@@ -2,10 +2,16 @@
 
 [ext_resource type="Texture2D" uid="uid://bv2kjusi21ixm" path="res://entities/player/mario/spawner.png" id="1_2rrsn"]
 [ext_resource type="Script" uid="uid://ccl2tl2ytc81p" path="res://entities/player/shared/player_spawn_point.gd" id="1_7y3gj"]
+[ext_resource type="Script" uid="uid://cx3grodcqtp35" path="res://util/resources/player_spawn_data.gd" id="2_tajyh"]
 
-[node name="PlayerSpawnPoint" type="Node2D" unique_id=1611156822]
+[sub_resource type="Resource" id="Resource_7y3gj"]
+script = ExtResource("2_tajyh")
+metadata/_custom_type_script = "uid://cx3grodcqtp35"
+
+[node name="PlayerSpawnPoint" type="Node2D" unique_id=1611156822 node_paths=PackedStringArray("hologram")]
 script = ExtResource("1_7y3gj")
-starting_state = &"Airborne"
+spawn_data = SubResource("Resource_7y3gj")
+hologram = NodePath("Hologram")
 
 [node name="Hologram" type="Sprite2D" parent="." unique_id=1432670360]
 texture = ExtResource("1_2rrsn")

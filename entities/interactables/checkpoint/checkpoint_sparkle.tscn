@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://dw32s0tcs2ltj"]
+
+[ext_resource type="Texture2D" uid="uid://cysbfn4k1kmhn" path="res://entities/interactables/checkpoint/checkpoint_entered_sparkle.png" id="1_qmmu1"]
+[ext_resource type="Texture2D" uid="uid://cfllojq1nexru" path="res://entities/interactables/checkpoint/checkpoint_sparkle.png" id="2_jso8l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4fcd"]
+atlas = ExtResource("1_qmmu1")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78o0x"]
+atlas = ExtResource("1_qmmu1")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kr1c5"]
+atlas = ExtResource("1_qmmu1")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mheq"]
+atlas = ExtResource("1_qmmu1")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dh0mu"]
+atlas = ExtResource("1_qmmu1")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhtmk"]
+atlas = ExtResource("1_qmmu1")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gip8j"]
+atlas = ExtResource("2_jso8l")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnurw"]
+atlas = ExtResource("2_jso8l")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o054u"]
+atlas = ExtResource("2_jso8l")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eixis"]
+atlas = ExtResource("2_jso8l")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7p1e"]
+atlas = ExtResource("2_jso8l")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_in2ov"]
+atlas = ExtResource("2_jso8l")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yf5fn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4fcd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78o0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kr1c5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mheq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dh0mu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhtmk")
+}],
+"loop": 1,
+"name": &"entered",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gip8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xnurw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o054u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eixis")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7p1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_in2ov")
+}],
+"loop": 1,
+"name": &"normal",
+"speed": 12.0
+}]
+
+[node name="SparkleFollower" type="PathFollow2D" unique_id=53967973]
+rotates = false
+
+[node name="Sparkle" type="AnimatedSprite2D" parent="." unique_id=1951694826]
+sprite_frames = SubResource("SpriteFrames_yf5fn")
+animation = &"normal"
+autoplay = "normal"

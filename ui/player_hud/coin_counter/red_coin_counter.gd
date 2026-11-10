@@ -27,6 +27,8 @@ var init_pos_y: float = 0.0
 
 
 func _ready() -> void:
+	if Engine.is_editor_hint(): return
+
 	# This signal gets added to the root in the main coin counter.
 	get_tree().connect(&"coin_collected", _increment)
 

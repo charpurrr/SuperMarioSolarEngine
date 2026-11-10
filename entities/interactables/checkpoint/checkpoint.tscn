@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://07y08u5me74"]
+
+[ext_resource type="Script" uid="uid://dqpfmkwu0h7bj" path="res://entities/interactables/checkpoint/checkpoint.gd" id="1_ojvqt"]
+[ext_resource type="Script" uid="uid://b262pbs7y0djt" path="res://util/resources/sound_effect.gd" id="2_piwfo"]
+[ext_resource type="Script" uid="uid://cx3grodcqtp35" path="res://util/resources/player_spawn_data.gd" id="2_pyqff"]
+[ext_resource type="AudioStream" uid="uid://brv51tydfcukp" path="res://entities/interactables/checkpoint/checkpoint.wav" id="3_pyqff"]
+[ext_resource type="Texture2D" uid="uid://dumbud2y8eqod" path="res://entities/player/mario/spawner_checkpoint.png" id="5_wo8uq"]
+
+[sub_resource type="Resource" id="Resource_dvxun"]
+resource_local_to_scene = true
+script = ExtResource("2_pyqff")
+offset = Vector2(0, 40)
+metadata/_custom_type_script = "uid://cx3grodcqtp35"
+
+[sub_resource type="Resource" id="Resource_pyqff"]
+script = ExtResource("2_piwfo")
+stream = ExtResource("3_pyqff")
+audio_bus = &"SFX"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = true
+attenuation = 1.0
+max_distance = 2000.0
+inherit_position = true
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yf5fn"]
+radius = 40.0
+
+[sub_resource type="Curve2D" id="Curve2D_piwfo"]
+_data = {
+"points": PackedVector2Array(-24.353313, 0.15255499, 24, 0, 0, -40, 0, 0, 0, 40, 24, 0, 0, 0, -24, 0, 0, 40, 0, 0, 0, -40, -24, 0, 0, 0, 0, 0, 0, -40)
+}
+point_count = 5
+
+[node name="Checkpoint" type="Node2D" unique_id=2044422533 node_paths=PackedStringArray("path", "hologram")]
+script = ExtResource("1_ojvqt")
+spawn_data = SubResource("Resource_dvxun")
+particle_speed = 0.001
+enter_sfx = SubResource("Resource_pyqff")
+particle_amount = 14
+path = NodePath("Path2D")
+hologram = NodePath("Hologram")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=924002246]
+collision_layer = 64
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1569043447]
+scale = Vector2(0.6, 1)
+shape = SubResource("CircleShape2D_yf5fn")
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1718069254]
+curve = SubResource("Curve2D_piwfo")
+
+[node name="Hologram" type="Sprite2D" parent="." unique_id=1061132647]
+position = Vector2(0, 40)
+texture = ExtResource("5_wo8uq")
+offset = Vector2(0, -24)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvb3bw7ktqasr"]
+[gd_scene format=3 uid="uid://dvb3bw7ktqasr"]
 
 [ext_resource type="Texture2D" uid="uid://chws3rokc6d0i" path="res://props/particles/dust.png" id="1_8nixf"]
-[ext_resource type="Texture2D" uid="uid://biy1toqd5qyul" path="res://props/particles/stars.png" id="2_jsx5s"]
+[ext_resource type="Texture2D" uid="uid://biy1toqd5qyul" path="res://props/particles/stars_yellow.png" id="2_jsx5s"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vb2tc"]
 particles_animation = true

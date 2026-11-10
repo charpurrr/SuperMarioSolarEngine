@@ -3,8 +3,6 @@ extends KeyScene
 ## It's a container for the level, the user interface, and the player.
 ## It's always loaded when a level is being played.
 
-signal reloaded
-
 const USER_INTERFACE_SCENE: PackedScene = preload("uid://csf56lkxqqb12")
 const PLAYER_CAMERA_SCENE: PackedScene = preload("uid://cnd277snrwca5")
 
@@ -43,7 +41,16 @@ func deload_stage() -> void:
 	camera = null
 
 
-## Reloads the current level.
+## Completely restarts the stage, clearing all previous data.
+func restart_stage(
+		to_overlay: SceneTransition.Type = SceneTransition.Type.CIRCLE,
+		from_overlay: SceneTransition.Type = SceneTransition.Type.CIRCLE
+	) -> void:
+		StageCache.clear()
+		reload_stage(to_overlay, from_overlay)
+
+
+## Reloads the current stage.
 func reload_stage(
 		to_overlay: SceneTransition.Type = SceneTransition.Type.CIRCLE,
 		from_overlay: SceneTransition.Type = SceneTransition.Type.CIRCLE
@@ -60,7 +67,12 @@ func _on_out_trans_finished() -> void:
 
 	deload_stage()
 	load_stage()
-	reloaded.emit()
+
+	if not StageCache.last_checkpoint.is_empty():
+		for checkpoint: Checkpoint in get_tree().get_nodes_in_group(&"checkpoints"):
+			if checkpoint.uuid == StageCache.last_checkpoint:
+				checkpoint.active = true
+				player.global_position = checkpoint.global_position + checkpoint.spawn_data.offset
 
 	TransitionManager.greenlight_load_in()
 
@@ -96,10 +108,9 @@ func _bind_player():
 
 		var spawns: Array[Node] = get_tree().get_nodes_in_group(&"player_spawn_points")
 
+		player.global_position = spawns[0].global_position + spawns[0].spawn_data.offset
+		player.velocity = spawns[0].spawn_data.starting_velocity
 		stage.add_child(player)
-		player.global_position = spawns[0].global_position
-
-		get_tree().call_group(&"player_spawn_points", "queue_free")
 	else:
 		push_warning("No Player configured in the WorldMachine.")
 
