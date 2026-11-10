@@ -118,6 +118,20 @@ var consec_jumps: int = 0
 
 ## The player body rotation in radians.
 var body_rotation: float = 0
+
+## Determines which [PlayerState]s are squashed & stretched based on velocity.
+## Includes super-states.
+@export var squash_stretch_states: Array[PlayerState] = []
+## Determines which states in [member squash_stretch_states] use the
+## inverted axis for their velocity-based squash & stretch.
+@export var squash_stretch_invert: Array[PlayerState] = []
+## Multiplier for sprite squash & stretch visuals.
+@export var squash_stretch_intensity: float = 0.0005
+## Amount of time (in seconds) it takes for sprite squash & stretch visuals to reach the maximum value.
+@export_range(0.0, 1.0, 0.001, "hide_control", "or_greater", "suffix:sec")
+var squash_stretch_duration: float = 0.015
+## The [Tween] that controls the animation of the sprite squash & stretch visuals.
+var squash_stretch_tween: Tween
 #endregion
 
 
@@ -155,7 +169,7 @@ func accelerate(add_vel: Vector2, cap: float, angular_friction: float = 0) -> vo
 		return
 
 	var direction = add_vel.normalized()
-	
+
 	var speed = actor.velocity.dot(direction)
 	var speed_step = add_vel.length()
 
@@ -166,7 +180,7 @@ func accelerate(add_vel: Vector2, cap: float, angular_friction: float = 0) -> vo
 
 	# Break if less than zero to avoid deceleration
 	speed_step = max(speed_step, 0)
-	
+
 	# Apply the speed in the correct direction
 	var speed_step_vec: Vector2 = speed_step * direction
 
