@@ -101,9 +101,9 @@ func _change_scene() -> void:
 
 		match load_status:
 			ResourceLoader.THREAD_LOAD_IN_PROGRESS:
-				if round(new_scene_load_progress[-1] * 100) != last_scene_load_progress:
+				if floor(new_scene_load_progress[-1] * 100) != last_scene_load_progress:
 					_print_load_progress()
-					last_scene_load_progress = round(new_scene_load_progress[-1] * 100)
+					last_scene_load_progress = floor(new_scene_load_progress[-1] * 100)
 			ResourceLoader.THREAD_LOAD_LOADED:
 				_print_load_progress()
 				break
