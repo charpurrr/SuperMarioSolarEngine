@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://fqw2ijybc4ba"]
+
+[ext_resource type="Script" uid="uid://dt1kd6bcc2crh" path="res://entities/interactables/area_transition/area_transition.gd" id="1_r7dxq"]
+
+[sub_resource type="Gradient" id="Gradient_13h03"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yf5fn"]
+gradient = SubResource("Gradient_13h03")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+resource_local_to_scene = true
+size = Vector2(6, 16)
+
+[node name="AreaTransition" type="Node2D" unique_id=782292948]
+script = ExtResource("1_r7dxq")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2061280728]
+offset_right = 6.0
+offset_bottom = 16.0
+texture = SubResource("GradientTexture2D_yf5fn")
+expand_mode = 1
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2031095374]
+collision_layer = 64
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=667610021]
+position = Vector2(3, 8)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(0, 0.6, 0.69803923, 0.078431375)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

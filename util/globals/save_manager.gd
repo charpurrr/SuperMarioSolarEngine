@@ -131,7 +131,7 @@ func _fail(reason: String) -> bool:
  
  
 ## Drops saved UUIDs that no longer exist in the stage manifest (level was edited).
-## Call from [method StageManager.load_stage] before [method StageCache.begin].
+## Call from [method StageManager.load_area] before [method StageCache.begin].
 func prune_stage(data: StageData) -> void:
 	if not profile.stages.has(data.id):
 		return

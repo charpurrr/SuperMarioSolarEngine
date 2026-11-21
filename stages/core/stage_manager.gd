@@ -1,3 +1,4 @@
+class_name StageManager
 extends KeyScene
 ## The [StageManager] handles area loading and behaviour during gameplay.
 ## It's a container for the level, the user interface, and the player.
@@ -6,6 +7,7 @@ extends KeyScene
 const USER_INTERFACE_SCENE: PackedScene = preload("uid://csf56lkxqqb12")
 const PLAYER_CAMERA_SCENE: PackedScene = preload("uid://cnd277snrwca5")
 
+static var current: StageManager
 static var stage: Stage
 static var environment: StageEnvironment
 static var player: Player
@@ -15,32 +17,44 @@ static var ui: UserInterface
 ## The manifest for this stage (areas, tracked IDs, totals). Optional: without it
 ## the manager falls back to [member stage_scene] and no progress is tracked.
 @export var stage_data: StageData
-## Fallback / quick-testing scene, used when there is no [member stage_data].
-@export var stage_scene: PackedScene
 @export var player_scene: PackedScene
 
 ## True when the next load should put the player at the last checkpoint
 ## instead of at a spawn point (respawn after death / quick restart).
-var _spawn_at_checkpoint: bool = false
+var spawn_at_checkpoint: bool = false
+
+
+func _enter_tree() -> void:
+	current = self
 
 
 func _unhandled_input(_event: InputEvent) -> void:
+	if stage == null:
+		return
+
 	if Input.is_action_just_pressed(&"quick_restart"):
-		reload_stage()
+		reload_area()
 
 
-func load_stage() -> void:
-	_bind_stage()
+func _exit_tree() -> void:
+	if current == self:
+		current = null
+
+
+func load_area() -> void:
+	_bind_area()
 	_bind_player()
 	_bind_camera()
 	_bind_ui()
 
-	MusicManager.music = stage.music
+	StageCache.area_loaded.emit()
 
 
-func deload_stage() -> void:
+func deload_area() -> void:
 	if GameState.is_paused():
 		GameState.toggle_pause()
+
+	MusicManager.stream_paused = false
 
 	stage.queue_free()
 	ui.queue_free()
@@ -57,13 +71,13 @@ func restart_stage(
 		if TransitionManager.transitioning: return
 
 		_begin_session()
-		reload_stage(to_overlay, from_overlay)
+		reload_area(to_overlay, from_overlay)
 
 
 ## Respawns the player. Anything not locked in by a checkpoint is lost
 ## (see [TrackPolicies]), then the stage is reloaded at the last checkpoint,
 ## or at the start if none was reached.
-func reload_stage(
+func reload_area(
 		to_overlay: SceneTransition.Type = SceneTransition.Type.CIRCLE,
 		from_overlay: SceneTransition.Type = SceneTransition.Type.CIRCLE
 	) -> void:
@@ -71,9 +85,9 @@ func reload_stage(
 
 	StageCache.on_death()
 
-	_spawn_at_checkpoint = StageCache.has_checkpoint()
+	spawn_at_checkpoint = StageCache.has_checkpoint()
 
-	if _spawn_at_checkpoint:
+	if spawn_at_checkpoint:
 		StageCache.current_area = StageCache.checkpoint_area
 	elif stage_data:
 		StageCache.current_area = stage_data.start_area
@@ -97,7 +111,7 @@ func change_area(
 	StageCache.current_area = area_id
 	StageCache.spawn_id = spawn_id
 
-	_spawn_at_checkpoint = false
+	spawn_at_checkpoint = false
 
 	_run_transition(to_overlay, from_overlay)
 
@@ -126,17 +140,17 @@ func _run_transition(
 func _on_out_trans_finished() -> void:
 	TransitionManager.scene_transition.out_trans_finished.disconnect(_on_out_trans_finished)
 
-	deload_stage()
-	load_stage()
+	deload_area()
+	load_area()
 
 	TransitionManager.greenlight_load_in()
 
 
 func _on_transition_to(_handover: Variant) -> void:
-	_spawn_at_checkpoint = false
+	spawn_at_checkpoint = false
 	_begin_session()
 
-	load_stage()
+	load_area()
 
 	TransitionManager.greenlight_load_in()
 
@@ -160,17 +174,17 @@ func _begin_session() -> void:
 	StageCache.current_area = stage_data.start_area
 	StageCache.spawn_id = stage_data.start_spawn
 
-	_spawn_at_checkpoint = false
+	spawn_at_checkpoint = false
 
 
 func _get_area_scene() -> PackedScene:
 	if stage_data and stage_data.areas.has(StageCache.current_area):
 		return stage_data.areas[StageCache.current_area]
 
-	return stage_scene
+	return null
 
 
-func _bind_stage():
+func _bind_area():
 	var area_scene: PackedScene = _get_area_scene()
 
 	assert(is_instance_valid(area_scene), "Trying to load invalid area.")
@@ -193,7 +207,7 @@ func _bind_player():
 
 		var checkpoint: Checkpoint = _find_checkpoint(StageCache.checkpoint_uuid)
 
-		if _spawn_at_checkpoint and checkpoint:
+		if spawn_at_checkpoint and checkpoint:
 			player.global_position = checkpoint.global_position + checkpoint.spawn_data.offset
 			player.velocity = checkpoint.spawn_data.starting_velocity
 		else:

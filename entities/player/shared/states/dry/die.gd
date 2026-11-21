@@ -33,7 +33,7 @@ func _physics_tick(delta: float) -> void:
 
 
 func _on_exit() -> void:
-	StageManager.reload_stage(SceneTransition.Type.BOWSER)
+	StageManager.current.reload_area(SceneTransition.Type.BOWSER)
 
 
 func _trans_rules() -> Variant:

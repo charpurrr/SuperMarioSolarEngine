@@ -18,7 +18,7 @@ func _on_resume_pressed() -> void:
 
 
 func _on_retry_pressed() -> void:
-	StageManager.reload_stage()
+	StageManager.current.reload_area()
 	manager.switch_screen(self)
 
 

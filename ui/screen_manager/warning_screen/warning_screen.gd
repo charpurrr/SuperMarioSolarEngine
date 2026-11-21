@@ -19,7 +19,7 @@ func on_load() -> void:
 
 
 func restart() -> void:
-	StageManager.restart_stage()
+	StageManager.current.restart_stage()
 	manager.switch_screen(self)
 
 

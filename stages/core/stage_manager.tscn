@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bite6o37o0mpt"]
+
+[ext_resource type="Script" uid="uid://bt625ce03kjut" path="res://stages/core/stage_manager.gd" id="1_oyop6"]
+[ext_resource type="Resource" uid="uid://ckm8xnfilx3sg" path="res://stages/synth_stratum/synth_stratum_data.tres" id="2_3k10i"]
+[ext_resource type="PackedScene" uid="uid://dgqp3sqvmcvpu" path="res://entities/player/mario/mario.tscn" id="3_wbwag"]
+
+[node name="StageManager" type="Control" unique_id=1389998845]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_oyop6")
+stage_data = ExtResource("2_3k10i")
+player_scene = ExtResource("3_wbwag")

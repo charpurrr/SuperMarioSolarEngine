@@ -33,11 +33,10 @@ config/icon="res://icon.png"
 
 LocalSettings="*res://util/globals/local_settings.gd"
 GameState="*res://util/globals/game_state.gd"
-MusicManager="*res://util/globals/music_manager.tscn"
 TransitionManager="*res://util/globals/transition_manager/transition_manager.tscn"
-StageManager="*uid://bite6o37o0mpt"
 SaveManager="*uid://cxq0xlplndxbm"
 StageCache="*uid://bsf36j3duqe5j"
+MusicManager="*res://util/globals/music_manager.tscn"
 
 [display]
 

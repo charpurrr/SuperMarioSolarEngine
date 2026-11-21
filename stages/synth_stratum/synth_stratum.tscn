@@ -2,18 +2,10 @@
 
 [ext_resource type="Script" uid="uid://whyqyw8guuki" path="res://stages/core/stage.gd" id="1_v54hh"]
 [ext_resource type="PackedScene" uid="uid://bfb4xq874buf6" path="res://props/level_environments/synth/synth.tscn" id="2_nma4k"]
-[ext_resource type="Script" uid="uid://dspslemtuknxr" path="res://util/resources/song_playlist.gd" id="3_rtnqg"]
-[ext_resource type="Script" uid="uid://c56bjnj2qtrvg" path="res://util/resources/song.gd" id="4_kuv8v"]
-[ext_resource type="Resource" uid="uid://tuivwbplcoxe" path="res://props/music/credits.tres" id="5_l20wn"]
-[ext_resource type="Resource" uid="uid://cgo34xd74j0bw" path="res://props/music/options.tres" id="6_1nvlm"]
-[ext_resource type="Resource" uid="uid://cshidjxiqds87" path="res://props/music/synth_stratum.tres" id="7_fwr2a"]
-[ext_resource type="Resource" uid="uid://cgelxoqn8jfww" path="res://props/music/attacking_vertical.tres" id="8_rnb4s"]
-[ext_resource type="Resource" uid="uid://daebewcgqirrt" path="res://props/music/chillwave.tres" id="9_f78fx"]
-[ext_resource type="Resource" uid="uid://dl2ufur7jykmx" path="res://props/music/waittawhile_teka_breather.tres" id="10_f78fx"]
-[ext_resource type="Resource" uid="uid://csmg13t1qd0ss" path="res://props/music/different_self.tres" id="11_dvxun"]
-[ext_resource type="Resource" uid="uid://e57r4fe6ogaq" path="res://props/music/voyager.tres" id="12_rowtk"]
+[ext_resource type="Resource" uid="uid://vrhxc6bdu8jk" path="res://stages/synth_stratum/synth_stratum_music.tres" id="3_kuv8v"]
 [ext_resource type="PackedScene" uid="uid://cvbbpn56rtjwd" path="res://entities/enemies/goomba/goomba.tscn" id="12_x6j5q"]
 [ext_resource type="Script" uid="uid://dhdc4b8yddyej" path="res://addons/rmsmartshape/shapes/shape.gd" id="13_03dry"]
+[ext_resource type="PackedScene" uid="uid://fqw2ijybc4ba" path="res://entities/interactables/area_transition/area_transition.tscn" id="13_061n5"]
 [ext_resource type="Script" uid="uid://bwcf4pjgprn0k" path="res://addons/rmsmartshape/shapes/point.gd" id="15_lfm5d"]
 [ext_resource type="Script" uid="uid://llobjh5hvry" path="res://addons/rmsmartshape/shapes/mesh.gd" id="16_l20wn"]
 [ext_resource type="Script" uid="uid://bo5f7qe27jfje" path="res://addons/rmsmartshape/shapes/point_array.gd" id="16_tgy2j"]
@@ -41,13 +33,6 @@
 [ext_resource type="PackedScene" uid="uid://w3fg3wqpk357" path="res://entities/player/shared/player_spawn_point.tscn" id="37_rnb4s"]
 [ext_resource type="Script" uid="uid://cx3grodcqtp35" path="res://util/resources/player_spawn_data.gd" id="38_dvxun"]
 [ext_resource type="PackedScene" uid="uid://07y08u5me74" path="res://entities/interactables/checkpoint/checkpoint.tscn" id="38_f78fx"]
-
-[sub_resource type="Resource" id="Resource_rnb4s"]
-script = ExtResource("3_rtnqg")
-shuffle = true
-loop = true
-songs = Array[ExtResource("4_kuv8v")]([ExtResource("8_rnb4s"), ExtResource("9_f78fx"), ExtResource("5_l20wn"), ExtResource("11_dvxun"), ExtResource("6_1nvlm"), ExtResource("7_fwr2a"), ExtResource("12_rowtk"), ExtResource("10_f78fx")])
-metadata/_custom_type_script = "uid://dspslemtuknxr"
 
 [sub_resource type="Resource" id="Resource_l73rp"]
 script = ExtResource("15_lfm5d")
@@ -3952,13 +3937,13 @@ mesh = SubResource("ArrayMesh_ie2xe")
 script = ExtResource("38_dvxun")
 metadata/_custom_type_script = "uid://cx3grodcqtp35"
 
-[sub_resource type="Resource" id="Resource_061n5"]
+[sub_resource type="Resource" id="Resource_l20wn"]
 resource_local_to_scene = true
 script = ExtResource("38_dvxun")
 offset = Vector2(0, 40)
 metadata/_custom_type_script = "uid://cx3grodcqtp35"
 
-[sub_resource type="Resource" id="Resource_tgy2j"]
+[sub_resource type="Resource" id="Resource_1nvlm"]
 resource_local_to_scene = true
 script = ExtResource("38_dvxun")
 offset = Vector2(0, 40)
@@ -3968,7 +3953,13 @@ metadata/_custom_type_script = "uid://cx3grodcqtp35"
 script = ExtResource("1_v54hh")
 stage_name = &"Synth Stratum"
 environment = ExtResource("2_nma4k")
-music = SubResource("Resource_rnb4s")
+music = ExtResource("3_kuv8v")
+
+[node name="AreaTransition" parent="." unique_id=782292948 instance=ExtResource("13_061n5")]
+position = Vector2(2758, -301)
+scale = Vector2(2.6179457, 8.243783)
+destination_area_id = &"sub"
+destination_spawn = &"PlayerSpawnPoint"
 
 [node name="Goomba" parent="." unique_id=1024455853 instance=ExtResource("12_x6j5q")]
 position = Vector2(-757, -464)
@@ -4236,10 +4227,10 @@ spawn_data = SubResource("Resource_x6j5q")
 
 [node name="Checkpoint" parent="." unique_id=2044422533 instance=ExtResource("38_f78fx")]
 position = Vector2(8, -59)
-spawn_data = SubResource("Resource_061n5")
+spawn_data = SubResource("Resource_l20wn")
 uuid = "5800881d-67c5-4266-bcb5-a42dd0244a02"
 
 [node name="Checkpoint2" parent="." unique_id=1451069325 instance=ExtResource("38_f78fx")]
 position = Vector2(591, -54)
-spawn_data = SubResource("Resource_tgy2j")
+spawn_data = SubResource("Resource_1nvlm")
 uuid = "2188453a-b3e1-400d-8f26-8d9bbb8520cb"

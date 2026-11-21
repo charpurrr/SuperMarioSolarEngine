@@ -4,7 +4,7 @@ extends Node2D
 ## The initial spawn point for the [Player] in the [Stage].
 ##
 ## Only one of these should exist at all times.
-## If another [PlayerSpawnPoint] is found by the StageManager, it will be ignored.
+## If another [PlayerSpawnPoint] is found by the [StageManager], it will be ignored.
 ## Only the first instance will be looked at.
 
 @export var spawn_data: PlayerSpawnData

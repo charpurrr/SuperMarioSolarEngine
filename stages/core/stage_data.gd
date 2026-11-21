@@ -98,25 +98,22 @@ func _scan(
 		errors: PackedStringArray
 	) -> void:
 	if node.is_in_group(SPAWN_GROUP):
-		spawn_names.append(StringName(node.name))
+		spawn_names.append(node.name)
 
 	if node.is_in_group(TrackedId.GROUP):
-		var where: String = "%s: %s" % [area_id, root.get_path_to(node)]
-		var raw_category: Variant = node.get(&"category")
-		var raw_uuid: Variant = node.get(&"uuid")
+		var where: String = "%s:%s" % [area_id, root.get_path_to(node)]
+		var category: StringName = node.get(&"category")
+		var uuid: String = node.get(&"uuid")
 
-		if raw_category == null or str(raw_category).is_empty():
+		if category == null or category.is_empty():
 			errors.append("%s has no category." % where)
-		elif raw_uuid == null or str(raw_uuid).is_empty():
-			errors.append("%s has no uuid. Open the area scene in the editor once so one is generated, then save it." % where)
+		elif uuid == null or uuid.is_empty():
+			errors.append("%s has no UUID. Open the area scene in the editor once so one is generated, then save it." % where)
+		elif seen.has(uuid):
+			errors.append("Duplicate UUID %s: %s and %s." % [uuid, seen[uuid], where])
 		else:
-			var uuid: String = str(raw_uuid)
-
-			if seen.has(uuid):
-				errors.append("Duplicate uuid %s: %s and %s." % [uuid, seen[uuid], where])
-			else:
-				seen[uuid] = where
-				result.get_or_add(StringName(str(raw_category)), []).append(uuid)
+			seen[uuid] = where
+			result.get_or_add(category, []).append(uuid)
 
 	for child: Node in node.get_children():
 		_scan(child, root, area_id, result, seen, spawn_names, errors)

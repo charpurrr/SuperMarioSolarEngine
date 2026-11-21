@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="SongPlaylist" format=3 uid="uid://vrhxc6bdu8jk"]
+
+[ext_resource type="Script" uid="uid://dspslemtuknxr" path="res://util/resources/song_playlist.gd" id="1_lml0g"]
+[ext_resource type="Script" uid="uid://c56bjnj2qtrvg" path="res://util/resources/song.gd" id="2_6vgxr"]
+[ext_resource type="Resource" uid="uid://cgelxoqn8jfww" path="res://props/music/attacking_vertical.tres" id="3_330ig"]
+[ext_resource type="Resource" uid="uid://daebewcgqirrt" path="res://props/music/chillwave.tres" id="4_lman1"]
+[ext_resource type="Resource" uid="uid://tuivwbplcoxe" path="res://props/music/credits.tres" id="5_xprvf"]
+[ext_resource type="Resource" uid="uid://csmg13t1qd0ss" path="res://props/music/different_self.tres" id="6_fjikk"]
+[ext_resource type="Resource" uid="uid://cgo34xd74j0bw" path="res://props/music/options.tres" id="7_bbsse"]
+[ext_resource type="Resource" uid="uid://cshidjxiqds87" path="res://props/music/synth_stratum.tres" id="8_hw3ux"]
+[ext_resource type="Resource" uid="uid://e57r4fe6ogaq" path="res://props/music/voyager.tres" id="9_2fmyx"]
+[ext_resource type="Resource" uid="uid://dl2ufur7jykmx" path="res://props/music/waittawhile_teka_breather.tres" id="10_t5e1s"]
+
+[resource]
+script = ExtResource("1_lml0g")
+shuffle = true
+loop = true
+songs = Array[ExtResource("2_6vgxr")]([ExtResource("3_330ig"), ExtResource("4_lman1"), ExtResource("5_xprvf"), ExtResource("6_fjikk"), ExtResource("7_bbsse"), ExtResource("8_hw3ux"), ExtResource("9_2fmyx"), ExtResource("10_t5e1s")])
+metadata/_custom_type_script = "uid://dspslemtuknxr"
