@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://cpjxkfqd6y2k1"]
+
+[ext_resource type="Texture2D" uid="uid://dc2jpp2kpkxoi" path="res://entities/collectibles/blue_coin/blue_coin.png" id="1_rlk8q"]
+[ext_resource type="Script" uid="uid://cxrtp0ruljk38" path="res://entities/collectibles/coin/coin.gd" id="2_p36dy"]
+[ext_resource type="Script" uid="uid://b262pbs7y0djt" path="res://util/resources/sound_effect.gd" id="3_glgqg"]
+[ext_resource type="AudioStream" uid="uid://drp8qcjuqkuof" path="res://entities/collectibles/blue_coin/blue.wav" id="4_x5jsg"]
+[ext_resource type="Script" uid="uid://dd8oyhd4nllix" path="res://util/resources/particle_effect.gd" id="6_dj8kb"]
+[ext_resource type="PackedScene" uid="uid://b6kr06nvygtb5" path="res://props/particles/sparkle_blue.tscn" id="8_ti4gh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffalg"]
+atlas = ExtResource("1_rlk8q")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsr3h"]
+atlas = ExtResource("1_rlk8q")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kupk5"]
+atlas = ExtResource("1_rlk8q")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5jsg"]
+atlas = ExtResource("1_rlk8q")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rfytu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffalg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsr3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kupk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5jsg")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 9.0
+}]
+
+[sub_resource type="Resource" id="Resource_5q0l6"]
+script = ExtResource("3_glgqg")
+stream = ExtResource("4_x5jsg")
+audio_bus = &"SFX"
+volume = 0.0
+pitch = 1.0
+overwrite_other_in_bus = false
+overwrite_other_in_source = false
+is_2d = true
+attenuation = 1.0
+max_distance = 2000.0
+inherit_position = true
+metadata/_custom_type_script = "uid://b262pbs7y0djt"
+
+[sub_resource type="Resource" id="Resource_scjr3"]
+script = ExtResource("6_dj8kb")
+particle_scene = ExtResource("8_ti4gh")
+metadata/_custom_type_script = "uid://dd8oyhd4nllix"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ywnjo"]
+size = Vector2(16, 16)
+
+[node name="BlueCoin" type="AnimatedSprite2D" unique_id=1718623630 node_paths=PackedStringArray("area")]
+sprite_frames = SubResource("SpriteFrames_rfytu")
+autoplay = "default"
+script = ExtResource("2_p36dy")
+collect_sound = SubResource("Resource_5q0l6")
+collect_particle = SubResource("Resource_scjr3")
+area = NodePath("Area2D")
+category = &"blue_coins"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1593272141]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1350994114]
+shape = SubResource("RectangleShape2D_ywnjo")

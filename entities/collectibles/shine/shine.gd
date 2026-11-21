@@ -1,3 +1,4 @@
+@tool
 class_name Shine
 extends Collectible
 ## Collectible Shine Sprites.
@@ -13,5 +14,5 @@ func _process(_delta: float) -> void:
 
 
 func _on_collect() -> void:
-	super()
-	player.state_manager.set_to_state(&"Fall")
+	StageManager.player.state_manager.set_to_state(&"Fall")
+	queue_free()

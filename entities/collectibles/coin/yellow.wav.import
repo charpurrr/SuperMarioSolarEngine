@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://che7x7rlhvhxb"
-path="res://.godot/imported/yellow.wav-d01457d216e346efc621a892590d8d76.sample"
+path="res://.godot/imported/yellow.wav-71d3e7176b1f913d31e168aa85743254.sample"
 
 [deps]
 
-source_file="res://entities/collectibles/coin/sfx/yellow.wav"
-dest_files=["res://.godot/imported/yellow.wav-d01457d216e346efc621a892590d8d76.sample"]
+source_file="res://entities/collectibles/coin/yellow.wav"
+dest_files=["res://.godot/imported/yellow.wav-71d3e7176b1f913d31e168aa85743254.sample"]
 
 [params]
 

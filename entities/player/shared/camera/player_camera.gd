@@ -39,7 +39,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if focus == WorldMachine.player and WorldMachine.player.health_module.hp == 0:
+	if focus == StageManager.player and StageManager.player.health_module.hp == 0:
 		focus = null
 
 	if not is_instance_valid(focus):

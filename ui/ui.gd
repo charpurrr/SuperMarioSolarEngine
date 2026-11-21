@@ -18,17 +18,17 @@ var hud_enabled: bool = true
 
 
 func _ready() -> void:
-	if WorldMachine.environment:
-		var gradient_map: GradientTexture1D = WorldMachine.environment.pause_gradient_map
+	if StageManager.environment:
+		var gradient_map: GradientTexture1D = StageManager.environment.pause_gradient_map
 		color_blur.material.set(&"shader_parameter/gradient", gradient_map)
 
-	if WorldMachine.player:
-		life_meter.max_hp = WorldMachine.player.hp
+	if StageManager.player:
+		life_meter.max_hp = StageManager.player.hp
 
-		if not WorldMachine.player.health_module.damaged.is_connected(life_meter.take_hit):
-			WorldMachine.player.health_module.damaged.connect(life_meter.take_hit)
+		if not StageManager.player.health_module.damaged.is_connected(life_meter.take_hit):
+			StageManager.player.health_module.damaged.connect(life_meter.take_hit)
 
-		debug_overlay.player = WorldMachine.player
+		debug_overlay.player = StageManager.player
 
 
 func _input(event: InputEvent) -> void:
@@ -37,7 +37,7 @@ func _input(event: InputEvent) -> void:
 	if GameState.is_paused():
 		return
 
-	_handle_camera_zoom_effect(event, WorldMachine.camera)
+	_handle_camera_zoom_effect(event, StageManager.camera)
 
 	if event.is_action_pressed(&"toggle_hud"):
 		get_tree().call_group(&"HUD", &"hide" if hud_enabled else &"show")

@@ -47,7 +47,7 @@ func _on_enter(params: Variant) -> void:
 
 	actor.doll.self_modulate = freeze_flash_modulate
 
-	WorldMachine.camera.shake(Math.random_coord(camera_shake_power))
+	StageManager.camera.shake(Math.random_coord(camera_shake_power))
 	actor.health_module.enabled = false
 
 	Engine.time_scale = 0.0

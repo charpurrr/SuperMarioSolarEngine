@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://drp8qcjuqkuof"
-path="res://.godot/imported/blue.wav-9dc8d19fce2c3e99ae60726689d42140.sample"
+path="res://.godot/imported/blue.wav-4c2d83612c70bbb15523f7f9835c587d.sample"
 
 [deps]
 
-source_file="res://entities/collectibles/coin/sfx/blue.wav"
-dest_files=["res://.godot/imported/blue.wav-9dc8d19fce2c3e99ae60726689d42140.sample"]
+source_file="res://entities/collectibles/blue_coin/blue.wav"
+dest_files=["res://.godot/imported/blue.wav-4c2d83612c70bbb15523f7f9835c587d.sample"]
 
 [params]
 

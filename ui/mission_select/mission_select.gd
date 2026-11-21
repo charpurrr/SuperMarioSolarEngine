@@ -7,13 +7,11 @@ extends KeyScene
 
 @export var startup_sound: SoundEffect
 
-@export_file("*.tscn") var wm_scene: String
-
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed(&"gui_accept"):
 		TransitionManager.transition_scene(
-			wm_scene,
+			StageManager.scene,
 			SceneTransition.Type.CIRCLE,
 			SceneTransition.Type.CIRCLE
 		)

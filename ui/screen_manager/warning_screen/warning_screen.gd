@@ -19,7 +19,7 @@ func on_load() -> void:
 
 
 func restart() -> void:
-	WorldMachine.restart_stage()
+	StageManager.restart_stage()
 	manager.switch_screen(self)
 
 

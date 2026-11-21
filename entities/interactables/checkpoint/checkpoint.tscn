@@ -43,6 +43,7 @@ enter_sfx = SubResource("Resource_pyqff")
 particle_amount = 14
 path = NodePath("Path2D")
 hologram = NodePath("Hologram")
+category = &"checkpoints"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=924002246]
 collision_layer = 64

@@ -16,7 +16,7 @@ var cam_x: float
 
 func _physics_process(_delta):
 	if !Engine.is_editor_hint():
-		cam_x = -WorldMachine.camera.get_screen_center_position().x / scroll_divisor
+		cam_x = -StageManager.camera.get_screen_center_position().x / scroll_divisor
 
 	queue_redraw()
 

@@ -22,6 +22,7 @@ var particle_amount: int:
 
 @export_group("Meta")
 @export var hologram: Sprite2D
+@export var category: StringName
 @export var uuid: String
 
 @export_tool_button("Regenerate UUID", "UID")
@@ -43,23 +44,32 @@ var active: bool = false:
 			particle_sprites[i].frame = i
 
 
+func _init() -> void:
+	add_to_group(TrackedId.GROUP)
+
+
 func _ready() -> void:
+	if is_instance_valid(spawn_data):
+		spawn_data.changed.connect(_spawn_data_changed)
+		_spawn_data_changed()
+
 	_init_particles()
+
+	if Engine.is_editor_hint():
+		TrackedId.ensure_unique(self)
+		hologram.visible = true
+		return
+
+	hologram.visible = false
 
 	add_to_group(&"checkpoints")
 
-	var tree: SceneTree = get_tree()
+	StageCache.checkpoint_reached.connect(_on_checkpoint_reached)
 
-	if not tree.has_user_signal(&"checkpoint_activated"):
-		tree.add_user_signal("checkpoint_activated", [uuid])
 
-	tree.connect(&"checkpoint_activated", func(active_uuid: String): active = uuid == active_uuid)
-
-	if not Engine.is_editor_hint():
-		assert(not uuid.is_empty(), "No UUID was assigned to this object: (%s)" % name)
-		hologram.hide()
-
-	spawn_data.changed.connect(_spawn_data_changed)
+func _validate_property(property: Dictionary) -> void:
+	if property.name == "uuid":
+		property.usage |= PROPERTY_USAGE_READ_ONLY
 
 
 func _spawn_data_changed() -> void:
@@ -68,12 +78,16 @@ func _spawn_data_changed() -> void:
 
 
 func _on_area_2d_body_entered(_body: Node2D) -> void:
-	if not active:
-		enter_sfx.play(self)
+	if active: return
 
-	StageCache.last_checkpoint = uuid
+	enter_sfx.play(self)
 
-	get_tree().emit_signal(&"checkpoint_activated", uuid)
+	StageCache.reach_checkpoint(uuid, StageCache.current_area)
+
+
+## Keeps exactly one checkpoint lit, including ones reached in other areas.
+func _on_checkpoint_reached(reached_uuid: String) -> void:
+	active = reached_uuid == uuid
 
 
 func _init_particles() -> void:

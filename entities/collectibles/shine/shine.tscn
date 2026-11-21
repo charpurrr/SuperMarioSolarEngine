@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ui2jk0qwltpw"]
+[gd_scene format=3 uid="uid://ui2jk0qwltpw"]
 
 [ext_resource type="Script" uid="uid://7516t88qfy5" path="res://entities/collectibles/shine/shine.gd" id="1_hamnh"]
 [ext_resource type="Texture2D" uid="uid://cjotx4r01vraa" path="res://entities/collectibles/shine/shine.png" id="1_vsls0"]
@@ -124,7 +124,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6gn8t")
 }],
-"loop": true,
+"loop": 1,
 "name": &"normal",
 "speed": 8.0
 }]
@@ -145,7 +145,7 @@ gradient = SubResource("Gradient_jbsq7")
 width = 150
 height = 150
 
-[node name="Shine" type="AnimatedSprite2D" node_paths=PackedStringArray("area")]
+[node name="Shine" type="AnimatedSprite2D" unique_id=1299839152 node_paths=PackedStringArray("area")]
 material = SubResource("ShaderMaterial_jbsq7")
 sprite_frames = SubResource("SpriteFrames_l1sdq")
 animation = &"normal"
@@ -156,22 +156,23 @@ shine_name = &"Untitled Shine"
 description = "Collect the Shine Sprite!"
 particle = SubResource("Resource_byb03")
 area = NodePath("Area2D")
+category = &"shine_sprites"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=869895176]
 collision_layer = 32
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=187554420]
 shape = SubResource("RectangleShape2D_ywnjo")
 
-[node name="AmbientSound" type="AudioStreamPlayer2D" parent="."]
+[node name="AmbientSound" type="AudioStreamPlayer2D" parent="." unique_id=870062746]
 stream = ExtResource("6_smdji")
 autoplay = true
 max_distance = 100.0
 attenuation = 1.90273
 bus = &"SFX"
 
-[node name="Rays" type="Sprite2D" parent="."]
+[node name="Rays" type="Sprite2D" parent="." unique_id=84784186]
 modulate = Color(2.43, 2.43, 0.693, 1)
 show_behind_parent = true
 z_index = -1

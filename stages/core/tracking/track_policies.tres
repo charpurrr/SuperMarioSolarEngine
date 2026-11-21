@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="TrackPolicies" format=3 uid="uid://c68ndkvwk2tec"]
+
+[ext_resource type="Script" uid="uid://coyegop6eypyf" path="res://stages/core/tracking/track_policy.gd" id="1_r4ts3"]
+[ext_resource type="Script" uid="uid://d0e1lldsdo8vf" path="res://stages/core/tracking/track_policies.gd" id="2_ucb6b"]
+
+[sub_resource type="Resource" id="Resource_lj6mr"]
+script = ExtResource("1_r4ts3")
+category = &"coins"
+rolls_back = true
+metadata/_custom_type_script = "uid://coyegop6eypyf"
+
+[sub_resource type="Resource" id="Resource_x6j5q"]
+script = ExtResource("1_r4ts3")
+category = &"blue_coins"
+rolls_back = true
+metadata/_custom_type_script = "uid://coyegop6eypyf"
+
+[sub_resource type="Resource" id="Resource_0yb8v"]
+script = ExtResource("1_r4ts3")
+category = &"red_coins"
+rolls_back = true
+metadata/_custom_type_script = "uid://coyegop6eypyf"
+
+[sub_resource type="Resource" id="Resource_o0gpg"]
+script = ExtResource("1_r4ts3")
+category = &"dragon_coins"
+persists = true
+metadata/_custom_type_script = "uid://coyegop6eypyf"
+
+[sub_resource type="Resource" id="Resource_5hmpy"]
+script = ExtResource("1_r4ts3")
+category = &"enemies"
+rolls_back = true
+metadata/_custom_type_script = "uid://coyegop6eypyf"
+
+[sub_resource type="Resource" id="Resource_u8udd"]
+script = ExtResource("1_r4ts3")
+category = &"shine_sprites"
+persists = true
+metadata/_custom_type_script = "uid://coyegop6eypyf"
+
+[sub_resource type="Resource" id="Resource_laeyy"]
+script = ExtResource("1_r4ts3")
+category = &"checkpoints"
+metadata/_custom_type_script = "uid://coyegop6eypyf"
+
+[resource]
+script = ExtResource("2_ucb6b")
+policies = Array[ExtResource("1_r4ts3")]([SubResource("Resource_lj6mr"), SubResource("Resource_x6j5q"), SubResource("Resource_0yb8v"), SubResource("Resource_o0gpg"), SubResource("Resource_5hmpy"), SubResource("Resource_u8udd"), SubResource("Resource_laeyy")])
+metadata/_custom_type_script = "uid://d0e1lldsdo8vf"

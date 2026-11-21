@@ -7,7 +7,7 @@ extends Screen
 
 
 func _ready() -> void:
-	if WorldMachine.stage == null:
+	if StageManager.stage == null:
 		retry.toggle_disable(true)
 		reset.toggle_disable(true)
 
@@ -18,7 +18,7 @@ func _on_resume_pressed() -> void:
 
 
 func _on_retry_pressed() -> void:
-	WorldMachine.reload_stage()
+	StageManager.reload_stage()
 	manager.switch_screen(self)
 
 

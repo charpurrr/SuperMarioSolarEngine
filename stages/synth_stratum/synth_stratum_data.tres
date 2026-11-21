@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="StageData" format=3 uid="uid://ckm8xnfilx3sg"]
+
+[ext_resource type="Script" uid="uid://djlgk5lbc6qbs" path="res://stages/core/stage_data.gd" id="1_lox8b"]
+[ext_resource type="PackedScene" uid="uid://co7kk1h1rwbn6" path="res://stages/synth_stratum/synth_stratum.tscn" id="1_sy22n"]
+
+[resource]
+script = ExtResource("1_lox8b")
+id = &"synth_stratum"
+areas = Dictionary[StringName, PackedScene]({
+&"main": ExtResource("1_sy22n")
+})
+start_area = &"main"
+start_spawn = &"MainSpawn"
+tracked = Dictionary[StringName, Array]({
+&"blue_coins": ["18d2c7fd-2225-491a-b7f3-77ebb50002a6", "1ae07f95-3a1d-44d2-a028-b85c5c827ee1", "5e1d9cec-2057-46ac-8c6a-5e24a16ae515", "e31640d8-bb24-466f-86f5-09568ba33ec3", "e989a49f-762d-4993-99e1-56dd63c8e458", "ed3a9288-b964-41cc-b515-29ef38988a6e", "f0065ac0-d20d-4d80-91cc-2d0f4ca60c65", "f1909ad4-4647-4dcd-a88c-88f7b0aac426"],
+&"checkpoints": ["2188453a-b3e1-400d-8f26-8d9bbb8520cb", "5800881d-67c5-4266-bcb5-a42dd0244a02"],
+&"coins": ["0b566a13-978a-44cc-b26e-d7119e5ab17c", "1db23374-22b6-4930-9165-c6e130578f47", "5cbac08b-d43a-4cb4-91e0-72daad65e7d7", "76eedf65-18c9-4ce5-b6c9-fac29b76aeb6", "7dbf4fda-d77d-4c93-8c57-db1ddb89ce19", "82c41ce6-ae62-4c1e-b338-1a9dbcd9686d", "8db9860b-93bd-4fff-84f1-5b489575ff3d", "99fffafc-a047-49e4-879a-4895cae26214"],
+&"red_coins": ["0218d6e7-f08a-4136-a76b-c5b02553c80b", "02a0c82e-261b-4a00-9425-afcb7dccb797", "05a8b4f6-798c-4147-a34f-8a4b101f1f53", "2b6d78e5-9357-428d-9027-4e6c2caa81f2", "3e039487-d46c-452d-9b2e-fe0624ab2334", "8d8d7402-55ad-4f2c-946f-81e62983e70c", "944cdaff-65d4-43b1-a048-1bd2944d4f10", "b9d1bbe2-4db4-4159-8936-7449d76825a2"],
+&"shine_sprites": ["aec57145-00be-46b7-b877-3abf15d03c7c"]
+})
+metadata/_custom_type_script = "uid://djlgk5lbc6qbs"

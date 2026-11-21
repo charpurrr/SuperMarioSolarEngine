@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://co7kk1h1rwbn6"]
 
-[ext_resource type="Script" uid="uid://whyqyw8guuki" path="res://stages/stage.gd" id="1_v54hh"]
+[ext_resource type="Script" uid="uid://whyqyw8guuki" path="res://stages/core/stage.gd" id="1_v54hh"]
 [ext_resource type="PackedScene" uid="uid://bfb4xq874buf6" path="res://props/level_environments/synth/synth.tscn" id="2_nma4k"]
 [ext_resource type="Script" uid="uid://dspslemtuknxr" path="res://util/resources/song_playlist.gd" id="3_rtnqg"]
 [ext_resource type="Script" uid="uid://c56bjnj2qtrvg" path="res://util/resources/song.gd" id="4_kuv8v"]
@@ -32,7 +32,9 @@
 [ext_resource type="PackedScene" uid="uid://dk2cdc5aktq22" path="res://entities/platforms/semi_solid/semi_solid_platform.tscn" id="29_5ltkg"]
 [ext_resource type="PackedScene" uid="uid://b14pbye1baqly" path="res://entities/collectibles/coin/coin.tscn" id="30_ihghk"]
 [ext_resource type="PackedScene" uid="uid://ui2jk0qwltpw" path="res://entities/collectibles/shine/shine.tscn" id="31_nma4k"]
+[ext_resource type="PackedScene" uid="uid://u15dqdxuqfeq" path="res://entities/collectibles/red_coin/red_coin.tscn" id="32_rowtk"]
 [ext_resource type="PackedScene" uid="uid://c3vng5ftys6bt" path="res://entities/interactables/sign/sign.tscn" id="32_rtnqg"]
+[ext_resource type="PackedScene" uid="uid://cpjxkfqd6y2k1" path="res://entities/collectibles/blue_coin/blue_coin.tscn" id="33_x6j5q"]
 [ext_resource type="PackedScene" uid="uid://ddtpa42oyu7fe" path="res://entities/breakables/crate/crate.tscn" id="34_l20wn"]
 [ext_resource type="PackedScene" uid="uid://ct32lhgrs787t" path="res://entities/platforms/moving/moving_platform.tscn" id="35_1nvlm"]
 [ext_resource type="PackedScene" uid="uid://b0ojpnfyepmw6" path="res://entities/interactables/pole/pole.tscn" id="36_fwr2a"]
@@ -3950,13 +3952,13 @@ mesh = SubResource("ArrayMesh_ie2xe")
 script = ExtResource("38_dvxun")
 metadata/_custom_type_script = "uid://cx3grodcqtp35"
 
-[sub_resource type="Resource" id="Resource_dvxun"]
+[sub_resource type="Resource" id="Resource_061n5"]
 resource_local_to_scene = true
 script = ExtResource("38_dvxun")
 offset = Vector2(0, 40)
 metadata/_custom_type_script = "uid://cx3grodcqtp35"
 
-[sub_resource type="Resource" id="Resource_061n5"]
+[sub_resource type="Resource" id="Resource_tgy2j"]
 resource_local_to_scene = true
 script = ExtResource("38_dvxun")
 offset = Vector2(0, 40)
@@ -3981,6 +3983,7 @@ _points = SubResource("Resource_pxpwp")
 _meshes = Array[ExtResource("16_l20wn")]([SubResource("Resource_fwr2a"), SubResource("Resource_f78fx"), SubResource("Resource_rowtk"), SubResource("Resource_03dry"), SubResource("Resource_lfm5d"), SubResource("Resource_t78sq"), SubResource("Resource_37d1f"), SubResource("Resource_oi7ak"), SubResource("Resource_pgqos"), SubResource("Resource_kxi3b"), SubResource("Resource_2t11y"), SubResource("Resource_5ltkg"), SubResource("Resource_xybke"), SubResource("Resource_3avjy"), SubResource("Resource_005qd"), SubResource("Resource_r5sgn"), SubResource("Resource_cou3e"), SubResource("Resource_jx610"), SubResource("Resource_6lj3t"), SubResource("Resource_c2l1t"), SubResource("Resource_0ur5b"), SubResource("Resource_3ay1d"), SubResource("Resource_4q1kv"), SubResource("Resource_3wump"), SubResource("Resource_o2yqn"), SubResource("Resource_u5uuf"), SubResource("Resource_adshl"), SubResource("Resource_h8sei"), SubResource("Resource_27uar"), SubResource("Resource_v5t0j"), SubResource("Resource_6eo71"), SubResource("Resource_lfym1"), SubResource("Resource_6e0aj"), SubResource("Resource_fuq20"), SubResource("Resource_d0ww2"), SubResource("Resource_gep0e"), SubResource("Resource_kb2nd"), SubResource("Resource_muxeb"), SubResource("Resource_dhbw3"), SubResource("Resource_x7456"), SubResource("Resource_wa7mx"), SubResource("Resource_a2nui"), SubResource("Resource_b7a6b"), SubResource("Resource_hvve8"), SubResource("Resource_0x6yr"), SubResource("Resource_43742"), SubResource("Resource_uxm3a"), SubResource("Resource_ou3lu"), SubResource("Resource_xxpu6"), SubResource("Resource_m8s2d"), SubResource("Resource_mgtmm"), SubResource("Resource_0dsgd"), SubResource("Resource_op5bf"), SubResource("Resource_da71y"), SubResource("Resource_7ns62"), SubResource("Resource_k2ldo"), SubResource("Resource_787pu"), SubResource("Resource_iw74g"), SubResource("Resource_pq8bm"), SubResource("Resource_gad0d"), SubResource("Resource_dln5g"), SubResource("Resource_7dguj"), SubResource("Resource_1bt8t"), SubResource("Resource_pg8h7"), SubResource("Resource_w3lgw"), SubResource("Resource_pmya6"), SubResource("Resource_x1bap"), SubResource("Resource_l8xe2"), SubResource("Resource_k4u0o"), SubResource("Resource_d72wb"), SubResource("Resource_8q1hq"), SubResource("Resource_amjpn"), SubResource("Resource_vll42"), SubResource("Resource_igrlo"), SubResource("Resource_r10un"), SubResource("Resource_5pwcq"), SubResource("Resource_3tvr8"), SubResource("Resource_ol4p4"), SubResource("Resource_t1xo0"), SubResource("Resource_dr2rk"), SubResource("Resource_oswiw"), SubResource("Resource_50j8i"), SubResource("Resource_dfa75"), SubResource("Resource_n2dl6"), SubResource("Resource_atkck"), SubResource("Resource_ln74m"), SubResource("Resource_5aqro"), SubResource("Resource_gt5de"), SubResource("Resource_36tw3"), SubResource("Resource_qvhai"), SubResource("Resource_sg57l"), SubResource("Resource_mjyur"), SubResource("Resource_nv1pe"), SubResource("Resource_0diw6"), SubResource("Resource_xu0q0"), SubResource("Resource_t4yvp"), SubResource("Resource_rljod"), SubResource("Resource_wvlju"), SubResource("Resource_ag3my"), SubResource("Resource_a15k8"), SubResource("Resource_gx0cu"), SubResource("Resource_nuwe3"), SubResource("Resource_o3w7v"), SubResource("Resource_18r8n"), SubResource("Resource_3fnh2"), SubResource("Resource_eohvy"), SubResource("Resource_yb7sn"), SubResource("Resource_rava6"), SubResource("Resource_rjj0q")])
 shape_material = SubResource("Resource_d44u0")
 collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Terrain" unique_id=1592141709]
 modulate = Color(1, 1, 1, 0.3)
@@ -4109,156 +4112,105 @@ position = Vector2(-129, -625)
 
 [node name="Coins" type="Node" parent="." unique_id=1138138168]
 
-[node name="Coin" parent="Coins" unique_id=340800817 instance=ExtResource("30_ihghk")]
-position = Vector2(816, -56)
-frame_progress = 0.40797317
+[node name="RedCoin" parent="Coins" unique_id=1718623630 instance=ExtResource("32_rowtk")]
+position = Vector2(1393, -602)
+uuid = "2b6d78e5-9357-428d-9027-4e6c2caa81f2"
 
-[node name="Coin4" parent="Coins" unique_id=277150002 instance=ExtResource("30_ihghk")]
-position = Vector2(840, -56)
-frame_progress = 0.40797317
+[node name="RedCoin2" parent="Coins" unique_id=1473195520 instance=ExtResource("32_rowtk")]
+position = Vector2(1414, -602)
+uuid = "b9d1bbe2-4db4-4159-8936-7449d76825a2"
 
-[node name="Coin5" parent="Coins" unique_id=404130534 instance=ExtResource("30_ihghk")]
-position = Vector2(864, -56)
-frame_progress = 0.40797317
+[node name="RedCoin3" parent="Coins" unique_id=88025601 instance=ExtResource("32_rowtk")]
+position = Vector2(1435, -602)
+uuid = "8d8d7402-55ad-4f2c-946f-81e62983e70c"
 
-[node name="Coin6" parent="Coins" unique_id=1322689316 instance=ExtResource("30_ihghk")]
-position = Vector2(888, -56)
-frame_progress = 0.40797317
+[node name="RedCoin4" parent="Coins" unique_id=1869611154 instance=ExtResource("32_rowtk")]
+position = Vector2(1457, -602)
+uuid = "02a0c82e-261b-4a00-9425-afcb7dccb797"
 
-[node name="Coin7" parent="Coins" unique_id=1378051243 instance=ExtResource("30_ihghk")]
-position = Vector2(912, -56)
-frame_progress = 0.40797317
+[node name="RedCoin5" parent="Coins" unique_id=186499048 instance=ExtResource("32_rowtk")]
+position = Vector2(1479, -602)
+uuid = "944cdaff-65d4-43b1-a048-1bd2944d4f10"
 
-[node name="Coin8" parent="Coins" unique_id=17712182 instance=ExtResource("30_ihghk")]
-position = Vector2(816, -80)
-frame_progress = 0.40797317
+[node name="RedCoin6" parent="Coins" unique_id=794115534 instance=ExtResource("32_rowtk")]
+position = Vector2(1503, -602)
+uuid = "05a8b4f6-798c-4147-a34f-8a4b101f1f53"
 
-[node name="Coin9" parent="Coins" unique_id=1470669526 instance=ExtResource("30_ihghk")]
-position = Vector2(840, -80)
-frame_progress = 0.40797317
+[node name="RedCoin7" parent="Coins" unique_id=615603693 instance=ExtResource("32_rowtk")]
+position = Vector2(1526, -602)
+uuid = "3e039487-d46c-452d-9b2e-fe0624ab2334"
 
-[node name="Coin10" parent="Coins" unique_id=713682470 instance=ExtResource("30_ihghk")]
-position = Vector2(864, -80)
-frame_progress = 0.40797317
+[node name="RedCoin8" parent="Coins" unique_id=909093654 instance=ExtResource("32_rowtk")]
+position = Vector2(1593, -603)
+uuid = "0218d6e7-f08a-4136-a76b-c5b02553c80b"
 
-[node name="Coin11" parent="Coins" unique_id=1622627861 instance=ExtResource("30_ihghk")]
-position = Vector2(888, -80)
-frame_progress = 0.40797317
+[node name="Coin" parent="Coins" unique_id=1233025648 instance=ExtResource("30_ihghk")]
+position = Vector2(792, -40)
+uuid = "0b566a13-978a-44cc-b26e-d7119e5ab17c"
 
-[node name="Coin12" parent="Coins" unique_id=208637934 instance=ExtResource("30_ihghk")]
-position = Vector2(912, -80)
-frame_progress = 0.40797317
+[node name="Coin2" parent="Coins" unique_id=27812442 instance=ExtResource("30_ihghk")]
+position = Vector2(816, -40)
+uuid = "76eedf65-18c9-4ce5-b6c9-fac29b76aeb6"
 
-[node name="Coin13" parent="Coins" unique_id=907856111 instance=ExtResource("30_ihghk")]
-position = Vector2(1352, -368)
-animation = &"1"
-frame_progress = 0.42219865
-type = 1
+[node name="Coin3" parent="Coins" unique_id=311831852 instance=ExtResource("30_ihghk")]
+position = Vector2(840, -40)
+uuid = "82c41ce6-ae62-4c1e-b338-1a9dbcd9686d"
 
-[node name="Coin14" parent="Coins" unique_id=511112308 instance=ExtResource("30_ihghk")]
-position = Vector2(1376, -368)
-animation = &"1"
-frame_progress = 0.42219865
-type = 1
+[node name="Coin4" parent="Coins" unique_id=778660687 instance=ExtResource("30_ihghk")]
+position = Vector2(864, -40)
+uuid = "8db9860b-93bd-4fff-84f1-5b489575ff3d"
 
-[node name="Coin15" parent="Coins" unique_id=105276685 instance=ExtResource("30_ihghk")]
-position = Vector2(1400, -368)
-animation = &"1"
-frame_progress = 0.42219865
-type = 1
+[node name="Coin5" parent="Coins" unique_id=1906323560 instance=ExtResource("30_ihghk")]
+position = Vector2(888, -40)
+uuid = "5cbac08b-d43a-4cb4-91e0-72daad65e7d7"
 
-[node name="Coin16" parent="Coins" unique_id=1274666472 instance=ExtResource("30_ihghk")]
-position = Vector2(1424, -368)
-animation = &"1"
-frame_progress = 0.42219865
-type = 1
+[node name="Coin6" parent="Coins" unique_id=1616378794 instance=ExtResource("30_ihghk")]
+position = Vector2(912, -40)
+uuid = "99fffafc-a047-49e4-879a-4895cae26214"
 
-[node name="Coin17" parent="Coins" unique_id=1786769016 instance=ExtResource("30_ihghk")]
-position = Vector2(1448, -368)
-animation = &"1"
-frame_progress = 0.42219865
-type = 1
+[node name="Coin7" parent="Coins" unique_id=2106612557 instance=ExtResource("30_ihghk")]
+position = Vector2(936, -40)
+uuid = "1db23374-22b6-4930-9165-c6e130578f47"
 
-[node name="Coin18" parent="Coins" unique_id=939281997 instance=ExtResource("30_ihghk")]
-position = Vector2(1352, -392)
-animation = &"1"
-frame_progress = 0.42219865
-type = 1
+[node name="Coin8" parent="Coins" unique_id=2092451959 instance=ExtResource("30_ihghk")]
+position = Vector2(960, -40)
+uuid = "7dbf4fda-d77d-4c93-8c57-db1ddb89ce19"
 
-[node name="Coin19" parent="Coins" unique_id=1871986574 instance=ExtResource("30_ihghk")]
-position = Vector2(1376, -392)
-animation = &"1"
-frame_progress = 0.42219865
-type = 1
+[node name="BlueCoin" parent="Coins" unique_id=232051941 instance=ExtResource("33_x6j5q")]
+position = Vector2(1312, -376)
+uuid = "f0065ac0-d20d-4d80-91cc-2d0f4ca60c65"
 
-[node name="Coin20" parent="Coins" unique_id=1493925600 instance=ExtResource("30_ihghk")]
-position = Vector2(1400, -392)
-animation = &"1"
-frame_progress = 0.42219865
-type = 1
+[node name="BlueCoin2" parent="Coins" unique_id=1576335607 instance=ExtResource("33_x6j5q")]
+position = Vector2(1336, -376)
+uuid = "1ae07f95-3a1d-44d2-a028-b85c5c827ee1"
 
-[node name="Coin21" parent="Coins" unique_id=111746828 instance=ExtResource("30_ihghk")]
-position = Vector2(1424, -392)
-animation = &"1"
-frame_progress = 0.42219865
-type = 1
+[node name="BlueCoin3" parent="Coins" unique_id=875582793 instance=ExtResource("33_x6j5q")]
+position = Vector2(1360, -376)
+uuid = "18d2c7fd-2225-491a-b7f3-77ebb50002a6"
 
-[node name="Coin22" parent="Coins" unique_id=1708821704 instance=ExtResource("30_ihghk")]
-position = Vector2(1448, -392)
-animation = &"1"
-frame_progress = 0.42219865
-type = 1
+[node name="BlueCoin4" parent="Coins" unique_id=1074524348 instance=ExtResource("33_x6j5q")]
+position = Vector2(1384, -376)
+uuid = "e989a49f-762d-4993-99e1-56dd63c8e458"
 
-[node name="Coin3" parent="Coins" unique_id=184724743 instance=ExtResource("30_ihghk")]
-position = Vector2(1416, -600)
-animation = &"2"
-frame_progress = 0.6680231
-type = 2
+[node name="BlueCoin5" parent="Coins" unique_id=935312500 instance=ExtResource("33_x6j5q")]
+position = Vector2(1408, -376)
+uuid = "ed3a9288-b964-41cc-b515-29ef38988a6e"
 
-[node name="Coin23" parent="Coins" unique_id=1541214465 instance=ExtResource("30_ihghk")]
-position = Vector2(1440, -600)
-animation = &"2"
-frame_progress = 0.6680231
-type = 2
+[node name="BlueCoin6" parent="Coins" unique_id=1038248924 instance=ExtResource("33_x6j5q")]
+position = Vector2(1432, -376)
+uuid = "f1909ad4-4647-4dcd-a88c-88f7b0aac426"
 
-[node name="Coin24" parent="Coins" unique_id=596649156 instance=ExtResource("30_ihghk")]
-position = Vector2(1464, -600)
-animation = &"2"
-frame_progress = 0.6680231
-type = 2
+[node name="BlueCoin7" parent="Coins" unique_id=1088775462 instance=ExtResource("33_x6j5q")]
+position = Vector2(1456, -376)
+uuid = "e31640d8-bb24-466f-86f5-09568ba33ec3"
 
-[node name="Coin25" parent="Coins" unique_id=289522181 instance=ExtResource("30_ihghk")]
-position = Vector2(1488, -600)
-animation = &"2"
-frame_progress = 0.6680231
-type = 2
-
-[node name="Coin26" parent="Coins" unique_id=191404582 instance=ExtResource("30_ihghk")]
-position = Vector2(1512, -600)
-animation = &"2"
-frame_progress = 0.6680231
-type = 2
-
-[node name="Coin27" parent="Coins" unique_id=622251736 instance=ExtResource("30_ihghk")]
-position = Vector2(1536, -600)
-animation = &"2"
-frame_progress = 0.6680231
-type = 2
-
-[node name="Coin28" parent="Coins" unique_id=886201400 instance=ExtResource("30_ihghk")]
-position = Vector2(1560, -600)
-animation = &"2"
-frame_progress = 0.6680231
-type = 2
-
-[node name="Coin29" parent="Coins" unique_id=810516682 instance=ExtResource("30_ihghk")]
-position = Vector2(1584, -600)
-animation = &"2"
-frame_progress = 0.6680231
-type = 2
+[node name="BlueCoin8" parent="Coins" unique_id=1414006559 instance=ExtResource("33_x6j5q")]
+position = Vector2(1480, -376)
+uuid = "5e1d9cec-2057-46ac-8c6a-5e24a16ae515"
 
 [node name="Shine" parent="." unique_id=1728559446 instance=ExtResource("31_nma4k")]
 position = Vector2(3912, -1224)
+uuid = "aec57145-00be-46b7-b877-3abf15d03c7c"
 
 [node name="Sign" parent="." unique_id=1861350829 instance=ExtResource("32_rtnqg")]
 position = Vector2(305, 196)
@@ -4278,16 +4230,16 @@ points = PackedVector2Array(0, 0, 1000, -900)
 position = Vector2(-1189, 144)
 height = 800
 
-[node name="PlayerSpawnPoint" parent="." unique_id=1611156822 instance=ExtResource("37_rnb4s")]
+[node name="MainSpawn" parent="." unique_id=1611156822 instance=ExtResource("37_rnb4s")]
 position = Vector2(103, 0)
 spawn_data = SubResource("Resource_x6j5q")
 
 [node name="Checkpoint" parent="." unique_id=2044422533 instance=ExtResource("38_f78fx")]
 position = Vector2(8, -59)
-spawn_data = SubResource("Resource_dvxun")
-uuid = "ac7c175b-3dd3-464d-aae7-5b013f561aa6"
+spawn_data = SubResource("Resource_061n5")
+uuid = "5800881d-67c5-4266-bcb5-a42dd0244a02"
 
 [node name="Checkpoint2" parent="." unique_id=1451069325 instance=ExtResource("38_f78fx")]
 position = Vector2(591, -54)
-spawn_data = SubResource("Resource_061n5")
+spawn_data = SubResource("Resource_tgy2j")
 uuid = "2188453a-b3e1-400d-8f26-8d9bbb8520cb"
