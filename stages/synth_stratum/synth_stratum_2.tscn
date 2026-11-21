@@ -225,7 +225,7 @@ script = ExtResource("17_down2")
 starting_velocity = Vector2(30, -13.275)
 metadata/_custom_type_script = "uid://cx3grodcqtp35"
 
-[sub_resource type="Resource" id="Resource_ir1yc"]
+[sub_resource type="Resource" id="Resource_xjwyw"]
 resource_local_to_scene = true
 script = ExtResource("17_down2")
 offset = Vector2(0, 40)
@@ -257,6 +257,10 @@ spawn_data = SubResource("Resource_h0ri6")
 
 [node name="RedCoin" parent="." unique_id=1718623630 instance=ExtResource("18_down2")]
 position = Vector2(64, -80)
+uuid = "6cba5e28-106d-45d9-900e-d50ea5a1018d"
+
+[node name="RedCoin4" parent="." unique_id=1644943900 instance=ExtResource("18_down2")]
+position = Vector2(125, -57)
 uuid = "045dc07f-a771-4a25-96a3-d76a03efde9f"
 
 [node name="RedCoin2" parent="." unique_id=1121386831 instance=ExtResource("18_down2")]
@@ -271,5 +275,5 @@ uuid = "d27ac0ca-f6f5-49eb-b9a4-0c56dc1f0d24"
 
 [node name="Checkpoint" parent="." unique_id=2044422533 instance=ExtResource("19_h0ri6")]
 position = Vector2(-40, -88)
-spawn_data = SubResource("Resource_ir1yc")
+spawn_data = SubResource("Resource_xjwyw")
 uuid = "d3ac360f-d98f-4a64-b29b-0f6793a392d6"

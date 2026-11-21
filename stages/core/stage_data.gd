@@ -10,7 +10,7 @@ const SPAWN_GROUP: StringName = &"player_spawn_points"
 
 @export var id: StringName
 
-@export var areas: Dictionary[StringName, PackedScene]
+@export var areas: Dictionary[StringName, String]
 @export var start_area: StringName
 ## Name of the spawn point node in [member start_area].
 @export var start_spawn: StringName
@@ -48,7 +48,7 @@ func bake() -> void:
 		errors.append("Stage has no areas.")
 
 	for area_id: StringName in areas:
-		var scene: PackedScene = areas[area_id]
+		var scene: PackedScene = load(areas[area_id])
 
 		if scene == null:
 			errors.append("Area '%s' has no scene." % area_id)

@@ -179,7 +179,7 @@ func _begin_session() -> void:
 
 func _get_area_scene() -> PackedScene:
 	if stage_data and stage_data.areas.has(StageCache.current_area):
-		return stage_data.areas[StageCache.current_area]
+		return load(stage_data.areas[StageCache.current_area])
 
 	return null
 
